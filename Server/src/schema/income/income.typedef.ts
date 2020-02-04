@@ -1,0 +1,23 @@
+import {Document, Types} from 'mongoose'
+
+interface itemModel{
+    type: string
+    amount: number
+}
+
+export interface IncomeModel extends Document{
+    _id: Types.ObjectId
+    type: string
+    name: string
+    address: string
+    phone: number
+    money: {
+        type: string
+        amount: string
+        cheque_no: number
+    },
+    item: itemModel[]
+    ref_name: string
+    note: string
+    date: Date
+}
