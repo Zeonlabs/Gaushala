@@ -4,11 +4,17 @@
   margin: 16px;
 }
 
-.logo h2{
+.logo h2 {
   color: white;
   text-align: center;
 }
 
-.ant-layout-header .anticon {
-  display: none;
+.header-css {
+  background: #fff;
+  padding: 0;
+  text-align: end;
+}
+
+.plus-button-dashboard {
+  margin-right: 18px;
 }
