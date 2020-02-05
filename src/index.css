@@ -13,4 +13,7 @@ code {
     monospace;
 }
 
-
+#root,
+.App {
+  height: inherit;
+}

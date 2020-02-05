@@ -1,0 +1,51 @@
+.page-layout {
+  height: inherit;
+
+  li {
+    height: 50px !important;
+    line-height: 50px !important;
+  }
+  .Header-div {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+
+    button {
+      margin: auto 0;
+    }
+  }
+
+  .trigger {
+    font-size: 18px;
+    line-height: 64px;
+    // padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .trigger:hover {
+    color: #1890ff;
+  }
+
+  .logo {
+    height: 32px;
+    overflow: hidden;
+    margin: 16px;
+    text-align: center;
+
+    h1 {
+      font-family: "gujrati_saral-1normal";
+      font-size: 26px;
+    }
+  }
+
+  .sidebar-menuItem {
+    span {
+      font-size: 16px;
+    }
+    i {
+      font-size: 18px !important;
+      margin-right: 17px !important;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import MenuBar from "../Common/MenuBar";
+import PageWrapper from "../Common/PageWrapper/PageWrapper";
 
 class Home extends Component {
   constructor(props) {
@@ -10,9 +11,9 @@ class Home extends Component {
 
   render() {
     return (
-      <MenuBar>
+      <PageWrapper>
         <h1>Dashboard</h1>
-      </MenuBar>
+      </PageWrapper>
     );
   }
 }
