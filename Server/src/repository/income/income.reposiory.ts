@@ -6,4 +6,9 @@ export class IncomeRepository{
         const res = await income.save()
         return res
     }
+
+    async getAll(){
+        const allIncome = await Income.find()
+        return allIncome
+    }
 }

@@ -10,10 +10,23 @@ const saveIncome = async (req: Request, res: Response) => {
     }
     catch(e){
         console.log(e)
-        res.status(400)
+        res.status(400).send()
+    }
+}
+
+const getAllIncome = async (req: Request, res: Response) => {
+    try{
+        const incomeRepo = new IncomeRepository()
+        const allIncome = await incomeRepo.getAll()
+        res.send(allIncome)
+    }
+    catch(e){
+        console.log(e)
+        res.status(400).send()
     }
 }
 
 export {
-    saveIncome
+    saveIncome,
+    getAllIncome
 }

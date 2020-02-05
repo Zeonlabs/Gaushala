@@ -15,7 +15,7 @@ export interface IncomeModel extends Document{
         type: string
         amount: string
         cheque_no: number
-    },
+    }
     item: itemModel[]
     ref_name: string
     note: string
