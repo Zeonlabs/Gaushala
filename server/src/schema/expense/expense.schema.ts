@@ -1,6 +1,6 @@
-import mongoose, {Model} from 'mongoose';
+import mongoose, {Model} from 'mongoose'
 import mongoosePaginate from 'mongoose-paginate-v2'
-import {IncomeModel} from './income.typedef'
+import {ExpenseModel} from './expense.typedef'
 
 const commonStringType = {
     type: String,
@@ -8,7 +8,7 @@ const commonStringType = {
     trim: true
 }
 
-const IncomeSchema = new mongoose.Schema({
+const ExpenseSchema = new mongoose.Schema({
     slip_no: Number,
     date: Date,
     type: commonStringType,
@@ -39,6 +39,10 @@ const IncomeSchema = new mongoose.Schema({
             amount: Number
         }
     ],
+    pan_no: {
+        type: String,
+        trim: true
+    },
     ref_name: {
         type: String,
         trim: true
@@ -49,6 +53,6 @@ const IncomeSchema = new mongoose.Schema({
     }
 })
 
-IncomeSchema.plugin(mongoosePaginate)
+ExpenseSchema.plugin(mongoosePaginate)
 
-export const Income: Model<IncomeModel> = mongoose.model<IncomeModel>('income', IncomeSchema)
+export const Expense: Model<ExpenseModel> = mongoose.model<ExpenseModel>('expense', ExpenseSchema)

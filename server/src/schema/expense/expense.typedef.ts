@@ -5,7 +5,7 @@ interface itemModel{
     amount: number
 }
 
-export interface IncomeModel extends Document{
+export interface ExpenseModel extends Document{
     _id: Types.ObjectId
     slip_no: string
     date: Date
@@ -19,8 +19,7 @@ export interface IncomeModel extends Document{
         cheque_no: number
     }
     item: itemModel[]
+    pan_no: string
     ref_name: string
     note: string
-
-    paginate: Function
 }

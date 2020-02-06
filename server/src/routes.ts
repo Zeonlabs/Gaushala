@@ -1,16 +1,24 @@
-import {Application} from 'express'
-import { saveIncome, initVariables } from './controllers'
+import {Application, Router} from 'express'
+import { saveIncome, initVariables, saveExpense } from './controllers'
+import { paginationMiddleware } from './middlewares/pagination/pagination.middleware'
+import { Income, Expense } from './schema'
 
 export class Routes{
 
     public routes(app: Application): void{
-        
-        app.get('/', (req, res) => res.send('app is running'))
-        
-        app.route('/setup')
-            .post(initVariables)
+        const incomeRoute = Router()
+        app.use('/income', incomeRoute)
 
-        app.route('/income')
-            .post(saveIncome)
+        const expenseRoute = Router()
+        app.use('/expense', expenseRoute)
+
+        app.post('/setup', initVariables)
+        
+        incomeRoute.post('/add', saveIncome)
+        incomeRoute.get('/', paginationMiddleware(Income))
+
+        expenseRoute.post('/add', saveExpense)
+        expenseRoute.get('/', paginationMiddleware(Expense))
+
     }
 }

@@ -12,18 +12,11 @@ export class VariablesRepository{
         }
     }
 
-    updateIncome(value: number){
-        const genQuery = (config: Object) => Variables.findByIdAndUpdate(VAR_DOC_ID, config, {new: true})
-
+    updateIncome(amount: number){
+        const genQuery = (value: number) => Variables.findByIdAndUpdate(VAR_DOC_ID, { $inc: {"stats.capital": value }}, {new: true})
         return {
-            inc: async () => {
-                const updatedVal = await genQuery({
-                    $inc: {
-                        "stats.capital": value
-                    }
-                })
-                return updatedVal
-            }
+            inc: async () => await genQuery(amount),
+            dec: async () => await genQuery(-amount)
         }
     }
 }
