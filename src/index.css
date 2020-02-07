@@ -13,6 +13,15 @@ code {
     monospace;
 }
 
+@font-face {
+  font-family: 'gujrati_saral-1normal';
+  src: url('./Static/Fonts/gujrati-saral-1-webfont.woff') format('woff'),
+       url('./Static/Fonts/gujrati-saral-1-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 #root,
 .App {
   height: inherit;

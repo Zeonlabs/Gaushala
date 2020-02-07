@@ -32,53 +32,84 @@ class SiderBar extends Component {
       selectedKeys={[this.props.location.pathname]}
     >
       <Menu.Item key={routes.dashboard}>
-        <Link to={routes.dashboard}>
-          <Icon type="dashboard" />
-          <span>Dashboard</span>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key={routes.charity}>
-        <Link to={routes.charity}>
-          <Icon type="fund" />
-          <span>Charity income</span>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key={routes.expences}>
-        <Link to={routes.expences}>
-          <Icon type="file-done" />
-          <span>Expenses</span>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key={routes.cheques}>
-        <Link to={routes.cheques}>
-          <Icon type="schedule" />
-          <span>Cheques</span>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key={routes.animal}>
-        <Link to={routes.animal}>
-          <Icon type="qq" />
-          <span>Animal</span>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key={routes.employees}>
-        <Link to={routes.employees}>
-          <Icon type="team" />
-          <span>Employees</span>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key={routes.notes}>
-        <Link to={routes.notes}>
-          <Icon type="file-text" />
-          <span>Notes</span>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key={routes.trustmembers}>
-        <Link to={routes.trustmembers}>
-          <Icon type="user" />
-          <span>Trust Members</span>
-        </Link>
-      </Menu.Item>
+          <Link to={routes.dashboard}>
+            <Icon className="menu-list-icon" type="layout" theme="filled" />
+            <span className="menu-list-title">s>padIt Aheval</span>
+          </Link>
+        </Menu.Item>
+        {/* -----------------------------------------------------------------
+        -------------------------Income-Button-Sider----------------------
+        --------------------------------------------------------------------- */}
+        <Menu.Item key={routes.charity}>
+          <Link to={routes.charity}>
+            <Icon className="menu-list-icon" type="rise" />
+            <span className="menu-list-title">Aavk rIpO3</span>
+          </Link>
+        </Menu.Item>
+        {/* -----------------------------------------------------------------
+        -------------------------Expenses-Button-Sider----------------------
+        --------------------------------------------------------------------- */}
+
+        <Menu.Item key={routes.expences}>
+          <Link to={routes.expences}>
+            <Icon className="menu-list-icon" type="fall" />
+            <span className="menu-list-title">javk rIpO3</span>
+          </Link>
+        </Menu.Item>
+        {/* -----------------------------------------------------------------
+        -------------------------Cheque-Button-Sider----------------------
+        --------------------------------------------------------------------- */}
+        <Menu.Item key={routes.cheques}>
+          <Link to={routes.cheques}>
+            <Icon className="menu-list-icon" type="audit" />
+            <span className="menu-list-title">cek p/IN3</span>
+          </Link>
+        </Menu.Item>
+        {/* -----------------------------------------------------------------
+        -------------------------Animal-Button-Sider----------------------
+        --------------------------------------------------------------------- */}
+        <Menu.Item key={routes.animal}>
+          <Link to={routes.animal}>
+            <Icon className="menu-list-icon" type="twitter" />
+            <span className="menu-list-title">pxu nI yadI</span>
+          </Link>
+        </Menu.Item>
+        {/* -----------------------------------------------------------------
+        -------------------------Employees-Button-Sider----------------------
+        --------------------------------------------------------------------- */}
+        <Menu.Item key={routes.employees}>
+          <Link to={routes.employees}>
+            <Icon className="menu-list-icon" type="solution" />
+            <span className="menu-list-title">kmRcarI nI yadI</span>
+          </Link>
+        </Menu.Item>
+        {/* -----------------------------------------------------------------
+        -------------------------TrustMembers-Button-Sider----------------------
+        --------------------------------------------------------------------- */}
+        <Menu.Item key={routes.trustmembers}>
+          <Link to={routes.trustmembers}>
+            <Icon className="menu-list-icon" type="team" />
+            <span className="menu-list-title">sWy7I nI yadI</span>
+          </Link>
+        </Menu.Item>
+        {/* -----------------------------------------------------------------
+        -------------------------Notes-Button-Sider--------------------------
+        --------------------------------------------------------------------- */}
+        <Menu.Item key={routes.notes}>
+          <Link to={routes.notes}>
+            <Icon className="menu-list-icon" type="book" />
+            <span className="menu-list-title">nO>6</span>
+          </Link>
+        </Menu.Item>
+        {/* -----------------------------------------------------------------
+        -------------------------Setting-Button-Sider--------------------------
+        --------------------------------------------------------------------- */}
+        <Menu.Item key={routes.setting}>
+          <Link to={routes.setting}>
+            <Icon className="menu-list-icon" type="setting" />
+            <span className="menu-list-title">sei3>g</span>
+          </Link>
+        </Menu.Item>
     </Menu>
   </Layout.Sider>
       )

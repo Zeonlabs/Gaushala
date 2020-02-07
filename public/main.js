@@ -22,7 +22,7 @@ function createWindow() {
   mainWindow.on("closed", () => (mainWindow = null));
 }
 
-let server = require("../Server/Server.js");
+let server = require("../server/dist/server.js");
 
 function slowdown() {
   console.log("this is a log in slowDown");
