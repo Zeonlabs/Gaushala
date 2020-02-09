@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
+import cors from 'cors'
 import {config} from 'dotenv'
 
 import {Routes} from './routes'
@@ -11,6 +12,7 @@ const routesPrv: Routes = new Routes()
 
 config()
 app.use(bodyParser.json())
+app.use(cors())
 routesPrv.routes(app)
 
 mongoose.Promise = global.Promise
