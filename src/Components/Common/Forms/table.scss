@@ -1,0 +1,72 @@
+.editable-cell {
+  position: relative;
+}
+.ant-popover-content{
+  span{
+    font-size: 12px !important;}
+}
+.english-font-input,
+#Income_date {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+.editable-cell-value-wrap {
+  padding: 5px 12px;
+  cursor: pointer;
+}
+.editable-row:hover .editable-cell-value-wrap {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 4px 11px;
+}
+.table {
+  width: 100% !important;
+  .ant-table-header-column {
+    font-weight: bolder;
+  }
+  input,
+  input:hover {
+    outline: none !important;
+  }
+
+  input:focus {
+    margin-left: 2px !important;
+    background: #ffffff;
+    width: 100%;
+  }
+
+  .deleteicon {
+    color: red($color: #ff0000) !important;
+  }
+  tr,
+  td {
+    padding: 0 !important;
+  }
+  th {
+    padding: 5px 10px !important;
+  }
+  .deleteicon {
+    text-align: center !important;
+  }
+
+  button {
+    margin-top: 5px;
+    margin-bottom: 5px !important;
+  }
+  .totalamount {
+    display: flex;
+    text-align: center;
+    margin-top: -5px;
+    border: 0.5px solid #cecece;
+    .amount-in-words {
+      width: 60%;
+    }
+    h4 {
+      margin: auto;
+      padding: 5px;
+      width: 40%;
+      justify-content: center;
+      text-align: initial;
+      border-left: 0.5px solid #cecece;
+    }
+  }
+}
