@@ -21,7 +21,7 @@ const PageWrapper = props => {
     <Layout className="page-layout">
       <SiderBar collapsed={state.collapsed} />
       <Layout>
-        <Header toggleSider={toggleSider} collapsed={state.collapsed} />
+        <Header toggleSider={toggleSider} header={props.header} onClick={props.onBackClick} collapsed={state.collapsed} />
         <Content
           style={{
             margin: "24px 16px",

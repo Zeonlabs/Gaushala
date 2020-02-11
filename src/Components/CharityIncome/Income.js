@@ -1,236 +1,174 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import PageWrapper from "../Common/PageWrapper/PageWrapper";
-import {
-  Table,
-  Button,
-  Icon,
-  Drawer,
-  Select,
-  Form,
-  Input,
-  Radio,
-  DatePicker,
-  Tooltip
-} from "antd";
+import { Table, Button, Icon, Tooltip, Popconfirm } from "antd";
 import "./Income.scss";
 import "../Common/Forms/IncomeModels.styles.scss";
+import FilterDrawer from "./FilterDrawer";
+import { connect } from "react-redux";
+import { getIncome } from "../../Actions/Exapmple";
 
-const { RangePicker } = DatePicker;
-const { Option } = Select;
-
-const columns = [
-  {
-    title: "tarIkh",
-    dataIndex: "date",
-    key: "date"
-  },
-  {
-    title: "SlIp n.",
-    dataIndex: "slip_no",
-    key: "slip_no"
-  },
-  {
-    title: "nam",
-    dataIndex: "name",
-    key: "name"
-  },
-  {
-    title: "rkm",
-    dataIndex: "amount",
-    key: "amount"
-  },
-  {
-    title: "mobal No",
-    dataIndex: "phone",
-    key: "phone"
-  },
-  {
-    title: "p`kar",
-    dataIndex: "type",
-    key: "type"
-  },
-  {
-    title: "HStk nam",
-    dataIndex: "ref_name",
-    key: "ref_name"
-  },
-  {
-    title: "HStk nam",
-    dataIndex: "ref_nameq",
-    key: "ref_name"
-  },
-  {
-    title: "HStk nam",
-    dataIndex: "ref_nameq",
-    key: "ref_name"
+// const data = [];
+// for (let i = 0; i < 100; i++) {
+//   data.push({
+//     key: i,
+//     name: `Edrward ${i}`,
+//     age: 32,
+//     address: `London Park no. ${i}`
+//   });
+// }
+class Income extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      data: ""
+    };
+    this.columns = [
+      {
+        title: "Slip No.",
+        width: "100px",
+        dataIndex: "slip_no",
+        key: "name",
+        fixed: "left"
+      },
+      {
+        title: "Type",
+        width: 200,
+        dataIndex: "type",
+        key: "age"
+      },
+      {
+        title: "Money Type",
+        dataIndex: "money.type",
+        key: "1",
+        width: 150
+      },
+      {
+        title: "Amount",
+        dataIndex: "money.amount",
+        key: "2",
+        width: 150
+      },
+      {
+        title: "Date",
+        dataIndex: "date",
+        key: "3",
+        width: 250
+      },
+      {
+        title: "Phone No.",
+        dataIndex: "phone",
+        key: "4",
+        width: 150
+      },
+      {
+        title: "Refrence_Name",
+        dataIndex: "ref_name",
+        key: "5",
+        width: 150
+      },
+      {
+        title: "operation",
+        fixed: "right",
+        width: 200,
+        dataIndex: "operation",
+        render: (text, record) => (
+          <>
+            <Button type="link" className="form-edit-button">
+              EDIT
+            </Button>
+            {this.state.data.length > 1 ? (
+              <Popconfirm
+                title="Sure to delete?"
+                onConfirm={() => this.handleDelete(record.key)}
+              >
+                <Button type="link">delete</Button>
+              </Popconfirm>
+            ) : null}
+          </>
+        )
+      }
+    ];
   }
-];
 
-const data = [
-  {
-    key: 1,
-    date: "12-23-1299",
-    slip_no: 12,
-    name: "ajsh skjd",
-    amount: 33874,
-    phone: 763277829,
-    type: "cash",
-    ref_name: "ywte6 duyfg7",
-    ref_nameq: "ywte6 duyfg7"
-  },
-  {
-    key: 1,
-    date: "12-23-1299",
-    slip_no: 12,
-    name: "ajsh skjd",
-    amount: 33874,
-    phone: 763277829,
-    type: "cash",
-    ref_name: "ywte6 duyfg7",
-    ref_nameq: "ywte6 duyfg7"
-  },
-  {
-    key: 1,
-    date: "12-23-1299",
-    slip_no: 12,
-    name: "ajsh skjd",
-    amount: 33874,
-    phone: 763277829,
-    type: "cash",
-    ref_name: "ywte6 duyfg7",
-    ref_nameq: "ywte6 duyfg7"
-  },
-  {
-    key: 1,
-    date: "12-23-1299",
-    slip_no: 12,
-    name: "ajsh skjd",
-    amount: 33874,
-    phone: 763277829,
-    type: "cash",
-    ref_name: "ywte6 duyfg7",
-    ref_nameq: "ywte6 duyfg7"
-  }
-];
+  componentDidMount = () => {
+    const pagination = {
+      page: 1,
+      limit: 20
+    };
+    // const id = this.props.match.params.pid;
+    this.props.getIncome(pagination).then(res => {
+      console.log("res in a income model =->", res);
+      this.setState({
+        data: res.docs
+      });
+    });
+  };
 
-const Income = () => {
-  const [state, setState] = useState({ visible: false });
-
-  const showDrawer = () => {
-    setState({
+  showDrawer = () => {
+    this.setState({
       visible: true
     });
   };
 
-  const onClose = () => {
-    setState({
+  onClose = () => {
+    this.setState({
       visible: false
     });
   };
 
-  return (
-    <PageWrapper>
-      <div className="row">
-        <Tooltip title="fIL3r" placement="bottom">
-          <Button
-            shape="squre"
-            size="large"
-            type="primary"
-            onClick={showDrawer}
-            style={{ marginBottom: 30 }}
-          >
-            <Icon type="filter" theme="filled" style={{ fontSize: 17 }} />
-            fIL3r
-          </Button>
-        </Tooltip>
-      </div>
-      <Drawer
-        // title="fILtr"
-        // closable={false}
-        onClose={onClose}
-        visible={state.visible}
-        getContainer={false}
-        width={450}
-        headerStyle={{}}
-      >
-        <h1>Aavk rIpor3 fIL3r</h1>
-        <Form>
-          <div className="row">
-            <Form.Item label="tarIq ps>d kro:">
-              {/* ------------------------------Date From-To -------------------- */}
-              <RangePicker className="english-font-input" />
-            </Form.Item>
-          </div>
+  handleDelete = key => {
+    const dataSource = [...this.state.data];
+    this.setState({ dataSource: dataSource.filter(item => item.key !== key) });
+  };
 
-          <div className="row">
-            {/* --------------------------Income Type------------------------ */}
-            <Form.Item
-              className="ant-col ant-col-11"
-              label="Aavk no p/kar"
-              hasFeedback
+  render() {
+    const columns = this.columns.map(col => {
+      if (!col.editable) {
+        return col;
+      }
+      return {
+        ...col,
+        onCell: record => ({
+          record,
+          inputType: col.dataIndex === "age" ? "number" : "text",
+          dataIndex: col.dataIndex,
+          title: col.title,
+          editing: this.isEditing(record)
+        })
+      };
+    });
+    return (
+      <PageWrapper>
+        <div className="row income-form-wrapper">
+          <Tooltip title="fIL3r" placement="bottom">
+            <Button
+              shape="squre"
+              size="large"
+              type="primary"
+              onClick={this.showDrawer}
+              style={{ marginBottom: 30 }}
             >
-              <Select
-                className="in-icon-arrow"
-                placeholder="Aavk no p/kar ps>d kro"
-              >
-                <Option value="ivrDI 6un m>D5 nI Aavk">
-                  ivrDI 6un m>D5 nI Aavk
-                </Option>
-                <Option value="surt 6un m>D5 nI Aavk">
-                  surt 6un m>D5 nI Aavk
-                </Option>
-                <Option value="qatr nI Aavk">qatr nI Aavk</Option>
-                <Option value="pxu nI Aavk">pxu nI Aavk</Option>
-                <Option value=" ANy Aavk">ANy Aavk</Option>
-                <Option value="data7I nI Aavk">data7I nI Aavk</Option>
-              </Select>
-            </Form.Item>
-          </div>
-          <div className="row">
-            <Form.Item label="dan SvIkar">
-              <Radio.Group>
-                <Radio value="cash">rokD</Radio>
-                <Radio value="cheque">cek</Radio>
-              </Radio.Group>
-            </Form.Item>
-
-            <Form.Item className="cheque-no" label="cek n>.">
-              <Input
-                className="english-font-input"
-                style={{ width: "100%" }}
-                placeholder="000000"
-              />
-            </Form.Item>
-          </div>
-
-          <div className="row">
-            <Form.Item label="rkm 4I">
-              <Input
-                className="english-font-input"
-                style={{ width: "100%" }}
-                placeholder="000000"
-              />
-            </Form.Item>
-            <Form.Item className="max-income" label="su6I">
-              <Input
-                className="english-font-input"
-                style={{ width: "100%" }}
-                placeholder="000000"
-              />
-            </Form.Item>
-          </div>
-
-          <div className="row">
-            <Button type="primary" size="large">
-              rIpor3
+              <Icon type="filter" theme="filled" style={{ fontSize: 17 }} />
+              fIL3r
             </Button>
-          </div>
-        </Form>
-      </Drawer>
+          </Tooltip>
+        </div>
+        <FilterDrawer onClose={this.onClose} visible={this.state.visible} />
+        <Table
+          columns={columns}
+          dataSource={this.state.data}
+          bordered
+          size="middle"
+          scroll={{ x: "calc(700px + 40%)", y: 240 }}
+        />
+      </PageWrapper>
+    );
+  }
+}
 
-      <Table columns={columns} dataSource={data} bordered />
-    </PageWrapper>
-  );
-};
+const mapStateToProps = state => ({
+  ...state.Test
+});
 
-export default Income;
+export default connect(mapStateToProps, { getIncome })(Income);

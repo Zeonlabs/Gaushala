@@ -278,7 +278,7 @@ class IncomeMobels extends Component {
     const { type } = this.props;
     const { getFieldDecorator } = this.props.form;
     return (
-      <div>
+      <div className="income-model-wrapper">
         <Modal
           centered
           maskClosable={false}
@@ -372,7 +372,9 @@ class IncomeMobels extends Component {
                   rules: [{ required: true }]
                 })(
                   <Input
-                    style={{ width: "100%" }}
+                    style={{
+                      width: "100%"
+                    }}
                     placeholder="srnamu, gam nu nam"
                   />
                 )}
