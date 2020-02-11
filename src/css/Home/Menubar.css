@@ -1,0 +1,20 @@
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+
+.logo h2 {
+  color: white;
+  text-align: center;
+}
+
+.header-css {
+  background: #fff;
+  padding: 0;
+  text-align: end;
+}
+
+.plus-button-dashboard {
+  margin-right: 18px;
+}

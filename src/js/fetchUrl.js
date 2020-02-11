@@ -1,22 +1,22 @@
-import axios from 'axios';
-import { message, notification } from 'antd';
-import qs from 'qs';
+import axios from "axios";
+import { message, notification } from "antd";
+import qs from "qs";
 import LocalStorage, {
   Crypto,
   getToken,
-  localStorageKey,
-} from './LocalStorage';
-import routes from './Routes';
+  localStorageKey
+} from "./LocalStorage";
+import routes from "./Routes";
 
-const isOnline = require('is-online');
+const isOnline = require("is-online");
 
-const baseUrl = "http://localhost:3001/";
+const baseUrl = "http://localhost:8081";
 
-const GET = 'GET';
-const DELETE = 'DELETE';
-const POST = 'POST';
-const PUT = 'PUT';
-const PATCH = 'PATCH';
+const GET = "GET";
+const DELETE = "DELETE";
+const POST = "POST";
+const PUT = "PUT";
+const PATCH = "PATCH";
 
 let cache = [];
 const cancel = [];
@@ -28,38 +28,35 @@ const ACTION_HANDLERS = {
       queryUrl = `${queryUrl}?${query}`;
     }
     return axios.get(baseUrl + queryUrl, {
-      cancelToken: new axios.CancelToken((c) => {
+      cancelToken: new axios.CancelToken(c => {
         cancel.push({ url, c });
-      }),
+      })
     });
   },
   [DELETE]: (url, data) => axios.delete(baseUrl + url, { data }),
-  [POST]: (url, data) =>
-    axios.post(baseUrl + url, data),
-  [PUT]: (url, data) =>
-    axios.put(baseUrl + url, data),
-  [PATCH]: (url, data) =>
-    axios.patch(baseUrl + url, data),
+  [POST]: (url, data) => axios.post(baseUrl + url, data),
+  [PUT]: (url, data) => axios.put(baseUrl + url, data),
+  [PATCH]: (url, data) => axios.patch(baseUrl + url, data)
 };
 
 export const setHeaders = (contentType, authToken) => {
   // set auth token
 
-  if (authToken) {
-    const token = getToken();
-    if (token) {
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    } else {
-      delete axios.defaults.headers.common.Authorization;
-    }
-  }
+  // if (authToken) {
+  //   const token = getToken();
+  //   if (token) {
+  //     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  //   } else {
+  //     delete axios.defaults.headers.common.Authorization;
+  //   }
+  // }
 
   // set contentType
   if (contentType) {
-    axios.defaults.headers.post['Content-Type'] = contentType;
-    axios.defaults.headers.post.Accept = 'application/json';
+    axios.defaults.headers.post["Content-Type"] = contentType;
+    axios.defaults.headers.post.Accept = "application/json";
   } else {
-    delete axios.defaults.headers.post['Content-Type'];
+    delete axios.defaults.headers.post["Content-Type"];
   }
 };
 
@@ -84,9 +81,8 @@ export const showErrorAsToast = (error, type) => {
     if (value.message !== undefined) {
       if (typeof value.message === "string") {
         return notification.error({ message: value.message });
-      } 
-        return Promise.reject(value.message);
-      
+      }
+      return Promise.reject(value.message);
     }
   } else if (type.toUpperCase() !== "GET") {
     return message.error("Something went wrong, Please do try again !");
@@ -114,10 +110,11 @@ export const fetchUrl = (
   data,
   authToken = true,
   fetchBaseResponse = false,
-  contentType,
+  contentType
 ) => {
+  console.log("TCL: fetchUrl -> type", type, url, data);
   setHeaders(contentType, authToken);
-  if (type.toUpperCase() === 'GET') {
+  if (type.toUpperCase() === "GET") {
     if (cache.indexOf(url) !== -1) {
       const controller = cancel.filter(i => i.url === url);
       controller.map(item => item.c());
@@ -128,7 +125,7 @@ export const fetchUrl = (
   const handler = ACTION_HANDLERS[type.toUpperCase()];
   return !fetchBaseResponse
     ? handler(url, data)
-      .then(res => Promise.resolve(res.data))
-      .catch(error => showErrorAsToast(error, type))
+        .then(res => Promise.resolve(res.data))
+        .catch(error => showErrorAsToast(error, type))
     : handler(url, data);
 };

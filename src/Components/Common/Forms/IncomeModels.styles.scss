@@ -1,0 +1,119 @@
+$border: 1px solid #999999;
+
+div{
+  .ant-form-explain{
+    display: none;
+  }
+ 
+  ul,li{
+    font-family: 'gujrati_saral-1normal' !important;
+  }
+  .english-font-input,#Income_date{
+    font-family: Arial, Helvetica, sans-serif !important;
+  }
+  .row{
+    margin-top: 5px;
+    .date-input{
+      margin-top: -2px !important;
+    }
+    label{
+      padding-left: 2px;
+      span{
+        font-size: 15px !important;
+      }
+    }
+    .in-icon-arrow,i{
+      font-size: 14px !important;
+    }
+  }
+}
+span{
+  font-size: 20px !important;
+}
+
+.ant-modal {
+  width: 60% !important;
+  margin-bottom: 0px !important;
+  font-family: 'gujrati_saral-1normal';
+  font-weight: 800;
+
+  
+}
+.ant-modal-body {
+    padding-top: 14px !important;
+  }
+
+.form-income {
+  .ant-form-item {
+    margin-bottom: 0px;
+  }
+ 
+  .row {
+    display: flex !important;
+
+    .cheque-no {
+      margin-left: 30px;
+    }
+    table {
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border-collapse: collapse;
+        border: $border;
+        border-radius: 4px;
+        
+        
+        
+        input{
+            height: 25px !important;
+        }
+        
+        .table-header{
+            border: $border;
+            font-weight: 700;
+            
+        }
+        th{
+            border: $border;
+            padding-left: 10px;
+        }
+        td {
+            border-left: $border; 
+            justify-content: space-around;
+            outline: none;
+            box-shadow: none !important;
+            padding-left: 10px;
+
+            :focus{
+            outline: none;
+            box-shadow: none !important;
+            }
+
+            input{
+                border: none !important;
+                padding: 0 !important;
+            }
+          }
+      }
+      
+  }
+  .ant-form-item-label {
+    line-height: 20px;
+  }
+  .ant-form-item-control-wrapper {
+    margin-right: 5px;
+  }
+  .ant-form-item-control {
+    line-height: 30px;
+}
+}
+
+.m-btn-gru{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+   
+    button{
+        margin-left: 10px;
+    }
+}
