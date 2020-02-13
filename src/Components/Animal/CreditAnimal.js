@@ -12,7 +12,7 @@ class CreditAnimal extends Component {
   render() {
     return (
       <div>
-        <h1>AAvela Animal</h1>
+        <h1>Avela Animal</h1>
       </div>
     )
   }
