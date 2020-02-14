@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import MenuBar from "../Common/MenuBar";
-import { Card, Row, Col } from "antd";
+import { Icon, Card, Row, Col } from "antd";
 import PageWrapper from "../Common/PageWrapper/PageWrapper";
 import Cards from "./Cards";
 import CreditAnimal from "./CreditAnimal";
 import DebitAnimal from "./DebitAnimal";
+import "./Animal.scss";
+
 const { Meta } = Card;
 class Animal extends Component {
   constructor(props) {
@@ -35,12 +37,37 @@ class Animal extends Component {
         {this.state.slug === "" ? (
           <div>
             <Row gutter={16}>
-              <Col className="gutter-row card-content" span={6}>
-                <Cards
+              <Col className="gutter-row card-content " span={6}>
+                <Card
+                  title="Aavel pxu nI yadI"
+                  bordered={false}
+                  style={{ width: 300 }}
+                >
+                  <div className="Card-view-buttons">
+                    <div className="Button-display-grid">
+                      <Icon
+                        type="plus-circle"
+                        style={{ fontSize: 40 }}
+                        onClick={this.onClick}
+                        theme="outlined"
+                      />
+                      <span>yadI ]mero</span>
+                    </div>
+                    <div className="Button-display-grid">
+                      <Icon
+                        type="file-text"
+                        style={{ fontSize: 40 }}
+                        theme="outlined"
+                      />
+                      <span>yadI ]mero</span>
+                    </div>
+                  </div>
+                </Card>
+                {/* <Cards
                   title="Aavel Animals"
                   slug="aavel_animal"
-                  onClick={this.onClick}
-                />
+                 
+                /> */}
               </Col>
               <Col className="gutter-row card-content" span={6} offset={2}>
                 <Cards

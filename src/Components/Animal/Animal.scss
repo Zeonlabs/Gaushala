@@ -1,0 +1,29 @@
+.Card-view-buttons {
+  display: flex !important;
+  justify-content: space-evenly; 
+}
+.ant-card-head-wrapper{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 26px;
+}
+.Button-display-grid {
+  display: grid;
+  font-weight: bold;
+  color: black;
+  padding: 10px 15px 5px;
+
+  span{
+      margin-top: 5px;
+  }
+}
+.Button-display-grid:hover {
+    padding: 10px 15px 5px;
+    background: #5cff1894;
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+  .Button-display-grid:active{
+      background: #1890FF;
+      color: white;
+  }  
