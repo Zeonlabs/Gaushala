@@ -1,15 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class CreditAnimal extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = {
-         
-    }
+    this.state = {};
   }
 
   render() {
+    console.log("TCL: CreditAnimal -> constructor -> props", this.props);
     return (
       <div>
         <h1>AAvela Animal</h1>
@@ -18,8 +17,8 @@ class CreditAnimal extends Component {
         <h1>AAvela Animal</h1>
         <h1>AAvela Animal</h1>
       </div>
-    )
+    );
   }
 }
 
-export default CreditAnimal
+export default CreditAnimal;
