@@ -37,18 +37,20 @@ class Animal extends Component {
         {this.state.slug === "" ? (
           <div>
             <Row gutter={16}>
-              <Col className="gutter-row card-content " span={6}>
+              {/* -----------------------------------------------------------------------
+              -----------------------------------Animal income---------------------------
+              --------------------------------------------------------------------------- */}
+              <Col className="gutter-row card-content card-hover-scss" span={6}>
                 <Card
-                  title="Aavel pxu nI yadI"
-                  bordered={false}
-                  style={{ width: 300 }}
-                >
+                  className="card-background"
+                  title="Aavel pxuAO"
+                  bordered={false}>
                   <div className="Card-view-buttons">
-                    <div className="Button-display-grid">
+                    <div onClick={this.onClick} slug="animal_income" className="Button-display-grid">
                       <Icon
                         type="plus-circle"
                         style={{ fontSize: 40 }}
-                        onClick={this.onClick}
+                        
                         theme="outlined"
                       />
                       <span>yadI ]mero</span>
@@ -59,43 +61,126 @@ class Animal extends Component {
                         style={{ fontSize: 40 }}
                         theme="outlined"
                       />
-                      <span>yadI ]mero</span>
+                      <span>rIpo3</span>
                     </div>
                   </div>
                 </Card>
-                {/* <Cards
-                  title="Aavel Animals"
-                  slug="aavel_animal"
-                 
-                /> */}
               </Col>
-              <Col className="gutter-row card-content" span={6} offset={2}>
-                <Cards
-                  title="Death Animals"
-                  slug="death_animal"
-                  onClick={this.onClick}
-                />
+              {/* -----------------------------------------------------------------------
+              -----------------------------------Animal Dethes---------------------------
+              --------------------------------------------------------------------------- */}
+              <Col className="gutter-row card-content card-hover-scss" span={6}>
+                <Card
+                  className="card-background"
+                  title="muTyu pamel pxuAO"
+                  bordered={false}>
+                  <div className="Card-view-buttons">
+                    <div onClick={this.onClick} className="Button-display-grid">
+                      <Icon
+                        type="plus-circle"
+                        style={{ fontSize: 40 }}
+                        
+                        theme="outlined"
+                      />
+                      <span>yadI ]mero</span>
+                    </div>
+                    <div className="Button-display-grid">
+                      <Icon
+                        type="file-text"
+                        style={{ fontSize: 40 }}
+                        theme="outlined"
+                      />
+                      <span>rIpo3</span>
+                    </div>
+                  </div>
+                </Card>
               </Col>
-              <Col className="gutter-row card-content" span={6} offset={2}>
-                <Cards
-                  title="Given Animals"
-                  slug="given_animal"
-                  onClick={this.onClick}
-                />
+              {/* -----------------------------------------------------------------------
+              -----------------------------------Animal Given---------------------------
+              --------------------------------------------------------------------------- */}
+              <Col className="gutter-row card-content card-hover-scss" span={6}>
+                <Card
+                  className="card-background"
+                  title="Aapel pxuAO"
+                  bordered={false}>
+                  <div className="Card-view-buttons">
+                    <div onClick={this.onClick} className="Button-display-grid">
+                      <Icon
+                        type="plus-circle"
+                        style={{ fontSize: 40 }}
+                        
+                        theme="outlined"
+                      />
+                      <span>yadI ]mero</span>
+                    </div>
+                    <div className="Button-display-grid">
+                      <Icon
+                        type="file-text"
+                        style={{ fontSize: 40 }}
+                        theme="outlined"
+                      />
+                      <span>rIpo3</span>
+                    </div>
+                  </div>
+                </Card>
               </Col>
-              <Col className="gutter-row card-content" span={6}>
-                <Cards
-                  title="All Animal"
-                  slug="all_animal"
-                  onClick={this.onClick}
-                />
+              {/* -----------------------------------------------------------------------
+              -----------------------------------Animal Total---------------------------
+              --------------------------------------------------------------------------- */}
+              <Col className="gutter-row card-content card-hover-scss" span={6}>
+                <Card
+                  className="card-background"
+                  title="Kul pxuAO"
+                  bordered={false}>
+                  <div className="Card-view-buttons">
+                    <div onClick={this.onClick} className="Button-display-grid">
+                      <Icon
+                        type="plus-circle"
+                        style={{ fontSize: 40 }}
+                        
+                        theme="outlined"
+                      />
+                      <span>yadI ]mero</span>
+                    </div>
+                    <div className="Button-display-grid">
+                      <Icon
+                        type="file-text"
+                        style={{ fontSize: 40 }}
+                        theme="outlined"
+                      />
+                      <span>rIpo3</span>
+                    </div>
+                  </div>
+                </Card>
               </Col>
-              <Col className="gutter-row card-content" span={6} offset={2}>
-                <Cards
-                  title="Ghascharo"
-                  slug="ghascharo"
-                  onClick={this.onClick}
-                />
+              {/* -----------------------------------------------------------------------
+              -----------------------------------Nibhav kharch---------------------------
+              --------------------------------------------------------------------------- */}
+              <Col className="gutter-row card-content card-hover-scss " span={6}>
+                <Card
+                  className="card-background"
+                  title="inwav qcR"
+                  bordered={false}>
+                  <div className="Card-view-buttons">
+                    <div onClick={this.onClick} className="Button-display-grid">
+                      <Icon
+                        type="plus-circle"
+                        style={{ fontSize: 40 }}
+                        
+                        theme="outlined"
+                      />
+                      <span>yadI ]mero</span>
+                    </div>
+                    <div className="Button-display-grid">
+                      <Icon
+                        type="file-text"
+                        style={{ fontSize: 40 }}
+                        theme="outlined"
+                      />
+                      <span>rIpo3</span>
+                    </div>
+                  </div>
+                </Card>
               </Col>
             </Row>
           </div>
@@ -104,7 +189,7 @@ class Animal extends Component {
         )}
         <div>
           <div>
-            {this.state.slug === "aavel_animal" ? <CreditAnimal /> : ""}
+            {this.state.slug === "animal_income" ? <CreditAnimal /> : ""}
           </div>
           <div>{this.state.slug === "given_animal" ? <DebitAnimal /> : ""}</div>
           {/* <div>{this.state.slug === "aavel_animal" ? <CreditAnimal /> : ""}</div>

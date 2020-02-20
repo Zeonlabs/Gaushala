@@ -13,6 +13,10 @@ class CreditAnimal extends Component {
     return (
       <div>
         <h1>AAvela Animal</h1>
+        <h1>AAvela Animal</h1>
+        <h1>AAvela Animal</h1>
+        <h1>AAvela Animal</h1>
+        <h1>AAvela Animal</h1>
       </div>
     )
   }
