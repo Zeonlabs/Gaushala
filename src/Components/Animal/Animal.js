@@ -9,6 +9,11 @@ import DebitAnimal from "./LIst/DebitAnimal";
 import DeadAnimal from "./LIst/DeadAnimal";
 import ResidentalAnimal from "./LIst/ResidentalAnimal";
 import TotalAnimal from "./LIst/TotalAnimal";
+import CreditAnimals from "./PopupForm/CreditAnimal";
+import DebitAnimals from "./PopupForm/DebitAnimal";
+import DeadAnimals from "./PopupForm/DeadAnimal";
+import ResidentalAnimals from "./PopupForm/ResidentalAnimal";
+import TotalAnimals from "./PopupForm/TotalAnimal";
 
 const { Meta } = Card;
 class Animal extends Component {
@@ -18,7 +23,11 @@ class Animal extends Component {
     this.state = {
       visible: "",
       slug: "",
-      popup: ""
+      creaditAnimalpopup: false,
+      deadAnimalpopup: false,
+      debitAnimalpopup: false,
+      totalAnimalpopup: false,
+      residentalAnimalpopup: false
     };
   }
 
@@ -64,33 +73,23 @@ class Animal extends Component {
     console.log("TCL: Animal -> slug", e);
     switch (e) {
       case "creadit_animal":
-        this.setState({
-          slug: e
-        });
+        this.creaditAnimalModel();
         break;
 
       case "dead_animal":
-        this.setState({
-          slug: e
-        });
+        this.deadAnimalpopupModel();
         break;
 
       case "debit_animal":
-        this.setState({
-          slug: e
-        });
+        this.debitAnimalpopupModel();
         break;
 
       case "total_animal":
-        this.setState({
-          slug: e
-        });
+        this.totalAnimalpopupModel();
         break;
 
       case "resident_cost":
-        this.setState({
-          slug: e
-        });
+        this.residentalAnimalpopupModel();
         break;
 
       default:
@@ -104,6 +103,27 @@ class Animal extends Component {
       slug: ""
     });
   };
+
+  creaditAnimalModel = () =>
+    this.setState({
+      creaditAnimalpopup: !this.state.creaditAnimalpopup
+    });
+  deadAnimalpopupModel = () =>
+    this.setState({
+      deadAnimalpopup: !this.state.deadAnimalpopup
+    });
+  debitAnimalpopupModel = () =>
+    this.setState({
+      debitAnimalpopup: !this.state.debitAnimalpopup
+    });
+  totalAnimalpopupModel = () =>
+    this.setState({
+      totalAnimalpopup: !this.state.totalAnimalpopup
+    });
+  residentalAnimalpopupModel = () =>
+    this.setState({
+      residentalAnimalpopup: !this.state.residentalAnimalpopup
+    });
 
   handelListPage = e => {
     console.log("TCL: Animal -> slug", e);
@@ -134,7 +154,29 @@ class Animal extends Component {
     }
   };
 
-  handelPopupForm = e => {};
+  handelPopupForm = e => {
+    // console.log("TCL: Animal -> slug", e);
+    // switch (this.state.slug) {
+    //   case "creadit_animal":
+    //     return <CreditAnimal />;
+    //     break;
+    //   case "dead_animal":
+    //     return <DeadAnimal />;
+    //     break;
+    //   case "debit_animal":
+    //     return <DebitAnimal />;
+    //     break;
+    //   case "total_animal":
+    //     return <TotalAnimal />;
+    //     break;
+    //   case "resident_cost":
+    //     return <ResidentalAnimal />;
+    //     break;
+    //   default:
+    //     return "";
+    //     break;
+    // }
+  };
 
   render() {
     return (
@@ -328,7 +370,26 @@ class Animal extends Component {
         )}
         <div>
           {this.handelListPage()}
-          {this.handelPopupForm()}
+          <CreditAnimals
+            visible={this.state.creaditAnimalpopup}
+            toggleModel={this.creaditAnimalModel}
+          />
+          <DeadAnimals
+            visible={this.state.deadAnimalpopup}
+            toggleModel={this.deadAnimalpopupModel}
+          />
+          <DebitAnimals
+            visible={this.state.debitAnimalpopup}
+            toggleModel={this.debitAnimalpopupModel}
+          />
+          <TotalAnimals
+            visible={this.state.totalAnimalpopup}
+            toggleModel={this.totalAnimalpopupModel}
+          />
+          <ResidentalAnimals
+            visible={this.state.residentalAnimalpopup}
+            toggleModel={this.residentalAnimalpopupModel}
+          />
           {/* <div>
             {this.state.slug === "animal_income" ? <CreditAnimal /> : ""}
           </div>
