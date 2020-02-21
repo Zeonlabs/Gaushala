@@ -15,7 +15,7 @@ import Tables from "../../Common/Forms/table";
 import { addIncome, getIncome, addExpense } from "../../../Actions/Exapmple";
 import NumericInput from "../../Common/Forms/InputNumber";
 import { connect } from "react-redux";
-
+import Index from "../Table";
 
 const { Option } = Select;
 
@@ -288,17 +288,17 @@ class CreaditAnimal extends Component {
           onOk={this.props.toggleModel}
           onCancel={this.handleReset}
         >
-          <h2 style={{ paddingBottom: 10,fontWeight:"bolder" }}>Aavel pxuAO nu r+S3r</h2>
+          <h2 style={{ paddingBottom: 10, fontWeight: "bolder" }}>
+            Aavel pxuAO nu r+S3r
+          </h2>
           <Form className="form-income" onSubmit={this.handleSubmit}>
             <div className="row">
-             
               {/* ------------------------------Date--------------------------------- */}
               <Form.Item className="date-input" label="tarIq">
                 {getFieldDecorator("date", {
                   rules: [{ required: true, message: "Enter The Date!" }]
                 })(<DatePicker className="english-font-input" />)}
               </Form.Item>
-              
             </div>
 
             <div className="row">
@@ -338,14 +338,12 @@ class CreaditAnimal extends Component {
                 )}
               </Form.Item>
             </div>
-            
+
             {/* ------------------------------Table--------------------------------- */}
-           <div>
-           
-           </div>
+            <div>
+              <Index />
+            </div>
 
-
-           
             <div className="m-btn-gru">
               {/* ----------------------------Cancel Button------------------------------- */}
               <Form.Item>
@@ -359,7 +357,6 @@ class CreaditAnimal extends Component {
                   sev kro
                 </Button>
               </Form.Item>
-              
             </div>
           </Form>
         </Modal>
