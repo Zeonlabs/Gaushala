@@ -15,6 +15,7 @@ import Tables from "../../Common/Forms/table";
 import { addIncome, getIncome, addExpense } from "../../../Actions/Exapmple";
 import NumericInput from "../../Common/Forms/InputNumber";
 import { connect } from "react-redux";
+import Index from "../Table";
 
 const { Option } = Select;
 
@@ -285,12 +286,11 @@ class ResicentalAnimal extends Component {
           visible={this.props.visible}
           footer={null}
           onOk={this.props.toggleModel}
-          onCancel={this.handleReset}>
-            
+          onCancel={this.handleReset}
+        >
           <h1 style={{ paddingBottom: 10 }}>inwav qcR r+S3r</h1>
           <Form className="form-income" onSubmit={this.handleSubmit}>
             <div className="row">
-
               {/* ------------------------------Date--------------------------------- */}
               <Form.Item className="date-input" label="tarIq">
                 {getFieldDecorator("date", {
@@ -300,9 +300,7 @@ class ResicentalAnimal extends Component {
 
               {/* ------------------------------Total Animal Diplay only--------------------------------- */}
 
-              <Form.Item
-                label="3o3l pxuAO nI sQ>ya"
-              >
+              <Form.Item label="3o3l pxuAO nI sQ>ya">
                 {getFieldDecorator("slip_no", {
                   rules: [{ required: true }]
                 })(
@@ -316,13 +314,11 @@ class ResicentalAnimal extends Component {
                   />
                 )}
               </Form.Item>
-
             </div>
 
-
             {/* ------------------------------Table--------------------------------- */}
-            <div className="row">
-
+            <div>
+              <Index type="nibhav" />
             </div>
 
             <div className="m-btn-gru">

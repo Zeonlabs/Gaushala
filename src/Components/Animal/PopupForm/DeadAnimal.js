@@ -15,6 +15,7 @@ import Tables from "../../Common/Forms/table";
 import { addIncome, getIncome, addExpense } from "../../../Actions/Exapmple";
 import NumericInput from "../../Common/Forms/InputNumber";
 import { connect } from "react-redux";
+import Index from "../Table";
 
 const { Option } = Select;
 
@@ -318,7 +319,7 @@ class DeadAnimal extends Component {
             
             {/* ------------------------------Table--------------------------------- */}
            <div>
-           
+           <Index/>
            </div>
 
 
