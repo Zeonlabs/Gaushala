@@ -43,3 +43,13 @@
     font-size: 13px;
     padding: 8px 16px;
   }
+
+  .employee-filter{
+    .name-filter-employee{
+      width: 40%;
+    }
+    .employee-filter-wrapper{
+      display: flex;
+      justify-content: space-between;
+    }
+  }
