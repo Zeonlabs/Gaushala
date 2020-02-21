@@ -23,9 +23,10 @@ const Header = ({ toggleSider, collapsed, header, onClick }) => {
   //     modelVisible: !state.modelVisible
   // }));
 
+
   return (
-    <Layout.Header style={{ background: "#fff", padding: 0 }}>
-      <div className="Header-div">
+    <Layout.Header style={{ background: "#fff", padding: 0 ,height:"70px"}}>
+      <div className="Header-div" style={{padding: "5px 20px",}}>
         <Icon
           className="trigger"
           type={collapsed ? "menu-unfold" : "menu-fold"}
@@ -36,7 +37,7 @@ const Header = ({ toggleSider, collapsed, header, onClick }) => {
           <div>
             <Button type="primary" onClick={() => onClick()}>
               <Icon type="left" />
-              Backward
+              pa05nI Sk/In pr jva
             </Button>
           </div>
         ) : (
@@ -47,6 +48,7 @@ const Header = ({ toggleSider, collapsed, header, onClick }) => {
           -----------------------Income Button-------------------------------
           -------------------------------------------------------------------  */}
           <Button
+            className="button-text-size"
             type="primary"
             icon="plus"
             style={{ marginRight: 20 }}
@@ -59,6 +61,7 @@ const Header = ({ toggleSider, collapsed, header, onClick }) => {
           -----------------------Expense Button-------------------------------
           -------------------------------------------------------------------  */}
           <Button
+            className="button-text-size"
             type="primary"
             type="danger"
             icon="minus"

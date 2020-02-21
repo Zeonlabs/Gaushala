@@ -104,8 +104,8 @@ class SiderBar extends Component {
         {/* -----------------------------------------------------------------
         -------------------------Setting-Button-Sider--------------------------
         --------------------------------------------------------------------- */}
-        <Menu.Item key={routes.setting}>
-          <Link to={routes.setting}>
+        <Menu.Item key={routes.settingpage}>
+          <Link to={routes.settingpage}>
             <Icon className="menu-list-icon" type="setting" />
             <span className="menu-list-title">sei3>g</span>
           </Link>

@@ -8,7 +8,9 @@ const routes = {
   animal: "/animals",
   employees: "/employees",
   notes: "/notes",
-  trustmembers: "/trust-members"
+  trustmembers: "/trust-members",
+  settingpage:"/SettingPage"
+
   // rough: "/rough",
   // officepacket: "/officepacketpartition"
 };
