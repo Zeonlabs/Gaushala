@@ -258,7 +258,7 @@ class Animal extends Component {
               {/* -----------------------------------------------------------------------
               -----------------------------------Animal Given---------------------------
               --------------------------------------------------------------------------- */}
-              <Col className="gutter-row card-content card-hover-scss" span={6}>
+              <Col className="gutter-row card-content card-hover-scss card-back-theme" span={6}>
                 <Card
                   className="card-background"
                   title="Aapel pxuAO"

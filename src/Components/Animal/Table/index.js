@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, Icon, InputNumber, Button, Checkbox } from "antd";
+import './Index.scss';
 
 class Index extends Component {
   constructor(props) {
@@ -39,59 +40,60 @@ class Index extends Component {
           <table style={{ width: "100%" }}>
             <thead>
               <tr>
-                <th>{type ? "Vigat" : "Pashu no Prakar"}</th>
-                <th>{type ? "Money" : "Counts"}</th>
+                {/* ------------------------------table Head-------------------------------- */}
+                <th className="table-head"><h3>{type ? "ivgt" : "pxu no p/kar"}</h3></th>
+                <th className="table-head"><h3>{type ? "rkm" : "pxu nI s>Qya"}</h3></th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>{type ? "Ghas" : "Gay"}</td>
+                <td className="table-row-hedding">{type ? "Ghas" : "gay"}</td>
                 <td>
                   <Form.Item>
                     {getFieldDecorator(type ? "ghas" : "gay", {
                       initialValue: 0
-                    })(<InputNumber />)}
+                    })(<InputNumber className="english-font-input" />)}
                   </Form.Item>
                 </td>
               </tr>
               <tr>
-                <td>{type ? "Charo" : "Balad"}</td>
+                <td className="table-row-hedding">{type ? "caro" : "b5d"}</td>
                 <td>
                   <Form.Item>
-                    {getFieldDecorator(type ? "charo" : "balad", {
+                    {getFieldDecorator(type ? "caro" : "b5d", {
                       initialValue: 0
-                    })(<InputNumber />)}
+                    })(<InputNumber className="english-font-input" />)}
                   </Form.Item>
                 </td>
               </tr>
               <tr>
-                <td>{type ? "Dan" : "Vacharda"}</td>
+                <td className="table-row-hedding">{type ? "Dan" : "va0rDa"}</td>
                 <td>
                   <Form.Item>
-                    {getFieldDecorator(type ? "Dan" : "vacharda", {
+                    {getFieldDecorator(type ? "Dan" : "va0rDa", {
                       initialValue: 0
-                    })(<InputNumber />)}
+                    })(<InputNumber className="english-font-input" />)}
                   </Form.Item>
                 </td>
               </tr>
               <tr>
-                <td>{type ? "majuri" : "Vachardi"}</td>
+                <td className="table-row-hedding">{type ? "majuri" : "va0rDI"}</td>
                 <td>
                   <Form.Item>
                     {getFieldDecorator(type ? "majuri" : "vachardi", {
                       initialValue: 0
-                    })(<InputNumber />)}
+                    })(<InputNumber className="english-font-input" />)}
                   </Form.Item>
                 </td>
               </tr>
               {type ? (
                 <tr>
-                  <td>{type ? "Doctor" : "Vachardi"}</td>
+                  <td className="table-row-hedding">{type ? "Doctor" : "ANy"}</td>
                   <td>
                     <Form.Item>
-                      {getFieldDecorator(type ? "doctor" : "vachardi", {
+                      {getFieldDecorator(type ? "doctor" : "ANy", {
                         initialValue: 0
-                      })(<InputNumber />)}
+                      })(<InputNumber className="english-font-input" />)}
                     </Form.Item>
                   </td>
                 </tr>
@@ -99,20 +101,20 @@ class Index extends Component {
                 ""
               )}
               <tr>
-                <td>Any</td>
+                <td className="table-row-hedding">ANy</td>
                 <td>
                   <Form.Item>
-                    {getFieldDecorator("anny", { initialValue: 0 })(
-                      <InputNumber />
+                    {getFieldDecorator("ANy", { initialValue: 0 })(
+                      <InputNumber className="english-font-input" />
                     )}
                   </Form.Item>
                 </td>
               </tr>
             </tbody>
             <tfoot>
-              <tr>
-                <td>Total</td>
-                <td>{this.state.total}</td>
+              <tr className="total">
+                <td className="table-row-hedding"><h3>3o3l</h3></td>
+                <td><h3 className="total-font">{this.state.total}</h3></td>
               </tr>
             </tfoot>
           </table>

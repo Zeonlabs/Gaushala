@@ -1,0 +1,35 @@
+.table-head {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 26px;
+  background-color: #d4d4d4;
+
+  h3 {
+    margin: 0;
+    font-size: 20px;
+  }
+}
+.total{
+    background-color: #d4d4d4;
+}
+.animal-table-wrapper th,
+.animal-table-wrapper td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 25px;
+  font-weight: bolder;
+  font-size: 18px;
+  color: black;
+  text-align: left;
+  .ant-row,
+  .ant-form-item {
+    margin: 0 !important;
+  }
+  h3 {
+    margin: 0;
+  }
+}
+.total-font{
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
