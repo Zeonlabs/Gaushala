@@ -11,11 +11,7 @@ class DeadAnimal extends Component {
     console.log("TCL: DeadAnimal -> constructor -> props", this.props);
     return (
       <div>
-        <h1>Dead Animal</h1>
-        <h1>Dead Animal</h1>
-        <h1>Dead Animal</h1>
-        <h1>Dead Animal</h1>
-        <h1>Dead Animal</h1>
+        <h1>muTyu pamel pxuAO nu r+S3r</h1>
       </div>
     );
   }

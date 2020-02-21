@@ -10,7 +10,7 @@ class DebitAnimal extends Component {
   render() {
     return (
       <div>
-        <h1>Given Animal</h1>
+        <h1>Aapel pxuAO nu r+S3r</h1>
       </div>
     );
   }

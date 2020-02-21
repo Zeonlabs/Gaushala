@@ -85,12 +85,12 @@ export class Cheques extends Component {
                   className="in-icon-arrow"
                   placeholder="be>Nk nam ps>d kro"
                 >
-                  <Option value="ivrDI 6un m>D5 nI Aavk">
+                  <Option value="Aes.bI.Aa[ be>Nk">
                     Aes.bI.Aa[ be>Nk
                   </Option>
-                  <Option value="surt 6un m>D5 nI Aavk">AeksIs be>Nk</Option>
-                  <Option value="qatr nI Aavk">be>Nk AOf broDa</Option>
-                  <Option value="pxu nI Aavk">vra0a be>Nk</Option>
+                  <Option value="AeksIs be>Nk">AeksIs be>Nk</Option>
+                  <Option value="be>Nk AOf broDa">be>Nk AOf broDa</Option>
+                  <Option value="vra0a be>Nk">vra0a be>Nk</Option>
                 </Select>
               </Form.Item>
             </div>

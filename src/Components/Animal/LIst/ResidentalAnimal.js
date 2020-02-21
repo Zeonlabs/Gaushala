@@ -11,11 +11,7 @@ class ResidentalAnimal extends Component {
     console.log("TCL: ResidentalAnimal -> constructor -> props", this.props);
     return (
       <div>
-        <h1>Residental Animal</h1>
-        <h1>Residental Animal</h1>
-        <h1>Residental Animal</h1>
-        <h1>Residental Animal</h1>
-        <h1>Residental Animal</h1>
+        <h1>inwav qcR r+S3r</h1>
       </div>
     );
   }

@@ -13,7 +13,7 @@ import CreditAnimals from "./PopupForm/CreditAnimal";
 import DebitAnimals from "./PopupForm/DebitAnimal";
 import DeadAnimals from "./PopupForm/DeadAnimal";
 import ResidentalAnimals from "./PopupForm/ResidentalAnimal";
-import TotalAnimals from "./PopupForm/TotalAnimal";
+// import TotalAnimals from "./PopupForm/TotalAnimal";
 
 const { Meta } = Card;
 class Animal extends Component {
@@ -290,41 +290,7 @@ class Animal extends Component {
                   </div>
                 </Card>
               </Col>
-              {/* -----------------------------------------------------------------------
-              -----------------------------------Animal Total---------------------------
-              --------------------------------------------------------------------------- */}
-              <Col className="gutter-row card-content card-hover-scss" span={6}>
-                <Card
-                  className="card-background"
-                  title="Kul pxuAO"
-                  bordered={false}
-                >
-                  <div className="Card-view-buttons">
-                    <div
-                      onClick={() => this.handelPopup("total_animal")}
-                      className="Button-display-grid"
-                    >
-                      <Icon
-                        type="plus-circle"
-                        style={{ fontSize: 40 }}
-                        theme="outlined"
-                      />
-                      <span>yadI ]mero</span>
-                    </div>
-                    <div
-                      className="Button-display-grid"
-                      onClick={() => this.onClick("total_animal")}
-                    >
-                      <Icon
-                        type="file-text"
-                        style={{ fontSize: 40 }}
-                        theme="outlined"
-                      />
-                      <span>rIpo3</span>
-                    </div>
-                  </div>
-                </Card>
-              </Col>
+             
               {/* -----------------------------------------------------------------------
               -----------------------------------Nibhav kharch---------------------------
               --------------------------------------------------------------------------- */}
@@ -363,6 +329,42 @@ class Animal extends Component {
                   </div>
                 </Card>
               </Col>
+
+               {/* -----------------------------------------------------------------------
+              -----------------------------------Animal Total---------------------------
+              --------------------------------------------------------------------------- */}
+              <Col className="gutter-row card-content card-hover-scss" span={6}>
+                <Card
+                  className="card-background"
+                  title="Kul pxuAO"
+                  bordered={false}
+                >
+                  <div className="Card-view-buttons">
+                    {/* <div
+                      onClick={() => this.handelPopup("total_animal")}
+                      className="Button-display-grid"
+                    >
+                      <Icon
+                        type="plus-circle"
+                        style={{ fontSize: 40 }}
+                        theme="outlined"
+                      />
+                      <span>yadI ]mero</span>
+                    </div> */}
+                    <div
+                      className="Button-display-grid"
+                      onClick={() => this.onClick("total_animal")}
+                    >
+                      <Icon
+                        type="file-text"
+                        style={{ fontSize: 40 }}
+                        theme="outlined"
+                      />
+                      <span>rIpo3</span>
+                    </div>
+                  </div>
+                </Card>
+              </Col>
             </Row>
           </div>
         ) : (
@@ -382,10 +384,10 @@ class Animal extends Component {
             visible={this.state.debitAnimalpopup}
             toggleModel={this.debitAnimalpopupModel}
           />
-          <TotalAnimals
+          {/* <TotalAnimals
             visible={this.state.totalAnimalpopup}
             toggleModel={this.totalAnimalpopupModel}
-          />
+          /> */}
           <ResidentalAnimals
             visible={this.state.residentalAnimalpopup}
             toggleModel={this.residentalAnimalpopupModel}

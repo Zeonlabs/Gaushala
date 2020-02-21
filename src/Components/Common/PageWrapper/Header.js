@@ -23,6 +23,7 @@ const Header = ({ toggleSider, collapsed, header, onClick }) => {
   //     modelVisible: !state.modelVisible
   // }));
 
+
   return (
     <Layout.Header style={{ background: "#fff", padding: 0 ,height:"70px"}}>
       <div className="Header-div" style={{padding: "5px 20px",}}>
@@ -36,7 +37,7 @@ const Header = ({ toggleSider, collapsed, header, onClick }) => {
           <div>
             <Button type="primary" onClick={() => onClick()}>
               <Icon type="left" />
-              Backward
+              pa05nI Sk/In pr jva
             </Button>
           </div>
         ) : (

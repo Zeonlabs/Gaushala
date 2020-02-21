@@ -285,185 +285,46 @@ class ResicentalAnimal extends Component {
           visible={this.props.visible}
           footer={null}
           onOk={this.props.toggleModel}
-          onCancel={this.handleReset}
-        >
-          <span style={{ paddingBottom: 10 }}>Residental Animal</span>
+          onCancel={this.handleReset}>
+            
+          <h1 style={{ paddingBottom: 10 }}>inwav qcR r+S3r</h1>
           <Form className="form-income" onSubmit={this.handleSubmit}>
             <div className="row">
-              {/* ------------------------------slip No--------------------------------- */}
 
-              <Form.Item
-                label={`${type === "expense" ? "va]cr" : "pho>c "} n>.`}
-              >
-                {getFieldDecorator("slip_no", {
-                  rules: [{ required: true }]
-                })(
-                  <InputNumber
-                    className="english-font-input"
-                    style={{ width: "100%" }}
-                    placeholder="000000"
-                    type="number"
-                    min="0"
-                  />
-                )}
-              </Form.Item>
               {/* ------------------------------Date--------------------------------- */}
               <Form.Item className="date-input" label="tarIq">
                 {getFieldDecorator("date", {
                   rules: [{ required: true, message: "Enter The Date!" }]
                 })(<DatePicker className="english-font-input" />)}
               </Form.Item>
-              {/* ------------------------------Income Type--------------------------------- */}
-              <Form.Item
-                className="ant-col ant-col-11"
-                label={`${type === "expense" ? "javk" : "Aavk"} no p/kar`}
-                hasFeedback
-              >
-                {getFieldDecorator("type", {
-                  rules: [{ required: true }]
-                })(
-                  <Select
-                    className="in-icon-arrow"
-                    placeholder="Aavk no p/kar ps>d kro"
-                  >
-                    <Option value="ivrDI 6un m>D5 nI Aavk">
-                      ivrDI 6un m>D5 nI Aavk
-                    </Option>
-                    <Option value="surt 6un m>D5 nI Aavk">
-                      surt 6un m>D5 nI Aavk
-                    </Option>
-                    <Option value="qatr nI Aavk">qatr nI Aavk</Option>
-                    <Option value="pxu nI Aavk">pxu nI Aavk</Option>
-                    <Option value=" ANy Aavk">ANy Aavk</Option>
-                    <Option value="data7I nI Aavk">data7I nI Aavk</Option>
-                  </Select>
-                )}
-              </Form.Item>
-            </div>
 
-            <div className="row">
-              {/* ------------------------------Doner Name-------------------------------- */}
+              {/* ------------------------------Total Animal Diplay only--------------------------------- */}
+
               <Form.Item
-                className="ant-col ant-col-14"
-                label={`${type === "expense" ? "nam" : "data 7I"}`}
+                label="3o3l pxuAO nI sQ>ya"
               >
-                {getFieldDecorator("name", {
-                  rules: [{ required: true }]
-                })(<Input placeholder="data 7I nam" />)}
-              </Form.Item>
-              {/* ------------------------------phone No--------------------------------- */}
-              <Form.Item className="ant-col-10" label="moba[l n>.">
-                {getFieldDecorator("phone", {
-                  rules: [{ required: true, len: 10 }]
-                })(
-                  <NumericInput
-                    value={this.state.value}
-                    onChange={this.onChange}
-                  />
-                )}
-              </Form.Item>
-            </div>
-            <div className="row">
-              {/* ------------------------------Address--------------------------------- */}
-              <Form.Item className="ant-col-24" label="srnamu">
-                {getFieldDecorator("address", {
+                {getFieldDecorator("slip_no", {
                   rules: [{ required: true }]
                 })(
-                  <Input
-                    style={{
-                      width: "100%"
-                    }}
-                    placeholder="srnamu, gam nu nam"
-                  />
-                )}
-              </Form.Item>
-            </div>
-            <div className="row">
-              {/* ------------------------------Income in --------------------------------- */}
-              <Form.Item
-                label={`${type === "expense" ? "cukv~aI" : "dan SvIkar"}`}
-              >
-                {getFieldDecorator("moneyobject", {
-                  rules: [{ required: true }],
-                  initialValue: "cash"
-                })(
-                  <Radio.Group onChange={this.onChangeType}>
-                    <Radio value="cash">rokD</Radio>
-                    <Radio value="cheque">cek</Radio>
-                  </Radio.Group>
-                )}
-              </Form.Item>
-              {/* ------------------------------Cheque No--------------------------------- */}
-              {this.state.type === "cheque" ? (
-                <Form.Item className="cheque-no" label="cek n>.">
-                  {getFieldDecorator("chequeno", {
-                    rules: [{ required: true }]
-                  })(
-                    <Input
-                      type="number"
-                      className="english-font-input"
-                      style={{ width: "100%" }}
-                      placeholder="000000"
-                    />
-                  )}
-                </Form.Item>
-              ) : (
-                ""
-              )}
-              {/* ------------------------------Pan No--------------------------------- */}
-              <Form.Item className="ant-col-6" label="pan kaDR n>.">
-                {getFieldDecorator("pan_no")(
-                  <Input
+                  <InputNumber
+                    disabled
                     className="english-font-input"
                     style={{ width: "100%" }}
-                    placeholder="AS121SDEF"
+                    placeholder="10200"
+                    type="number"
+                    min="0"
                   />
                 )}
               </Form.Item>
-            </div>
-            {/* ------------------------------Table--------------------------------- */}
-            <div className="row">
-              <Tables submit={this.onTableSubmit} />
+
             </div>
 
+
+            {/* ------------------------------Table--------------------------------- */}
             <div className="row">
-              {/* ------------------------------Ref_name--------------------------------- */}
-              <Form.Item className="ant-col-10" label="HStk nam">
-                {getFieldDecorator("ref_name", {
-                  rules: [{ required: true }]
-                })(
-                  <Input
-                    style={{ width: "100%" }}
-                    placeholder="Govindbhai Savaliya"
-                  />
-                )}
-              </Form.Item>
-              {/* ------------------------------Notes No--------------------------------- */}
-              <Form.Item className="ant-col-8" label="no>6">
-                {getFieldDecorator("note")(
-                  <Input
-                    style={{ width: "100%" }}
-                    placeholder="sasasasasasas"
-                  />
-                )}
-              </Form.Item>
-              {/* ------------------------------SMS No--------------------------------- */}
-              {type === "expense" ? (
-                ""
-              ) : (
-                <Form.Item label="s>dex moklo">
-                  {getFieldDecorator("sms", {
-                    rules: [{ required: true }],
-                    initialValue: "no"
-                  })(
-                    <Radio.Group>
-                      <Radio value="no">nhI</Radio>
-                      <Radio value="yes">ha</Radio>
-                    </Radio.Group>
-                  )}
-                </Form.Item>
-              )}
+
             </div>
+
             <div className="m-btn-gru">
               {/* ----------------------------Cancel Button------------------------------- */}
               <Form.Item>

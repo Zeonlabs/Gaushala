@@ -11,11 +11,7 @@ class TotalAnimal extends Component {
     console.log("TCL: CreditAnimal -> constructor -> props", this.props);
     return (
       <div>
-        <h1>Total Animal</h1>
-        <h1>Total Animal</h1>
-        <h1>Total Animal</h1>
-        <h1>Total Animal</h1>
-        <h1>Total Animal</h1>
+        <h1>pxu nu r+S3r</h1>
       </div>
     );
   }
