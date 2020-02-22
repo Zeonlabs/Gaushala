@@ -16,6 +16,9 @@ import {
 } from "antd";
 import PageWrapper from "../Common/PageWrapper/PageWrapper";
 import "./TrustMenbers.scss";
+import Index from "./AddMember/Index";
+import { FilterData } from "./FilterData";
+import ListingTable from "./ListingTable";
 
 const { RangePicker } = DatePicker;
 const { Option } = Select;
@@ -28,159 +31,63 @@ export class TrustMembers extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      showAddPopup: false
+    };
   }
+
+  handelShowPopup = () => {
+    this.setState({
+      showAddPopup: !this.state.showAddPopup
+    });
+  };
+
+  closeAddPopup = () => {
+    this.setState({
+      showAddPopup: false
+    });
+  };
 
   render() {
     return (
       <PageWrapper>
-        {/* ------------------------------------ Header Trust Members------------------------------- */}
-        <Row>
-          <Col span={8}>
-            <h1>sWy7I nI yadI</h1>
-          </Col>
-          <Col className="button-add-members" span={8} offset={8}>
+        <Index
+          openPopup={this.state.showAddPopup}
+          handelEmployeePopup={this.handelShowPopup}
+        />
+        <div className="filter-wrapper">
+          <div className="filter-select-width">
+            <FilterData />
+          </div>
+          <div className="filter-button-member">
+            <Button
+              size="default"
+              htmlType="submit"
+              icon="printer"
+              style={{
+                backgroundColor: "#505D6F",
+                color: "#ffffff",
+                height: "40px"
+              }}
+            >
+              ip/N3
+            </Button>
+
             <Button
               className="button-right button-text-size"
               type="primary"
               icon="user-add"
-              style={{ marginRight: 20 }}
+              style={{ marginLeft: "20px" }}
+              onClick={this.handelShowPopup}
               size="large"
             >
               sWy ]mero
             </Button>
-          </Col>
-        </Row>
-       {/* -------------------------------------Print List------------------------------------------ */}
-        <div className="Report">
-          <h1>rIpo3 fIL3r</h1>
-
-          <Row >
-            {/* ------------------------------Post type--------------------------------- */}
-            <Col span={6}>
-              <Form.Item className="" label="hod\o" hasFeedback>
-                <Select className="in-icon-arrow" placeholder="hod\o ps>d kro">
-                  <Option value="પ્રમુખ શ્રી">પ્રમુખ શ્રી</Option>
-                  <Option value="ઉપપ્રમુખ શ્રી">ઉપપ્રમુખ શ્રી</Option>
-                  <Option value="મંત્રી શ્રી">મંત્રી શ્રી </Option>
-                  <Option value="ખજાનચી">ખજાનચી શ્રી</Option>
-                  <Option value="સહમંત્રીશ્રી">સહમંત્રીશ્રી</Option>
-                  <Option value="ટ્રસ્ટી શ્રી">ટ્રસ્ટી શ્રી</Option>
-                  <Option value="સંગઠનમંત્રી શ્રી">સંગઠનમંત્રી શ્રી</Option>
-                </Select>
-              </Form.Item>
-            </Col>
-
-            {/* ------------------------------Print button--------------------------- */}
-            <Col span={4} offset={1} className="button-group-print">
-              <Form.Item className="print-btn-margin">
-                <Button
-                  size="default"
-                  htmlType="submit"
-                  icon="printer"
-                  style={{ backgroundColor: "#505D6F", color: "#ffffff" }}
-                >
-                 ip/N3
-                </Button>
-              </Form.Item>
-              {/* ------------------------------Cancel Button--------------------------------- */}
-              <Form.Item>
-                <Button  size="default">rd kro</Button>
-              </Form.Item>
-            </Col>
-
-          </Row>
-
+          </div>
         </div>
-
-        <Divider orientation="left" className="divider-color divider-label">
-        nvo sWy ]mero b3n klIk
-        </Divider>
-
-
-        {/* ------------------------------------------------------------------------------------------
-          ---------------------------------------Add member---------------------------------------------
-          ------------------------------------------------------------------------------------------ */}
-        <div>
-          <Row type="flex" justify="space-between">
-            {/* ------------------------------Post type--------------------------------- */}
-            <Col span={6}>
-              <Form.Item className="" label="hod\o" hasFeedback>
-                <Select className="in-icon-arrow" placeholder="hod\o ps>d kro">
-                  <Option value="પ્રમુખ શ્રી">પ્રમુખ શ્રી</Option>
-                  <Option value="ઉપપ્રમુખ શ્રી">ઉપપ્રમુખ શ્રી</Option>
-                  <Option value="મંત્રી શ્રી">મંત્રી શ્રી </Option>
-                  <Option value="ખજાનચી">ખજાનચી શ્રી</Option>
-                  <Option value="સહમંત્રીશ્રી">સહમંત્રીશ્રી</Option>
-                  <Option value="ટ્રસ્ટી શ્રી">ટ્રસ્ટી શ્રી</Option>
-                  <Option value="સંગઠનમંત્રી શ્રી">સંગઠનમંત્રી શ્રી</Option>
-                </Select>
-              </Form.Item>
-            </Col>
-
-            {/* -----------------------------Name of Member-------------------------------- */}
-            <Col className="gutter-row" span={6}>
-              <Form.Item className="ant-col" label="nam">
-                <Input placeholder="nam" />
-              </Form.Item>
-            </Col>
-
-            {/* ------------------------------phone No--------------------------------- */}
-            <Col span={4}>
-              <Form.Item label="moba[l n>.">
-                <Input
-                  type="number"
-                  className="english-font-input"
-                  placeholder="+91 0000000000"
-                />
-              </Form.Item>
-            </Col>
-
-            {/* ------------------------------add button--------------------------- */}
-            <Col span={4} className="button-group-print">
-              <Form.Item className="print-btn-margin">
-                <Button
-                  size="default"
-                  htmlType="submit"
-                  icon="vertical-align-bottom"
-                  style={{ backgroundColor: "#505D6F", color: "#ffffff" }}
-                >
-                  ]mero
-                </Button>
-              </Form.Item>
-              {/* ------------------------------Cancel Button--------------------------------- */}
-              <Form.Item>
-                <Button size="default">rd kro</Button>
-              </Form.Item>
-            </Col>
-          </Row>
+        <div className="listing-table-wrapper">
+          <ListingTable />
         </div>
-
-       
-
-        
-
-        <Divider orientation="left" className="divider-color divider-label">
-          3ebl forme3 
-        </Divider>
-        {/*-------------------------------------MemberDetails Table--------------------------------  */}
-        <Row gutter={[8, 8]}>
-          <Col span={4}>
-            <h3>hod\o</h3>
-          </Col>
-          <Col span={4}>
-            <h3>nam</h3>
-          </Col>
-          <Col span={4}>
-            <h3>moba[l n>.</h3>
-          </Col>
-          <Col span={4}>
-            <h3>AeDI3</h3>
-          </Col>
-          <Col span={4}>
-            <h3>DIlI3</h3>
-          </Col>
-        </Row>
       </PageWrapper>
     );
   }
