@@ -24,10 +24,6 @@
     display: flex;
     justify-content: flex-end;
     margin-top: 25px;
-   
-    button{
-        margin-left: 10px;
-    }
 }
 .col-dis-flex{
   display: flex;
@@ -39,4 +35,9 @@
   .print-btn-margin{
       margin-left: 10px;
   }
+}
+
+.header-button{
+  display: flex;
+  justify-content: flex-end;
 }
