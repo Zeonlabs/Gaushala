@@ -150,26 +150,39 @@ export class Employees extends Component {
           handelEmployeePopup={this.handelEmployeePopup}
           openPopup={this.state.addPopup}
         />
-        
-        {/* ------------------------------------ Header Epmloyees------------------------------- */}
         <Row>
-          
-          <Col span={20}><div><FilterData/></div></Col>
-          {/* ----------------------------------Add Employees Button---------------------------- */}
-          <Col className="button-add-members" span={4}>
-            <Button
-              className="button-right button-text-size"
-              type="primary"
-              icon="user-add"
-              style={{ marginRight: 20 }}
-              size="large"
-              onClick={this.handelEmployeePopup}
-            >
-              ]mero
+          <Col span={12}>
+            <h1>kmRcarI nI yadI</h1>
+          </Col>
+          <Col span={12}>
+            {/* ----------------------------------Add Employees Button---------------------------- */}
+            <Col className="button-add-members" span={4}>
+              <Button
+                className="button-right button-text-size"
+                type="primary"
+                icon="user-add"
+                style={{ marginRight: 20 }}
+                size="large"
+                onClick={this.handelEmployeePopup}
+              >
+                ]mero
             </Button>
+            </Col>
           </Col>
         </Row>
-        <ListingTable/>
+
+
+
+        <div className="filter-icon">
+          <Icon type="filter" theme="filled" />
+          <h3>rIpo3 fIL3r</h3>
+        </div>
+
+        {/* ------------------------------------ Header Epmloyees------------------------------- */}
+        <Row>
+          <Col span={20}><div><FilterData /></div></Col>
+        </Row>
+        <ListingTable />
       </PageWrapper>
     );
   }

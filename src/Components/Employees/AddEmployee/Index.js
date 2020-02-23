@@ -58,6 +58,8 @@ class Index extends Component {
           // onOk={this.handelData}
           onCancel={this.props.handelEmployeePopup}
         >
+          <h1>kmRcarI nI yadI ma> [mero</h1>
+
           <Form className="form-income" onSubmit={this.handleSubmit}>
             <Row type="flex" justify="space-between">
               {/* ------------------------------Post type--------------------------------- */}

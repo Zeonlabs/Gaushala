@@ -47,12 +47,12 @@ class Index extends Component {
             </thead>
             <tbody>
               <tr>
-                <td className="table-row-hedding">{type ? "Ghas" : "gay"}</td>
+                <td className="table-row-hedding">{type ? "^aas" : "gay"}</td>
                 <td>
                   <Form.Item>
-                    {getFieldDecorator(type ? "ghas" : "gay", {
+                    {getFieldDecorator(type ? "^aas" : "gay", {
                       initialValue: 0
-                    })(<InputNumber className="english-font-input" />)}
+                    })(<InputNumber className="english-font-input input-border-none" />)}
                   </Form.Item>
                 </td>
               </tr>
@@ -62,38 +62,38 @@ class Index extends Component {
                   <Form.Item>
                     {getFieldDecorator(type ? "caro" : "b5d", {
                       initialValue: 0
-                    })(<InputNumber className="english-font-input" />)}
+                    })(<InputNumber className="english-font-input input-border-none" />)}
                   </Form.Item>
                 </td>
               </tr>
               <tr>
-                <td className="table-row-hedding">{type ? "Dan" : "va0rDa"}</td>
+                <td className="table-row-hedding">{type ? "da`" : "va0rDa"}</td>
                 <td>
                   <Form.Item>
-                    {getFieldDecorator(type ? "Dan" : "va0rDa", {
+                    {getFieldDecorator(type ? "da`" : "va0rDa", {
                       initialValue: 0
-                    })(<InputNumber className="english-font-input" />)}
+                    })(<InputNumber className="english-font-input input-border-none" />)}
                   </Form.Item>
                 </td>
               </tr>
               <tr>
-                <td className="table-row-hedding">{type ? "majuri" : "va0rDI"}</td>
+                <td className="table-row-hedding">{type ? "mjurI" : "va0rDI"}</td>
                 <td>
                   <Form.Item>
-                    {getFieldDecorator(type ? "majuri" : "vachardi", {
+                    {getFieldDecorator(type ? "mjurI" : "vachardi", {
                       initialValue: 0
-                    })(<InputNumber className="english-font-input" />)}
+                    })(<InputNumber className="english-font-input input-border-none" />)}
                   </Form.Item>
                 </td>
               </tr>
               {type ? (
                 <tr>
-                  <td className="table-row-hedding">{type ? "Doctor" : "ANy"}</td>
+                  <td className="table-row-hedding">{type ? "Dok3r-dva" : "ANy"}</td>
                   <td>
                     <Form.Item>
-                      {getFieldDecorator(type ? "doctor" : "ANy", {
+                      {getFieldDecorator(type ? "Dok3r-dva" : "ANy", {
                         initialValue: 0
-                      })(<InputNumber className="english-font-input" />)}
+                      })(<InputNumber className="english-font-input input-border-none" />)}
                     </Form.Item>
                   </td>
                 </tr>
@@ -101,11 +101,11 @@ class Index extends Component {
                 ""
               )}
               <tr>
-                <td className="table-row-hedding">ANy</td>
+                <td className="table-row-hedding">ANy qcR</td>
                 <td>
                   <Form.Item>
-                    {getFieldDecorator("ANy", { initialValue: 0 })(
-                      <InputNumber className="english-font-input" />
+                    {getFieldDecorator("ANy qcR", { initialValue: 0 })(
+                      <InputNumber className="english-font-input input-border-none" />
                     )}
                   </Form.Item>
                 </td>
