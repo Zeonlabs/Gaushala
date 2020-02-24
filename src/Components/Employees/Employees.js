@@ -171,7 +171,6 @@ export class Employees extends Component {
               ]mero
             </Button>
             </Col>
-          </Col>
         </Row>
         <ListingTable />
       </PageWrapper>

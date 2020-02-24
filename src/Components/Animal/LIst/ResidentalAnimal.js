@@ -107,7 +107,7 @@ const data = [
 ];
 
 
-const { RangePicker } = DatePicker;
+// const { RangePicker } = DatePicker;
 
 function onChange(dates, dateStrings) {
   console.log("From: ", dates[0], ", to: ", dates[1]);
