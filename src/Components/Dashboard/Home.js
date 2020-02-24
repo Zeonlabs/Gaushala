@@ -11,7 +11,7 @@ class Home extends Component {
 
   render() {
     return (
-      <PageWrapper>
+      <PageWrapper title="s>padIt Aheval">
         <h1>s>padIt Aheval</h1>
       </PageWrapper>
     );

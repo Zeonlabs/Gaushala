@@ -139,7 +139,7 @@ class Income extends Component {
       };
     });
     return (
-      <PageWrapper>
+      <PageWrapper title="Aavk rIpO3">
         <div className="row income-form-wrapper">
           <Tooltip title="fIL3r" placement="bottom">
             <Button

@@ -120,17 +120,11 @@ class Index extends Component {
             {/* -------------------------------Upload Button--------------------------------------- */}
             <Row>
               <Form.Item label="AploD DoKyumeN3s:" extra="Upload Documents">
-                {getFieldDecorator("upload", {
-                  valuePropName: "fileList",
-                  getValueFromEvent: this.normFile,
-                  rules: [{ required: true}]
-                })(
-                  <Upload {...props2}>
-                    <Button>
-                      <Icon type="file-add" /> AploD
-                    </Button>
-                  </Upload>
-                )}
+                <Upload {...props2}>
+                  <Button>
+                    <Icon type="file-add" /> AploD
+                  </Button>
+                </Upload>
               </Form.Item>
             </Row>
             <div className="m-btn-gru">

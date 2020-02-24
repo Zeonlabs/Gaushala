@@ -1,16 +1,129 @@
 import React, { Component } from "react";
-import { Form, DatePicker, Icon, Button, Row, Col,InputNumber } from "antd";
+import {
+  Form,
+  DatePicker,
+  Icon,
+  Button,
+  Row,
+  Col,
+  Table,
+  Divider,
+  Input
+} from "antd";
 import moment from "moment";
-import NumericInput from "../../Common/Forms/InputNumber";
-
-
 
 const { RangePicker } = DatePicker;
 
-function onChange(dates, dateStrings) {
-  console.log("From: ", dates[0], ", to: ", dates[1]);
-  console.log("From: ", dateStrings[0], ", to: ", dateStrings[1]);
-}
+const columns = [
+  {
+    title: "k/m",
+    dataIndex: "id",
+    key: "name",
+    render: text => <p>{text}</p>
+  },
+  {
+    title: "Date",
+    dataIndex: "date",
+    key: "date"
+    // render: text => <p>{text}</p>
+  },
+  {
+    title: "pashuo",
+    children: [
+      {
+        title: "Gay",
+        dataIndex: "gay",
+        key: "gay",
+        render: text => <p>{text}</p>
+      },
+      {
+        title: "balad",
+        dataIndex: "balad",
+        key: "balad"
+      },
+      {
+        title: "Vacharda",
+        dataIndex: "vacharda",
+        key: "vacharda"
+      },
+      {
+        title: "Vachardi",
+        dataIndex: "vachardi",
+        key: "vachardi"
+      },
+      {
+        title: "Anny",
+        dataIndex: "anny",
+        key: "anny"
+      },
+      {
+        title: "Total",
+        dataIndex: "total",
+        key: "total"
+      }
+    ]
+  },
+  {
+    title: "Tag no",
+    dataIndex: "tag",
+    key: "tag"
+    // render: text => <p>{text}</p>
+  },
+  {
+    title: "Pashu muknar nu name",
+    dataIndex: "name",
+    key: "name",
+    render: text => <p>{text}</p>
+  },
+  {
+    title: "Sarnamu",
+    dataIndex: "address",
+    key: "address"
+  },
+  {
+    title: "moba[l n>.",
+    dataIndex: "mobile",
+    key: "mono"
+  },
+  {
+    title: "Action",
+    key: "action",
+    render: (text, record) => (
+      <span style={{ display: "flex" }}>
+        <p>Edit</p>
+        <Divider type="vertical" />
+        <p>Delete</p>
+      </span>
+    )
+  }
+];
+
+const data = [
+  {
+    key: "1",
+    name: "John Brown",
+    id: 32,
+    type: "New York No. 1 Lake Park",
+    mobile: 85848596,
+    address: "New York No. 1 Lake Park"
+  },
+  {
+    key: "2",
+    name: "Jim Green",
+    id: 42,
+    type: "London No. 1 Lake Park",
+    mobile: 85848596,
+    address: "London No. 1 Lake Park"
+  },
+  {
+    key: "3",
+    name: "Joe Black",
+    id: 32,
+    type: "Sidney No. 1 Lake Park",
+    mobile: 85848596,
+    address: "Sidney No. 1 Lake Park"
+  }
+];
 
 class DebitAnimal extends Component {
   constructor(props) {
@@ -18,12 +131,20 @@ class DebitAnimal extends Component {
 
     this.state = {};
   }
+  onChange = (dates, dateStrings) => {
+    console.log("From: ", dates[0], ", to: ", dates[1]);
+    console.log("From: ", dateStrings[0], ", to: ", dateStrings[1]);
+  };
 
   render() {
+    console.log("TCL: DebitAnimal -> constructor -> props", this.props);
+
     return (
       <div>
-        <h1>Aapel pxuAO nu r+S3r</h1>
-
+        <Button onClick={this.handelback} type="primary">
+          Back
+        </Button>
+        <h1>Aavel pxuAO nu r+S3r</h1>
 
         <div className="filter-icon">
           <Icon type="filter" theme="filled" />
@@ -31,7 +152,6 @@ class DebitAnimal extends Component {
         </div>
         <Form>
           <Row>
-
             <Col span={6}>
               <Form.Item label="tarIq ps>d kro">
                 <RangePicker
@@ -43,15 +163,13 @@ class DebitAnimal extends Component {
                       moment().endOf("month")
                     ]
                   }}
-                  onChange={onChange}
+                  onChange={this.onChange}
                 />
               </Form.Item>
-
             </Col>
-            <Col span={3} offset={1}>
-            {/* ------------------------------phone No--------------------------------- */}
-            <Form.Item className="ant-col-10" label="3eg n>.">
-              <InputNumber className="english-font-input"/>
+            <Col span={6}>
+              <Form.Item label="Tag no">
+                <Input />
               </Form.Item>
             </Col>
             <Col span={6}>
@@ -65,7 +183,7 @@ class DebitAnimal extends Component {
                     icon="snippets"
                   >
                     jnre3 rIpo3
-                </Button>
+                  </Button>
                 </Form.Item>
                 {/* ------------------------------Print button--------------------------- */}
                 <Form.Item>
@@ -77,14 +195,14 @@ class DebitAnimal extends Component {
                   >
                     {" "}
                     ip/N3
-                </Button>
+                  </Button>
                 </Form.Item>
               </div>
             </Col>
-
           </Row>
         </Form>
 
+        <Table columns={columns} dataSource={data} bordered />
       </div>
     );
   }

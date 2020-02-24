@@ -55,7 +55,7 @@ class Index extends Component {
               {/* ------------------------------Post type--------------------------------- */}
               <Col span={12}>
                 <Form.Item className="date-input" label="tarIq" hasFeedback>
-                  {getFieldDecorator("position", {
+                  {getFieldDecorator("date", {
                     rules: [{ required: true }]
                   })(<DatePicker className="english-font-input" />)}
                 </Form.Item>
@@ -64,8 +64,8 @@ class Index extends Component {
               {/* -----------------------------Name of Employees-------------------------------- */}
               <Col className="gutter-row" span={12}>
                 <Form.Item className="cheque-no" label="cek n>.">
-                  {getFieldDecorator("name", {
-                    rules: [{ required: true, message: "Enter The Name" }]
+                  {getFieldDecorator("chequeno", {
+                    rules: [{ required: true }]
                   })(
                     <Input
                       type="number"
@@ -83,18 +83,16 @@ class Index extends Component {
                   className="ant-col"
                   label="nam &#34; cek SvIkarnar nu nam &#34; :"
                 >
-                  {getFieldDecorator("mno", {
-                    rules: [
-                      { required: true, message: "Enter The Mobile Number!" }
-                    ]
+                  {getFieldDecorator("name", {
+                    rules: [{ required: true }]
                   })(<Input placeholder="data 7I nam" />)}
                 </Form.Item>
               </Col>
 
               <Col className="gutter-row" span={6}>
                 <Form.Item className="ant-col" label="moba[l n>.">
-                  {getFieldDecorator("address", {
-                    rules: [{ required: true, message: "Enter The Address!" }]
+                  {getFieldDecorator("mobileno", {
+                    rules: [{ required: true }]
                   })(
                     <Input
                       type="number"
@@ -106,8 +104,8 @@ class Index extends Component {
               </Col>
               <Col className="gutter-row" span={6}>
                 <Form.Item className="ant-col" label="rkm">
-                  {getFieldDecorator("address", {
-                    rules: [{ required: true, message: "Enter The Address!" }]
+                  {getFieldDecorator("amount", {
+                    rules: [{ required: true }]
                   })(
                     <Input
                       type="number"
@@ -117,24 +115,23 @@ class Index extends Component {
                   )}
                 </Form.Item>
               </Col>
-              <Col className="gutter-row" span={6}>
+              <Col className="gutter-row" span={14}>
                 <Form.Item className="ant-col" label="rkm">
-                  {getFieldDecorator("address", {
-                    rules: [{ required: true, message: "Enter The Address!" }]
+                  {getFieldDecorator("amountword", {
+                    rules: [{ required: true }]
                   })(
                     <Input
                       disabled
-                      type="number"
                       className="english-font-input"
                       placeholder="Five thousand Rupees Only/-"
                     />
                   )}
                 </Form.Item>
               </Col>
-              <Col className="gutter-row" span={6}>
+              <Col className="gutter-row" span={10}>
                 <Form.Item className="" label="be>Nk nam">
-                  {getFieldDecorator("address", {
-                    rules: [{ required: true, message: "Enter The Address!" }]
+                  {getFieldDecorator("bankname", {
+                    rules: [{ required: true }]
                   })(
                     <Select
                       className="in-icon-arrow"

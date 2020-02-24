@@ -3,7 +3,7 @@ import { Layout, Icon, Button } from "antd";
 import IncomeMobel from "../Forms/IncomeMobel";
 // import "./Sider.scss";
 
-const Header = ({ toggleSider, collapsed, header, onClick }) => {
+const Header = ({ toggleSider, collapsed, header, title }) => {
   const [state, setState] = useState({
     incomeModelVisible: false,
     expenseModelVisible: false
@@ -23,17 +23,19 @@ const Header = ({ toggleSider, collapsed, header, onClick }) => {
   //     modelVisible: !state.modelVisible
   // }));
 
-
   return (
-    <Layout.Header style={{ background: "#fff", padding: 0 ,height:"70px"}}>
-      <div className="Header-div" style={{padding: "5px 20px",}}>
+    <Layout.Header style={{ background: "#fff", padding: 0, height: "70px" }}>
+      <div className="Header-div" style={{ padding: "5px 20px" }}>
         <Icon
           className="trigger"
           type={collapsed ? "menu-unfold" : "menu-fold"}
           onClick={toggleSider}
           color="#000000"
         />
-        {header ? (
+        <div>
+          <h1>{title}</h1>
+        </div>
+        {/* {header ? (
           <div>
             <Button type="primary" onClick={() => onClick()}>
               <Icon type="left" />
@@ -42,7 +44,7 @@ const Header = ({ toggleSider, collapsed, header, onClick }) => {
           </div>
         ) : (
           ""
-        )}
+        )} */}
         <div className="">
           {/*----------------------------------------------------------------
           -----------------------Income Button-------------------------------

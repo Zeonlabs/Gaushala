@@ -32,26 +32,26 @@ export class Cheques extends Component {
 
   render() {
     return (
-      <PageWrapper>
+      <PageWrapper title="cek p/IN3">
         <Index
           openPopup={this.state.openPopup}
           handelEmployeePopup={this.handelPopup}
         />
         <div className="header-button">
-        <Button
-          shape="squre"
-          size="large"
-          type="primary"
-          onClick={this.handelFilterShow}
-          style={{ marginBottom: 30 }}
-        >
-          <Icon type="filter" theme="filled" style={{ fontSize: 17 }} />
-          fIL3r
-        </Button>
-        <FilterDatas
-          visible={this.state.showFilter}
-          onClose={this.handelFilterShow}
-        />
+          <Button
+            shape="squre"
+            size="large"
+            type="primary"
+            onClick={this.handelFilterShow}
+            style={{ marginBottom: 30 }}
+          >
+            <Icon type="filter" theme="filled" style={{ fontSize: 17 }} />
+            fIL3r
+          </Button>
+          <FilterDatas
+            visible={this.state.showFilter}
+            onClose={this.handelFilterShow}
+          />
           <Button
             className="button-text-size"
             type="primary"

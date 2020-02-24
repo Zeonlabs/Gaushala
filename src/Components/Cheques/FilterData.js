@@ -101,9 +101,9 @@ class FilterData extends Component {
                 </Form.Item>
               </Col>
 
-              <Col className="gutter-row" span={12}>
+              <Col className="gutter-row" span={24}>
                 <Form.Item className="ant-col" label="moba[l n>.">
-                  {getFieldDecorator("address")(
+                  {getFieldDecorator("mobileno")(
                     <Input
                       type="number"
                       className="english-font-input"
@@ -112,9 +112,9 @@ class FilterData extends Component {
                   )}
                 </Form.Item>
               </Col>
-              <Col className="gutter-row" span={12}>
+              {/* <Col className="gutter-row" span={12}>
                 <Form.Item className="ant-col" label="rkm">
-                  {getFieldDecorator("address")(
+                  {getFieldDecorator("amount")(
                     <Input
                       type="number"
                       className="english-font-input"
@@ -122,12 +122,11 @@ class FilterData extends Component {
                     />
                   )}
                 </Form.Item>
-              </Col>
+              </Col> */}
               <Col className="gutter-row" span={12}>
                 <Form.Item className="ant-col" label="rkm">
-                  {getFieldDecorator("amount")(
+                  {getFieldDecorator("amountfrom")(
                     <Input
-                      disabled
                       type="number"
                       className="english-font-input"
                       placeholder="₹000000"
@@ -138,9 +137,8 @@ class FilterData extends Component {
               </Col>
               <Col className="gutter-row" span={12}>
                 <Form.Item className="ant-col" label="su6I">
-                  {getFieldDecorator("rangeamount")(
+                  {getFieldDecorator("amountto")(
                     <Input
-                      disabled
                       type="number"
                       className="english-font-input"
                       placeholder="₹000000"
