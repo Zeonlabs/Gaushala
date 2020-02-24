@@ -129,23 +129,23 @@ class Animal extends Component {
     console.log("TCL: Animal -> slug", e);
     switch (this.state.slug) {
       case "creadit_animal":
-        return <CreditAnimal />;
+        return <CreditAnimal back={this.backClick} />;
         break;
 
       case "dead_animal":
-        return <DeadAnimal />;
+        return <DeadAnimal back={this.backClick} />;
         break;
 
       case "debit_animal":
-        return <DebitAnimal />;
+        return <DebitAnimal back={this.backClick} />;
         break;
 
       case "total_animal":
-        return <TotalAnimal />;
+        return <TotalAnimal back={this.backClick} />;
         break;
 
       case "resident_cost":
-        return <ResidentalAnimal />;
+        return <ResidentalAnimal back={this.backClick} />;
         break;
 
       default:
@@ -180,7 +180,11 @@ class Animal extends Component {
 
   render() {
     return (
-      <PageWrapper header={this.state.slug !== ""} onBackClick={this.backClick}>
+      <PageWrapper
+        header={this.state.slug !== ""}
+        title="pxu nI yadI"
+        onBackClick={this.backClick}
+      >
         {this.state.slug === "" ? (
           <div>
             <Row gutter={16}>
@@ -290,7 +294,7 @@ class Animal extends Component {
                   </div>
                 </Card>
               </Col>
-             
+
               {/* -----------------------------------------------------------------------
               -----------------------------------Nibhav kharch---------------------------
               --------------------------------------------------------------------------- */}
@@ -330,7 +334,7 @@ class Animal extends Component {
                 </Card>
               </Col>
 
-               {/* -----------------------------------------------------------------------
+              {/* -----------------------------------------------------------------------
               -----------------------------------Animal Total---------------------------
               --------------------------------------------------------------------------- */}
               <Col className="gutter-row card-content card-hover-scss" span={6}>

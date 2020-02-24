@@ -145,16 +145,19 @@ export class Employees extends Component {
     const { imageUrl } = this.state;
 
     return (
-      <PageWrapper>
+      <PageWrapper title="kmRcarI nI yadI">
         <AddEmployee
           handelEmployeePopup={this.handelEmployeePopup}
           openPopup={this.state.addPopup}
         />
-        
+
         {/* ------------------------------------ Header Epmloyees------------------------------- */}
         <Row>
-          
-          <Col span={20}><div><FilterData/></div></Col>
+          <Col span={20}>
+            <div>
+              <FilterData />
+            </div>
+          </Col>
           {/* ----------------------------------Add Employees Button---------------------------- */}
           <Col className="button-add-members" span={4}>
             <Button
@@ -169,7 +172,7 @@ export class Employees extends Component {
             </Button>
           </Col>
         </Row>
-        <ListingTable/>
+        <ListingTable />
       </PageWrapper>
     );
   }

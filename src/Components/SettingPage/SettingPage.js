@@ -12,8 +12,12 @@ import {
   Icon,
   Divider,
   Tag,
-  Button,Layout, Menu, Breadcrumb
+  Button,
+  Layout,
+  Menu,
+  Breadcrumb
 } from "antd";
+import OtpScreen from "./OtpScreen";
 
 const { Option } = Select;
 const { Header, Content, Footer, Sider } = Layout;
@@ -73,8 +77,7 @@ export class SettingPage extends Component {
     const { visible, confirmLoading } = this.state;
 
     return (
-      <PageWrapper>
-
+      <PageWrapper title="sei3>g">
         <Modal
           title="pIn se3"
           visible={visible}
@@ -84,6 +87,13 @@ export class SettingPage extends Component {
           footer={null}
         >
           <h1>se3 pIn</h1>
+          <div>
+            <h3>Enter new pin</h3>
+            <Input />
+            <h3>Repete pin</h3>
+            <Input />
+          </div>
+          <OtpScreen />
         </Modal>
 
         <h1>sof3ver sei3>Ng</h1>
@@ -109,7 +119,8 @@ export class SettingPage extends Component {
               <Input
                 type="number"
                 className="english-font-input"
-                placeholder="+91 0000000000"/>
+                placeholder="+91 0000000000"
+              />
             </Form.Item>
           </Col>
           {/* ------------------------------Save Button------------------------------ */}
@@ -118,7 +129,8 @@ export class SettingPage extends Component {
               type="primary"
               icon="save"
               loading={this.state.iconLoading}
-              onClick={this.enterIconLoading}>
+              onClick={this.enterIconLoading}
+            >
               sev
             </Button>
           </Col>
@@ -132,11 +144,16 @@ export class SettingPage extends Component {
           <Col offset={1} className="pin-set margin-left">
             <label>pIn:</label>
             <Tag className="tag-clock" onClick={this.showModal} color="#f50">
-            Nyu pIn n>br se3 kro.
+              Nyu pIn n>br se3 kro.
             </Tag>
           </Col>
         </Row>
-        <Footer className="english-font-input" style={{ textAlign: 'center',marginTop:"auto" }}>Officel product of zeonlabs © 2018</Footer>
+        <Footer
+          className="english-font-input"
+          style={{ textAlign: "center", marginTop: "auto" }}
+        >
+          Officel product of zeonlabs © 2018
+        </Footer>
       </PageWrapper>
     );
   }

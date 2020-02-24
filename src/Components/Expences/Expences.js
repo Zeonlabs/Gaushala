@@ -11,7 +11,7 @@ export class Expences extends Component {
 
   render() {
     return (
-      <PageWrapper>
+      <PageWrapper title="javk rIpO3">
         <div>
           <h2>THis is a Expences page</h2>
         </div>

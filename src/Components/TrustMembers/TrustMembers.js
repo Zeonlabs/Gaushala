@@ -50,7 +50,7 @@ export class TrustMembers extends Component {
 
   render() {
     return (
-      <PageWrapper>
+      <PageWrapper title="sWy7I nI yadI">
         <Index
           openPopup={this.state.showAddPopup}
           handelEmployeePopup={this.handelShowPopup}

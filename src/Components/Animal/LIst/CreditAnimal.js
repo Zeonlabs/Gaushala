@@ -1,15 +1,113 @@
 import React, { Component } from "react";
-import { Form, DatePicker, Icon, Button, Row, Col } from "antd";
+import { Form, DatePicker, Icon, Button, Row, Col, Table, Divider } from "antd";
 import moment from "moment";
-
 
 const { RangePicker } = DatePicker;
 
-function onChange(dates, dateStrings) {
-  console.log("From: ", dates[0], ", to: ", dates[1]);
-  console.log("From: ", dateStrings[0], ", to: ", dateStrings[1]);
-}
+const columns = [
+  {
+    title: "k/m",
+    dataIndex: "id",
+    key: "name",
+    render: text => <p>{text}</p>
+  },
+  {
+    title: "Date",
+    dataIndex: "date",
+    key: "date"
+    // render: text => <p>{text}</p>
+  },
+  {
+    title: "pashuo",
+    children: [
+      {
+        title: "Gay",
+        dataIndex: "gay",
+        key: "gay",
+        render: text => <p>{text}</p>
+      },
+      {
+        title: "balad",
+        dataIndex: "balad",
+        key: "balad"
+      },
+      {
+        title: "Vacharda",
+        dataIndex: "vacharda",
+        key: "vacharda"
+      },
+      {
+        title: "Vachardi",
+        dataIndex: "vachardi",
+        key: "vachardi"
+      },
+      {
+        title: "Anny",
+        dataIndex: "anny",
+        key: "anny"
+      },
+      {
+        title: "Total",
+        dataIndex: "total",
+        key: "total"
+      }
+    ]
+  },
+  {
+    title: "Pashu muknar nu name",
+    dataIndex: "name",
+    key: "name",
+    render: text => <p>{text}</p>
+  },
+  {
+    title: "Sarnamu",
+    dataIndex: "address",
+    key: "address"
+  },
+  {
+    title: "moba[l n>.",
+    dataIndex: "mobile",
+    key: "mono"
+  },
+  {
+    title: "Action",
+    key: "action",
+    render: (text, record) => (
+      <span style={{ display: "flex" }}>
+        <p>Edit</p>
+        <Divider type="vertical" />
+        <p>Delete</p>
+      </span>
+    )
+  }
+];
 
+const data = [
+  {
+    key: "1",
+    name: "John Brown",
+    id: 32,
+    type: "New York No. 1 Lake Park",
+    mobile: 85848596,
+    address: "New York No. 1 Lake Park"
+  },
+  {
+    key: "2",
+    name: "Jim Green",
+    id: 42,
+    type: "London No. 1 Lake Park",
+    mobile: 85848596,
+    address: "London No. 1 Lake Park"
+  },
+  {
+    key: "3",
+    name: "Joe Black",
+    id: 32,
+    type: "Sidney No. 1 Lake Park",
+    mobile: 85848596,
+    address: "Sidney No. 1 Lake Park"
+  }
+];
 
 class CreditAnimal extends Component {
   constructor(props) {
@@ -17,20 +115,31 @@ class CreditAnimal extends Component {
 
     this.state = {};
   }
+  onChange = (dates, dateStrings) => {
+    console.log("From: ", dates[0], ", to: ", dates[1]);
+    console.log("From: ", dateStrings[0], ", to: ", dateStrings[1]);
+  };
+
+  handelback = () => {
+    console.log("back", this.props);
+    this.props.back();
+  };
+
   render() {
     console.log("TCL: CreditAnimal -> constructor -> props", this.props);
 
     return (
       <div>
+        <Button onClick={this.handelback} type="primary">
+          Back
+        </Button>
         <h1>Aavel pxuAO nu r+S3r</h1>
-
         <div className="filter-icon">
           <Icon type="filter" theme="filled" />
           <h3>rIpo3 fIL3r</h3>
         </div>
         <Form>
           <Row>
-
             <Col span={6}>
               <Form.Item label="tarIq ps>d kro">
                 <RangePicker
@@ -42,10 +151,9 @@ class CreditAnimal extends Component {
                       moment().endOf("month")
                     ]
                   }}
-                  onChange={onChange}
+                  onChange={this.onChange}
                 />
               </Form.Item>
-
             </Col>
             <Col span={6}>
               <div className="m-btn-gru">
@@ -58,7 +166,7 @@ class CreditAnimal extends Component {
                     icon="snippets"
                   >
                     jnre3 rIpo3
-                </Button>
+                  </Button>
                 </Form.Item>
                 {/* ------------------------------Print button--------------------------- */}
                 <Form.Item>
@@ -70,13 +178,14 @@ class CreditAnimal extends Component {
                   >
                     {" "}
                     ip/N3
-                </Button>
+                  </Button>
                 </Form.Item>
               </div>
             </Col>
-
           </Row>
         </Form>
+
+        <Table columns={columns} dataSource={data} bordered />
       </div>
     );
   }
