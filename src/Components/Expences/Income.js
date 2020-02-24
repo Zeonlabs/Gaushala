@@ -25,22 +25,22 @@ class Income extends Component {
     };
     this.columns = [
       {
-        title: "Date",
-        dataIndex: "date",
-        key: "3",
-        width: 250
-      },
-      {
-        title: "Voucher No.",
+        title: "Slip No.",
         width: "100px",
         dataIndex: "slip_no",
         key: "name",
         fixed: "left"
       },
       {
-        title: "Name",
-        dataIndex: "ref_name",
-        key: "5",
+        title: "Type",
+        width: 200,
+        dataIndex: "type",
+        key: "age"
+      },
+      {
+        title: "Money Type",
+        dataIndex: "money.type",
+        key: "1",
         width: 150
       },
       {
@@ -50,26 +50,20 @@ class Income extends Component {
         width: 150
       },
       {
+        title: "Date",
+        dataIndex: "date",
+        key: "3",
+        width: 250
+      },
+      {
         title: "Phone No.",
         dataIndex: "phone",
         key: "4",
         width: 150
       },
       {
-        title: "Money Type",
-        dataIndex: "money.type",
-        key: "1",
-        width: 150
-      },
-      {
-        title: "Hastak Name",
+        title: "Refrence_Name",
         dataIndex: "ref_name",
-        key: "5",
-        width: 150
-      },
-      {
-        title: "S.M.S.",
-        dataIndex: "sms",
         key: "5",
         width: 150
       },
@@ -145,7 +139,7 @@ class Income extends Component {
       };
     });
     return (
-      <PageWrapper title="javk rIpO3">
+      <PageWrapper title="Aavk rIpO3">
         <div className="row income-form-wrapper">
           <Tooltip title="fIL3r" placement="bottom">
             <Button
