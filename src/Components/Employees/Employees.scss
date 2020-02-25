@@ -1,0 +1,55 @@
+.filter-icon{
+    display: flex;
+    i{
+        font-size: 22px;
+    }
+    h3{
+        margin-left: 10px;
+    }
+}
+.button-group{
+    display: flex;
+    justify-content: space-between;
+}
+.uplod-label{
+    font-weight: bold;
+}
+/* tile uploaded pictures */
+.upload-list-inline .ant-upload-list-item {
+    float: left;
+    width: 200px;
+    margin-right: 8px;
+  }
+  .upload-list-inline .ant-upload-animate-enter {
+    animation-name: uploadAnimateInlineIn;
+  }
+  .upload-list-inline .ant-upload-animate-leave {
+    animation-name: uploadAnimateInlineOut;
+  }
+
+  #components-grid-demo-playground [class~='ant-col'] {
+    background: transparent;
+    border: 0;
+  }
+  #components-grid-demo-playground [class~='ant-col'] > div {
+    background: #00a0e9;
+    height: 120px;
+    line-height: 120px;
+    font-size: 13px;
+  }
+  #components-grid-demo-playground pre {
+    background: #f9f9f9;
+    border-radius: 6px;
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+
+  .employee-filter{
+    .name-filter-employee{
+      width: 40%;
+    }
+    .employee-filter-wrapper{
+      display: flex;
+      justify-content: space-between;
+    }
+  }

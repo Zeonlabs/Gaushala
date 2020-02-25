@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout } from "antd";
+import { Layout, Affix } from "antd";
 import "./PageWrapper.scss";
 import SiderBar from "./SiderBar";
 import Header from "./Header";
@@ -9,6 +9,7 @@ const { Content } = Layout;
 const PageWrapper = props => {
   const [state, setState] = useState({
     collapsed: false
+    
   });
 
   const toggleSider = () => {
@@ -28,8 +29,7 @@ const PageWrapper = props => {
             padding: 24,
             background: "#fff",
             minHeight: 280
-          }}
-        >
+          }}>
           {props.children}
         </Content>
       </Layout>

@@ -1,0 +1,29 @@
+.button-add-members {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  .button-right {
+    margin-right: 0 !important;
+  }
+}
+
+.member-form-wrapper {
+  padding-top: 28px;
+}
+
+.filter-button-member {
+}
+.filter-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.filter-dropdown {
+  width: 100%;
+}
+
+.filter-select-width{
+    width:45%
+}
+
+.listing-table-wrapper{
+    margin-top: 28px;
+}

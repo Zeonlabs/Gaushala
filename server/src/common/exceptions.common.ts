@@ -10,3 +10,11 @@ export class NoRecordWithIDException extends Error{
     code=404
     message='no record found with such id'
 }
+export class ImageUploadFailedException extends Error{
+    code=409
+    message='image upload failed'
+}
+export class AvatarNotProvidedError extends Error{
+    code=422
+    message='avatar not provided'
+}

@@ -18,6 +18,7 @@ import Employees from "../Components/Employees/Employees";
 import Notes from "../Components/Notes/Notes";
 import TrustMembers from "../Components/TrustMembers/TrustMembers";
 import Income from "../Components/CharityIncome/Income";
+import SettingPage from "../Components/SettingPage/SettingPage"
 // import {
 //   getCities,
 // } from '../actions/global';
@@ -60,6 +61,7 @@ function App() {
         <Route path={routes.employees} component={Employees} />
         <Route path={routes.notes} component={Notes} />
         <Route path={routes.trustmembers} component={TrustMembers} />
+        <Route path={routes.settingpage} component={SettingPage} />
         {/* <PrivateRoute path="/home" name="home" component={Home} />
         <Route path="/reset-password" component={ResetPassword} />
         <PrivateRoute path="/changepassword" component={ChangePassword} /> */}

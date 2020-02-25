@@ -12,7 +12,7 @@ class Home extends Component {
   render() {
     return (
       <PageWrapper>
-        <h1>Dashboard</h1>
+        <h1>s>padIt Aheval</h1>
       </PageWrapper>
     );
   }

@@ -5,6 +5,8 @@ import {IncomeModel} from './income/income.typedef'
 import {Expense} from './expense/expense.schema'
 import {ExpenseModel} from './expense/expense.typedef'
 
+import {Employee} from './employee/employee.schema'
+import {EmployeeModel} from './employee/employee.typedef' 
 import {Note} from './note/note.schema'
 import {NoteModel} from './note/note.typedef'
 import {TrustMember} from './trustMember/trustMember.schema'
@@ -17,6 +19,8 @@ export {
     IncomeModel,
     Expense,
     ExpenseModel,
+    Employee,
+    EmployeeModel,
     Note,
     NoteModel,
     TrustMember,

@@ -1,13 +1,15 @@
 import {Application, Router} from 'express'
-import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMember, updateTrustMember, addNote, updateNote, deleteNote, generateFilteredReport } from './controllers'
+import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMember, updateTrustMember, addNote, updateNote, deleteNote, generateFilteredReport, saveEmployee, getAvatar } from './controllers'
 import { paginationMiddleware } from './middlewares/pagination/pagination.middleware'
-import { Income, Expense, TrustMember, Note } from './schema'
+import { Income, Expense, TrustMember, Note, Employee } from './schema'
+import { deleteEmployee } from './controllers/employee/employee.controller'
 
 export class Routes{
 
     public routes(app: Application): void{
         const incomeRoute = Router(),
             expenseRoute = Router(),
+            employeeRoute = Router(),
             noteRoute = Router(),
             trustMemberRoute = Router()
 
@@ -20,6 +22,11 @@ export class Routes{
         expenseRoute.post('/add', saveExpense)
         expenseRoute.get('/', paginationMiddleware(Expense))
         expenseRoute.get('/filter', generateFilteredReport(Expense))
+
+        employeeRoute.post('/add', saveEmployee)
+        employeeRoute.get('/', paginationMiddleware(Employee))
+        employeeRoute.get('/avatar/:id', getAvatar)
+        employeeRoute.delete('/delete/:id', deleteEmployee)
 
         noteRoute.post('/add', addNote)
         noteRoute.get('/', paginationMiddleware(Note))
@@ -34,6 +41,7 @@ export class Routes{
 
         app.use('/income', incomeRoute)
         app.use('/expense', expenseRoute)
+        app.use('/employee', employeeRoute)
         app.use('/note', noteRoute)
         app.use('/trust-member', trustMemberRoute)
     }

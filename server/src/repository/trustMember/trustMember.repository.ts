@@ -4,7 +4,7 @@ import { NoRecordWithIDException } from '../../common/exceptions.common'
 export class TrustMemberRepository{
     async save(data: TrustMemberModel){
         const trustMember = new TrustMember(data)
-        const doc = trustMember.save()
+        const doc = await trustMember.save()
         return doc
     }
 
