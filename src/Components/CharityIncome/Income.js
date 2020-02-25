@@ -157,7 +157,7 @@ class Income extends Component {
         <FilterDrawer onClose={this.onClose} visible={this.state.visible} />
         <Table
           columns={columns}
-          dataSource={this.state.data}
+          dataSource={this.state.data || []}
           bordered
           size="middle"
           scroll={{ x: "calc(700px + 40%)", y: 240 }}

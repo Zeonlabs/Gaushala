@@ -44,6 +44,7 @@ class Index extends Component {
 
   handleReset = () => {
     this.props.handelEmployeePopup();
+    this.props.form.resetFields();
   };
 
   render() {
@@ -56,25 +57,32 @@ class Index extends Component {
           visible={this.props.openPopup}
           footer={null}
           // onOk={this.handelData}
-          onCancel={this.props.handelEmployeePopup}
+          onCancel={this.handleReset}
         >
           <Form className="form-income" onSubmit={this.handleSubmit}>
-            <Row type="flex" justify="space-between" className="member-form-wrapper">
+            <Row
+              type="flex"
+              justify="space-between"
+              className="member-form-wrapper"
+            >
               {/* ------------------------------Post type--------------------------------- */}
               <Col span={12}>
                 <Form.Item className="" label="hod\o" hasFeedback>
                   {getFieldDecorator("position", {
                     rules: [{ required: true }]
                   })(
-                    <Select className="in-icon-arrow" placeholder="hod\o ps>d kro">
-                  <Option value="પ્રમુખ શ્રી">પ્રમુખ શ્રી</Option>
-                  <Option value="ઉપપ્રમુખ શ્રી">ઉપપ્રમુખ શ્રી</Option>
-                  <Option value="મંત્રી શ્રી">મંત્રી શ્રી </Option>
-                  <Option value="ખજાનચી">ખજાનચી શ્રી</Option>
-                  <Option value="સહમંત્રીશ્રી">સહમંત્રીશ્રી</Option>
-                  <Option value="ટ્રસ્ટી શ્રી">ટ્રસ્ટી શ્રી</Option>
-                  <Option value="સંગઠનમંત્રી શ્રી">સંગઠનમંત્રી શ્રી</Option>
-                </Select>
+                    <Select
+                      className="in-icon-arrow"
+                      placeholder="hod\o ps>d kro"
+                    >
+                      <Option value="પ્રમુખ શ્રી">પ્રમુખ શ્રી</Option>
+                      <Option value="ઉપપ્રમુખ શ્રી">ઉપપ્રમુખ શ્રી</Option>
+                      <Option value="મંત્રી શ્રી">મંત્રી શ્રી </Option>
+                      <Option value="ખજાનચી">ખજાનચી શ્રી</Option>
+                      <Option value="સહમંત્રીશ્રી">સહમંત્રીશ્રી</Option>
+                      <Option value="ટ્રસ્ટી શ્રી">ટ્રસ્ટી શ્રી</Option>
+                      <Option value="સંગઠનમંત્રી શ્રી">સંગઠનમંત્રી શ્રી</Option>
+                    </Select>
                   )}
                 </Form.Item>
               </Col>
@@ -104,7 +112,7 @@ class Index extends Component {
                   )}
                 </Form.Item>
               </Col>
-{/* 
+              {/* 
               <Col className="gutter-row" span={6}>
                 <Form.Item className="ant-col" label="srnamu">
                   {getFieldDecorator("address", {

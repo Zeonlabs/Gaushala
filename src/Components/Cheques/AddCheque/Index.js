@@ -11,14 +11,24 @@ import {
   Modal,
   DatePicker
 } from "antd";
+import converter from "number-to-words";
 const { Option } = Select;
 
 class Index extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      number: 0
+    };
   }
+
+  handelNumber = e => {
+    console.log("TCL: Index -> handelNumber -> e", e, e.target.value);
+    this.setState({
+      number: parseInt(e.target.value, 10)
+    });
+  };
 
   handleSubmit = e => {
     e.preventDefault();
@@ -31,6 +41,7 @@ class Index extends Component {
   };
 
   handleReset = () => {
+    this.props.form.resetFields();
     this.props.handelEmployeePopup();
   };
 
@@ -44,7 +55,7 @@ class Index extends Component {
           visible={this.props.openPopup}
           footer={null}
           // onOk={this.handelData}
-          onCancel={this.props.handelEmployeePopup}
+          onCancel={this.handleReset}
         >
           <Form className="form-income" onSubmit={this.handleSubmit}>
             <Row
@@ -109,6 +120,7 @@ class Index extends Component {
                   })(
                     <Input
                       type="number"
+                      onChange={this.handelNumber}
                       className="english-font-input"
                       placeholder="₹000000"
                     />
@@ -118,6 +130,7 @@ class Index extends Component {
               <Col className="gutter-row" span={14}>
                 <Form.Item className="ant-col" label="rkm">
                   {getFieldDecorator("amountword", {
+                    initialValue: converter.toWords(this.state.number || 0),
                     rules: [{ required: true }]
                   })(
                     <Input

@@ -68,6 +68,7 @@ export class SettingPage extends Component {
 
   handleCancel = () => {
     console.log("Clicked cancel button");
+
     this.setState({
       visible: false
     });

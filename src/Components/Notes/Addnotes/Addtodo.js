@@ -29,6 +29,11 @@ class NormalLoginForm extends Component {
     });
   };
 
+  handelReset = () => {
+    this.props.form.resetFields();
+    this.props.close();
+  };
+
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
@@ -38,7 +43,7 @@ class NormalLoginForm extends Component {
           maskClosable={false}
           width={500}
           placement="right"
-          onClose={this.props.close}
+          onClose={this.handelReset}
           visible={this.props.visible}
         >
           <Form onSubmit={this.handleSubmit} className="login-form">
@@ -66,10 +71,7 @@ class NormalLoginForm extends Component {
               )}
             </Form.Item>
             <Form.Item>
-              <Button
-                className="login-form-button"
-                onClick={() => this.props.close()}
-              >
+              <Button className="login-form-button" onClick={this.handelReset}>
                 Cancel
               </Button>
               <Button

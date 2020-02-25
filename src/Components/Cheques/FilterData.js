@@ -30,6 +30,7 @@ class FilterData extends Component {
   };
 
   handleReset = () => {
+    this.props.form.resetFields();
     this.props.handelEmployeePopup();
   };
 
@@ -44,10 +45,11 @@ class FilterData extends Component {
       <Drawer
         // title="fILtr"
         // closable={false}
-        onClose={this.props.onClose}
+        maskClosable={false}
+        onClose={this.handleReset}
         visible={this.props.visible}
         getContainer={false}
-        width={450}
+        width={500}
       >
         <div>
           <Form className="form-income" onSubmit={this.handleSubmit}>

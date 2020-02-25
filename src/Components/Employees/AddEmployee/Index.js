@@ -43,6 +43,7 @@ class Index extends Component {
   };
 
   handleReset = () => {
+    this.props.form.resetFields();
     this.props.handelEmployeePopup();
   };
 
@@ -56,7 +57,7 @@ class Index extends Component {
           visible={this.props.openPopup}
           footer={null}
           // onOk={this.handelData}
-          onCancel={this.props.handelEmployeePopup}
+          onCancel={this.handleReset}
         >
           <Form className="form-income" onSubmit={this.handleSubmit}>
             <Row type="flex" justify="space-between">

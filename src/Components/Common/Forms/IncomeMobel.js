@@ -24,7 +24,8 @@ class IncomeMobels extends Component {
     this.state = {
       type: "cash",
       tableData: "",
-      value: ""
+      value: "",
+      finalTotal: 0
     };
   }
 
@@ -171,6 +172,9 @@ class IncomeMobels extends Component {
       console.log("TCL: totalAmount", totalAmount);
       const finalTotal = totalAmount.reduce(this.sumArray);
       console.log("TCL: finalTotal", finalTotal);
+      this.setState({
+        finalTotal
+      });
       // console.log("TCL: amount", amount);
       if (!err) {
         if (this.props.type) {
@@ -425,7 +429,10 @@ class IncomeMobels extends Component {
             </div>
             {/* ------------------------------Table--------------------------------- */}
             <div className="row">
-              <Tables submit={this.onTableSubmit} />
+              <Tables
+                submit={this.onTableSubmit}
+                total={this.state.finalTotal}
+              />
             </div>
 
             <div className="row">
