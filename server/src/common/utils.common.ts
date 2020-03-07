@@ -1,0 +1,1 @@
+export const reverseNum = (num: number) => parseFloat(num.toString().split('').reverse().join('')) * Math.sign(num)

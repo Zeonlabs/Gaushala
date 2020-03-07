@@ -3,6 +3,7 @@ import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMemb
 import { paginationMiddleware } from './middlewares/pagination/pagination.middleware'
 import { Income, Expense, TrustMember, Note, Employee } from './schema'
 import { deleteEmployee } from './controllers/employee/employee.controller'
+import { auth } from './common/auth.common'
 
 export class Routes{
 
@@ -14,6 +15,7 @@ export class Routes{
             trustMemberRoute = Router()
 
         app.post('/setup', initVariables)
+        app.post('/auth', auth)
         
         incomeRoute.post('/add', saveIncome)
         incomeRoute.patch('/edit/:id', editIncome)

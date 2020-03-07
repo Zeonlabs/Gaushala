@@ -1,4 +1,4 @@
-import { Variables } from "../../schema"
+import { Variables, VariablesModel } from "../../schema"
 import { VAR_DOC_ID } from "../../common/constants.common"
 
 export class VariablesRepository{
@@ -10,6 +10,11 @@ export class VariablesRepository{
             name: savedVars.name,
             stats: savedVars.stats
         }
+    }
+
+    async update(data: {name: string, pin: number}){
+        const doc = await Variables.findByIdAndUpdate(VAR_DOC_ID, { $set: data }, {new: true})
+        return doc
     }
 
     updateCapital(amount: number){
