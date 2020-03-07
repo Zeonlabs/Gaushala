@@ -12,11 +12,16 @@ export class VariablesRepository{
         }
     }
 
-    updateIncome(amount: number){
+    updateCapital(amount: number){
         const genQuery = (value: number) => Variables.findByIdAndUpdate(VAR_DOC_ID, { $inc: {"stats.capital": value }}, {new: true})
         return {
             inc: async () => await genQuery(amount),
             dec: async () => await genQuery(-amount)
         }
+    }
+
+    async get(){
+        const vars = await Variables.findById(VAR_DOC_ID)
+        return vars
     }
 }

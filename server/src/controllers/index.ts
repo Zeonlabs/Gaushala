@@ -1,6 +1,6 @@
 import {initVariables} from './variables/variables.controller'
-import {saveIncome} from './income/income.controller'
-import {saveExpense} from './expense/expense.controller'
+import {saveIncome, deleteIncome, editIncome} from './income/income.controller'
+import {saveExpense, deleteExpense, editExpense} from './expense/expense.controller'
 
 import {saveEmployee, getAvatar} from './employee/employee.controller'
 import {addNote, updateNote, deleteNote} from './note/note.controller'
@@ -11,7 +11,11 @@ import {generateFilteredReport} from './common/common.controller'
 export {
     initVariables,
     saveIncome,
+    editIncome,
+    deleteIncome,
     saveExpense,
+    editExpense,
+    deleteExpense,
     saveEmployee,
     getAvatar,
     addNote,

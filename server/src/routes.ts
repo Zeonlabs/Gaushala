@@ -1,5 +1,5 @@
 import {Application, Router} from 'express'
-import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMember, updateTrustMember, addNote, updateNote, deleteNote, generateFilteredReport, saveEmployee, getAvatar } from './controllers'
+import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMember, updateTrustMember, addNote, updateNote, deleteNote, generateFilteredReport, saveEmployee, getAvatar, deleteIncome, deleteExpense, editIncome, editExpense } from './controllers'
 import { paginationMiddleware } from './middlewares/pagination/pagination.middleware'
 import { Income, Expense, TrustMember, Note, Employee } from './schema'
 import { deleteEmployee } from './controllers/employee/employee.controller'
@@ -16,10 +16,14 @@ export class Routes{
         app.post('/setup', initVariables)
         
         incomeRoute.post('/add', saveIncome)
+        incomeRoute.patch('/edit/:id', editIncome)
+        incomeRoute.delete('/delete/:id', deleteIncome)
         incomeRoute.get('/', paginationMiddleware(Income))
         incomeRoute.get('/filter', generateFilteredReport(Income))
 
         expenseRoute.post('/add', saveExpense)
+        expenseRoute.patch('/edit/:id', editExpense)
+        expenseRoute.delete('/delete/:id', deleteExpense)
         expenseRoute.get('/', paginationMiddleware(Expense))
         expenseRoute.get('/filter', generateFilteredReport(Expense))
 

@@ -8,7 +8,7 @@ const saveIncome = async (req: Request, res: Response) => {
         const variablesRepo = new VariablesRepository()
 
         const savedIncome = await incomeRepo.save(income)
-        const updatedCapital = await variablesRepo.updateIncome(savedIncome.money.amount).inc()
+        const updatedCapital = await variablesRepo.updateCapital(savedIncome.money.amount).inc()
         
         res.send(savedIncome)
     }
@@ -18,11 +18,39 @@ const saveIncome = async (req: Request, res: Response) => {
     }
 }
 
-const getAllIncome = async (req: Request, res: Response) => {
+const editIncome = async (req: Request, res: Response) => {
     try{
+        const incomeId: string = req.params.id
+        const income = req.body
+        var stats: any
         const incomeRepo = new IncomeRepository()
-        const allIncome = await incomeRepo.getAll()
-        res.send(allIncome)
+        const variablesRepo = new VariablesRepository()
+
+        const doc = await incomeRepo.update(incomeId, income)
+        if(income.money){
+            stats = await variablesRepo.updateCapital( - doc.oldAmount + doc.updatedIncome.money.amount ).inc()
+        }
+        else{
+            stats = await variablesRepo.get()
+        }
+        res.json({income: doc.updatedIncome, stats })
+    }
+    catch(e){
+        console.log(e)
+        res.status(400).send()
+    }
+}
+
+const deleteIncome = async (req: Request, res: Response) => {
+    try{
+        const incomeId: string = req.params.id
+        const incomeRepo = new IncomeRepository()
+        const variablesRepo = new VariablesRepository()
+
+        const deletedIncome = await incomeRepo.delete(incomeId)
+        const updatedCapital = await variablesRepo.updateCapital(deletedIncome.money.amount).dec()
+
+        res.send({income: deletedIncome, stats: updatedCapital})
     }
     catch(e){
         console.log(e)
@@ -32,5 +60,6 @@ const getAllIncome = async (req: Request, res: Response) => {
 
 export {
     saveIncome,
-    getAllIncome
+    editIncome,
+    deleteIncome
 }
