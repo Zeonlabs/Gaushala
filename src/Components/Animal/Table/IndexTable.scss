@@ -1,0 +1,41 @@
+.table-header{
+    text-align: center !important;
+    font-size: 18px !important;
+    padding: 6px !important;
+    background-color: #cecece;
+    color: black;
+    font-weight: bold !important;
+    width: 60% !important;
+}
+td{
+    text-align: center !important;
+    font-size: 16px;
+    // font-weight: bold;
+    padding: 0px !important;
+    color: black;
+
+    .ant-row, .ant-form-item {
+        margin-bottom: 0 !important;
+    }
+    .ant-input-number{
+        border: none;
+        font-family: Arial, Helvetica, sans-serif !important;
+    }
+    .ant-input-number-input-wrap>input{
+        text-align: center !important;
+    }
+    
+}
+.total-box{
+    height: 40px !important;
+    background-color: #cecece;
+    font-size: 18px !important;
+    color: black !important;
+}
+.form-income .ant-form-item-control-wrapper {
+    margin-right: 0 !important;
+}
+
+.table-animal-popup-td{
+    font-weight: bolder;
+}

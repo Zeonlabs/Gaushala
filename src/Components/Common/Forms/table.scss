@@ -1,9 +1,10 @@
 .editable-cell {
   position: relative;
 }
-.ant-popover-content{
-  span{
-    font-size: 12px !important;}
+.ant-popover-content {
+  span {
+    font-size: 12px !important;
+  }
 }
 .english-font-input,
 #Income_date {
@@ -12,14 +13,84 @@
 .editable-cell-value-wrap {
   padding: 5px 12px;
   cursor: pointer;
+  font-size: 16px !important;
+  font-weight: bolder;
 }
 .editable-row:hover .editable-cell-value-wrap {
   border: 1px solid #d9d9d9;
   border-radius: 4px;
   padding: 4px 11px;
 }
+.ant-table {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 0.5;
+  list-style: none;
+  -webkit-font-feature-settings: "tnum";
+  font-feature-settings: "tnum", "tnum";
+  position: relative;
+  clear: both;
+}
+.ant-table-body {
+  table {
+    border-bottom: 1px solid black !important;
+    border-right: 1px solid black !important;
+  }
+}
+.table-boder {
+  table {
+    border-radius: 4px;
+    // border: 2px solid black !important;
+    width: -webkit-fill-available !important;
+    .ant-table-row-cell-break-word {
+      text-align: center;
+    }
+    .ant-table-column-title {
+      font-family: "gujrati_saral-1normal" !important;
+      font-weight: 600;
+      text-align: center;
+    }
+    .ant-form-item {
+      outline: none !important;
+    }
+    .ant-form-explain {
+      display: none;
+    }
+    .ant-input {
+      font-weight: 600 !important;
+    }
+    // .table-font{
+    //   .ant-table-header-column{
+    //     font-family: "gujrati_saral-1normal" !important;
+    //     font-weight: 600;
+    //     text-align: center;
+    //   }
+    //   td{
+    //     font-family: Arial, Helvetica, sans-serif !important;
+    //   }
+    // }
+  }
+}
+.table-font-english {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-weight: 600 !important;
+  .ant-table-header-column {
+    font-family: "gujrati_saral-1normal" !important;
+  }
+}
+.table-font-gujarati {
+  font-weight: 600 !important;
+  font-size: 18px !important;
+}
+
 .table {
   width: 100% !important;
+
   .ant-table-header-column {
     font-weight: bolder;
   }
@@ -33,18 +104,28 @@
     background: #ffffff;
     width: 100%;
   }
-
-  .deleteicon {
-    color: red($color: #ff0000) !important;
+  th{
+    border: 1px solid black;
+    border-right: none;
+    border-bottom: 1px solid black !important;
   }
+  td {
+    // border: 1px solid black;
+    border-left: 1px solid black !important;
+    border-bottom: 1px solid black ;
+  }
+
   tr,
   td {
-    padding: 0 !important;
+    padding: 15px !important;
+    height: 32px !important;
   }
   th {
-    padding: 5px 10px !important;
+    padding: 15px !important;
+    text-align: center !important;
   }
   .deleteicon {
+    color: red($color: #ff0000) !important;
     text-align: center !important;
   }
 
@@ -55,8 +136,10 @@
   .totalamount {
     display: flex;
     text-align: center;
-    margin-top: -5px;
-    border: 0.5px solid #cecece;
+    margin-top: -1px;
+    border: 1px solid #000000;
+    border-left: none;
+    border-top: none;
     .amount-in-words {
       width: 60%;
     }
@@ -66,7 +149,72 @@
       width: 40%;
       justify-content: center;
       text-align: initial;
-      border-left: 0.5px solid #cecece;
+      border-left: 1px solid #000000;
     }
   }
+}
+
+/* ----------------------table------------------------ */
+
+.ant-table-column-title {
+  font-weight: 600 !important;
+  font-size: 18px !important;
+}
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+.ant-table-tbody > tr > td,
+.ant-table-tbody > tr > td > p {
+  margin: 0 !important;
+}
+.ant-tooltip-inner {
+  font-family: "gujrati_saral-1normal" !important;
+  font-weight: 600;
+}
+// --------------------Edit& Delete icons------------------------
+.icon-group-table {
+  padding: 10px;
+  i {
+    font-size: 20px;
+  }
+}
+// ---------------------pagination-num---------------------------
+.ant-table-pagination {
+  .page-layout,
+  li {
+    height: 35px !important;
+    line-height: 35px !important;
+  }
+}
+
+/* --------------------Table-Empty-place-holder------------------ */
+.ant-table-placeholder {
+  background-color: #a5a5a5;
+  .ant-empty-description {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif !important;
+    color: white;
+  }
+}
+
+.td-total-animal-table{
+ p{
+   padding: 10px;
+ }
+}
+
+.vigat-col{
+  padding: 14px !important;
+  border: none;
+}
+
+// ----------------------table input hover outline none------------------------
+.editable-row:hover .editable-cell-value-wrap {
+  border: none !important;
+  border-radius: 0px !important;
+  padding: 11px !important;
 }

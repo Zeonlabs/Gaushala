@@ -24,57 +24,67 @@ class Income extends Component {
       data: ""
     };
     this.columns = [
+      
       {
-        title: "Date",
+        // Date
+        title: "tarIq",
         dataIndex: "date",
         key: "3",
-        width: 250
-      },
-      {
-        title: "Voucher No.",
-        width: "100px",
-        dataIndex: "slip_no",
-        key: "name",
+        width: 100,
         fixed: "left"
       },
       {
-        title: "Name",
-        dataIndex: "ref_name",
+        // Vauchr No
+        title: "va]cr n>.",
+        width: "100px",
+        dataIndex: "slip_no",
+        key: "name",
+      },
+      
+      {
+        // Name
+        title: "nam",
+        dataIndex: "Name",
         key: "5",
-        width: 150
+        width: 250
       },
       {
-        title: "Amount",
+        // Amount
+        title: "rkm",
         dataIndex: "money.amount",
         key: "2",
-        width: 150
+        width: 100
       },
       {
-        title: "Phone No.",
+        // Mobile.
+        title: "moba[l n>.",
         dataIndex: "phone",
         key: "4",
         width: 150
       },
       {
-        title: "Money Type",
+        // Expenses Type
+        title: "=vk no p/kar",
         dataIndex: "money.type",
         key: "1",
         width: 150
       },
       {
-        title: "Hastak Name",
+        // Expense in
+        title: "cukv~aI",
         dataIndex: "ref_name",
         key: "5",
-        width: 150
+        width: 80
       },
       {
-        title: "S.M.S.",
+        // Hastak Name
+        title: "HStk nam",
         dataIndex: "sms",
         key: "5",
         width: 150
       },
       {
-        title: "operation",
+        title: "AeDI3 - DIlI3",
         fixed: "right",
         width: 200,
         dataIndex: "operation",
@@ -161,6 +171,7 @@ class Income extends Component {
           </Tooltip>
         </div>
         <FilterDrawer onClose={this.onClose} visible={this.state.visible} />
+        <div className="table">
         <Table
           columns={columns}
           dataSource={this.state.data}
@@ -168,6 +179,7 @@ class Income extends Component {
           size="middle"
           scroll={{ x: "calc(700px + 40%)", y: 240 }}
         />
+        </div>
       </PageWrapper>
     );
   }

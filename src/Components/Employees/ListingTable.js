@@ -1,38 +1,48 @@
 import React, { Component } from "react";
-import { Table, Divider, Tag } from "antd";
+import { Table, Divider, Tag, Icon } from "antd";
 
 const columns = [
   {
     title: "k/m",
-    dataIndex: "id",
+    dataIndex: "indexno",
     key: "name",
+    className: "table-font-english",
     render: text => <p>{text}</p>
   },
   {
     title: "kmRcarI no p/kar",
     dataIndex: "type",
+    width: 200,
     key: "name",
-    render: text => <p>{text}</p>
+    render: text => <p>{text}</p>,
+    className: "table-font-gujarati"
   },
   {
     title: "nam",
     dataIndex: "name",
-    key: "age"
+    key: "age",
+    width: 250,
+    className: "table-font-gujarati"
   },
   {
     title: "moba[l n>.",
     dataIndex: "mobile",
-    key: "address"
+    key: "address",
+    className: "table-font-english"
   },
   {
     title: "srnamu",
     dataIndex: "address",
-    key: "address"
+    key: "address",
+    width: 200,
+    className: "table-font-gujarati"
   },
   {
     title: "DoKyumeN3s",
     dataIndex: "documents",
-    key: "address"
+    key: "address",
+    width: 200,
+    className: "table-font-english"
   },
   // {
   //   title: "Tags",
@@ -55,14 +65,30 @@ const columns = [
   //   )
   // },
   {
-    title: "Action",
+    title: "AeDI3 - DIlI3",
     key: "action",
     render: (text, record) => (
-      <span style={{ display: "flex" }}>
-        <p>Edit</p>
+      <div className="icon-group-table">
+        <Icon type="edit" theme="filled" style={{ color: "#3AD944" }} />
+
         <Divider type="vertical" />
-        <p>Delete</p>
-      </span>
+        <Divider type="vertical" />
+
+        <Icon
+          type="delete"
+          theme="filled"
+          style={{ color: "rgba(255, 0, 0)" }}
+        />
+
+        <Divider type="vertical" />
+        <Divider type="vertical" />
+
+        <Icon
+          type="eye"
+          theme="filled"
+          style={{ color: "rgb(39, 39, 39)" }}
+        />
+      </div>
     )
   }
 ];
@@ -70,40 +96,39 @@ const columns = [
 const data = [
   {
     key: "1",
-    name: "John Brown",
-    id: 32,
-    type: "New York No. 1 Lake Park",
+    name: "ka5uwa[",
+    indexno: 1,
+    type: "gOxa5a na mjur",
     mobile: 85848596,
-    address: "New York No. 1 Lake Park",
+    address: "ivrDI"
   },
   {
     key: "2",
-    name: "Jim Green",
-    id: 42,
-    type: "London No. 1 Lake Park",
+    name: "ka5uwa[",
+    indexno: 2,
+    type: "gOxa5a na mjur",
     mobile: 85848596,
-    address: "London No. 1 Lake Park",
+    address: "ivrDI"
   },
   {
     key: "3",
-    name: "Joe Black",
-    id: 32,
-    type: "Sidney No. 1 Lake Park",
+    name: "ka5uwa[",
+    indexno: 3,
+    type: "gOxa5a na mjur",
     mobile: 85848596,
-    address: "Sidney No. 1 Lake Park",
+    address: "ivrDI"
   }
 ];
 
 class ListingTable extends Component {
   constructor(props) {
     super(props);
-
     this.state = {};
   }
 
   render() {
     return (
-      <div>
+      <div >
         <Table columns={columns} dataSource={data} />
       </div>
     );
@@ -112,7 +137,8 @@ class ListingTable extends Component {
 
 export default ListingTable;
 
-{/* <Row gutter={[8, 8]}>
+{
+  /* <Row gutter={[8, 8]}>
           <Col span={3}>
             <h3>k/m</h3>
           </Col>
@@ -137,4 +163,5 @@ export default ListingTable;
           <Col span={3}>
             <h3>DIlI3</h3>
           </Col>
-        </Row> */}
+        </Row> */
+}

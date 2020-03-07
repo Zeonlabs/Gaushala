@@ -59,11 +59,15 @@ class Index extends Component {
           // onOk={this.handelData}
           onCancel={this.handleReset}
         >
+          <div className="income-model-wrapper">
+          
+          <h2 className="form-titel">Aavel pxuAO nu r+S3r</h2>
           <Form className="form-income" onSubmit={this.handleSubmit}>
-            <Row type="flex" justify="space-between">
-              {/* ------------------------------Post type--------------------------------- */}
-              <Col span={6}>
+            <Row gutter={[16, 16]}>
+              <Col span={8}>
                 <Form.Item className="" label="kmRcarI no p/kar" hasFeedback>
+                  {/* ------------------------------Post type--------------------------------- */}
+
                   {getFieldDecorator("employee_type", {
                     rules: [{ required: true }]
                   })(
@@ -80,18 +84,19 @@ class Index extends Component {
                   )}
                 </Form.Item>
               </Col>
-
-              {/* -----------------------------Name of Employees-------------------------------- */}
-              <Col className="gutter-row" span={6}>
+              <Col span={16}>
+                {/* -----------------------------Name of Employees-------------------------------- */}
                 <Form.Item className="ant-col" label="nam">
                   {getFieldDecorator("name", {
                     rules: [{ required: true, message: "Enter The Name" }]
                   })(<Input placeholder="nam" />)}
                 </Form.Item>
               </Col>
+            </Row>
 
-              {/* ------------------------------phone No--------------------------------- */}
-              <Col span={4}>
+            <Row gutter={[16, 16]}>
+              <Col span={8}>
+                {/* ------------------------------phone No--------------------------------- */}
                 <Form.Item label="moba[l n>.">
                   {getFieldDecorator("mno", {
                     rules: [
@@ -106,9 +111,8 @@ class Index extends Component {
                   )}
                 </Form.Item>
               </Col>
-
-              {/* -----------------------------Address of Employees-------------------------------- */}
-              <Col className="gutter-row" span={6}>
+              <Col span={16}>
+                {/* -----------------------------Address of Employees-------------------------------- */}
                 <Form.Item className="ant-col" label="srnamu">
                   {getFieldDecorator("address", {
                     rules: [{ required: true, message: "Enter The Address!" }]
@@ -116,16 +120,18 @@ class Index extends Component {
                 </Form.Item>
               </Col>
             </Row>
+            
             {/* -------------------------------Upload Button--------------------------------------- */}
             <Row>
-              <Form.Item label="AploD DoKyumeN3s:" extra="Upload Documents">
+              <Form.Item label="AploD DoKyumeN3s:" extra="">
                 <Upload {...props2}>
-                  <Button>
+                  <Button type="primary">
                     <Icon type="file-add" /> AploD
                   </Button>
                 </Upload>
               </Form.Item>
             </Row>
+
             <div className="m-btn-gru">
               {/* ----------------------------Cancel Button------------------------------- */}
               <Form.Item>
@@ -141,6 +147,7 @@ class Index extends Component {
               </Form.Item>
             </div>
           </Form>
+          </div>
         </Modal>
       </div>
     );

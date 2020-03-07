@@ -65,4 +65,41 @@ button{
   margin-bottom: 30px !important;
   margin-left: 125px !important;
 }
-
+.otp-input-number{
+  margin-left: 20px !important;
+  display: block !important;
+}
+.otp-verification-page{
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-left: 2px !important;
+  margin-right: 1px !important;
+}
+.resend-otp-not-click{
+  justify-content: center;
+}
+.otp-verification-page,.resend-otp-not-click{
+  text-align: center;
+  display: grid;
+  margin-top: 10px;
+  
+  h1{
+    background: black;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  .otp-page-description{
+    p{
+      font-weight: bolder;
+    }
+  }
+  .otp-button-width{
+    button{
+      margin-top: 20px !important;
+      margin-bottom: 20px !important;
+    }
+  }
+}

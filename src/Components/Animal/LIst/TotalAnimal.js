@@ -17,92 +17,109 @@ const { RangePicker } = DatePicker;
 const columns = [
   {
     title: "k/m",
-    dataIndex: "id",
-    key: "name",
+    dataIndex: "indexno",
+    key: "1",
+    className: "table-font-english td-total-animal-table",
     render: text => <p>{text}</p>
   },
   {
-    title: "Date",
+    title: "tarIq",
     dataIndex: "date",
-    key: "date"
-    // render: text => <p>{text}</p>
+    key: "2",
+    width: 120,
+    className: "table-font-english td-total-animal-table"
   },
   {
-    title: "PAshu ni aavak",
+    title: "pxu nI Aavk",
     dataIndex: "income",
-    key: "income"
+    key: "income",
+    className: "table-font-english td-total-animal-table"
     // render: text => <p>{text}</p>
   },
   {
-    title: "Pashu ni javak",
+    title: "pxu nI =vk",
     dataIndex: "debit",
     key: "debit",
-    render: text => <p>{text}</p>
+    render: text => <p>{text}</p>,
+    className: "table-font-english td-total-animal-table"
   },
   {
-    title: "Mrutyu",
+    title: "pxu nu muTyu",
     dataIndex: "dead",
-    key: "dead"
+    key: "dead",
+    className: "table-font-english td-total-animal-table"
   },
   {
-    title: "Baki na pashuo",
+    title: "bakI na pxu",
     children: [
       {
-        title: "Nana",
+        title: "nana",
         dataIndex: "nana",
         key: "nana",
-        render: text => <p>{text}</p>
+        render: text => <p>{text}</p>,
+        className: "table-font-english td-total-animal-table"
       },
       {
-        title: "Mota",
+        title: "mo3a",
         dataIndex: "mota",
-        key: "mota"
+        key: "mota",
+        className: "table-font-english td-total-animal-table"
       },
       {
-        title: "Total",
+        title: "3O3l",
         dataIndex: "total",
-        key: "total"
+        key: "total",
+        className: "table-font-english td-total-animal-table"
       }
     ]
-  },
-
-  {
-    title: "Action",
-    key: "action",
-    render: (text, record) => (
-      <span style={{ display: "flex" }}>
-        <p>Edit</p>
-        <Divider type="vertical" />
-        <p>Delete</p>
-      </span>
-    )
   }
+
+  // {
+  //   title: "AeDI3 - DIlI3",
+  //   key: "action",
+  //   render: (text, record) => (
+  //     <span style={{ display: "flex" }}>
+  //       <p>Edit</p>
+  //       <Divider type="vertical" />
+  //       <p>Delete</p>
+  //     </span>
+  //   )
+  // }
 ];
 
 const data = [
   {
     key: "1",
-    name: "John Brown",
-    id: 32,
-    type: "New York No. 1 Lake Park",
-    mobile: 85848596,
-    address: "New York No. 1 Lake Park"
+    indexno: 1,
+    date: "20/02/2020",
+    income: 5,
+    debit: 1,
+    dead: 2,
+    nana: 100,
+    mota: 150,
+    total: 250
   },
   {
     key: "2",
-    name: "Jim Green",
-    id: 42,
-    type: "London No. 1 Lake Park",
-    mobile: 85848596,
-    address: "London No. 1 Lake Park"
+    indexno: 1,
+    date: "20/02/2020",
+    income: 5,
+    debit: 1,
+    dead: 2,
+    nana: 100,
+    mota: 150,
+    total: 250
   },
   {
     key: "3",
-    name: "Joe Black",
-    id: 32,
-    type: "Sidney No. 1 Lake Park",
-    mobile: 85848596,
-    address: "Sidney No. 1 Lake Park"
+    indexno: 1,
+    date: "20/02/2020",
+    income: 5,
+    debit: 1,
+    dead: 2,
+    nana: 100,
+    mota: 150,
+    total: 250
   }
 ];
 
@@ -122,18 +139,28 @@ class TotalAnimal extends Component {
 
     return (
       <div>
-        <Button onClick={this.handelback} type="primary">
-          Back
-        </Button>
-        <h1>Aavel pxuAO nu r+S3r</h1>
-
+         <Row className="main-header-row" gutter={[16, 16]}>
+          <Col className="main-div-button-slim" span={1}>
+            <Button
+              icon="left"
+              onClick={this.handelback}
+              type="primary"
+              size="default"
+            ></Button>
+          </Col>
+          <Col span={23} style={{ textAlign: "center" }}>
+            <h1>Kul pxuAO nu r+S3r</h1>
+          </Col>
+        </Row>
+        
         <div className="filter-icon">
           <Icon type="filter" theme="filled" />
           <h3>rIpo3 fIL3r</h3>
         </div>
         <Form>
-          <Row>
-            <Col span={6}>
+          
+          <Row gutter={[16, 16]}>
+            <Col span={12}>
               <Form.Item label="tarIq ps>d kro">
                 <RangePicker
                   className="english-font-input"
@@ -148,7 +175,7 @@ class TotalAnimal extends Component {
                 />
               </Form.Item>
             </Col>
-            <Col span={6}>
+            <Col span={12}>
               <div className="m-btn-gru">
                 {/* ------------------------------Generat Button--------------------------------- */}
                 <Form.Item>
@@ -177,8 +204,9 @@ class TotalAnimal extends Component {
             </Col>
           </Row>
         </Form>
-
+        <div className="table">
         <Table columns={columns} dataSource={data} bordered />
+        </div>
       </div>
     );
   }

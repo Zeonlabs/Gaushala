@@ -1,0 +1,80 @@
+.button-margin-bottum {
+  margin-bottom: 25px;
+}
+// ----------------card css----------
+.card-note {
+  .ant-card-bordered {
+    border: 1px solid #000000;
+    border-radius: 5px;
+  }
+  .ant-card-cover {
+    background-color: black;
+    h1 {
+      text-align: center;
+      color: white;
+      font-size: 26px;
+      padding: 5px;
+      margin: 0 !important;
+    }
+  }
+  .ant-card-body {
+    height: 125px;
+    overflow: hidden;
+    white-space: pre-wrap;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bolder;
+    color: black;
+    word-break: normal;
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-bottom: 0.8px solid black;
+    border-radius: 0px !important;
+  }
+  ul {
+    height: 50px;
+    li:first-child {
+      border: 1px solid black;
+      border-right: none;
+      border-bottom-left-radius: 5px;
+      border-left: none;
+      border-top: none;
+    }
+    li:first-child:hover {
+      background-color: #3ad944;
+      span:hover {
+        i:hover {
+          color: white !important;
+        }
+      }
+    }
+    li:last-child {
+      border: 1px solid black;
+      border-right: none;
+      border-bottom-right-radius: 5px;
+      border-left: none;
+      border-top: none;
+    }
+    li:last-child:hover {
+      background-color: rgb(255, 4, 0);
+      span:hover {
+        i:hover {
+          color: white !important;
+        }
+      }
+    }
+    li {
+      margin: 0;
+      height: 50px !important;
+
+      span {
+        i {
+          font-size: 22px !important;
+          line-height: 22px;
+          padding: 14px;
+        }
+      }
+    }
+  }
+}

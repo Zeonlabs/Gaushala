@@ -1,28 +1,32 @@
 import React, { Component } from "react";
-import { Table, Divider, Tag } from "antd";
+import { Table, Divider, Tag,Icon } from "antd";
 
 const columns = [
   {
     title: "k/m",
-    dataIndex: "id",
-    key: "name",
-    render: text => <p>{text}</p>
+    dataIndex: "indexno",
+    key: "1",
+    render: text => <p>{text}</p>,
+    className: "table-font-english"
   },
   {
     title: "hod\o",
     dataIndex: "position",
-    key: "name",
-    render: text => <p>{text}</p>
+    key: "2",
+    render: text => <p>{text}</p>,
+    className: "table-font-gujarati"
   },
   {
     title: "nam",
     dataIndex: "name",
-    key: "age"
+    key: "3",
+    className: "table-font-gujarati"
   },
   {
     title: "moba[l n>.",
     dataIndex: "mobile",
-    key: "address"
+    key: "4",
+    className: "table-font-english"
   },
   // {
   //   title: "srnamu",
@@ -58,11 +62,18 @@ const columns = [
     title: "Action",
     key: "action",
     render: (text, record) => (
-      <span style={{ display: "flex" }}>
-        <p>Edit</p>
+      <div className="icon-group-table">
+        <Icon type="edit" theme="filled" style={{ color: "#3AD944" }} />
+
         <Divider type="vertical" />
-        <p>Delete</p>
-      </span>
+        <Divider type="vertical" />
+
+        <Icon
+          type="delete"
+          theme="filled"
+          style={{ color: "rgba(255, 0, 0)" }}
+        />
+      </div>
     )
   }
 ];
@@ -70,27 +81,25 @@ const columns = [
 const data = [
   {
     key: "1",
-    name: "John Brown",
-    id: 32,
-    position: "New York No. 1 Lake Park",
+    name: "gOiv>dwa[ qIm+wa[ savlIya",
+    indexno: 1,
+    position: "પ્રમુખ શ્રી",
     mobile: 85848596,
-    address: "New York No. 1 Lake Park",
   },
   {
     key: "2",
-    name: "Jim Green",
-    id: 42,
-    position: "London No. 1 Lake Park",
+    name: "gOiv>dwa[ qIm+wa[ savlIya",
+    indexno: 2,
+    position: "પ્રમુખ શ્રી",
     mobile: 85848596,
-    address: "London No. 1 Lake Park",
+    
   },
   {
     key: "3",
-    name: "Joe Black",
-    id: 32,
-    position: "Sidney No. 1 Lake Park",
+    name: "gOiv>dwa[ qIm+wa[ savlIya",
+    indexno: 3,
+    position: "ખજાનચી શ્રી",
     mobile: 85848596,
-    address: "Sidney No. 1 Lake Park",
   }
 ];
 

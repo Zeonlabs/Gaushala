@@ -1,0 +1,34 @@
+.ant-drawer-body{
+    padding: 0 !important;
+
+    
+}
+.anticon ,.anticon-close{
+    
+}
+.ant-drawer-close {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    z-index: 10;
+    display: block;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 56px;
+    text-align: center;
+    text-transform: none;
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+    text-rendering: auto;
+    
+}

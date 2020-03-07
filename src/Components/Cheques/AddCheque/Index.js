@@ -48,7 +48,7 @@ class Index extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <div>
+      <div className="income-model-wrapper">
         <Modal
           centered
           maskClosable={false}
@@ -57,91 +57,23 @@ class Index extends Component {
           // onOk={this.handelData}
           onCancel={this.handleReset}
         >
+          <Row>
+            <h1 className="form-titel">p/IN3 cek</h1>
+          </Row>
+
           <Form className="form-income" onSubmit={this.handleSubmit}>
-            <Row
-              type="flex"
-              justify="space-between"
-              className="member-form-wrapper"
-            >
-              {/* ------------------------------Post type--------------------------------- */}
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col span={8}>
+                {/* ------------------------------Date of Cheque--------------------------------- */}
+
                 <Form.Item className="date-input" label="tarIq" hasFeedback>
                   {getFieldDecorator("date", {
                     rules: [{ required: true }]
                   })(<DatePicker className="english-font-input" />)}
                 </Form.Item>
               </Col>
-
-              {/* -----------------------------Name of Employees-------------------------------- */}
-              <Col className="gutter-row" span={12}>
-                <Form.Item className="cheque-no" label="cek n>.">
-                  {getFieldDecorator("chequeno", {
-                    rules: [{ required: true }]
-                  })(
-                    <Input
-                      type="number"
-                      className="english-font-input"
-                      style={{ width: "100%" }}
-                      placeholder="000000"
-                    />
-                  )}
-                </Form.Item>
-              </Col>
-
-              {/* ------------------------------phone No--------------------------------- */}
-              <Col span={12}>
-                <Form.Item
-                  className="ant-col"
-                  label="nam &#34; cek SvIkarnar nu nam &#34; :"
-                >
-                  {getFieldDecorator("name", {
-                    rules: [{ required: true }]
-                  })(<Input placeholder="data 7I nam" />)}
-                </Form.Item>
-              </Col>
-
-              <Col className="gutter-row" span={6}>
-                <Form.Item className="ant-col" label="moba[l n>.">
-                  {getFieldDecorator("mobileno", {
-                    rules: [{ required: true }]
-                  })(
-                    <Input
-                      type="number"
-                      className="english-font-input"
-                      placeholder="0000000000"
-                    />
-                  )}
-                </Form.Item>
-              </Col>
-              <Col className="gutter-row" span={6}>
-                <Form.Item className="ant-col" label="rkm">
-                  {getFieldDecorator("amount", {
-                    rules: [{ required: true }]
-                  })(
-                    <Input
-                      type="number"
-                      onChange={this.handelNumber}
-                      className="english-font-input"
-                      placeholder="₹000000"
-                    />
-                  )}
-                </Form.Item>
-              </Col>
-              <Col className="gutter-row" span={14}>
-                <Form.Item className="ant-col" label="rkm">
-                  {getFieldDecorator("amountword", {
-                    initialValue: converter.toWords(this.state.number || 0),
-                    rules: [{ required: true }]
-                  })(
-                    <Input
-                      disabled
-                      className="english-font-input"
-                      placeholder="Five thousand Rupees Only/-"
-                    />
-                  )}
-                </Form.Item>
-              </Col>
-              <Col className="gutter-row" span={10}>
+              <Col span={8}>
+                {/* --------------------------Bank Name---------------------------------- */}
                 <Form.Item className="" label="be>Nk nam">
                   {getFieldDecorator("bankname", {
                     rules: [{ required: true }]
@@ -162,27 +94,88 @@ class Index extends Component {
                   )}
                 </Form.Item>
               </Col>
-              {/*         </Row>
-            <Row>
-              <Form.Item label="AploD DoKyumeN3s:" extra="Upload Documents">
-                {getFieldDecorator("upload", {
-                  valuePropName: "fileList",
-                  getValueFromEvent: this.normFile,
-                  rules: [{ required: true}]
-                })(
-                  <Upload {...props2}>
-                    <Button>
-                      <Icon type="file-add" /> AploD
-                    </Button>
-                  </Upload>
-                )}
-                </Form.Item> */}
+              <Col span={8}>
+                {/* --------------------------Cheque No.---------------------------------- */}
+                <Form.Item className="cheque-no" label="cek n>.">
+                  {getFieldDecorator("chequeno", {
+                    rules: [{ required: true }]
+                  })(
+                    <Input
+                      type="number"
+                      className="english-font-input"
+                      style={{ width: "100%" }}
+                      placeholder="000000"
+                    />
+                  )}
+                </Form.Item>
+              </Col>
             </Row>
+
+            <Row gutter={[16, 16]}>
+              <Col span={16}>
+                {/* ----------------------------No cheque Name----------------------------------- */}
+                <Form.Item
+                  className="ant-col"
+                  label="nam &#34; cek SvIkarnar nu nam &#34; :"
+                >
+                  {getFieldDecorator("name", {
+                    rules: [{ required: true }]
+                  })(<Input placeholder="cek SvIkarnar nu nam" />)}
+                </Form.Item>
+              </Col>
+              <Col span={8}>
+                {/* ------------------------------phone No--------------------------------- */}
+                <Form.Item className="ant-col" label="moba[l n>.">
+                  {getFieldDecorator("mobileno", {
+                    rules: [{ required: true }]
+                  })(
+                    <Input
+                      type="number"
+                      className="english-font-input"
+                      placeholder="0000000000"
+                    />
+                  )}
+                </Form.Item>
+              </Col>
+            </Row>
+            <Row gutter={[16, 16]}>
+              <Col span={8}>
+                {/* ----------------------------Amount in Digit----------------------------------- */}
+                <Form.Item className="ant-col" label="rkm">
+                  {getFieldDecorator("amount", {
+                    rules: [{ required: true }]
+                  })(
+                    <Input
+                      type="number"
+                      onChange={this.handelNumber}
+                      className="english-font-input"
+                      placeholder="₹000000"
+                    />
+                  )}
+                </Form.Item>
+              </Col>
+              <Col span={16}>
+                {/* ------------------------------Amount in Words--------------------------------- */}
+                <Form.Item className="ant-col" label="rkm">
+                  {getFieldDecorator("amountword", {
+                    initialValue: converter.toWords(this.state.number || 0),
+                    rules: [{ required: true }]
+                  })(
+                    <Input
+                      disabled
+                      className="english-font-input"
+                      placeholder="Five thousand Rupees Only/-"
+                    />
+                  )}
+                </Form.Item>
+              </Col>
+            </Row>
+            
             <div className="m-btn-gru">
               {/* ----------------------------Cancel Button------------------------------- */}
               <Form.Item>
                 <Button size="default" onClick={this.handleReset}>
-                  rd kro
+                  rd
                 </Button>
               </Form.Item>
               {/* ------------------------------Save Button--------------------------------- */}

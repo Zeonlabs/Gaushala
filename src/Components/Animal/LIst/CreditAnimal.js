@@ -1,83 +1,103 @@
 import React, { Component } from "react";
 import { Form, DatePicker, Icon, Button, Row, Col, Table, Divider } from "antd";
 import moment from "moment";
+import { ThunderboltOutlined } from "@ant-design/icons";
 
 const { RangePicker } = DatePicker;
 
 const columns = [
   {
     title: "k/m",
-    dataIndex: "id",
-    key: "name",
+    dataIndex: "indexno",
+    key: "1",
+
+    className: "table-font-english",
     render: text => <p>{text}</p>
   },
   {
-    title: "Date",
+    title: "tarIq",
     dataIndex: "date",
-    key: "date"
-    // render: text => <p>{text}</p>
+    key: "2",
+    width: 120,
+    className: "table-font-english"
   },
   {
-    title: "pashuo",
+    title: "pxuAO",
     children: [
       {
-        title: "Gay",
+        title: "gay",
         dataIndex: "gay",
         key: "gay",
+        className: "table-font-english",
         render: text => <p>{text}</p>
       },
       {
-        title: "balad",
+        title: "b5d",
         dataIndex: "balad",
-        key: "balad"
+        key: "balad",
+        className: "table-font-english"
       },
       {
-        title: "Vacharda",
+        title: "va0rDa",
         dataIndex: "vacharda",
-        key: "vacharda"
+        key: "vacharda",
+        className: "table-font-english"
       },
       {
-        title: "Vachardi",
+        title: "va0rDI",
         dataIndex: "vachardi",
-        key: "vachardi"
+        key: "vachardi",
+        className: "table-font-english"
       },
       {
-        title: "Anny",
+        title: "ANy",
         dataIndex: "anny",
-        key: "anny"
+        key: "anny",
+        className: "table-font-english"
       },
       {
-        title: "Total",
+        title: "3o3l",
         dataIndex: "total",
-        key: "total"
+        key: "total",
+        className: "table-font-english"
       }
     ]
   },
   {
-    title: "Pashu muknar nu name",
+    title: "pxu muknar nu nam",
     dataIndex: "name",
     key: "name",
+    className: "table-font-gujarati",
     render: text => <p>{text}</p>
   },
   {
-    title: "Sarnamu",
+    title: "srnamu",
     dataIndex: "address",
-    key: "address"
+    key: "address",
+    className: "table-font-gujarati"
   },
   {
     title: "moba[l n>.",
     dataIndex: "mobile",
-    key: "mono"
+    key: "mono",
+    className: "table-font-english"
   },
   {
-    title: "Action",
+    title: "AeDI3 - DIlI3",
     key: "action",
     render: (text, record) => (
-      <span style={{ display: "flex" }}>
-        <p>Edit</p>
+      <div className="icon-group-table">
+        <Icon type="edit" theme="filled" style={{ color: "#3AD944" }} />
+
         <Divider type="vertical" />
-        <p>Delete</p>
-      </span>
+        <Divider type="vertical" />
+
+        <Icon
+          type="delete"
+          theme="filled"
+          style={{ color: "rgba(255, 0, 0)" }}
+        />
+      </div>
     )
   }
 ];
@@ -85,27 +105,45 @@ const columns = [
 const data = [
   {
     key: "1",
-    name: "John Brown",
-    id: 32,
-    type: "New York No. 1 Lake Park",
+    indexno: 1,
+    date: "20/02/2020",
+    gay: 2,
+    balad: 2,
+    vacharda: 2,
+    vachardi: 2,
+    ANy: 0,
+    total: 8,
+    name: "wO5awa[ nrxIwa[ savlIya",
     mobile: 85848596,
-    address: "New York No. 1 Lake Park"
+    address: "ivrDI"
   },
   {
     key: "2",
-    name: "Jim Green",
-    id: 42,
-    type: "London No. 1 Lake Park",
+    indexno: 1,
+    date: "20/02/2020",
+    gay: 2,
+    balad: 2,
+    vacharda: 2,
+    vachardi: 2,
+    ANy: 0,
+    total: 8,
+    name: "wO5awa[ nrxIwa[ savlIya",
     mobile: 85848596,
-    address: "London No. 1 Lake Park"
+    address: "ivrDI"
   },
   {
     key: "3",
-    name: "Joe Black",
-    id: 32,
-    type: "Sidney No. 1 Lake Park",
+    indexno: 1,
+    date: "20/02/2020",
+    gay: 2,
+    balad: 2,
+    vacharda: 2,
+    vachardi: 2,
+    ANy: 0,
+    total: 8,
+    name: "wO5awa[ nrxIwa[ savlIya",
     mobile: 85848596,
-    address: "Sidney No. 1 Lake Park"
+    address: "ivrDI"
   }
 ];
 
@@ -130,17 +168,27 @@ class CreditAnimal extends Component {
 
     return (
       <div>
-        <Button onClick={this.handelback} type="primary">
-          Back
-        </Button>
-        <h1>Aavel pxuAO nu r+S3r</h1>
+        <Row className="main-header-row" gutter={[16, 16]}>
+          <Col className="main-div-button-slim" span={1}>
+            <Button
+              icon="left"
+              onClick={this.handelback}
+              type="primary"
+              size="default"
+            ></Button>
+          </Col>
+          <Col span={23} style={{ textAlign: "center" }}>
+            <h1>Aavel pxuAO nu r+S3r</h1>
+          </Col>
+        </Row>
+
         <div className="filter-icon">
           <Icon type="filter" theme="filled" />
           <h3>rIpo3 fIL3r</h3>
         </div>
         <Form>
-          <Row>
-            <Col span={6}>
+          <Row gutter={[16, 16]}>
+            <Col span={12}>
               <Form.Item label="tarIq ps>d kro">
                 <RangePicker
                   className="english-font-input"
@@ -155,7 +203,7 @@ class CreditAnimal extends Component {
                 />
               </Form.Item>
             </Col>
-            <Col span={6}>
+            <Col span={12}>
               <div className="m-btn-gru">
                 {/* ------------------------------Generat Button--------------------------------- */}
                 <Form.Item>
@@ -185,7 +233,9 @@ class CreditAnimal extends Component {
           </Row>
         </Form>
 
-        <Table columns={columns} dataSource={data} bordered />
+        <div className="table">
+          <Table columns={columns} dataSource={data} bordered />
+        </div>
       </div>
     );
   }

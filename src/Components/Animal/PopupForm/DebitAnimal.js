@@ -7,7 +7,9 @@ import {
   Select,
   Radio,
   Button,
-  InputNumber
+  InputNumber,
+  Row,
+  Col
 } from "antd";
 import "../../Common/Forms/IncomeModels.styles.scss";
 import moment from "moment";
@@ -22,9 +24,7 @@ const { Option } = Select;
 class DebitAnimal extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-     
-    };
+    this.state = {};
   }
 
   componentDidMount = () => {
@@ -286,94 +286,99 @@ class DebitAnimal extends Component {
           onOk={this.props.toggleModel}
           onCancel={this.handleReset}
         >
-          <h2 style={{ paddingBottom: 10,fontWeight:"bolder" }}>Aapel pxuAO nu r+S3r</h2>
+          <h2 className="form-titel">Aapel pxuAO nu r+S3r</h2>
+
           <Form className="form-income" onSubmit={this.handleSubmit}>
-            <div className="row">
-             
-              {/* ------------------------------Date--------------------------------- */}
-              <Form.Item className="date-input" label="tarIq">
-                {getFieldDecorator("date", {
-                  rules: [{ required: true, message: "Enter The Date!" }]
-                })(<DatePicker className="english-font-input" />)}
-              </Form.Item>
-            </div>
+            <Row>
+                {/* ------------------------------Date--------------------------------- */}
+                <Form.Item className="date-input" label="tarIq">
+                  {getFieldDecorator("date", {
+                    rules: [{ required: true, message: "Enter The Date!" }]
+                  })(<DatePicker className="english-font-input" />)}
+                </Form.Item>
+            </Row>
 
-            <div className="row">
-              {/* ------------------------------Animal Taker Name-------------------------------- */}
-              <Form.Item
-                className="ant-col ant-col-14"
-                label="pxu lenar nu namu"
-              >
-                {getFieldDecorator("name", {
-                  rules: [{ required: true }]
-                })(<Input placeholder="data 7I nam" />)}
-              </Form.Item>
-              {/* ------------------------------phone No--------------------------------- */}
-              <Form.Item className="ant-col-10" label="moba[l n>.">
-                {getFieldDecorator("phone", {
-                  rules: [{ required: true, len: 10 }]
-                })(
-                  <NumericInput
-                    value={this.state.value}
-                    onChange={this.onChange}
-                  />
-                )}
-              </Form.Item>
-            </div>
-            
-            <div className="row">
-              {/* ------------------------------Address--------------------------------- */}
-              <Form.Item className="ant-col-18" label="srnamu">
-                {getFieldDecorator("address", {
-                  rules: [{ required: true }]
-                })(
-                  <Input
-                    style={{
-                      width: "100%"
-                    }}
-                    placeholder="srnamu, gam nu nam"
-                  />
-                )}
-              </Form.Item>
-              {/* ------------------------------Teg No.--------------------------------- */}
-              <Form.Item className="ant-col-6" label="3eg n>.">
-                {getFieldDecorator("tagNum", {
-                  rules: [{ required: true, len: 10 }]
-                })(
-                  <NumericInput
-                    value={this.state.value}
-                    onChange={this.onChange}
-                  />
-                )}
-              </Form.Item>
-            </div>
-            
+            <Row gutter={[16, 16]}>
+              <Col span={12}>
+                {/* ------------------------------Teg No.--------------------------------- */}
+                <Form.Item className="" label="3eg n>.">
+                  {getFieldDecorator("tagNum", {
+                    rules: [{ required: true, len: 10 }]
+                  })(
+                    <NumericInput
+                      value={this.state.value}
+                      onChange={this.onChange}
+                    />
+                  )}
+                </Form.Item>
+              </Col>
+
+              <Col span={12}>
+                {/* ------------------------------Animal Taker Name-------------------------------- */}
+                <Form.Item className="" label="pxu lenar nu namu">
+                  {getFieldDecorator("name", {
+                    rules: [{ required: true }]
+                  })(<Input placeholder="data 7I nam" />)}
+                </Form.Item>
+              </Col>
+            </Row>
+
+            <Row gutter={[16, 16]}>
+              <Col span={12}>
+                {/* ------------------------------phone No--------------------------------- */}
+                <Form.Item className="" label="moba[l n>.">
+                  {getFieldDecorator("phone", {
+                    rules: [{ required: true, len: 10 }]
+                  })(
+                    <NumericInput
+                      value={this.state.value}
+                      onChange={this.onChange}
+                    />
+                  )}
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                {/* ------------------------------Address--------------------------------- */}
+                <Form.Item className="" label="srnamu">
+                  {getFieldDecorator("address", {
+                    rules: [{ required: true }]
+                  })(
+                    <Input
+                      placeholder="srnamu, gam nu nam"
+                    />
+                  )}
+                </Form.Item>
+              </Col>
+            </Row>
+
             {/* ------------------------------Table--------------------------------- */}
-           <div>
-           <Index/>
-           </div>
+            <div>
+              <Index />
+            </div>
 
-
-           
             <div className="m-btn-gru">
               {/* ----------------------------Cancel Button------------------------------- */}
               <Form.Item>
                 <Button size="default" onClick={this.handleReset}>
-                  rd kro
+                  rd
                 </Button>
               </Form.Item>
               {/* ------------------------------Save Button--------------------------------- */}
               <Form.Item>
-                <Button size="default" type="primary" htmlType="submit">
-                  sev kro
+                <Button
+                  icon="save"
+                  size="default"
+                  type="primary"
+                  htmlType="submit"
+                >
+                  sev
                 </Button>
               </Form.Item>
-              
             </div>
           </Form>
         </Modal>
       </div>
-       );
+    );
   }
 }
 const DebitAnimals = Form.create({ name: "Income" })(DebitAnimal);

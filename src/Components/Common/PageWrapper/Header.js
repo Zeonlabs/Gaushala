@@ -24,7 +24,7 @@ const Header = ({ toggleSider, collapsed, header, title }) => {
   // }));
 
   return (
-    <Layout.Header style={{ background: "#fff", padding: 0, height: "70px" }}>
+    <Layout.Header style={{ background: "#fff", padding: 0, height: "80px" }}>
       <div className="Header-div" style={{ padding: "5px 20px" }}>
         <Icon
           className="trigger"
@@ -33,7 +33,7 @@ const Header = ({ toggleSider, collapsed, header, title }) => {
           color="#000000"
         />
         <div>
-          <h1>{title}</h1>
+        <h1 className="header-title">{title}</h1>
         </div>
         {/* {header ? (
           <div>
@@ -45,7 +45,7 @@ const Header = ({ toggleSider, collapsed, header, title }) => {
         ) : (
           ""
         )} */}
-        <div className="">
+        <div className="button-group-icome-expenses">
           {/*----------------------------------------------------------------
           -----------------------Income Button-------------------------------
           -------------------------------------------------------------------  */}

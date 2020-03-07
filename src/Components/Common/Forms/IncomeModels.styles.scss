@@ -1,102 +1,86 @@
 $border: 1px solid #999999;
 
-div{
-  .ant-form-explain{
+div {
+  .ant-form-explain {
     display: none;
   }
- 
-  ul,li{
-    font-family: 'gujrati_saral-1normal' !important;
+
+  ul,
+  li {
+    font-family: "gujrati_saral-1normal" !important;
   }
-  .english-font-input,#Income_date{
+  .english-font-input,
+  #Income_date {
     font-family: Arial, Helvetica, sans-serif !important;
   }
-  .row{
-    margin-top: 5px;
-    .date-input{
-      margin-top: -2px !important;
-    }
-    label{
-      padding-left: 2px;
-      span{
-        font-size: 15px !important;
-      }
-    }
-    .in-icon-arrow,i{
-      font-size: 14px !important;
-    }
-  }
 }
-span{
+span {
   font-size: 20px !important;
 }
 
 .ant-modal {
   width: 60% !important;
   margin-bottom: 0px !important;
-  font-family: 'gujrati_saral-1normal';
-  font-weight: 800;
-
-  
+  font-family: "gujrati_saral-1normal";
 }
 .ant-modal-body {
-    padding-top: 14px !important;
-  }
+  padding-top: 14px !important;
+}
 
 .form-income {
+  padding: 24px;
   .ant-form-item {
     margin-bottom: 0px;
   }
- 
-  .row {
-    display: flex !important;
 
-    .cheque-no {
-      margin-left: 30px;
-    }
-    table {
-        width: 100%;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        border-collapse: collapse;
-        border: $border;
-        border-radius: 4px;
-        
-        
-        
-        input{
-            height: 25px !important;
-        }
-        
-        .table-header{
-            border: $border;
-            font-weight: 700;
-            
-        }
-        th{
-            border: $border;
-            padding-left: 10px;
-        }
-        td {
-            border-left: $border; 
-            justify-content: space-around;
-            outline: none;
-            box-shadow: none !important;
-            padding-left: 10px;
+  // .row {
+  //   display: flex !important;
 
-            :focus{
-            outline: none;
-            box-shadow: none !important;
-            }
+  //   .cheque-no {
+  //     margin-left: 30px;
+  //   }
+  //   table {
+  //       width: 100%;
+  //       margin-top: 5px;
+  //       margin-bottom: 5px;
+  //       border-collapse: collapse;
+  //       border: $border;
+  //       border-radius: 4px;
 
-            input{
-                border: none !important;
-                padding: 0 !important;
-            }
-          }
-      }
-      
-  }
+  //       input{
+  //           height: 25px !important;
+  //       }
+
+  //       .table-header{
+  //           border: $border;
+  //           font-weight: 700;
+
+  //       }
+  //       th{
+  //           border: $border;
+  //           padding-left: 10px;
+  //       }
+  //       td {
+  //           border-left: $border;
+  //           justify-content: space-around;
+  //           outline: none;
+  //           box-shadow: none !important;
+  //           padding-left: 10px;
+
+  //           :focus{
+  //           outline: none;
+  //           box-shadow: none !important;
+  //           }
+
+  //           input{
+  //               border: none !important;
+  //               padding: 0 !important;
+  //           }
+  //         }
+  //     }
+
+  // }
+
   .ant-form-item-label {
     line-height: 20px;
   }
@@ -105,15 +89,134 @@ span{
   }
   .ant-form-item-control {
     line-height: 30px;
-}
+  }
 }
 
-.m-btn-gru{
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 25px;
-   
-    button{
-        margin-left: 10px;
-    }
+.m-btn-gru {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+
+  button {
+    margin-left: 10px;
+  }
+}
+
+.form-titel {
+  text-align: center;
+  font-size: 25px;
+  background: #000000;
+  color: white;
+  border-radius: 5px 5px 0 0;
+  padding: 12px 8px 12px 8px;
+  user-select: none;
+  margin: 0 !important;
+}
+
+.input-name-gujarati {
+  .ant-input {
+    font-weight: 600 !important;
+  }
+}
+  .ant-modal-body {
+    padding: 0 !important;
+    font-size: 14px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+/* ----------------------form-close-button--------------- */
+.ant-modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  padding: 0;
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+
+
+/* ---------------------form-input-text-------------- */
+.ant-input {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-variant: tabular-nums;
+  list-style: none;
+  -webkit-font-feature-settings: 'tnum';
+  font-feature-settings: 'tnum', "tnum";
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 32px;
+  padding: 4px 11px;
+  color: #000000;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #fff;
+  background-image: none;
+  border: 2px solid #cfcfcf;
+  border-radius: 4px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.ant-input-number {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-variant: tabular-nums;
+  list-style: none;
+  -webkit-font-feature-settings: 'tnum';
+  font-feature-settings: 'tnum', "tnum";
+  position: relative;
+  width: 100% !important;
+  height: 32px;
+  padding: 4px 11px;
+  color: #000000;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #fff;
+  background-image: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  display: inline-block;
+  width: 90px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid #d9d9d9;
+  border-radius: 4px;
+}
+.ant-select-selection {
+  display: block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 2px solid #d9d9d9;
+  border-top-width: 1.02px;
+  border-radius: 4px;
+  outline: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.ant-select-selection-selected-value{
+  padding-left: 2px;
+}
+.ant-input:placeholder-shown {
+  text-overflow: ellipsis;
+  font-size: 16px;
+  color: #3d3d3d;
 }

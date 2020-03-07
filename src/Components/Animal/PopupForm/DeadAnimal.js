@@ -288,7 +288,7 @@ class DeadAnimal extends Component {
           onOk={this.props.toggleModel}
           onCancel={this.handleReset}
         >
-          <h2 style={{ paddingBottom: 10,fontWeight:"bolder" }}>muTyu pamel pxuAO nu r+S3r</h2>
+          <h2 className="form-titel">muTyu pamel pxuAO nu r+S3r</h2>
           <Form className="form-income" onSubmit={this.handleSubmit}>
             <div className="row">
              
@@ -328,13 +328,13 @@ class DeadAnimal extends Component {
               {/* ----------------------------Cancel Button------------------------------- */}
               <Form.Item>
                 <Button size="default" onClick={this.handleReset}>
-                  rd kro
+                  rd
                 </Button>
               </Form.Item>
               {/* ------------------------------Save Button--------------------------------- */}
               <Form.Item>
-                <Button size="default" type="primary" htmlType="submit">
-                  sev kro
+                <Button icon="save" size="default" type="primary" htmlType="submit">
+                  sev
                 </Button>
               </Form.Item>
             </div>

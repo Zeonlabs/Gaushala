@@ -14,8 +14,6 @@ import {
   Tag,
   Button,
   Layout,
-  Menu,
-  Breadcrumb
 } from "antd";
 import OtpScreen from "./OtpScreen";
 
@@ -25,7 +23,6 @@ const { Header, Content, Footer, Sider } = Layout;
 export class SettingPage extends Component {
   constructor(props) {
     super(props);
-
     this.state = {};
   }
 
@@ -79,23 +76,59 @@ export class SettingPage extends Component {
 
     return (
       <PageWrapper title="sei3>g">
-        <Modal
-          title="pIn se3"
-          visible={visible}
-          onOk={this.handleOk}
-          confirmLoading={confirmLoading}
-          onCancel={this.handleCancel}
-          footer={null}
-        >
-          <h1>se3 pIn</h1>
-          <div>
-            <h3>Enter new pin</h3>
-            <Input />
-            <h3>Repete pin</h3>
-            <Input />
-          </div>
-          <OtpScreen />
-        </Modal>
+        <div>
+          <Modal
+            title="pIn se3"
+            visible={visible}
+            onOk={this.handleOk}
+            confirmLoading={confirmLoading}
+            onCancel={this.handleCancel}
+            footer={null}
+          >
+            <Row>
+              <h1 className="form-titel">p/IN3 cek</h1>
+            </Row>
+
+            <div className="form-income">
+              <h2 style={{ textAlign: "center", fontWeight: "bolder" }}>
+                nvo pIn n>br se3 kro
+              </h2>
+              <Row gutter={[16, 16]}>
+                <Col span={8}></Col>
+                <Col span={8}>
+                  <Form.Item label="nvo pIn n>br ]mero:">
+                    <Input />
+                  </Form.Item>
+                  <Form.Item label="frI pIn n>br ]mero:">
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col span={8}></Col>
+              </Row>
+
+              <Row gutter={[16, 16]}>
+                <Col span={8}></Col>
+                <Col span={8}></Col>
+                <Col span={8} style={{padding:0,}}>
+                  {/* ------------------------------Submit button--------------------------- */}
+                  <Form.Item>
+                    <Button
+                      size="default"
+                      htmlType="submit"
+                      icon="safety-certificate"
+                      type="primary"
+                      style={{ float:"right" }}
+                    >
+                      sbmI3
+                    </Button>
+                  </Form.Item>
+                </Col>
+              </Row>
+            </div>
+
+            <OtpScreen className="otp-verification-page" />
+          </Modal>
+        </div>
 
         <h1>sof3ver sei3>Ng</h1>
         <span className="warning">
@@ -109,8 +142,8 @@ export class SettingPage extends Component {
         <Row className="row-margin">
           {/* -----------------------------Name of Member-------------------------------- */}
           <Col className="gutter-row margin-left" span={6}>
-            <Form.Item className="ant-col" label="3\S3 nam">
-              <Input placeholder="nam" />
+            <Form.Item className="ant-col input-name-gujarati" label="3\S3 nam">
+              <Input  placeholder="nam" />
             </Form.Item>
           </Col>
 

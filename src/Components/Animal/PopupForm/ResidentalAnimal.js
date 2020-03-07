@@ -7,7 +7,10 @@ import {
   Select,
   Radio,
   Button,
-  InputNumber
+  InputNumber,
+  Row,
+  Col,
+  Tag
 } from "antd";
 import "../../Common/Forms/IncomeModels.styles.scss";
 import moment from "moment";
@@ -288,33 +291,25 @@ class ResicentalAnimal extends Component {
           onOk={this.props.toggleModel}
           onCancel={this.handleReset}
         >
-          <h1 style={{ paddingBottom: 10 }}>inwav qcR r+S3r</h1>
+          <h1 className="form-titel">inwav qcR r+S3r</h1>
           <Form className="form-income" onSubmit={this.handleSubmit}>
-            <div className="row">
-              {/* ------------------------------Date--------------------------------- */}
-              <Form.Item className="date-input" label="tarIq">
-                {getFieldDecorator("date", {
-                  rules: [{ required: true, message: "Enter The Date!" }]
-                })(<DatePicker className="english-font-input" />)}
-              </Form.Item>
+            <Row gutter={[16, 16]}>
+              <Col span={12}>
+                {/* ------------------------------Date--------------------------------- */}
+                <Form.Item className="date-input" label="tarIq">
+                  {getFieldDecorator("date", {
+                    rules: [{ required: true, message: "Enter The Date!" }]
+                  })(<DatePicker className="english-font-input" />)}
+                </Form.Item>
+              </Col>
+              <Col span={12} className="pin-set">
+                <label for="Income_date" class="ant-form-item-required" title="tarIq">kul pxuAO nI s>Qya:</label>
+                <Tag className="tag-clock english-font-input" color="#f50" style={{marginTop: '-2px',}}>
+                  450
+                </Tag>
+              </Col>
+            </Row>
 
-              {/* ------------------------------Total Animal Diplay only--------------------------------- */}
-
-              <Form.Item label="3o3l pxuAO nI sQ>ya">
-                {getFieldDecorator("slip_no", {
-                  rules: [{ required: true }]
-                })(
-                  <InputNumber
-                    disabled
-                    className="english-font-input"
-                    style={{ width: "100%" }}
-                    placeholder="10200"
-                    type="number"
-                    min="0"
-                  />
-                )}
-              </Form.Item>
-            </div>
 
             {/* ------------------------------Table--------------------------------- */}
             <div>
@@ -325,23 +320,18 @@ class ResicentalAnimal extends Component {
               {/* ----------------------------Cancel Button------------------------------- */}
               <Form.Item>
                 <Button size="default" onClick={this.handleReset}>
-                  rd kro
+                  rd
                 </Button>
               </Form.Item>
               {/* ------------------------------Save Button--------------------------------- */}
               <Form.Item>
-                <Button size="default" type="primary" htmlType="submit">
-                  sev kro
-                </Button>
-              </Form.Item>
-              {/* ----------------------------Save & Print button--------------------------- */}
-              <Form.Item>
                 <Button
+                  icon="save"
                   size="default"
+                  type="primary"
                   htmlType="submit"
-                  style={{ backgroundColor: "#505D6F", color: "#ffffff" }}
                 >
-                  sev &#38; ip/N3 kro
+                  sev
                 </Button>
               </Form.Item>
             </div>

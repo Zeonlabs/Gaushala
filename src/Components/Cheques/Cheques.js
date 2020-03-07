@@ -63,7 +63,9 @@ export class Cheques extends Component {
             Nyu cek ip/N3
           </Button>
         </div>
-        <ListingTable />
+        <div className="table">
+          <ListingTable />
+        </div>
       </PageWrapper>
     );
   }

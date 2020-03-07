@@ -59,98 +59,85 @@ class Index extends Component {
           // onOk={this.handelData}
           onCancel={this.handleReset}
         >
-          <Form className="form-income" onSubmit={this.handleSubmit}>
-            <Row
-              type="flex"
-              justify="space-between"
-              className="member-form-wrapper"
-            >
-              {/* ------------------------------Post type--------------------------------- */}
-              <Col span={12}>
-                <Form.Item className="" label="hod\o" hasFeedback>
-                  {getFieldDecorator("position", {
-                    rules: [{ required: true }]
-                  })(
-                    <Select
-                      className="in-icon-arrow"
-                      placeholder="hod\o ps>d kro"
-                    >
-                      <Option value="પ્રમુખ શ્રી">પ્રમુખ શ્રી</Option>
-                      <Option value="ઉપપ્રમુખ શ્રી">ઉપપ્રમુખ શ્રી</Option>
-                      <Option value="મંત્રી શ્રી">મંત્રી શ્રી </Option>
-                      <Option value="ખજાનચી">ખજાનચી શ્રી</Option>
-                      <Option value="સહમંત્રીશ્રી">સહમંત્રીશ્રી</Option>
-                      <Option value="ટ્રસ્ટી શ્રી">ટ્રસ્ટી શ્રી</Option>
-                      <Option value="સંગઠનમંત્રી શ્રી">સંગઠનમંત્રી શ્રી</Option>
-                    </Select>
-                  )}
-                </Form.Item>
-              </Col>
+          <div className="income-model-wrapper">
+            <h2 className="form-titel">sWy7I nI yadI ma ]mero</h2>
+            <Form className="form-income" onSubmit={this.handleSubmit}>
+              <Row gutter={[16, 16]}>
+                <Col span={8}>
 
-              {/* -----------------------------Name of Employees-------------------------------- */}
-              <Col className="gutter-row" span={12}>
-                <Form.Item className="ant-col" label="nam">
-                  {getFieldDecorator("name", {
-                    rules: [{ required: true, message: "Enter The Name" }]
-                  })(<Input placeholder="nam" />)}
-                </Form.Item>
-              </Col>
+                  {/* ------------------------------Post type--------------------------------- */}
+                  <Form.Item className="" label="hod\o" hasFeedback>
+                    {getFieldDecorator("position", {
+                      rules: [{ required: true }]
+                    })(
+                      <Select
+                        className="in-icon-arrow"
+                        placeholder="hod\o ps>d kro"
+                      >
+                        <Option value="પ્રમુખ શ્રી">પ્રમુખ શ્રી</Option>
+                        <Option value="ઉપપ્રમુખ શ્રી">ઉપપ્રમુખ શ્રી</Option>
+                        <Option value="મંત્રી શ્રી">મંત્રી શ્રી </Option>
+                        <Option value="ખજાનચી">ખજાનચી શ્રી</Option>
+                        <Option value="સહમંત્રીશ્રી">સહમંત્રીશ્રી</Option>
+                        <Option value="ટ્રસ્ટી શ્રી">ટ્રસ્ટી શ્રી</Option>
+                        <Option value="સંગઠનમંત્રી શ્રી">
+                          સંગઠનમંત્રી શ્રી
+                        </Option>
+                      </Select>
+                    )}
+                  </Form.Item>
+                </Col>
+                <Col span={16}>
+                  
+                  {/* -----------------------------Name of Employees-------------------------------- */}
+                  <Form.Item className="ant-col" label="nam">
+                    {getFieldDecorator("name", {
+                      rules: [{ required: true, message: "Enter The Name" }]
+                    })(<Input placeholder="nam" />)}
+                  </Form.Item>
+                </Col>
+              </Row>
 
-              {/* ------------------------------phone No--------------------------------- */}
-              <Col span={12}>
-                <Form.Item label="moba[l n>.">
-                  {getFieldDecorator("mno", {
-                    rules: [
-                      { required: true, message: "Enter The Mobile Number!" }
-                    ]
-                  })(
-                    <Input
-                      type="number"
-                      className="english-font-input"
-                      placeholder="+91 0000000000"
-                    />
-                  )}
+              <Row gutter={[16, 16]}>
+                <Col span={8}>
+                  {/* ------------------------------phone No--------------------------------- */}
+
+                  <Form.Item label="moba[l n>.">
+                    {getFieldDecorator("mno", {
+                      rules: [
+                        { required: true, message: "Enter The Mobile Number!" }
+                      ]
+                    })(
+                      <Input
+                        type="number"
+                        className="english-font-input"
+                        placeholder="+91 0000000000"
+                      />
+                    )}
+                  </Form.Item>
+                </Col>
+                <Col span={16} >
+                <div className="m-btn-gru">
+                {/* ----------------------------Cancel Button------------------------------- */}
+                <Form.Item>
+                  <Button size="default" onClick={this.handleReset}>
+                    rd kro
+                  </Button>
                 </Form.Item>
-              </Col>
-              {/* 
-              <Col className="gutter-row" span={6}>
-                <Form.Item className="ant-col" label="srnamu">
-                  {getFieldDecorator("address", {
-                    rules: [{ required: true, message: "Enter The Address!" }]
-                  })(<Input placeholder="srnamu" />)}
+                {/* ------------------------------Save Button--------------------------------- */}
+                <Form.Item>
+                  <Button size="default" type="primary" htmlType="submit">
+                    sev kro
+                  </Button>
                 </Form.Item>
-              </Col>
-            </Row>
-            <Row>
-              <Form.Item label="AploD DoKyumeN3s:" extra="Upload Documents">
-                {getFieldDecorator("upload", {
-                  valuePropName: "fileList",
-                  getValueFromEvent: this.normFile,
-                  rules: [{ required: true}]
-                })(
-                  <Upload {...props2}>
-                    <Button>
-                      <Icon type="file-add" /> AploD
-                    </Button>
-                  </Upload>
-                )}
-                </Form.Item> */}
-            </Row>
-            <div className="m-btn-gru">
-              {/* ----------------------------Cancel Button------------------------------- */}
-              <Form.Item>
-                <Button size="default" onClick={this.handleReset}>
-                  rd kro
-                </Button>
-              </Form.Item>
-              {/* ------------------------------Save Button--------------------------------- */}
-              <Form.Item>
-                <Button size="default" type="primary" htmlType="submit">
-                  sev kro
-                </Button>
-              </Form.Item>
-            </div>
-          </Form>
+              </div>
+                </Col>
+              </Row>
+
+              
+              
+            </Form>
+          </div>
         </Modal>
       </div>
     );

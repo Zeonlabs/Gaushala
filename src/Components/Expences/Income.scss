@@ -8,18 +8,7 @@
 .ant-form-item {
   margin-bottom: 5px !important;
 }
-.row {
-  display: flex;
-  margin-top: 0px !important;
 
-  .cheque-no {
-    width: 100%;
-    margin-left: 15px;
-  }
-  .max-income {
-    margin-left: 15px;
-  }
-}
 h1 {
   font-size: 20px;
   font-weight: bolder !important;
@@ -54,4 +43,7 @@ ul {
 
 .ant-table-row-cell-break-word {
   text-align: center;
+}
+#Expences_daterange{
+  width: 100% !important;
 }

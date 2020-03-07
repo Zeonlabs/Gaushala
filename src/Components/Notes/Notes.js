@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PageWrapper from "../Common/PageWrapper/PageWrapper";
+import { DownloadOutlined } from '@ant-design/icons';
 import "./Notes.scss";
 import {
   Modal,
@@ -38,15 +39,17 @@ export class Notes extends Component {
   render() {
     return (
       <PageWrapper title="nO>6">
-        <Tooltip placement="top" title="Add Notes">
-          <Button
-            type="primary"
-            onClick={this.handelAddTodos}
-            shape="circle"
-            icon="plus"
-            size="large"
-          />
+        <div>
+        <Tooltip placement="top" title="nO>6 ]mero">
+          <Button className="button-text-size button-margin-bottum" type="primary" icon="plus" onClick={this.handelAddTodos} size="large">
+          nO>6 ]mero
+          </Button>
         </Tooltip>
+        </div>
+        <div>
+
+        </div>
+        
         <Addtodo visible={this.state.todovisible} close={this.handelAddTodos} />
         <div>
           <ListingTodo />

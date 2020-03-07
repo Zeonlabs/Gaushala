@@ -7,7 +7,9 @@ import {
   Select,
   Radio,
   Button,
-  InputNumber
+  InputNumber,
+  Row,
+  Col
 } from "antd";
 import "../../Common/Forms/IncomeModels.styles.scss";
 import moment from "moment";
@@ -288,73 +290,78 @@ class CreaditAnimal extends Component {
           onOk={this.props.toggleModel}
           onCancel={this.handleReset}
         >
-          <h2 style={{ paddingBottom: 10, fontWeight: "bolder" }}>
+          <h2
+            className="form-titel"
+            
+          >
             Aavel pxuAO nu r+S3r
           </h2>
           <Form className="form-income" onSubmit={this.handleSubmit}>
-            <div className="row">
-              {/* ------------------------------Date--------------------------------- */}
-              <Form.Item className="date-input" label="tarIq">
-                {getFieldDecorator("date", {
-                  rules: [{ required: true, message: "Enter The Date!" }]
-                })(<DatePicker className="english-font-input" />)}
-              </Form.Item>
-            </div>
+            <Row gutter={[16, 16]}>
+              <Col span={8}>
+                {/* ------------------------------Date--------------------------------- */}
+                <Form.Item className="date-input" label="tarIq">
+                  {getFieldDecorator("date", {
+                    rules: [{ required: true, message: "Enter The Date!" }]
+                  })(<DatePicker className="english-font-input" />)}
+                </Form.Item>
+              </Col>
+              <Col span={16}>
+                {/* ------------------------------Animal Giver Name-------------------------------- */}
+                <Form.Item className="" label="pxu muknar nu nam">
+                  {getFieldDecorator("name", {
+                    rules: [{ required: true }]
+                  })(<Input placeholder="pxu muknar nu nam" />)}
+                </Form.Item>
+              </Col>
+            </Row>
+            <Row gutter={[16, 16]}>
+              <Col span={8}>
+                {/* ------------------------------Mobile no.--------------------------------- */}
+                <Form.Item className="" label="moba[l n>.">
+                  {getFieldDecorator("phone", {
+                    rules: [{ required: true, len: 10 }]
+                  })(
+                    <NumericInput
+                      value={this.state.value}
+                      onChange={this.onChange}
+                    />
+                  )}
+                </Form.Item>
+              </Col>
+              <Col span={16}>
+                {/* ------------------------------Address-------------------------------- */}
+                <Form.Item className="ant-col-24" label="srnamu">
+                  {getFieldDecorator("address", {
+                    rules: [{ required: true }]
+                  })(
+                    <Input
+                      style={{
+                        width: "100%"
+                      }}
+                      placeholder="srnamu, gam nu nam"
+                    />
+                  )}
+                </Form.Item>
+              </Col>
+            </Row>
 
-            <div className="row">
-              {/* ------------------------------Animal Giver Name-------------------------------- */}
-              <Form.Item
-                className="ant-col ant-col-14"
-                label="pxu muknar nu nam"
-              >
-                {getFieldDecorator("name", {
-                  rules: [{ required: true }]
-                })(<Input placeholder="data 7I nam" />)}
-              </Form.Item>
-              {/* ------------------------------phone No--------------------------------- */}
-              <Form.Item className="ant-col-10" label="moba[l n>.">
-                {getFieldDecorator("phone", {
-                  rules: [{ required: true, len: 10 }]
-                })(
-                  <NumericInput
-                    value={this.state.value}
-                    onChange={this.onChange}
-                  />
-                )}
-              </Form.Item>
-            </div>
-            <div className="row">
-              {/* ------------------------------Address--------------------------------- */}
-              <Form.Item className="ant-col-24" label="srnamu">
-                {getFieldDecorator("address", {
-                  rules: [{ required: true }]
-                })(
-                  <Input
-                    style={{
-                      width: "100%"
-                    }}
-                    placeholder="srnamu, gam nu nam"
-                  />
-                )}
-              </Form.Item>
-            </div>
-
-            {/* ------------------------------Table--------------------------------- */}
-            <div>
+            <Row>
+              {/* ------------------------------Table--------------------------------- */}
               <Index />
-            </div>
+            </Row>
 
             <div className="m-btn-gru">
               {/* ----------------------------Cancel Button------------------------------- */}
               <Form.Item>
-                <Button size="default" onClick={this.handleReset}>
-                  rd kro
+                <Button  size="default" onClick={this.handleReset}>
+                  rd
                 </Button>
               </Form.Item>
               {/* ------------------------------Save Button--------------------------------- */}
               <Form.Item>
-                <Button size="default" type="primary" htmlType="submit">
-                  sev kro
+                <Button icon="save"   size="default" type="primary" htmlType="submit">
+                  sev
                 </Button>
               </Form.Item>
             </div>

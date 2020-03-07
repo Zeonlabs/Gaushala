@@ -6,6 +6,8 @@ import "../Common/Forms/IncomeModels.styles.scss";
 import FilterDrawer from "./FilterDrawer";
 import { connect } from "react-redux";
 import { getIncome } from "../../Actions/Exapmple";
+import { EditOutlined } from '@ant-design/icons';
+
 
 // const data = [];
 // for (let i = 0; i < 100; i++) {
@@ -25,64 +27,76 @@ class Income extends Component {
     };
     this.columns = [
       {
-        title: "Slip No.",
+        title: "tarIq",
         width: "100px",
         dataIndex: "slip_no",
-        key: "name",
+        key: "1",
         fixed: "left"
       },
       {
-        title: "Type",
-        width: 200,
-        dataIndex: "type",
-        key: "age"
+        title: "pho>c n>.",
+        width: 100,
+        dataIndex: "Sleep no.",
+        key: "2"
       },
       {
-        title: "Money Type",
-        dataIndex: "money.type",
-        key: "1",
-        width: 150
-      },
-      {
-        title: "Amount",
-        dataIndex: "money.amount",
-        key: "2",
-        width: 150
-      },
-      {
-        title: "Date",
-        dataIndex: "date",
+        title: "nam",
+        dataIndex: "Name",
         key: "3",
         width: 250
       },
       {
-        title: "Phone No.",
-        dataIndex: "phone",
+        title: "rkm",
+        dataIndex: "money.amount",
         key: "4",
-        width: 150
+        width: 100
       },
       {
-        title: "Refrence_Name",
-        dataIndex: "ref_name",
+        title: "moba[l n>.",
+        dataIndex: "Mobile-Num",
         key: "5",
         width: 150
       },
       {
-        title: "operation",
+        title: "Aavk no p/kar",
+        dataIndex: "Income-Type",
+        key: "6",
+        width: 150
+      },
+      {
+        title: "dan SvIkar",
+        dataIndex: "Income-In",
+        key: "7",
+        width: 100
+      },
+      {
+        title: "HStk nam",
+        dataIndex: "Hastk-Name",
+        key: "8",
+        width: 100
+      },
+      {
+        title: "s>dex moklo",
+        dataIndex: "Sms-status",
+        key: "9",
+        width: 100
+      },
+      {
+        title: "AeDI3 - DIlI3",
         fixed: "right",
-        width: 200,
+        width: 150,
         dataIndex: "operation",
         render: (text, record) => (
           <>
-            <Button type="link" className="form-edit-button">
-              EDIT
+                
+            <Button type="link" icon="EditOutlined" className="form-edit-button">
             </Button>
             {this.state.data.length > 1 ? (
               <Popconfirm
                 title="Sure to delete?"
                 onConfirm={() => this.handleDelete(record.key)}
               >
-                <Button type="link">delete</Button>
+                <Button type="link" icon="DeleteOutline">delete</Button>
               </Popconfirm>
             ) : null}
           </>
@@ -155,6 +169,7 @@ class Income extends Component {
           </Tooltip>
         </div>
         <FilterDrawer onClose={this.onClose} visible={this.state.visible} />
+        <div className="table">
         <Table
           columns={columns}
           dataSource={this.state.data || []}
@@ -162,6 +177,7 @@ class Income extends Component {
           size="middle"
           scroll={{ x: "calc(700px + 40%)", y: 240 }}
         />
+        </div>
       </PageWrapper>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import'../Cheques/SideDrawer.scss';
 import {
   Form,
   Drawer,
@@ -42,6 +43,7 @@ class FilterData extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
+      
       <Drawer
         // title="fILtr"
         // closable={false}
@@ -51,19 +53,27 @@ class FilterData extends Component {
         getContainer={false}
         width={500}
       >
+        <div className="income-model-wrapper">
+        <Row>
+          <h2 className="form-titel">cek fIL3r</h2>
+        </Row>
+
         <div>
           <Form className="form-income" onSubmit={this.handleSubmit}>
+
+
             <Row
               type="flex"
               justify="space-between"
               className="member-form-wrapper"
             >
-              {/* ------------------------------Post type--------------------------------- */}
+              {/* ------------------------------Date--------------------------------- */}
               <Col span={24}>
                 <Form.Item label="tarIq ps>d kro">
                   {getFieldDecorator("daterange")(
                     <RangePicker
                       className="english-font-input"
+                      style={{ width: "100%" }}
                       ranges={{
                         Today: [moment(), moment()],
                         "This Month": [
@@ -125,7 +135,7 @@ class FilterData extends Component {
                   )}
                 </Form.Item>
               </Col> */}
-              <Col className="gutter-row" span={12}>
+              <Col className="gutter-row" span={11}>
                 <Form.Item className="ant-col" label="rkm">
                   {getFieldDecorator("amountfrom")(
                     <Input
@@ -137,7 +147,7 @@ class FilterData extends Component {
                   )}
                 </Form.Item>
               </Col>
-              <Col className="gutter-row" span={12}>
+              <Col className="gutter-row" span={11} offset={2}>
                 <Form.Item className="ant-col" label="su6I">
                   {getFieldDecorator("amountto")(
                     <Input
@@ -195,6 +205,7 @@ class FilterData extends Component {
               </Form.Item>
             </div>
           </Form>
+        </div>
         </div>
       </Drawer>
     );

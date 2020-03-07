@@ -55,6 +55,11 @@ export class TrustMembers extends Component {
           openPopup={this.state.showAddPopup}
           handelEmployeePopup={this.handelShowPopup}
         />
+         <div className="filter-icon">
+          <Icon type="filter" theme="filled" />
+          <h3>rIpo3 fIL3r</h3>
+        </div>
+        
         <div className="filter-wrapper">
           <div className="filter-select-width">
             <FilterData />
@@ -86,7 +91,9 @@ export class TrustMembers extends Component {
           </div>
         </div>
         <div className="listing-table-wrapper">
+        <div className="table">
           <ListingTable />
+        </div>
         </div>
       </PageWrapper>
     );

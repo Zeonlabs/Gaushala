@@ -17,64 +17,82 @@ const { RangePicker } = DatePicker;
 const columns = [
   {
     title: "k/m",
-    dataIndex: "id",
-    key: "name",
+    dataIndex: "indexno",
+    key: "1",
+    className: "table-font-english",
     render: text => <p>{text}</p>
   },
   {
-    title: "Date",
+    title: "tarIq",
     dataIndex: "date",
-    key: "date"
+    key: "2",
+    width: 120,
+    className: "table-font-english"
   },
   {
-    title: "Total Animal",
+    title: "kul pxu",
     dataIndex: "total",
-    key: "total"
+    key: "total",
+    className: "table-font-english"
   },
   {
-    title: "Ghas",
+    title: "^aas",
     dataIndex: "ghas",
-    key: "ghas"
+    key: "ghas",
+    className: "table-font-english"
   },
   {
-    title: "Charo",
+    title: "caro",
     dataIndex: "charo",
-    key: "charo"
+    key: "charo",
+    className: "table-font-english"
   },
   {
-    title: "Dana",
+    title: "da`",
     dataIndex: "dana",
-    key: "dana"
+    key: "dana",
+    className: "table-font-english"
   },
   {
-    title: "Majuri",
+    title: "mjurI",
     dataIndex: "majuri",
-    key: "majuri"
+    key: "majuri",
+    className: "table-font-english"
   },
   {
-    title: "Doctor",
+    title: "Dok3r-dva",
     dataIndex: "doctor",
-    key: "doctor"
+    key: "doctor",
+    className: "table-font-english"
   },
   {
-    title: "Extra cost",
+    title: "ANy qcR",
     dataIndex: "extracost",
-    key: "extracost"
+    key: "extracost",
+    className: "table-font-english"
   },
   {
-    title: "Total Cost",
+    title: "kul qcR",
     dataIndex: "totalcost",
-    key: "totalcost"
+    key: "totalcost",
+    className: "table-font-english"
   },
   {
-    title: "Action",
+    title: "AeDI3 - DIlI3",
     key: "action",
     render: (text, record) => (
-      <span style={{ display: "flex" }}>
-        <p>Edit</p>
+      <div className="icon-group-table">
+        <Icon type="edit" theme="filled" style={{ color: "#3AD944" }} />
+
         <Divider type="vertical" />
-        <p>Delete</p>
-      </span>
+        <Divider type="vertical" />
+
+        <Icon
+          type="delete"
+          theme="filled"
+          style={{ color: "rgba(255, 0, 0)" }}
+        />
+      </div>
     )
   }
 ];
@@ -82,27 +100,42 @@ const columns = [
 const data = [
   {
     key: "1",
-    name: "John Brown",
-    id: 32,
-    type: "New York No. 1 Lake Park",
-    mobile: 85848596,
-    address: "New York No. 1 Lake Park"
+    indexno: 1,
+    date: "20/02/2020",
+    total: 200,
+    ghas: "₹200",
+    charo: "₹200",
+    dana: "₹200",
+    majuri: "₹200",
+    doctor: "₹200",
+    extracost: "₹200",
+    totalcost: "₹1200"
   },
   {
     key: "2",
-    name: "Jim Green",
-    id: 42,
-    type: "London No. 1 Lake Park",
-    mobile: 85848596,
-    address: "London No. 1 Lake Park"
+    indexno: 2,
+    date: "20/02/2020",
+    total: 200,
+    ghas: "₹200",
+    charo: "₹200",
+    dana: "₹200",
+    majuri: "₹200",
+    doctor: "₹200",
+    extracost: "₹200",
+    totalcost: "₹1200"
   },
   {
     key: "3",
-    name: "Joe Black",
-    id: 32,
-    type: "Sidney No. 1 Lake Park",
-    mobile: 85848596,
-    address: "Sidney No. 1 Lake Park"
+    indexno: 3,
+    date: "20/02/2020",
+    total: 200,
+    ghas: "₹200",
+    charo: "₹200",
+    dana: "₹200",
+    majuri: "₹200",
+    doctor: "₹200",
+    extracost: "₹200",
+    totalcost: "₹1200"
   }
 ];
 
@@ -122,18 +155,27 @@ class ResidentalAnimal extends Component {
 
     return (
       <div>
-        <Button onClick={this.handelback} type="primary">
-          Back
-        </Button>
-        <h1>Aavel pxuAO nu r+S3r</h1>
-
+        <Row className="main-header-row" gutter={[16, 16]}>
+          <Col className="main-div-button-slim" span={1}>
+            <Button
+              icon="left"
+              onClick={this.handelback}
+              type="primary"
+              size="default"
+            ></Button>
+          </Col>
+          <Col span={23} style={{ textAlign: "center" }}>
+            <h1>inwav qcR nu r+S3r</h1>
+          </Col>
+        </Row>
+        
         <div className="filter-icon">
           <Icon type="filter" theme="filled" />
           <h3>rIpo3 fIL3r</h3>
         </div>
         <Form>
-          <Row>
-            <Col span={6}>
+          <Row gutter={[16, 16]}>
+            <Col span={12}>
               <Form.Item label="tarIq ps>d kro">
                 <RangePicker
                   className="english-font-input"
@@ -148,7 +190,7 @@ class ResidentalAnimal extends Component {
                 />
               </Form.Item>
             </Col>
-            <Col span={6}>
+            <Col span={12}>
               <div className="m-btn-gru">
                 {/* ------------------------------Generat Button--------------------------------- */}
                 <Form.Item>
@@ -178,7 +220,9 @@ class ResidentalAnimal extends Component {
           </Row>
         </Form>
 
+        <div className="table">
         <Table columns={columns} dataSource={data} bordered />
+        </div>
       </div>
     );
   }

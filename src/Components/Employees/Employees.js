@@ -150,14 +150,19 @@ export class Employees extends Component {
           handelEmployeePopup={this.handelEmployeePopup}
           openPopup={this.state.addPopup}
         />
-
+        
+        <div className="filter-icon">
+          <Icon type="filter" theme="filled" />
+          <h3>rIpo3 fIL3r</h3>
+        </div>
         {/* ------------------------------------ Header Epmloyees------------------------------- */}
-        <Row>
+        <Row gutter={[16, 16]}>
           <Col span={20}>
             <div>
               <FilterData />
             </div>
           </Col>
+
           {/* ----------------------------------Add Employees Button---------------------------- */}
           <Col className="button-add-members" span={4}>
             <Button
@@ -172,7 +177,10 @@ export class Employees extends Component {
             </Button>
           </Col>
         </Row>
+        <div className="table">
         <ListingTable />
+        </div>
+        
       </PageWrapper>
     );
   }

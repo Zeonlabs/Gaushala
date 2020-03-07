@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, Icon, InputNumber, Button, Checkbox } from "antd";
+import './IndexTable.scss';
 
 class Index extends Component {
   constructor(props) {
@@ -39,13 +40,13 @@ class Index extends Component {
           <table style={{ width: "100%" }}>
             <thead>
               <tr>
-                <th>{type ? "Vigat" : "Pashu no Prakar"}</th>
-                <th>{type ? "Money" : "Counts"}</th>
+                <th className="table-header">{type ? "ivgt" : "pxu no p/kar"}</th>
+                <th className="table-header">{type ? "rkm" : "s>Qya"}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>{type ? "Ghas" : "Gay"}</td>
+                <td className="table-animal-popup-td">{type ? "^aas" : "gay"}</td>
                 <td>
                   <Form.Item>
                     {getFieldDecorator(type ? "ghas" : "gay", {
@@ -55,7 +56,7 @@ class Index extends Component {
                 </td>
               </tr>
               <tr>
-                <td>{type ? "Charo" : "Balad"}</td>
+                <td className="table-animal-popup-td">{type ? "caro" : "b5d"}</td>
                 <td>
                   <Form.Item>
                     {getFieldDecorator(type ? "charo" : "balad", {
@@ -65,7 +66,7 @@ class Index extends Component {
                 </td>
               </tr>
               <tr>
-                <td>{type ? "Dan" : "Vacharda"}</td>
+                <td className="table-animal-popup-td">{type ? "da`" : "va0rDa"}</td>
                 <td>
                   <Form.Item>
                     {getFieldDecorator(type ? "Dan" : "vacharda", {
@@ -75,7 +76,7 @@ class Index extends Component {
                 </td>
               </tr>
               <tr>
-                <td>{type ? "majuri" : "Vachardi"}</td>
+                <td className="table-animal-popup-td">{type ? "mjurI" : "va0rDI"}</td>
                 <td>
                   <Form.Item>
                     {getFieldDecorator(type ? "majuri" : "vachardi", {
@@ -86,7 +87,7 @@ class Index extends Component {
               </tr>
               {type ? (
                 <tr>
-                  <td>{type ? "Doctor" : "Vachardi"}</td>
+                  <td className="table-animal-popup-td">{type ? "Dok3r-dva" : "ANy"}</td>
                   <td>
                     <Form.Item>
                       {getFieldDecorator(type ? "doctor" : "vachardi", {
@@ -99,7 +100,7 @@ class Index extends Component {
                 ""
               )}
               <tr>
-                <td>Any</td>
+                <td className="table-animal-popup-td">ANy</td>
                 <td>
                   <Form.Item>
                     {getFieldDecorator("anny", { initialValue: 0 })(
@@ -111,8 +112,8 @@ class Index extends Component {
             </tbody>
             <tfoot>
               <tr>
-                <td>Total</td>
-                <td>{this.state.total}</td>
+                <td className="total-box table-animal-popup-td">3o3l</td>
+                <td className="total-box english-font-input ">{this.state.total}</td>
               </tr>
             </tfoot>
           </table>

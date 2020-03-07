@@ -14,51 +14,74 @@ code {
 }
 
 @font-face {
-  font-family: 'gujrati_saral-1normal';
-  src: url('./Static/Fonts/gujrati-saral-1-webfont.woff') format('woff'),
-       url('./Static/Fonts/gujrati-saral-1-webfont.woff2') format('woff2');
+  font-family: "gujrati_saral-1normal";
+  src: url("./Static/Fonts/gujrati-saral-1-webfont.woff") format("woff"),
+    url("./Static/Fonts/gujrati-saral-1-webfont.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
-
 #root,
 .App {
   height: inherit;
-  font-family: 'gujrati_saral-1normal';  
+  font-family: "gujrati_saral-1normal";
 }
-.button-text-size>span,.button-text-size>i{
+.ant-layout {
+  background: #d6d6d6;
+}
+.button-text-size > span,
+.button-text-size > i {
   font-size: 20px !important;
   font-weight: 600;
   padding: 5px 3px 3px 3px;
-  }
-.ant-select-selection-selected-value{
+}
+.ant-select-selection-selected-value {
   color: black;
   font-weight: 600;
 }
-.ant-select-selection__placeholder{
+.ant-select-selection__placeholder {
   font-weight: 600;
   color: #5f5f5f;
-}  
-.menu-list-title{
-  font-family: 'gujrati_saral-1normal' !important;
+}
+.menu-list-title {
+  font-family: "gujrati_saral-1normal" !important;
   font-weight: 600;
 }
 
-button>span{
-    padding: 2px;
-    font-size: 20px !important;
-    font-weight: 500;
-} 
-button>i{
+button > span {
   padding: 2px;
-    font-size: 20px !important;
-    font-weight: 500;
+  font-size: 20px !important;
+  font-weight: 500;
 }
-label{
+button > i {
+  padding: 2px;
+  font-size: 20px !important;
+  font-weight: 500;
+}
+label {
   padding-left: 2px;
   font-size: 17px !important;
   font-weight: 600;
   color: black;
 }
 
+.ant-input-number-handler-wrap {
+  display: none;
+}
+.ant-pagination-item {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif !important;
+}
+
+.ant-calendar {
+  position: relative;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #000;
+  border-radius: 4px;
+  outline: none;
+}

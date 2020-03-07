@@ -110,15 +110,16 @@ class Tables extends Component {
         title: "vIgt",
         dataIndex: "type",
         width: "60%",
-        editable: true
+        editable: true,
+        className: "table-font-gujarati table-animal-popup-td"
       },
       {
         // -----------------------------Amount--------------------------
         width: "30%",
-        title: "રકમ",
+        title: "rkm",
         dataIndex: "amount",
         editable: true,
-        className: "english-font-input"
+        className: "english-font-input table-animal-popup-td"
       },
       {
         //-----------------------------Delete---------------------------
@@ -238,6 +239,7 @@ class Tables extends Component {
     return (
       <div className="table">
         <Table
+          className="table-boder"
           components={components}
           rowClassName={() => "editable-row"}
           bordered
@@ -247,7 +249,7 @@ class Tables extends Component {
         />
         <div className="totalamount">
           <h4 className="amount-in-words english-font-input">
-            Amount issn words :- {converter.toWords(this.state.totalAmount)}
+            Amount in words :- {converter.toWords(this.state.totalAmount)}
           </h4>
           <h4 className="english-font-input">
             Total :- {this.state.totalAmount}

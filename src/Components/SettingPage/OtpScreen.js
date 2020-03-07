@@ -1,29 +1,15 @@
-// import React, { Component } from "react";
-// import { Input } from "antd";
-
-// export default class OtpScreen extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {};
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <div>
-//           <h3>Enter new pin</h3>
-//           <Input />
-//           <h3>Repete pin</h3>
-//           <Input />
-//         </div>
-//       </div>
-//     );
-//   }
-// }
 import React, { Component } from "react";
 import $ from "jquery";
-import { Icon, InputNumber, Input, Spin, message, Button } from "antd";
+import {
+  Icon,
+  InputNumber,
+  Input,
+  Spin,
+  message,
+  Button,
+  Row,
+  Col
+} from "antd";
 import { connect } from "react-redux";
 import OTPInput, { ResendOTP } from "../../Static/Widgets/lib/index";
 // import Cards from "../Common/Card";
@@ -215,94 +201,101 @@ class OtpScreen extends Component {
 
   render() {
     return (
-      <div className="financial-planing-first card-section-height">
-        {/* <div className="otp-page-heading">
+      <div>
+        <Row gutter={[16, 16]}>
+          <Col span={8}></Col>
+          <Col span={8}>
+            <div className="financial-planing-first card-section-height otp-verification-page">
+              {/* <div className="otp-page-heading">
             <h1 className="login-heading-text">OTP Verification</h1>
           </div> */}
-        <h1>"OTP Verification" </h1>
-        <div
-          className={
-            this.state.otpMessage === "Invalid"
-              ? "wrong-otp-message-wrapper"
-              : this.state.resendOtpButton
-              ? "resend-otp-headder"
-              : "otp-page-description"
-          }
-        >
-          {this.state.otpMessage === "Invalid" ? (
-            <div className="weong-otp-message-redirect">
-              {/* <WarningIcon /> */}
-              <p>Invalid OTP</p>
-            </div>
-          ) : (
-            <>
-              <p>
-                {this.state.resendOtpButton
-                  ? "Otp has been re-sent on"
-                  : "Otp has been sent on"}
-              </p>
-              <p>{`+91 ${this.state.mobile}`}</p>
-            </>
-          )}
-        </div>
-        <div className="otp-page-buttons">
-          <OTPInput
-            value={this.state.otp}
-            onChange={this.inputChange}
-            autoFocus
-            className="otp-input-number"
-            OTPLength={4}
-            placehoder=""
-            otpType="number"
-            disabled={false}
-          />
-          <div className="otp-button-wrapper">
-            <div
-              className={
-                this.state.resendOtpButton
-                  ? "resend-otp-not-click "
-                  : "resend-otp-not-click"
-              }
-            >
-              {this.state.resendOtp ? <p>Helo there</p> : ""}
-              <ResendOTP
-                renderButton={
-                  this.state.resendOtpButton
-                    ? this.renderResendOtp
-                    : this.renderButton
+              <h1>Ao.3I.pI verIfIkexn</h1>
+              <div
+                className={
+                  this.state.otpMessage === "Invalid"
+                    ? "wrong-otp-message-wrapper"
+                    : this.state.resendOtpButton
+                    ? "resend-otp-headder"
+                    : "otp-page-description"
                 }
-                maxTime={60}
-                onResendClick={this.handelResendClick}
-                renderTime={this.renderTime}
-              />
-            </div>
-            <div className="otp-button-width">
-              <Button style={{ padding: "0px 30px" }}>
-                {this.state.verify ? (
-                  <Spin indicator={spinIcon} />
+              >
+                {this.state.otpMessage === "Invalid" ? (
+                  <div className="weong-otp-message-redirect">
+                    {/* <WarningIcon /> */}
+                    <p>Invalid OTP</p>
+                  </div>
                 ) : (
-                  "Verify OTP"
+                  <>
+                    <p>
+                      {this.state.resendOtpButton
+                        ? "Ao.3I.pI Aap na moba[l n>br frI moklayo 0e."
+                        : "Ao.3I.pI Aap na moba[l n>br moklayo 0e."}
+                    </p>
+                    <p className="table-font-english">{`+91 ${this.state.mobile}`}</p>
+                  </>
                 )}
-              </Button>
-            </div>
-          </div>
-        </div>
-        <div className="send-buttons-wrapper">
-          <div>
-            {this.state.resendOtpButton ? (
-              <p onClick={this.handelNumber} className="otp-screen-instruction">
-                Did not receive OTP?
-              </p>
-            ) : (
-              ""
-            )}
-            {/* <button className={this.state.className} onChange={this.handelButtonChange} onClick={this.props.next} disabled={this.state.disabled}>Send OTP</button> */}
-          </div>
-          {/* <div>
+              </div>
+              <div className="otp-page-buttons">
+                <OTPInput
+                  value={this.state.otp}
+                  onChange={this.inputChange}
+                  autoFocus
+                  className="otp-input-number table-font-english"
+                  OTPLength={4}
+                  placehoder=""
+                  otpType="number"
+                  disabled={false}
+                />
+                <div className="otp-button-wrapper table-font-english">
+                  <div
+                    className={
+                      this.state.resendOtpButton
+                        ? "resend-otp-not-click "
+                        : "resend-otp-not-click"
+                    }
+                  >
+                    {this.state.resendOtp ? <p>Helo there</p> : ""}
+                    <ResendOTP
+                      renderButton={
+                        this.state.resendOtpButton
+                          ? this.renderResendOtp
+                          : this.renderButton
+                      }
+                      maxTime={60}
+                      onResendClick={this.handelResendClick}
+                      renderTime={this.renderTime}
+                    />
+                  </div>
+                  <div className="otp-button-width menu-list-title">
+                    <Button type="primary" style={{ padding: "0px 30px" }}>
+                      {this.state.verify ? (
+                        <Spin indicator={spinIcon} />
+                      ) : (
+                        "sbmI3"
+                      )}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+              <div className="send-buttons-wrapper">
+                <div>
+                  {this.state.resendOtpButton ? (
+                    <p
+                      onClick={this.handelNumber}
+                      className="otp-screen-instruction"
+                    >
+                      Did not receive OTP?
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                  {/* <button className={this.state.className} onChange={this.handelButtonChange} onClick={this.props.next} disabled={this.state.disabled}>Send OTP</button> */}
+                </div>
+                {/* <div>
               <DisableButtons className="send-otp" onChange={this.handelButtonChange} next={this.props.next} disabled={this.state.disabled} text="Verify OTP"/>
               <button className={this.state.className} onChange={this.handelButtonChange} onClick={this.props.next} disabled={this.state.disabled}>Send OTP</button>
             </div> */}
-          {/* <div className="second-page-button-wrapper">
+                {/* <div className="second-page-button-wrapper">
               <Button
                 text="Back"
                 className="back-button"
@@ -310,7 +303,11 @@ class OtpScreen extends Component {
                 // device={this.props.view}
               ></Button>
             </div> */}
-        </div>
+              </div>
+            </div>
+          </Col>
+          <Col span={8}></Col>
+        </Row>
       </div>
     );
   }
