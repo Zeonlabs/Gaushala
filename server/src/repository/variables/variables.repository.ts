@@ -1,4 +1,4 @@
-import { Variables, VariablesModel } from "../../schema"
+import { Variables, VariablesModel, AnimalIncomeModel, AnimalModel, AnimalIncome } from "../../schema"
 import { VAR_DOC_ID } from "../../common/constants.common"
 
 export class VariablesRepository{
@@ -28,5 +28,30 @@ export class VariablesRepository{
     async get(){
         const vars = await Variables.findById(VAR_DOC_ID)
         return vars
+    }
+
+    updateAnimals(animals: AnimalModel[]){
+       
+        const genQuery = (animals: AnimalModel[]) => {
+            let query = {
+                'stats.animal.small': 0,
+                'stats.animal.big': 0
+            }
+            animals.forEach(animal => {
+                query[`stats.animal.${animal.type}`] = animal.count
+                if(animal.type  < 5){
+                    query["stats.animal.small"] += animal.count
+                }
+                else if (animal.type < 9){
+                    query["stats.animal.big"] += animal.count
+                }
+            })
+            return Variables.findByIdAndUpdate(VAR_DOC_ID, { $inc: { ...query }}, {new: true})
+        }
+
+        return {
+            inc: async () => await genQuery(animals),
+            dec: async () => await genQuery(animals.map(ani => ({ type: ani.type, count: -ani.count})))
+        }
     }
 }

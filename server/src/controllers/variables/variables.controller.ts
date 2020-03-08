@@ -8,7 +8,6 @@ const initVariables = async (req: Request, res: Response) => {
         const input = _.pick(req.body, ['name', 'pin'])
         if(!input.pin) throw new PinNotFoundException()
         const variablesRepo = new VariablesRepository()
-        // const doc = await variablesRepo.create(input)
 
         const doc = await variablesRepo.update(input)
         res.send(doc)

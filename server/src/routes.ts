@@ -1,7 +1,7 @@
 import {Application, Router} from 'express'
-import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMember, updateTrustMember, addNote, updateNote, deleteNote, generateFilteredReport, saveEmployee, getAvatar, deleteIncome, deleteExpense, editIncome, editExpense } from './controllers'
+import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMember, updateTrustMember, addNote, updateNote, deleteNote, generateFilteredReport, saveEmployee, getAvatar, deleteIncome, deleteExpense, editIncome, editExpense, saveAnimalIncome, deleteAnimalIncome, editAnimalIncome } from './controllers'
 import { paginationMiddleware } from './middlewares/pagination/pagination.middleware'
-import { Income, Expense, TrustMember, Note, Employee } from './schema'
+import { Income, Expense, TrustMember, Note, Employee, AnimalIncome } from './schema'
 import { deleteEmployee } from './controllers/employee/employee.controller'
 import { auth } from './common/auth.common'
 
@@ -12,7 +12,8 @@ export class Routes{
             expenseRoute = Router(),
             employeeRoute = Router(),
             noteRoute = Router(),
-            trustMemberRoute = Router()
+            trustMemberRoute = Router(),
+            animalIncomeRoute = Router()
 
         app.post('/setup', initVariables)
         app.post('/auth', auth)
@@ -44,11 +45,16 @@ export class Routes{
         trustMemberRoute.patch('/update/:id', updateTrustMember)
         trustMemberRoute.delete('/delete/:id', deleteTrustMember)
 
+        animalIncomeRoute.post('/add', saveAnimalIncome)
+        animalIncomeRoute.delete('/delete/:id', deleteAnimalIncome)
+        animalIncomeRoute.patch('/edit/:id', editAnimalIncome)
+        animalIncomeRoute.get('/', paginationMiddleware(AnimalIncome))
 
         app.use('/income', incomeRoute)
         app.use('/expense', expenseRoute)
         app.use('/employee', employeeRoute)
         app.use('/note', noteRoute)
         app.use('/trust-member', trustMemberRoute)
+        app.use('/animal-income', animalIncomeRoute)
     }
 }

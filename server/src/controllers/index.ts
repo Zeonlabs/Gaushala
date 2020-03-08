@@ -1,12 +1,12 @@
 import {initVariables} from './variables/variables.controller'
 import {saveIncome, deleteIncome, editIncome} from './income/income.controller'
 import {saveExpense, deleteExpense, editExpense} from './expense/expense.controller'
-
 import {saveEmployee, getAvatar} from './employee/employee.controller'
 import {addNote, updateNote, deleteNote} from './note/note.controller'
 import {addTrustMember, deleteTrustMember, updateTrustMember} from './trustMember/trustMember.controller'
 
 import {generateFilteredReport} from './common/common.controller'
+import {saveAnimalIncome, deleteAnimalIncome, editAnimalIncome} from './animalIncome/animalIncome.controller'
 
 export {
     initVariables,
@@ -24,5 +24,8 @@ export {
     addTrustMember,
     deleteTrustMember,
     updateTrustMember,
-    generateFilteredReport
+    generateFilteredReport,
+    saveAnimalIncome,
+    deleteAnimalIncome,
+    editAnimalIncome
 }
