@@ -1,7 +1,7 @@
 import {Application, Router} from 'express'
-import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMember, updateTrustMember, addNote, updateNote, deleteNote, generateFilteredReport, saveEmployee, getAvatar, deleteIncome, deleteExpense, editIncome, editExpense, saveAnimalIncome, deleteAnimalIncome, editAnimalIncome } from './controllers'
+import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMember, updateTrustMember, addNote, updateNote, deleteNote, generateFilteredReport, saveEmployee, getAvatar, deleteIncome, deleteExpense, editIncome, editExpense, saveAnimalIncome, deleteAnimalIncome, editAnimalIncome, saveDeadAnimal, deleteDeadAnimal, editDeadAnimal } from './controllers'
 import { paginationMiddleware } from './middlewares/pagination/pagination.middleware'
-import { Income, Expense, TrustMember, Note, Employee, AnimalIncome } from './schema'
+import { Income, Expense, TrustMember, Note, Employee, AnimalIncome, DeadAnimal } from './schema'
 import { deleteEmployee } from './controllers/employee/employee.controller'
 import { auth } from './common/auth.common'
 
@@ -13,7 +13,8 @@ export class Routes{
             employeeRoute = Router(),
             noteRoute = Router(),
             trustMemberRoute = Router(),
-            animalIncomeRoute = Router()
+            animalIncomeRoute = Router(),
+            deadAnimalRoute = Router()
 
         app.post('/setup', initVariables)
         app.post('/auth', auth)
@@ -50,11 +51,17 @@ export class Routes{
         animalIncomeRoute.patch('/edit/:id', editAnimalIncome)
         animalIncomeRoute.get('/', paginationMiddleware(AnimalIncome))
 
+        deadAnimalRoute.post('/add', saveDeadAnimal)
+        deadAnimalRoute.delete('/delete/:id', deleteDeadAnimal)
+        deadAnimalRoute.patch('/edit/:id', editDeadAnimal)
+        deadAnimalRoute.get('/', paginationMiddleware(DeadAnimal))
+
         app.use('/income', incomeRoute)
         app.use('/expense', expenseRoute)
         app.use('/employee', employeeRoute)
         app.use('/note', noteRoute)
         app.use('/trust-member', trustMemberRoute)
         app.use('/animal-income', animalIncomeRoute)
+        app.use('/dead-animal', deadAnimalRoute)
     }
 }

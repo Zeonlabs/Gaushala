@@ -5,6 +5,7 @@ import {EmployeeRepository} from './employee/employee.repository'
 import {NoteRepository} from './note/note.repository'
 import {TrustMemberRepository} from './trustMember/trustMember.repository'
 import {AnimalIncomeRepository} from './animalIncome/animalIncome.repository'
+import {DeadAnimalRepository} from './deadAnimal/deadAnimal.repository'
 
 export {
     VariablesRepository,
@@ -13,5 +14,6 @@ export {
     EmployeeRepository,
     NoteRepository,
     TrustMemberRepository,
-    AnimalIncomeRepository
+    AnimalIncomeRepository,
+    DeadAnimalRepository
 }

@@ -52,7 +52,7 @@ const editAnimalIncome = async (req: Request, res: Response) => {
         else{
             stats = await variablesRepo.get()
         }
-        res.json({ animal: doc, stats })
+        res.json({ animal: doc.updatedAnimalIncome, stats })
     }
     catch(e){
         console.log(e)

@@ -7,6 +7,7 @@ import {addTrustMember, deleteTrustMember, updateTrustMember} from './trustMembe
 
 import {generateFilteredReport} from './common/common.controller'
 import {saveAnimalIncome, deleteAnimalIncome, editAnimalIncome} from './animalIncome/animalIncome.controller'
+import {saveDeadAnimal, deleteDeadAnimal, editDeadAnimal} from './deadAnimal/deadAnimal.controller'
 
 export {
     initVariables,
@@ -27,5 +28,8 @@ export {
     generateFilteredReport,
     saveAnimalIncome,
     deleteAnimalIncome,
-    editAnimalIncome
+    editAnimalIncome,
+    saveDeadAnimal,
+    deleteDeadAnimal,
+    editDeadAnimal
 }

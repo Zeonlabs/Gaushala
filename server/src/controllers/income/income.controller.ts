@@ -10,7 +10,7 @@ const saveIncome = async (req: Request, res: Response) => {
         const savedIncome = await incomeRepo.save(income)
         const updatedCapital = await variablesRepo.updateCapital(savedIncome.money.amount).inc()
         
-        res.send(savedIncome)
+        res.send({income: savedIncome, stats: updatedCapital})
     }
     catch(e){
         console.log(e)
