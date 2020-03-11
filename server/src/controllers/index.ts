@@ -8,6 +8,8 @@ import {addTrustMember, deleteTrustMember, updateTrustMember} from './trustMembe
 import {generateFilteredReport} from './common/common.controller'
 import {saveAnimalIncome, deleteAnimalIncome, editAnimalIncome} from './animalIncome/animalIncome.controller'
 import {saveDeadAnimal, deleteDeadAnimal, editDeadAnimal} from './deadAnimal/deadAnimal.controller'
+import {saveGivenAnimal, deleteGivenAnimal, editGivenAnimal} from './givenAnimal/givenAnimal.controller'
+import { saveAnimalCost, deleteAnimalCost, editAnimalCost } from './animalCost/animalCost.controller'
 
 export {
     initVariables,
@@ -31,5 +33,11 @@ export {
     editAnimalIncome,
     saveDeadAnimal,
     deleteDeadAnimal,
-    editDeadAnimal
+    editDeadAnimal,
+    saveGivenAnimal,
+    deleteGivenAnimal,
+    editGivenAnimal,
+    saveAnimalCost,
+    deleteAnimalCost,
+    editAnimalCost
 }

@@ -15,7 +15,7 @@ const saveDeadAnimal = async (req: Request, res: Response) => {
     }
     catch(e){
         console.log(e)
-        res.status(400).send(e.message)
+        res.status(400).send({message: e.message})
     }
 }
 
@@ -32,7 +32,7 @@ const deleteDeadAnimal = async (req: Request, res: Response) => {
     }
     catch(e){
         console.log(e)
-        res.status(400).send(e.message)
+        res.status(400).send({message: e.message})
     }
 }
 
@@ -56,7 +56,7 @@ const editDeadAnimal = async (req: Request, res: Response) => {
     }
     catch(e){
         console.log(e)
-        res.status(400).send(e.message)
+        res.status(400).send({message: e.message})
     }
 }
 

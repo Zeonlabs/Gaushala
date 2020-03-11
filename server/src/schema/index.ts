@@ -10,12 +10,15 @@ import {Note} from './note/note.schema'
 import {NoteModel} from './note/note.typedef'
 import {TrustMember} from './trustMember/trustMember.schema'
 import {TrustMemberModel} from './trustMember/trustMember.typedef'
-
 import {AnimalModel} from './animal/animal.typedef'
 import {AnimalIncome} from './animal/animalIncome/animalIncome.schema'
 import {AnimalIncomeModel} from './animal/animalIncome/animalIncome.typedef'
 import {DeadAnimal} from './animal/deadAnimal/deadAnimal.schema'
 import {DeadAnimalModel} from './animal/deadAnimal/deadAnimal.typedef'
+import {GivenAnimal} from './animal/givenAnimal/givenAnimal.schema'
+import {GivenAnimalModel} from './animal/givenAnimal/givenAnimal.typedef'
+import {AnimalCost} from './animal/animalCost/animalCost.schema'
+import {AnimalCostModel} from './animal/animalCost/animalCost.typedef'
 
 export {
     Variables,
@@ -34,5 +37,9 @@ export {
     AnimalIncomeModel,
     AnimalModel,
     DeadAnimal,
-    DeadAnimalModel
+    DeadAnimalModel,
+    GivenAnimal,
+    GivenAnimalModel,
+    AnimalCost,
+    AnimalCostModel
 }

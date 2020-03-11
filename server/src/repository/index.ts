@@ -6,6 +6,8 @@ import {NoteRepository} from './note/note.repository'
 import {TrustMemberRepository} from './trustMember/trustMember.repository'
 import {AnimalIncomeRepository} from './animalIncome/animalIncome.repository'
 import {DeadAnimalRepository} from './deadAnimal/deadAnimal.repository'
+import {GivenAnimalRepository} from './givenAnimal/givenAnimal.repository'
+import {AnimalCostRepository} from './animalCost/animalCost.repository'
 
 export {
     VariablesRepository,
@@ -15,5 +17,7 @@ export {
     NoteRepository,
     TrustMemberRepository,
     AnimalIncomeRepository,
-    DeadAnimalRepository
+    DeadAnimalRepository,
+    GivenAnimalRepository,
+    AnimalCostRepository
 }
