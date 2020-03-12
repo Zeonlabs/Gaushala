@@ -30,26 +30,26 @@ export const generateFilteredReport = (Model: MongoModel<IncomeModel | ExpenseMo
     }
 }
 
-export const generateAanimalReport = async (req: Request, res: Response) => {
-    try{
-        const {page = 0, limit = 10} = req.query
-        const variablesRepo = new VariablesRepository()
+// export const generateAanimalReport = async (req: Request, res: Response) => {
+//     try{
+//         const {page = 0, limit = 10} = req.query
+//         const variablesRepo = new VariablesRepository()
 
-        const paginationConfig = {
-            page,
-            limit,
-            sort: {
-                _id: -1
-            }
-        }
-        const animalIncome = await AnimalIncome.paginate({}, paginationConfig)
-        const deadAnimal = await DeadAnimal.paginate({}, paginationConfig)
-        const givenAnimal = await GivenAnimal.paginate({}, paginationConfig)
+//         const paginationConfig = {
+//             page,
+//             limit,
+//             sort: {
+//                 _id: -1
+//             }
+//         }
+//         const animalIncome = await AnimalIncome.paginate({}, paginationConfig)
+//         const deadAnimal = await DeadAnimal.paginate({}, paginationConfig)
+//         const givenAnimal = await GivenAnimal.paginate({}, paginationConfig)
 
-        res.json({ animalIncome, deadAnimal, givenAnimal })
-    }
-    catch(e){
-        console.log(e);
-        res.status(400).send({message: e.message})
-    }
-}
+//         res.json({ animalIncome, deadAnimal, givenAnimal })
+//     }
+//     catch(e){
+//         console.log(e);
+//         res.status(400).send({message: e.message})
+//     }
+// }

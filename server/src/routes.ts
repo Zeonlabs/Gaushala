@@ -76,6 +76,6 @@ export class Routes{
         app.use('/animal-income', animalIncomeRoute)
         app.use('/dead-animal', deadAnimalRoute)
         app.use('/given-animal', givenAnimalRoute)
-        app.use('/animal-expense', animalCostRouter)
+        app.use('/animal-cost', animalCostRouter)
     }
 }

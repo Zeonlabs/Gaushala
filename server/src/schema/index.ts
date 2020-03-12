@@ -19,6 +19,8 @@ import {GivenAnimal} from './animal/givenAnimal/givenAnimal.schema'
 import {GivenAnimalModel} from './animal/givenAnimal/givenAnimal.typedef'
 import {AnimalCost} from './animal/animalCost/animalCost.schema'
 import {AnimalCostModel} from './animal/animalCost/animalCost.typedef'
+import {AnimalStmt} from './animal/animalStmt/animalStmt.schema'
+import {AnimalStmtModel} from './animal/animalStmt/animalStmt.typedef'
 
 export {
     Variables,
@@ -41,5 +43,7 @@ export {
     GivenAnimal,
     GivenAnimalModel,
     AnimalCost,
-    AnimalCostModel
+    AnimalCostModel,
+    AnimalStmt,
+    AnimalStmtModel
 }
