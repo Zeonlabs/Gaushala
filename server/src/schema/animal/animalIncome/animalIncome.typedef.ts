@@ -13,4 +13,5 @@ export interface AnimalIncomeModel extends Document{
     phone: number
     total: number
     animal: AnimalModel[]
+    paginate: () => {}
 }
