@@ -13,7 +13,7 @@ export class AnimalIncomeRepository{
     }
 
     async update(id: string, data: AnimalIncomeModel){
-        const oldAnimals = await AnimalIncome.findById(id, {_id: 0, animal: 1})
+        const oldAnimals = await AnimalIncome.findById(id, {_id: 0, animal: 1, total: 2 })
         const doc = await AnimalIncome.findByIdAndUpdate(id, { $set: data }, { new: true })
         return { updatedAnimalIncome: doc, oldAnimals }
     }

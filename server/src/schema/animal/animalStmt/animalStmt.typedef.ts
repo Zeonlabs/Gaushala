@@ -3,10 +3,10 @@ import { Document, Types } from "mongoose";
 export interface AnimalStmtModel extends Document{
     _id: Types.ObjectId
     date: Date
-    income: number
+    added: number
     given: number
     dead: number
-    samll: number
+    small: number
     big: number
     other: number
 } 

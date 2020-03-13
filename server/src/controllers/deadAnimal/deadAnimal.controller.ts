@@ -1,15 +1,25 @@
-import {DeadAnimalRepository, VariablesRepository} from '../../repository'
+import {DeadAnimalRepository, VariablesRepository, AnimalStmtRepository} from '../../repository'
 import { Request, Response } from 'express'
 import { DeadAnimalModel, VariablesModel } from '../../schema'
+import { countTotalAnimal } from '../../common/utils.common'
 
 const saveDeadAnimal = async (req: Request, res: Response) => {
     try{
         const deadAnimal: DeadAnimalModel = req.body
         const deadAnimalRepo = new DeadAnimalRepository()
         const variablesRepo = new VariablesRepository()
+        const animalStmtRepo = new AnimalStmtRepository()
 
         const doc = await deadAnimalRepo.save(deadAnimal)
         const stats = await variablesRepo.updateAnimals(deadAnimal.animal).dec()
+
+        //save animal stmt report
+        animalStmtRepo.saveToAnimalStmt(doc.date, {
+            dead: countTotalAnimal(doc.animal),
+            small: stats.stats.animal.small,
+            big: stats.stats.animal.big,
+            other: stats.stats.animal[10]
+        })
 
         res.json({animal: doc, stats})
     }
@@ -24,9 +34,18 @@ const deleteDeadAnimal = async (req: Request, res: Response) => {
         const id = req.params.id
         const deadAnimalRepo = new DeadAnimalRepository()
         const variablesRepo = new VariablesRepository()
+        const animalStmtRepo = new AnimalStmtRepository()
 
         const deletedDeadAnimal = await deadAnimalRepo.delete(id)
         const stats = await variablesRepo.updateAnimals(deletedDeadAnimal.animal).inc()
+
+        //update animal stmt report
+        animalStmtRepo.saveToAnimalStmt(deletedDeadAnimal.date, {
+            dead: -countTotalAnimal(deletedDeadAnimal.animal),
+            small: stats.stats.animal.small,
+            big: stats.stats.animal.big,
+            other: stats.stats.animal[10]
+        })
 
         res.json({animal: deletedDeadAnimal, stats})
     }
@@ -43,6 +62,7 @@ const editDeadAnimal = async (req: Request, res: Response) => {
         let stats: VariablesModel
         const deadAnimalRepo = new DeadAnimalRepository()
         const variablesRepo = new VariablesRepository()
+        const animalStmtRepo = new AnimalStmtRepository()
 
         const doc = await deadAnimalRepo.update(id, deadAnimal)
         if(deadAnimal.animal){
@@ -52,6 +72,15 @@ const editDeadAnimal = async (req: Request, res: Response) => {
         else{
             stats = await variablesRepo.get()
         }
+
+        //update animal stmt report
+        animalStmtRepo.saveToAnimalStmt(doc.updatedDeadAnimal.date, {
+            dead: -countTotalAnimal(doc.oldDeadAnimal.animal) + countTotalAnimal(doc.updatedDeadAnimal.animal),
+            small: stats.stats.animal.small,
+            big: stats.stats.animal.big,
+            other: stats.stats.animal[10]
+        })
+
         res.json({ animal: doc.updatedDeadAnimal, stats })
     }
     catch(e){

@@ -1,7 +1,7 @@
 import {Application, Router} from 'express'
 import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMember, updateTrustMember, addNote, updateNote, deleteNote, generateFilteredReport, saveEmployee, getAvatar, deleteIncome, deleteExpense, editIncome, editExpense, saveAnimalIncome, deleteAnimalIncome, editAnimalIncome, saveDeadAnimal, deleteDeadAnimal, editDeadAnimal, saveGivenAnimal, deleteGivenAnimal, editGivenAnimal, saveAnimalCost, deleteAnimalCost, editAnimalCost } from './controllers'
 import { paginationMiddleware } from './middlewares/pagination/pagination.middleware'
-import { Income, Expense, TrustMember, Note, Employee, AnimalIncome, DeadAnimal, GivenAnimal, AnimalCost } from './schema'
+import { Income, Expense, TrustMember, Note, Employee, AnimalIncome, DeadAnimal, GivenAnimal, AnimalCost, AnimalStmt } from './schema'
 import { deleteEmployee } from './controllers/employee/employee.controller'
 import { auth } from './common/auth.common'
 
@@ -16,7 +16,8 @@ export class Routes{
             animalIncomeRoute = Router(),
             deadAnimalRoute = Router(),
             givenAnimalRoute = Router(),
-            animalCostRouter = Router()
+            animalCostRouter = Router(),
+            animalStmtRouter = Router()
 
         app.post('/setup', initVariables)
         app.post('/auth', auth)
@@ -68,6 +69,8 @@ export class Routes{
         animalCostRouter.patch('/edit/:id', editAnimalCost)
         animalCostRouter.get('/', paginationMiddleware(AnimalCost))
 
+        animalStmtRouter.get('/', paginationMiddleware(AnimalStmt))
+
         app.use('/income', incomeRoute)
         app.use('/expense', expenseRoute)
         app.use('/employee', employeeRoute)
@@ -77,5 +80,6 @@ export class Routes{
         app.use('/dead-animal', deadAnimalRoute)
         app.use('/given-animal', givenAnimalRoute)
         app.use('/animal-cost', animalCostRouter)
+        app.use('/animal-stmt', animalStmtRouter)
     }
 }
