@@ -1,5 +1,6 @@
 import { Variables, VariablesModel, AnimalIncomeModel, AnimalModel, AnimalIncome } from "../../schema"
 import { VAR_DOC_ID } from "../../common/constants.common"
+import { genOtp } from "../../common/utils.common"
 
 export class VariablesRepository{
     async create(doc: {name: string, pin: number}){
@@ -53,5 +54,10 @@ export class VariablesRepository{
             inc: async () => await genQuery(animals),
             dec: async () => await genQuery(animals.map(ani => ({ type: ani.type, count: -ani.count})))
         }
+    }
+
+    async issueOtp(){
+        const updatedVars = await Variables.findByIdAndUpdate(VAR_DOC_ID, { $set: { otp: genOtp() } })
+        return updatedVars.otp
     }
 }

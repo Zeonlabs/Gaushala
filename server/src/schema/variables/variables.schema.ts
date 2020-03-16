@@ -26,7 +26,8 @@ const variablesSchema = new mongoose.Schema({
             big: commonAttr,
             small: commonAttr
         }
-    }
+    },
+    otp: Number
 })
 
 variablesSchema.methods.toJSON = function(){

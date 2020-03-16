@@ -18,6 +18,32 @@ const initVariables = async (req: Request, res: Response) => {
     }
 }
 
+const resetPinRequset = async (req: Request, res: Response) => {
+    try{
+        const variablesRepo = new VariablesRepository()
+        const otp = await variablesRepo.issueOtp()
+
+        //TODO: send otp to sms
+
+        res.send()
+    }
+    catch(e){
+        console.log(e)
+        res.status(e.code || 400).send({ message: e.message })
+    }
+}
+
+const resetPin = async (req: Request, res: Response) => {
+    try{
+        const otp: number = req.body.otp
+        
+    }
+    catch(e){
+        console.log(e)
+        res.status(e.code || 400).send({message: e.message})
+    }
+}
+
 export {
     initVariables
 }

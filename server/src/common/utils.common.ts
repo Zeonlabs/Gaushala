@@ -9,3 +9,5 @@ export const countTotalAnimal = (animals: AnimalModel[]) => {
     animals.forEach(animal => total += animal.count)
     return total
 }
+
+export const genOtp = () => Math.floor(1000 + Math.random() * 9000)
