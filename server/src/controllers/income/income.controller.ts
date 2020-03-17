@@ -1,5 +1,6 @@
 import {Request, Response} from 'express'
 import {IncomeRepository, VariablesRepository} from '../../repository'
+import { VariablesModel } from '../../schema'
 
 const saveIncome = async (req: Request, res: Response) => {
     try{
@@ -8,9 +9,9 @@ const saveIncome = async (req: Request, res: Response) => {
         const variablesRepo = new VariablesRepository()
 
         const savedIncome = await incomeRepo.save(income)
-        const updatedCapital = await variablesRepo.updateCapital(savedIncome.money.amount).inc()
+        const {stats} = await variablesRepo.updateCapital(savedIncome.money.amount).inc()
         
-        res.send({income: savedIncome, stats: updatedCapital})
+        res.send({income: savedIncome, stats })
     }
     catch(e){
         console.log(e)
@@ -22,7 +23,7 @@ const editIncome = async (req: Request, res: Response) => {
     try{
         const incomeId: string = req.params.id
         const income = req.body
-        var stats: any
+        var stats: VariablesModel
         const incomeRepo = new IncomeRepository()
         const variablesRepo = new VariablesRepository()
 
@@ -33,7 +34,7 @@ const editIncome = async (req: Request, res: Response) => {
         else{
             stats = await variablesRepo.get()
         }
-        res.json({income: doc.updatedIncome, stats })
+        res.json({income: doc.updatedIncome, stats: stats.stats })
     }
     catch(e){
         console.log(e)
@@ -48,9 +49,9 @@ const deleteIncome = async (req: Request, res: Response) => {
         const variablesRepo = new VariablesRepository()
 
         const deletedIncome = await incomeRepo.delete(incomeId)
-        const updatedCapital = await variablesRepo.updateCapital(deletedIncome.money.amount).dec()
+        const {stats} = await variablesRepo.updateCapital(deletedIncome.money.amount).dec()
 
-        res.send({income: deletedIncome, stats: updatedCapital})
+        res.send({income: deletedIncome, stats })
     }
     catch(e){
         console.log(e)

@@ -11,14 +11,14 @@ const saveDeadAnimal = async (req: Request, res: Response) => {
         const animalStmtRepo = new AnimalStmtRepository()
 
         const doc = await deadAnimalRepo.save(deadAnimal)
-        const stats = await variablesRepo.updateAnimals(deadAnimal.animal).dec()
+        const {stats} = await variablesRepo.updateAnimals(deadAnimal.animal).dec()
 
         //save animal stmt report
         animalStmtRepo.saveToAnimalStmt(doc.date, {
             dead: countTotalAnimal(doc.animal),
-            small: stats.stats.animal.small,
-            big: stats.stats.animal.big,
-            other: stats.stats.animal[10]
+            small: stats.animal.small,
+            big: stats.animal.big,
+            other: stats.animal[10]
         })
 
         res.json({animal: doc, stats})
@@ -37,14 +37,14 @@ const deleteDeadAnimal = async (req: Request, res: Response) => {
         const animalStmtRepo = new AnimalStmtRepository()
 
         const deletedDeadAnimal = await deadAnimalRepo.delete(id)
-        const stats = await variablesRepo.updateAnimals(deletedDeadAnimal.animal).inc()
+        const {stats} = await variablesRepo.updateAnimals(deletedDeadAnimal.animal).inc()
 
         //update animal stmt report
         animalStmtRepo.saveToAnimalStmt(deletedDeadAnimal.date, {
             dead: -countTotalAnimal(deletedDeadAnimal.animal),
-            small: stats.stats.animal.small,
-            big: stats.stats.animal.big,
-            other: stats.stats.animal[10]
+            small: stats.animal.small,
+            big: stats.animal.big,
+            other: stats.animal[10]
         })
 
         res.json({animal: deletedDeadAnimal, stats})
@@ -81,7 +81,7 @@ const editDeadAnimal = async (req: Request, res: Response) => {
             other: stats.stats.animal[10]
         })
 
-        res.json({ animal: doc.updatedDeadAnimal, stats })
+        res.json({ animal: doc.updatedDeadAnimal, stats: stats.stats })
     }
     catch(e){
         console.log(e)

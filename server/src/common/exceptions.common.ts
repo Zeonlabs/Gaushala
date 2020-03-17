@@ -14,7 +14,15 @@ export class ImageUploadFailedException extends Error{
     code=409
     message='image upload failed'
 }
-export class AvatarNotProvidedError extends Error{
+export class DocsNotProvidedError extends Error{
     code=422
-    message='avatar not provided'
+    message='employee document not provided'
+}
+export class WrongOtpException extends Error{
+    code=401
+    message='wrong otp'
+}
+export class RequiredInputNotProvidedException extends Error{
+    code = 422
+    message = 'requied input not provided'
 }

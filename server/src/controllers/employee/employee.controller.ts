@@ -1,15 +1,15 @@
 import {Request, Response} from 'express'
 import {join} from 'path'
 import {EmployeeRepository} from '../../repository'
-import { AvatarNotProvidedError } from '../../common/exceptions.common'
+import { DocsNotProvidedError } from '../../common/exceptions.common'
 
 const saveEmployee = async (req: Request, res: Response) => {
     try{
-        if(!req['files']) throw new AvatarNotProvidedError()
+        if(!req['files']) throw new DocsNotProvidedError()
 
-        const avatar = req['files'].image
+        const doc = req['files'].doc
         const EmployeeRepo = new EmployeeRepository()
-        const savedDoc = await EmployeeRepo.save(req.body, avatar)
+        const savedDoc = await EmployeeRepo.save(req.body, doc)
         res.json(savedDoc)
     }
     catch(e){
@@ -17,11 +17,11 @@ const saveEmployee = async (req: Request, res: Response) => {
     }
 }
 
-const getAvatar = async (req: Request, res: Response) => {
+const getEmpDoc = async (req: Request, res: Response) => {
     try{
         const employeeId = req.params.id
-        res.download(join(__dirname, `../../../../avatars/${employeeId}.png`), (err) => {
-            if(err) res.status(404).send({message: "avatar not found"})
+        res.download(join(__dirname, `../../../../employee-docs/${employeeId}.png`), (err) => {
+            if(err) res.status(404).send({message: "docs not found"})
         })
     }
     catch(e){
@@ -44,6 +44,6 @@ const deleteEmployee = async (req: Request, res: Response) => {
 
 export {
     saveEmployee,
-    getAvatar,
+    getEmpDoc,
     deleteEmployee
 }

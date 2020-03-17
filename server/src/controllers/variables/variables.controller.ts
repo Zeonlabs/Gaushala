@@ -1,24 +1,41 @@
 import _ from 'lodash'
 import { Request, Response } from 'express';
 import { VariablesRepository } from '../../repository'
-import { PinNotFoundException } from '../../common/exceptions.common';
+import { PinNotFoundException, RequiredInputNotProvidedException } from '../../common/exceptions.common';
+import { VariablesModel } from '../../schema';
 
 const initVariables = async (req: Request, res: Response) => {
     try{
-        const input = _.pick(req.body, ['name', 'pin'])
+        const input = _.pick(req.body, ['name', 'pin', 'phone'])
         if(!input.pin) throw new PinNotFoundException()
+        if(!input.phone) throw new RequiredInputNotProvidedException()
         const variablesRepo = new VariablesRepository()
 
-        const doc = await variablesRepo.update(input)
+        const doc = await variablesRepo.saveInitInfo(input)
         res.send(doc)
     }
     catch(e){
         console.log(e)
-        res.status(e.code || 400).send(e.message)
+        res.status(e.code || 400).send({message: e.message})
     }
 }
 
-const resetPinRequset = async (req: Request, res: Response) => {
+const updateTrustInfo = async (req: Request, res: Response) => {
+    try{
+        const input = _.pick(req.body, ['name', 'phone'])
+        if(!input.name && !input.phone) throw new RequiredInputNotProvidedException()
+        const variablesRepo = new VariablesRepository()
+
+        const doc = await variablesRepo.updateInfo(input)
+        res.send(doc)
+    }
+    catch(e){
+        console.log(e)
+        res.status(e.code || 400).send({message: e.message})
+    }
+}
+
+const requestOtp = async (req: Request, res: Response) => {
     try{
         const variablesRepo = new VariablesRepository()
         const otp = await variablesRepo.issueOtp()
@@ -35,8 +52,12 @@ const resetPinRequset = async (req: Request, res: Response) => {
 
 const resetPin = async (req: Request, res: Response) => {
     try{
-        const otp: number = req.body.otp
-        
+        const body: VariablesModel = req.body
+        if(!body.otp || !body.pin) throw new RequiredInputNotProvidedException()
+        const variablesRepo = new VariablesRepository()
+
+        await variablesRepo.resetPin(body.otp, body.pin)
+        res.send({ message: 'ok' })
     }
     catch(e){
         console.log(e)
@@ -45,5 +66,8 @@ const resetPin = async (req: Request, res: Response) => {
 }
 
 export {
-    initVariables
+    initVariables,
+    updateTrustInfo,
+    requestOtp,
+    resetPin
 }

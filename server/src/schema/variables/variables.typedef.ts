@@ -16,6 +16,7 @@ interface StatsModel{
 
 export interface VariablesModel extends Document{
     name: string
+    phone: number
     pin: number
     stats: StatsModel
     otp: number

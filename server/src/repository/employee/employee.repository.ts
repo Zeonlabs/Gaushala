@@ -5,15 +5,15 @@ import {Employee, EmployeeModel} from '../../schema'
 import {ImageUploadFailedException, NoRecordWithIDException} from '../../common/exceptions.common'
 
 export class EmployeeRepository{
-    async save(data: EmployeeModel, image: Options){
+    async save(data: EmployeeModel, doc: Options){
 
         const employee = new Employee(data)
-        const doc = await employee.save()
+        const savedEmployee = await employee.save()
 
         return new Promise((resolve, reject) => {
-            image.mv(join(__dirname, `../../../../avatars/${doc._id}.png`), (err) => {
+            doc.mv(join(__dirname, `../../../../employee-docs/${savedEmployee._id}.png`), (err) => {
                 if(err) reject(new ImageUploadFailedException())
-                resolve(doc)
+                resolve(savedEmployee)
             })
         })
     }
@@ -23,7 +23,7 @@ export class EmployeeRepository{
         if(!deteledDoc) throw new NoRecordWithIDException()
 
         return new Promise((resolve, reject) => {
-            fs.unlink(join(__dirname, `../../../../avatars/${id}.png`), (err) => {
+            fs.unlink(join(__dirname, `../../../../employee-docs/${id}.png`), (err) => {
                 if(err) reject(err)
                 resolve(deteledDoc)
             })

@@ -1,6 +1,7 @@
 import { Variables, VariablesModel, AnimalIncomeModel, AnimalModel, AnimalIncome } from "../../schema"
 import { VAR_DOC_ID } from "../../common/constants.common"
 import { genOtp } from "../../common/utils.common"
+import { WrongOtpException } from "../../common/exceptions.common"
 
 export class VariablesRepository{
     async create(doc: {name: string, pin: number}){
@@ -13,8 +14,13 @@ export class VariablesRepository{
         }
     }
 
-    async update(data: {name: string, pin: number}){
+    async saveInitInfo(data: {name: string, pin: number, phone: number}){
         const doc = await Variables.findByIdAndUpdate(VAR_DOC_ID, { $set: data }, {new: true})
+        return doc
+    }
+
+    async updateInfo(data: {name: string, phone: number}){
+        const doc = await Variables.findByIdAndUpdate(VAR_DOC_ID, { $set: data }, { new: true })
         return doc
     }
 
@@ -59,5 +65,13 @@ export class VariablesRepository{
     async issueOtp(){
         const updatedVars = await Variables.findByIdAndUpdate(VAR_DOC_ID, { $set: { otp: genOtp() } })
         return updatedVars.otp
+    }
+
+    async resetPin(userOtp: number, pin: number){
+        const vars = await this.get()
+        if(vars.otp != userOtp) throw new WrongOtpException()
+
+        const updatedVars = await Variables.findByIdAndUpdate(VAR_DOC_ID, {$set: { pin }, $unset: { otp: 1 }}, {new: true})
+        return null
     }
 }

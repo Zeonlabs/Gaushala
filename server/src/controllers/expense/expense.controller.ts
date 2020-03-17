@@ -1,5 +1,6 @@
 import {Request, Response} from 'express'
 import {ExpenseRepository, VariablesRepository} from '../../repository'
+import { VariablesModel } from '../../schema'
 
 const saveExpense = async (req: Request, res: Response) => {
     try{
@@ -8,9 +9,9 @@ const saveExpense = async (req: Request, res: Response) => {
         const variableRepo = new VariablesRepository()
 
         const savedExpense = await expenseRepo.save(expense)
-        const updatedCapital = await variableRepo.updateCapital(savedExpense.money.amount).dec()
+        const {stats} = await variableRepo.updateCapital(savedExpense.money.amount).dec()
 
-        res.json({expense: savedExpense, stats: updatedCapital})
+        res.json({expense: savedExpense, stats })
     }
     catch(e){
         console.log(e)
@@ -22,7 +23,7 @@ const editExpense = async (req: Request, res: Response) => {
     try{
         const expenseId = req.params.id
         const expense = req.body
-        var stats: any
+        var stats: VariablesModel
         const expenseRepo = new ExpenseRepository()
         const variablesRepo = new VariablesRepository()
 
@@ -33,7 +34,7 @@ const editExpense = async (req: Request, res: Response) => {
         else{
             stats = await variablesRepo.get()
         }
-        res.json({expense: doc.updatedExpense, stats})
+        res.json({expense: doc.updatedExpense, stats: stats.stats})
     }
     catch(e){
         console.log(e)
@@ -48,9 +49,9 @@ const deleteExpense = async (req: Request, res: Response) => {
         const variablesRepo = new VariablesRepository()
 
         const deletedExpense = await expenseRepo.delete(expenseId)
-        const updatedCapital = await variablesRepo.updateCapital(deletedExpense.money.amount).inc()
+        const {stats} = await variablesRepo.updateCapital(deletedExpense.money.amount).inc()
 
-        res.send({expense: deletedExpense, stats: updatedCapital})
+        res.send({expense: deletedExpense, stats })
     }
     catch(e){
         console.log(e)

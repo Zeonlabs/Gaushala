@@ -14,6 +14,7 @@ const variablesSchema = new mongoose.Schema({
         default: VAR_DOC_ID
     },
     name: String,
+    phone: Number,
     pin: Number,
     stats: {
         capital: commonAttr,
@@ -31,7 +32,7 @@ const variablesSchema = new mongoose.Schema({
 })
 
 variablesSchema.methods.toJSON = function(){
-    return _.pick(this.toObject(), ['name', 'stats'])
+    return _.pick(this.toObject(), ['name', 'phone', 'stats'])
 }
 
 export const Variables: mongoose.Model<VariablesModel> = mongoose.model<VariablesModel>('variables', variablesSchema)

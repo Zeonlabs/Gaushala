@@ -9,7 +9,7 @@ const saveAnimalCost = async (req: Request, res: Response) => {
         const variablesRepo = new VariablesRepository()
         
         const savedDoc = await animalExpenseRepo.save(animalExpense)
-        const stats = await variablesRepo.updateCapital(animalExpense.total).dec()
+        const {stats} = await variablesRepo.updateCapital(animalExpense.total).dec()
 
         res.json({ expense: savedDoc, stats })
     }
@@ -26,7 +26,7 @@ const deleteAnimalCost = async (req: Request, res: Response) => {
         const variablesRepo = new VariablesRepository()
         
         const deletedDoc = await animalExpenseRepo.delete(id)
-        const stats = await variablesRepo.updateCapital(deletedDoc.total).inc()
+        const {stats} = await variablesRepo.updateCapital(deletedDoc.total).inc()
 
         res.json({ expense: deletedDoc, stats })
     }
@@ -52,7 +52,7 @@ const editAnimalCost = async (req: Request, res: Response) => {
             stats = await variablesRepo.get()
         }
 
-        res.json({ expense: expense.updatedDoc, stats })
+        res.json({ expense: expense.updatedDoc, stats: stats.stats })
     }
     catch(e){
         console.log(e);
