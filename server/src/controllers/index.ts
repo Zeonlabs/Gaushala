@@ -10,6 +10,7 @@ import {saveAnimalIncome, deleteAnimalIncome, editAnimalIncome} from './animalIn
 import {saveDeadAnimal, deleteDeadAnimal, editDeadAnimal} from './deadAnimal/deadAnimal.controller'
 import {saveGivenAnimal, deleteGivenAnimal, editGivenAnimal} from './givenAnimal/givenAnimal.controller'
 import { saveAnimalCost, deleteAnimalCost, editAnimalCost } from './animalCost/animalCost.controller'
+import { saveCheque, editCheque, deleteCheque, filteredChequeReport} from './cheque/cheque.controller'
 
 export {
     initVariables,
@@ -42,5 +43,9 @@ export {
     editGivenAnimal,
     saveAnimalCost,
     deleteAnimalCost,
-    editAnimalCost
+    editAnimalCost,
+    saveCheque,
+    editCheque,
+    deleteCheque,
+    filteredChequeReport
 }

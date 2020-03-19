@@ -9,6 +9,7 @@ import {DeadAnimalRepository} from './deadAnimal/deadAnimal.repository'
 import {GivenAnimalRepository} from './givenAnimal/givenAnimal.repository'
 import {AnimalCostRepository} from './animalCost/animalCost.repository'
 import {AnimalStmtRepository} from './animalStmt/animalStmt.repository'
+import {ChequeRepository} from './cheque/cheque.repository'
 
 export {
     VariablesRepository,
@@ -21,5 +22,6 @@ export {
     DeadAnimalRepository,
     GivenAnimalRepository,
     AnimalCostRepository,
-    AnimalStmtRepository
+    AnimalStmtRepository,
+    ChequeRepository
 }

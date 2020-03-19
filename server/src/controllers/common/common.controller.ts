@@ -1,11 +1,10 @@
 import {Request, Response} from 'express'
 import {Model as MongoModel} from 'mongoose'
-import { IncomeModel, ExpenseModel, AnimalIncome, GivenAnimal, DeadAnimal } from '../../schema'
-import { VariablesRepository, AnimalIncomeRepository, DeadAnimalRepository, GivenAnimalRepository } from '../../repository'
+import { IncomeModel, ExpenseModel, EmployeeModel, TrustMemberModel, AnimalIncomeModel, DeadAnimalModel, AnimalCostModel, GivenAnimalModel, AnimalStmtModel, GivenAnimal } from '../../schema'
 
-export const generateFilteredReport = (Model: MongoModel<IncomeModel | ExpenseModel>) => async (req: Request, res: Response) => {
+export const generateFilteredReport = (Model: MongoModel<IncomeModel | ExpenseModel | EmployeeModel | TrustMemberModel | AnimalIncomeModel | DeadAnimalModel | AnimalCostModel | GivenAnimalModel | AnimalStmtModel >) => async (req: Request, res: Response) => {
     try{
-        const { dateFrom = null, dateTo = null, type = null, moneyType = null, chequeNo = null, amountFrom = null, amountTo = null} = req.query
+        const { dateFrom = null, dateTo = null, type = null, moneyType = null, chequeNo = null, amountFrom = null, amountTo = null, position = null, tag = null} = req.query
 
         const genFilter = () => {
             const query = {}
@@ -18,6 +17,8 @@ export const generateFilteredReport = (Model: MongoModel<IncomeModel | ExpenseMo
             if(amountFrom && amountTo) query['money.amount'] = {
                 $gte: amountFrom, $lt: amountTo
             }
+            if(position) query['position'] = position
+            if(tag) query['tag'] = tag
             return query
         }
 

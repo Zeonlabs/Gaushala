@@ -1,7 +1,7 @@
 import {Application, Router} from 'express'
-import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMember, updateTrustMember, addNote, updateNote, deleteNote, generateFilteredReport, saveEmployee, getEmpDoc, deleteIncome, deleteExpense, editIncome, editExpense, saveAnimalIncome, deleteAnimalIncome, editAnimalIncome, saveDeadAnimal, deleteDeadAnimal, editDeadAnimal, saveGivenAnimal, deleteGivenAnimal, editGivenAnimal, saveAnimalCost, deleteAnimalCost, editAnimalCost, requestOtp, resetPin, updateTrustInfo } from './controllers'
+import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMember, updateTrustMember, addNote, updateNote, deleteNote, generateFilteredReport, saveEmployee, getEmpDoc, deleteIncome, deleteExpense, editIncome, editExpense, saveAnimalIncome, deleteAnimalIncome, editAnimalIncome, saveDeadAnimal, deleteDeadAnimal, editDeadAnimal, saveGivenAnimal, deleteGivenAnimal, editGivenAnimal, saveAnimalCost, deleteAnimalCost, editAnimalCost, requestOtp, resetPin, updateTrustInfo, saveCheque, editCheque, deleteCheque, filteredChequeReport } from './controllers'
 import { paginationMiddleware } from './middlewares/pagination/pagination.middleware'
-import { Income, Expense, TrustMember, Note, Employee, AnimalIncome, DeadAnimal, GivenAnimal, AnimalCost, AnimalStmt } from './schema'
+import { Income, Expense, TrustMember, Note, Employee, AnimalIncome, DeadAnimal, GivenAnimal, AnimalCost, AnimalStmt, Cheque } from './schema'
 import { deleteEmployee } from './controllers/employee/employee.controller'
 import { auth } from './common/auth.common'
 
@@ -18,7 +18,8 @@ export class Routes{
             givenAnimalRoute = Router(),
             animalCostRouter = Router(),
             animalStmtRouter = Router(),
-            variablesRouter = Router()
+            variablesRouter = Router(),
+            chequeRouter = Router()
 
         app.post('/auth', auth)
 
@@ -43,6 +44,7 @@ export class Routes{
         employeeRoute.get('/', paginationMiddleware(Employee))
         employeeRoute.get('/doc/:id', getEmpDoc)
         employeeRoute.delete('/delete/:id', deleteEmployee)
+        employeeRoute.get('/filter', generateFilteredReport(Employee))
 
         noteRoute.post('/add', addNote)
         noteRoute.get('/', paginationMiddleware(Note))
@@ -53,29 +55,40 @@ export class Routes{
         trustMemberRoute.get('/', paginationMiddleware(TrustMember))
         trustMemberRoute.patch('/update/:id', updateTrustMember)
         trustMemberRoute.delete('/delete/:id', deleteTrustMember)
+        trustMemberRoute.get('/filter', generateFilteredReport(TrustMember))
 
         animalIncomeRoute.post('/add', saveAnimalIncome)
         animalIncomeRoute.delete('/delete/:id', deleteAnimalIncome)
         animalIncomeRoute.patch('/edit/:id', editAnimalIncome)
         animalIncomeRoute.get('/', paginationMiddleware(AnimalIncome))
+        animalIncomeRoute.get('/filter', generateFilteredReport(AnimalIncome))
 
         deadAnimalRoute.post('/add', saveDeadAnimal)
         deadAnimalRoute.delete('/delete/:id', deleteDeadAnimal)
         deadAnimalRoute.patch('/edit/:id', editDeadAnimal)
         deadAnimalRoute.get('/', paginationMiddleware(DeadAnimal))
+        deadAnimalRoute.get('/filter', generateFilteredReport(DeadAnimal))
 
         givenAnimalRoute.post('/add', saveGivenAnimal)
         givenAnimalRoute.delete('/delete/:id', deleteGivenAnimal)
         givenAnimalRoute.patch('/edit/:id', editGivenAnimal)
         givenAnimalRoute.get('/', paginationMiddleware(GivenAnimal))
+        givenAnimalRoute.get('/filter', generateFilteredReport(GivenAnimal))
 
         animalCostRouter.post('/add', saveAnimalCost)
         animalCostRouter.delete('/delete/:id', deleteAnimalCost)
         animalCostRouter.patch('/edit/:id', editAnimalCost)
         animalCostRouter.get('/', paginationMiddleware(AnimalCost))
+        animalCostRouter.get('/filter', generateFilteredReport(AnimalCost))
 
         animalStmtRouter.get('/', paginationMiddleware(AnimalStmt))
+        animalStmtRouter.get('/filter', generateFilteredReport(AnimalStmt))
 
+        chequeRouter.post('/add', saveCheque)
+        chequeRouter.patch('/edit/:id', editCheque)
+        chequeRouter.delete('/delete/:id', deleteCheque)
+        chequeRouter.get('/', paginationMiddleware(Cheque))
+        chequeRouter.get('/filter', filteredChequeReport)
         
         app.use('/income', incomeRoute)
         app.use('/expense', expenseRoute)
@@ -88,5 +101,6 @@ export class Routes{
         app.use('/animal-cost', animalCostRouter)
         app.use('/animal-stmt', animalStmtRouter)
         app.use('/me', variablesRouter)
+        app.use('/cheque', chequeRouter)
     }
 }

@@ -21,6 +21,8 @@ import {AnimalCost} from './animal/animalCost/animalCost.schema'
 import {AnimalCostModel} from './animal/animalCost/animalCost.typedef'
 import {AnimalStmt} from './animal/animalStmt/animalStmt.schema'
 import {AnimalStmtModel} from './animal/animalStmt/animalStmt.typedef'
+import {Cheque} from './cheque/cheque.schema'
+import {ChequeModel} from './cheque/cheque.typedef'
 
 export {
     Variables,
@@ -45,5 +47,7 @@ export {
     AnimalCost,
     AnimalCostModel,
     AnimalStmt,
-    AnimalStmtModel
+    AnimalStmtModel,
+    Cheque,
+    ChequeModel
 }
