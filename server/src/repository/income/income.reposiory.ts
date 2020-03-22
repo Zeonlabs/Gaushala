@@ -25,6 +25,15 @@ export class IncomeRepository{
         return doc
     }
 
+    async getForAnalytics(dateFrom: Date, dateTo: Date){
+        const records = await Income.find({
+            date: {
+                $gte: dateFrom, $lt: dateTo
+            }
+        }, {_id: 0, date: 1, money: 2, type: 3})
+        return records
+    }
+
     async getAll(){
         const allIncome = await Income.find()
         return allIncome

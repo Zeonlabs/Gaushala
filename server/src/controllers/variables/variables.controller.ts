@@ -65,9 +65,21 @@ const resetPin = async (req: Request, res: Response) => {
     }
 }
 
+const getVars = async (req: Request, res: Response) => {
+    try{
+        const variablesRepo = new VariablesRepository()
+        const vars = await variablesRepo.get()
+        res.json(vars)
+    }
+    catch(e){
+        res.status(e.code || 400).send({message: e.message})
+    }
+}
+
 export {
     initVariables,
     updateTrustInfo,
     requestOtp,
-    resetPin
+    resetPin,
+    getVars
 }

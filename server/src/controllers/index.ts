@@ -1,11 +1,11 @@
-import {initVariables, updateTrustInfo, requestOtp, resetPin} from './variables/variables.controller'
+import {initVariables, updateTrustInfo, requestOtp, resetPin, getVars} from './variables/variables.controller'
 import {saveIncome, deleteIncome, editIncome} from './income/income.controller'
 import {saveExpense, deleteExpense, editExpense} from './expense/expense.controller'
 import {saveEmployee, getEmpDoc} from './employee/employee.controller'
 import {addNote, updateNote, deleteNote} from './note/note.controller'
 import {addTrustMember, deleteTrustMember, updateTrustMember} from './trustMember/trustMember.controller'
 
-import {generateFilteredReport} from './common/common.controller'
+import {generateFilteredReport, getIncomeExpenseAnalytics} from './common/common.controller'
 import {saveAnimalIncome, deleteAnimalIncome, editAnimalIncome} from './animalIncome/animalIncome.controller'
 import {saveDeadAnimal, deleteDeadAnimal, editDeadAnimal} from './deadAnimal/deadAnimal.controller'
 import {saveGivenAnimal, deleteGivenAnimal, editGivenAnimal} from './givenAnimal/givenAnimal.controller'
@@ -17,6 +17,7 @@ export {
     updateTrustInfo,
     requestOtp,
     resetPin,
+    getVars,
     saveIncome,
     editIncome,
     deleteIncome,
@@ -32,6 +33,7 @@ export {
     deleteTrustMember,
     updateTrustMember,
     generateFilteredReport,
+    getIncomeExpenseAnalytics,
     saveAnimalIncome,
     deleteAnimalIncome,
     editAnimalIncome,

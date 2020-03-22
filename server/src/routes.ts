@@ -1,5 +1,5 @@
 import {Application, Router} from 'express'
-import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMember, updateTrustMember, addNote, updateNote, deleteNote, generateFilteredReport, saveEmployee, getEmpDoc, deleteIncome, deleteExpense, editIncome, editExpense, saveAnimalIncome, deleteAnimalIncome, editAnimalIncome, saveDeadAnimal, deleteDeadAnimal, editDeadAnimal, saveGivenAnimal, deleteGivenAnimal, editGivenAnimal, saveAnimalCost, deleteAnimalCost, editAnimalCost, requestOtp, resetPin, updateTrustInfo, saveCheque, editCheque, deleteCheque, filteredChequeReport } from './controllers'
+import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMember, updateTrustMember, addNote, updateNote, deleteNote, generateFilteredReport, saveEmployee, getEmpDoc, deleteIncome, deleteExpense, editIncome, editExpense, saveAnimalIncome, deleteAnimalIncome, editAnimalIncome, saveDeadAnimal, deleteDeadAnimal, editDeadAnimal, saveGivenAnimal, deleteGivenAnimal, editGivenAnimal, saveAnimalCost, deleteAnimalCost, editAnimalCost, requestOtp, resetPin, updateTrustInfo, saveCheque, editCheque, deleteCheque, filteredChequeReport, getVars, getIncomeExpenseAnalytics } from './controllers'
 import { paginationMiddleware } from './middlewares/pagination/pagination.middleware'
 import { Income, Expense, TrustMember, Note, Employee, AnimalIncome, DeadAnimal, GivenAnimal, AnimalCost, AnimalStmt, Cheque } from './schema'
 import { deleteEmployee } from './controllers/employee/employee.controller'
@@ -23,7 +23,10 @@ export class Routes{
 
         app.post('/auth', auth)
 
+        app.get('/inex/analytics', getIncomeExpenseAnalytics)
+
         variablesRouter.post('/setup', initVariables)
+        variablesRouter.get('/', getVars)
         variablesRouter.patch('/', updateTrustInfo)
         variablesRouter.get('/req/otp', requestOtp)
         variablesRouter.patch('/reset/pin', resetPin)
