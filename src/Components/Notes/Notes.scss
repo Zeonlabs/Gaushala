@@ -3,6 +3,13 @@
 }
 // ----------------card css----------
 .card-note {
+  .card-wrapper {
+    margin-left: 8px;
+    &:nth-child(3n + 1) {
+      margin-left: 0px;
+    }
+  }
+  display: flex;
   .ant-card-bordered {
     border: 1px solid #000000;
     border-radius: 5px;

@@ -1,0 +1,4 @@
+My error ->
+  i was gave a table index of a animal static. so change it according requirenment 
+
+chnage -> change url into employee index.js file to thier local host api. 

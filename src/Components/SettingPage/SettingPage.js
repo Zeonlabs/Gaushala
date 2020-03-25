@@ -13,7 +13,7 @@ import {
   Divider,
   Tag,
   Button,
-  Layout,
+  Layout
 } from "antd";
 import OtpScreen from "./OtpScreen";
 
@@ -29,6 +29,7 @@ export class SettingPage extends Component {
   state = {
     ModalText: "Content of the modal",
     visible: false,
+    visibleModal: false,
     confirmLoading: false
   };
 
@@ -71,6 +72,12 @@ export class SettingPage extends Component {
     });
   };
 
+  handelChange = () => {
+    this.setState({
+      visibleModal: !this.state.visibleModal
+    });
+  };
+
   render() {
     const { visible, confirmLoading } = this.state;
 
@@ -90,26 +97,35 @@ export class SettingPage extends Component {
             </Row>
 
             <div className="form-income">
-              <h2 style={{ textAlign: "center", fontWeight: "bolder" }}>
-                nvo pIn n>br se3 kro
-              </h2>
-              <Row gutter={[16, 16]}>
-                <Col span={8}></Col>
-                <Col span={8}>
-                  <Form.Item label="nvo pIn n>br ]mero:">
-                    <Input />
-                  </Form.Item>
-                  <Form.Item label="frI pIn n>br ]mero:">
-                    <Input />
-                  </Form.Item>
-                </Col>
-                <Col span={8}></Col>
-              </Row>
+              <div
+                className={
+                  this.state.visibleModal
+                    ? "display-pin-change"
+                    : "display-none-pin-change"
+                }
+              >
+                {/* =============================otp pin set========================== */}
 
+                <h2 style={{ textAlign: "center", fontWeight: "bolder" }}>
+                  nvo pIn n>br se3 kro
+                </h2>
+                <Row gutter={[16, 16]}>
+                  <Col span={8}></Col>
+                  <Col span={8}>
+                    <Form.Item label="nvo pIn n>br ]mero:">
+                      <Input />
+                    </Form.Item>
+                    <Form.Item label="frI pIn n>br ]mero:">
+                      <Input />
+                    </Form.Item>
+                  </Col>
+                  <Col span={8}></Col>
+                </Row>
+              </div>
               <Row gutter={[16, 16]}>
                 <Col span={8}></Col>
                 <Col span={8}></Col>
-                <Col span={8} style={{padding:0,}}>
+                <Col span={8} style={{ padding: 0 }}>
                   {/* ------------------------------Submit button--------------------------- */}
                   <Form.Item>
                     <Button
@@ -117,7 +133,7 @@ export class SettingPage extends Component {
                       htmlType="submit"
                       icon="safety-certificate"
                       type="primary"
-                      style={{ float:"right" }}
+                      style={{ float: "right" }}
                     >
                       sbmI3
                     </Button>
@@ -126,7 +142,10 @@ export class SettingPage extends Component {
               </Row>
             </div>
 
-            <OtpScreen className="otp-verification-page" />
+            <OtpScreen
+              className="otp-verification-page"
+              handelShows={this.handelChange}
+            />
           </Modal>
         </div>
 
@@ -143,7 +162,7 @@ export class SettingPage extends Component {
           {/* -----------------------------Name of Member-------------------------------- */}
           <Col className="gutter-row margin-left" span={6}>
             <Form.Item className="ant-col input-name-gujarati" label="3\S3 nam">
-              <Input  placeholder="nam" />
+              <Input placeholder="nam" />
             </Form.Item>
           </Col>
 

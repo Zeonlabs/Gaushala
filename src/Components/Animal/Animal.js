@@ -70,7 +70,7 @@ class Animal extends Component {
   };
 
   handelPopup = e => {
-    console.log("TCL: Animal -> slug", e);
+    console.log("TCL: Animalsadasd -> slug", e);
     switch (e) {
       case "creadit_animal":
         this.creaditAnimalModel();
@@ -126,7 +126,7 @@ class Animal extends Component {
     });
 
   handelListPage = e => {
-    console.log("TCL: Animal -> slug", e);
+    console.log("TCL: Animal -> slsadasdsug ->", e);
     switch (this.state.slug) {
       case "creadit_animal":
         return <CreditAnimal back={this.backClick} />;
@@ -262,7 +262,10 @@ class Animal extends Component {
               {/* -----------------------------------------------------------------------
               -----------------------------------Animal Given---------------------------
               --------------------------------------------------------------------------- */}
-              <Col className="gutter-row card-content card-hover-scss card-back-theme" span={6}>
+              <Col
+                className="gutter-row card-content card-hover-scss card-back-theme"
+                span={6}
+              >
                 <Card
                   className="card-background"
                   title="Aapel pxuAO"
@@ -375,7 +378,7 @@ class Animal extends Component {
           ""
         )}
         <div>
-          {this.handelListPage()}
+          {this.handelListPage(this.state.slug)}
           <CreditAnimals
             visible={this.state.creaditAnimalpopup}
             toggleModel={this.creaditAnimalModel}

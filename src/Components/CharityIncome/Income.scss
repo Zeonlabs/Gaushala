@@ -13,7 +13,11 @@
   line-height: 17.9999px !important;
 }
 
-
+.income-table-td-height {
+  .table td {
+    height: inherit !important;
+  }
+}
 
 .ant-layout-content {
   min-height: unset !important;
@@ -22,6 +26,6 @@
 .ant-table-row-cell-break-word {
   text-align: center;
 }
-#Income_daterange{
- width: 100%;
+#Income_daterange {
+  width: 100%;
 }

@@ -41,7 +41,7 @@ export const editNotes = (id, data) => dispatch =>
 export const deleteNotes = id => dispatch =>
   new Promise((resolve, reject) => {
     console.log("TCL: data", id);
-    fetchUrl("get", `/note/delete/${id}`)
+    fetchUrl("delete", `/note/delete/${id}`)
       .then(res => {
         resolve(res);
       })
@@ -50,14 +50,14 @@ export const deleteNotes = id => dispatch =>
       });
   });
 
-export const filterNotes = id => dispatch =>
-  new Promise((resolve, reject) => {
-    console.log("TCL: data", id);
-    fetchUrl("get", `/expense`, id)
-      .then(res => {
-        resolve(res);
-      })
-      .catch(e => {
-        reject(e);
-      });
-  });
+// export const filterNotes = id => dispatch =>
+//   new Promise((resolve, reject) => {
+//     console.log("TCL: data", id);
+//     fetchUrl("get", `/expense`, id)
+//       .then(res => {
+//         resolve(res);
+//       })
+//       .catch(e => {
+//         reject(e);
+//       });
+//   });

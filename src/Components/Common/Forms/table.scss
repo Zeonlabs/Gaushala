@@ -37,11 +37,22 @@
   clear: both;
 }
 .ant-table-body {
+  max-height: 100% !important;
   table {
     border-bottom: 1px solid black !important;
     border-right: 1px solid black !important;
   }
 }
+
+.income-expense-table {
+  tr {
+    height: 42px;
+    &:hover {
+      height: 42px;
+    }
+  }
+}
+
 .table-boder {
   table {
     border-radius: 4px;
@@ -87,6 +98,70 @@
   font-weight: 600 !important;
   font-size: 18px !important;
 }
+.table-income {
+  width: 100% !important;
+
+  .ant-table-header-column {
+    font-weight: bolder;
+  }
+  input,
+  input:hover {
+    outline: none !important;
+  }
+
+  input:focus {
+    margin-left: 2px !important;
+    background: #ffffff;
+    width: 100%;
+  }
+  th {
+    border: 1px solid black;
+    border-right: none;
+    border-bottom: 1px solid black !important;
+  }
+  td {
+    // border: 1px solid black;
+    border-left: 1px solid black !important;
+    border-bottom: 1px solid black;
+  }
+
+  tr,
+  td {
+    padding: 20px !important;
+  }
+  th {
+    padding: 15px !important;
+    text-align: center !important;
+  }
+  .deleteicon {
+    color: red($color: #ff0000) !important;
+    text-align: center !important;
+  }
+
+  button {
+    margin-top: 5px;
+    margin-bottom: 5px !important;
+  }
+  .totalamount {
+    display: flex;
+    text-align: center;
+    margin-top: -1px;
+    border: 1px solid #000000;
+    border-left: none;
+    border-top: none;
+    .amount-in-words {
+      width: 60%;
+    }
+    h4 {
+      margin: auto;
+      padding: 5px;
+      width: 40%;
+      justify-content: center;
+      text-align: initial;
+      border-left: 1px solid #000000;
+    }
+  }
+}
 
 .table {
   width: 100% !important;
@@ -104,7 +179,7 @@
     background: #ffffff;
     width: 100%;
   }
-  th{
+  th {
     border: 1px solid black;
     border-right: none;
     border-bottom: 1px solid black !important;
@@ -112,13 +187,13 @@
   td {
     // border: 1px solid black;
     border-left: 1px solid black !important;
-    border-bottom: 1px solid black ;
+    border-bottom: 1px solid black;
   }
 
   tr,
   td {
     padding: 15px !important;
-    height: 32px !important;
+    // height: 32px !important;
   }
   th {
     padding: 15px !important;
@@ -201,13 +276,13 @@
   }
 }
 
-.td-total-animal-table{
- p{
-   padding: 10px;
- }
+.td-total-animal-table {
+  p {
+    padding: 10px;
+  }
 }
 
-.vigat-col{
+.vigat-col {
   padding: 14px !important;
   border: none;
 }

@@ -2,80 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PageWrapper from "../Common/PageWrapper/PageWrapper";
 import "./Employees.scss";
-import moment from "moment";
+// import moment from "moment";
+import { Icon, Button, Row, Col, message } from "antd";
 import {
-  Input,
-  Select,
-  InputNumber,
-  DatePicker,
-  Form,
-  Icon,
-  Button,
-  Modal,
-  Radio,
-  Row,
-  Col,
-  Upload,
-  message,
-  Divider
-} from "antd";
+  getEmployee,
+  getEmployeeDocs,
+  getEmployeeFilter,
+  addEmployee,
+  editEmployee,
+  deleteEmployee
+} from "../../Actions/Employee";
 import AddEmployee from "./AddEmployee/Index";
 import { FilterData } from "./FilterData";
 import ListingTable from "./ListingTable";
-function getBase64(img, callback) {
-  const reader = new FileReader();
-  reader.addEventListener("load", () => callback(reader.result));
-  reader.readAsDataURL(img);
-}
-
-function beforeUpload(file) {
-  const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
-  if (!isJpgOrPng) {
-    message.error("You can only upload JPG/PNG file!");
-  }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if (!isLt2M) {
-    message.error("Image must smaller than 2MB!");
-  }
-  return isJpgOrPng && isLt2M;
-}
-
-const { RangePicker } = DatePicker;
-const { Option } = Select;
-
-function onChange(dates, dateStrings) {
-  console.log("From: ", dates[0], ", to: ", dates[1]);
-  console.log("From: ", dateStrings[0], ", to: ", dateStrings[1]);
-}
-
-// const fileList = [
-//   {
-//     uid: '-1',
-//     name: 'xxx.png',
-//     status: 'done',
-//     url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-//     thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-//   },
-//   {
-//     uid: '-2',
-//     name: 'yyy.png',
-//     status: 'error',
-//   },
-// ];
-
-const props = {
-  action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-  listType: "picture"
-  // defaultFileList: [...fileList],
-};
-
-const props2 = {
-  action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-  listType: "picture",
-  // defaultFileList: [...fileList],
-  className: "upload-list-inline"
-};
-
+import axios from "axios";
 export class Employees extends Component {
   gutters = {};
 
@@ -90,7 +30,14 @@ export class Employees extends Component {
       gutterKey: 1,
       vgutterKey: 1,
       colCountKey: 2,
-      addPopup: false
+      addPopup: false,
+      data: "",
+      pagination: {
+        page: 1,
+        limit: 20
+      },
+      editData: "",
+      income: false
     };
 
     [8, 16, 24, 32, 40, 48].forEach((value, i) => {
@@ -103,6 +50,19 @@ export class Employees extends Component {
       this.colCounts[i] = value;
     });
   }
+
+  componentDidMount = () => {
+    const pagination = {
+      page: 1,
+      limit: 20
+    };
+    this.props.getEmployee(pagination).then(res => {
+      console.log("Employees -> componentDidMount -> res", res);
+      this.setState({
+        data: res.docs
+      });
+    });
+  };
 
   onGutterChange = gutterKey => {
     this.setState({ gutterKey });
@@ -118,39 +78,74 @@ export class Employees extends Component {
 
   handelEmployeePopup = () => {
     this.setState({
-      addPopup: !this.state.addPopup
+      addPopup: !this.state.addPopup,
+      income: !this.state.income
+    });
+  };
+
+  handelDataAdd = data => {
+    console.log("Employees -> handelDataAdd -> data", data);
+    axios.post("http://localhost:8081/employee/add", data).then(res => {
+      console.log("Employees -> res", res);
+      this.props.getEmployee(this.state.pagination).then(res => {
+        console.log("res in a income model =->", res);
+        this.setState({
+          data: res.docs
+        });
+      });
+      this.handelEmployeePopup();
+    });
+  };
+
+  handelDelete = record => {
+    console.log("Income -> handleDelete -> key, record", record);
+    this.props.deleteEmployee(record._id).then(res => {
+      this.props
+        .getEmployee(this.state.pagination)
+        .then(res => {
+          console.log("res in a income model =->", res);
+          this.setState({
+            data: res.docs
+          });
+        })
+        .catch(e => message.error(e));
+    });
+  };
+
+  handelEdit = record => {
+    this.setState({
+      addPopup: !this.state.addPopup,
+      editData: record,
+      income: true
+    });
+  };
+
+  handelFilter = value => {
+    console.log("Employees -> handelFilter -> value", value);
+    const data = {
+      type: value === "No" ? "" : value
+    };
+    this.props.getEmployeeFilter(data).then(res => {
+      console.log("Employees -> res", res);
+      this.setState({
+        data: res
+      });
     });
   };
 
   render() {
-    const { gutterKey, vgutterKey, colCountKey } = this.state;
-    const cols = [];
-    const colCount = this.colCounts[colCountKey];
-    let colCode = "";
-    for (let i = 0; i < colCount; i++) {
-      cols.push(
-        <Col key={i.toString()} span={24 / colCount}>
-          <div>Column</div>
-        </Col>
-      );
-      colCode += `  <Col span={${24 / colCount}} />\n`;
-    }
-
-    const uploadButton = (
-      <div>
-        <Icon type={this.state.loading ? "loading" : "plus"} />
-        <div className="ant-upload-text">Upload</div>
-      </div>
-    );
-    const { imageUrl } = this.state;
+    const { editData, income } = this.state;
 
     return (
       <PageWrapper title="kmRcarI nI yadI">
         <AddEmployee
           handelEmployeePopup={this.handelEmployeePopup}
+          submit={this.handelDataAdd}
           openPopup={this.state.addPopup}
+          data={income ? editData : ""}
+          // type={income ? "edit" : "add"}
         />
-        
+
         <div className="filter-icon">
           <Icon type="filter" theme="filled" />
           <h3>rIpo3 fIL3r</h3>
@@ -159,7 +154,7 @@ export class Employees extends Component {
         <Row gutter={[16, 16]}>
           <Col span={20}>
             <div>
-              <FilterData />
+              <FilterData onFilterChange={this.handelFilter} />
             </div>
           </Col>
 
@@ -178,98 +173,26 @@ export class Employees extends Component {
           </Col>
         </Row>
         <div className="table">
-        <ListingTable />
+          <ListingTable
+            data={this.state.data || []}
+            editUSer={this.handelEdit}
+            delete={this.handelDelete}
+          />
         </div>
-        
       </PageWrapper>
     );
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  ...state.Animals
+});
 
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Employees);
-
-// <Divider orientation="left" className="divider-color divider-label">
-//         nvo kmRcarI ]mero b3n klIk
-//         </Divider>
-
-//         {/* ------------------------------------------------------------------------------------------
-//           ---------------------------------------Add Employees---------------------------------------------
-//           ------------------------------------------------------------------------------------------ */}
-//         <div>
-//           <Row type="flex" justify="space-between">
-//             {/* ------------------------------Post type--------------------------------- */}
-//             <Col span={6}>
-//               <Form.Item className="" label="kmRcarI no p/kar" hasFeedback>
-//                 <Select
-//                   className="in-icon-arrow"
-//                   placeholder="kmRcarI no p/kar ps>d kro"
-//                 >
-//                   <Option value="vaDI na mjur">vaDI na mjur</Option>
-//                   <Option value="gOxa5a na mjur">gOxa5a na mjur</Option>
-//                   <Option value="Dok3r">Dok3r</Option>
-//                   <Option value="mheta+">mheta+</Option>
-//                   <Option value="ANy">ANy</Option>
-//                 </Select>
-//               </Form.Item>
-//             </Col>
-
-//             {/* -----------------------------Name of Employees-------------------------------- */}
-//             <Col className="gutter-row" span={6}>
-//               <Form.Item className="ant-col" label="nam">
-//                 <Input placeholder="nam" />
-//               </Form.Item>
-//             </Col>
-
-//             {/* ------------------------------phone No--------------------------------- */}
-//             <Col span={4}>
-//               <Form.Item label="moba[l n>.">
-//                 <Input
-//                   type="number"
-//                   className="english-font-input"
-//                   placeholder="+91 0000000000"
-//                 />
-//               </Form.Item>
-//             </Col>
-
-//             {/* -----------------------------Address of Employees-------------------------------- */}
-//             <Col className="gutter-row" span={6}>
-//               <Form.Item className="ant-col" label="srnamu">
-//                 <Input placeholder="srnamu" />
-//               </Form.Item>
-//             </Col>
-//           </Row>
-//           {/* -------------------------------Upload Button--------------------------------------- */}
-//           <Row>
-//           <h4 className="uplod-label">AploD DoKyumeN3s:</h4>
-//             <Upload {...props2}>
-//               <Button>
-//                 <Icon type="file-add" /> AploD
-//               </Button>
-//             </Upload>
-//           </Row>
-
-//           <Row>
-//             {/* ------------------------------add button--------------------------- */}
-//             <Col span={4} className="button-group">
-//               <Form.Item className="print-btn-margin">
-//                 <Button
-//                   size="default"
-//                   htmlType="submit"
-//                   icon="vertical-align-bottom"
-//                   style={{ backgroundColor: "#505D6F", color: "#ffffff" }}
-//                 >
-//                   ]mero
-//                 </Button>
-//               </Form.Item>
-//               {/* ------------------------------Cancel Button--------------------------------- */}
-//               <Form.Item>
-//                 <Button size="default">rd kro</Button>
-//               </Form.Item>
-//             </Col>
-//           </Row>
-
-//         </div>
+export default connect(mapStateToProps, {
+  getEmployee,
+  getEmployeeDocs,
+  getEmployeeFilter,
+  addEmployee,
+  editEmployee,
+  deleteEmployee
+})(Employees);

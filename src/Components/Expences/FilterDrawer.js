@@ -22,7 +22,10 @@ class FilterDrawers extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      start_date: "",
+      end_date: ""
+    };
   }
 
   handleSubmit = e => {
@@ -30,8 +33,37 @@ class FilterDrawers extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
+        console.log("Received values of form: ", values);
         this.props.onClose();
+        Object.keys(values).forEach(
+          key => values[key] === undefined && delete values[key]
+        );
+        console.log("Received values After trime: ", values);
+        const data = {
+          dateFrom: values.daterange ? this.state.start_date : undefined,
+          dateTo: values.daterange ? this.state.end_date : undefined,
+          ...values
+        };
+        delete data.daterange;
+        Object.keys(data).forEach(
+          key => data[key] === undefined && delete data[key]
+        );
+        this.props.submit(data);
+        this.props.form.resetFields();
       }
+    });
+  };
+
+  dateChange = (value, dateString) => {
+    console.log("Selected Time: ", value);
+    console.log("Formatted Selected Time: ", dateString);
+    const startDate = dateString[0];
+    const updatedStartDate = startDate.replace(/\//g, "-");
+    const endDate = dateString[1];
+    const updatedEndDate = endDate.replace(/\//g, "-");
+    this.setState({
+      start_date: updatedStartDate,
+      end_date: updatedEndDate
     });
   };
 
@@ -65,7 +97,10 @@ class FilterDrawers extends Component {
               <Row>
                 <Form.Item label="tarIq ps>d kro:">
                   {getFieldDecorator("daterange")(
-                    <RangePicker className="english-font-input" />
+                    <RangePicker
+                      className="english-font-input"
+                      onChange={this.dateChange}
+                    />
                   )}
                 </Form.Item>
               </Row>
@@ -73,7 +108,7 @@ class FilterDrawers extends Component {
               <Row>
                 {/* --------------------------Expenses Type------------------------ */}
                 <Form.Item className="" label="javk no p/kar" hasFeedback>
-                  {getFieldDecorator("income")(
+                  {getFieldDecorator("type")(
                     <Select
                       className="in-icon-arrow"
                       placeholder="javk no p/kar ps>d kro"
@@ -96,7 +131,7 @@ class FilterDrawers extends Component {
               <Row gutter={[16, 16]}>
                 <Col span={12}>
                   <Form.Item label="dan SvIkar">
-                    {getFieldDecorator("incometype")(
+                    {getFieldDecorator("moneyType")(
                       <Radio.Group>
                         <Radio value="cash">rokD</Radio>
                         <Radio value="cheque">cek</Radio>
@@ -106,7 +141,7 @@ class FilterDrawers extends Component {
                 </Col>
                 <Col span={12}>
                   <Form.Item className="cheque-no" label="vouchr n>.">
-                    {getFieldDecorator("voucherno")(
+                    {getFieldDecorator("chequeNo")(
                       <Input
                         className="english-font-input"
                         style={{ width: "100%" }}
@@ -120,7 +155,7 @@ class FilterDrawers extends Component {
               <Row gutter={[16, 16]}>
                 <Col span={12}>
                   <Form.Item label="rkm 4I">
-                    {getFieldDecorator("amountfrom")(
+                    {getFieldDecorator("amountFrom")(
                       <Input
                         className="english-font-input"
                         style={{ width: "100%" }}
@@ -131,7 +166,7 @@ class FilterDrawers extends Component {
                 </Col>
                 <Col span={12}>
                   <Form.Item className="max-income" label="su6I">
-                    {getFieldDecorator("amountto")(
+                    {getFieldDecorator("amountTo")(
                       <Input
                         className="english-font-input"
                         style={{ width: "100%" }}

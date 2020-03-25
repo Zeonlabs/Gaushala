@@ -129,7 +129,7 @@ class Tables extends Component {
           this.state.dataSource.length > 1 ? (
             <Popconfirm
               title="Sure to delete?"
-              onConfirm={() => this.handleDelete(record.key)}
+              onConfirm={() => this.handleDelete(record._id)}
             >
               <div className="deleteicon">
                 <Icon
@@ -146,26 +146,51 @@ class Tables extends Component {
     this.state = {
       dataSource: [
         {
-          key: "2",
-          type: "vIgt",
-          amount: 0
+          _id: "2",
+          type: "",
+          amount: "-"
         }
       ],
-      totalAmount: 0
+      totalAmount: 0,
+      update: false
     };
   }
 
+  componentDidMount = () => {
+    console.log("this is  alog in componentDidMount -> ", this.props);
+    const { money } = this.props.data;
+    if (this.props.type) {
+      this.setState({
+        dataSource: this.props.data,
+        totalAmount: this.props.total.amount
+      });
+    }
+  };
+  componentDidUpdate = prevProps => {
+    // const { money } = this.props.data;
+    if (prevProps.data !== this.props.data) {
+      console.log("this is  alog in a add income table -> ", this.props.data);
+      // if (!this.state.update) {
+      this.setState({
+        dataSource: this.props.data,
+        totalAmount: this.props.total.amount
+        // totalAmount: this.props.money
+      });
+      // }
+    }
+  };
+
   handleDelete = key => {
     const dataSource = [...this.state.dataSource];
-    this.setState({ dataSource: dataSource.filter(item => item.key !== key) });
+    this.setState({ dataSource: dataSource.filter(item => item._id !== key) });
   };
 
   handleAdd = () => {
     const { count, dataSource } = this.state;
     const newData = {
-      key: count,
+      _id: count,
       type: `vIgt`,
-      amount: 0
+      amount: ""
     };
     this.setState({
       dataSource: [...dataSource, newData],
@@ -178,7 +203,7 @@ class Tables extends Component {
 
   handleSave = row => {
     const newData = [...this.state.dataSource];
-    const index = newData.findIndex(item => row.key === item.key);
+    const index = newData.findIndex(item => row._id === item._id);
     const item = newData[index];
     newData.splice(index, 1, {
       ...item,
@@ -190,7 +215,11 @@ class Tables extends Component {
     console.log("TCL: finalTotal", finalTotal);
     console.log("TCL: Tables -> newData", newData);
     this.props.submit(newData);
-    this.setState({ dataSource: newData, totalAmount: finalTotal });
+    this.setState({
+      dataSource: newData,
+      totalAmount: finalTotal,
+      update: true
+    });
   };
 
   render() {
@@ -239,7 +268,7 @@ class Tables extends Component {
     return (
       <div className="table">
         <Table
-          className="table-boder"
+          className="table-boder income-expense-table"
           components={components}
           rowClassName={() => "editable-row"}
           bordered

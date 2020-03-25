@@ -1,20 +1,24 @@
 import React from "react";
-import { Button, Select, Icon, Form, } from "antd";
+import { Button, Select, Icon, Form } from "antd";
 const { Option } = Select;
-export const FilterData = () => {
+export const FilterData = props => {
   return (
     <div>
       <Form.Item label="">
-      <Select className="filter-dropdown"  placeholder="hod\o ps>d kro">
-        <Option value="પ્રમુખ શ્રી">પ્રમુખ શ્રી</Option>
-        <Option value="ઉપપ્રમુખ શ્રી">ઉપપ્રમુખ શ્રી</Option>
-        <Option value="મંત્રી શ્રી">મંત્રી શ્રી </Option>
-        <Option value="ખજાનચી">ખજાનચી શ્રી</Option>
-        <Option value="સહમંત્રીશ્રી">સહમંત્રીશ્રી</Option>
-        <Option value="ટ્રસ્ટી શ્રી">ટ્રસ્ટી શ્રી</Option>
-        <Option value="સંગઠનમંત્રી શ્રી">સંગઠનમંત્રી શ્રી</Option>
-        <Option value="All">drek</Option>
-      </Select>
+        <Select
+          className="filter-dropdown"
+          onChange={props.onFilterChange}
+          placeholder="hod\o ps>d kro"
+        >
+          <Option value="પ્રમુખ શ્રી">પ્રમુખ શ્રી</Option>
+          <Option value="ઉપપ્રમુખ શ્રી">ઉપપ્રમુખ શ્રી</Option>
+          <Option value="મંત્રી શ્રી">મંત્રી શ્રી </Option>
+          <Option value="ખજાનચી">ખજાનચી શ્રી</Option>
+          <Option value="સહમંત્રીશ્રી">સહમંત્રીશ્રી</Option>
+          <Option value="ટ્રસ્ટી શ્રી">ટ્રસ્ટી શ્રી</Option>
+          <Option value="સંગઠનમંત્રી શ્રી">સંગઠનમંત્રી શ્રી</Option>
+          <Option value="All">drek</Option>
+        </Select>
       </Form.Item>
     </div>
   );

@@ -41,7 +41,7 @@ export const editMembers = (id, data) => dispatch =>
 export const deleteMembers = id => dispatch =>
   new Promise((resolve, reject) => {
     console.log("TCL: data", id);
-    fetchUrl("get", `/trust-member/delete/${id}`)
+    fetchUrl("delete", `/trust-member/delete/${id}`)
       .then(res => {
         resolve(res);
       })
@@ -53,7 +53,7 @@ export const deleteMembers = id => dispatch =>
 export const filterMembers = id => dispatch =>
   new Promise((resolve, reject) => {
     console.log("TCL: data", id);
-    fetchUrl("get", `/expense`, id)
+    fetchUrl("get", `/trust-member/filter`, id)
       .then(res => {
         resolve(res);
       })

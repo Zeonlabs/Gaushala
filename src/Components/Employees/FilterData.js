@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Select, Icon } from "antd";
 const { Option } = Select;
-export const FilterData = () => {
+export const FilterData = props => {
   return (
     <div className="employee-filter">
       {/* <div className="filter-icon">
@@ -11,7 +11,9 @@ export const FilterData = () => {
         <Select
           className="name-filter-employee"
           placeholder="kmRcarI no p/kar ps>d kro"
+          onChange={props.onFilterChange}
         >
+          <Option value="No">drek</Option>
           <Option value="vaDI na mjur">vaDI na mjur</Option>
           <Option value="gOxa5a na mjur">gOxa5a na mjur</Option>
           <Option value="Dok3r">Dok3r</Option>

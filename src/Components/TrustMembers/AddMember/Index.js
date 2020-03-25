@@ -1,29 +1,9 @@
 import React, { Component } from "react";
-import {
-  Form,
-  Icon,
-  Input,
-  Button,
-  Upload,
-  Row,
-  Col,
-  Select,
-  Modal
-} from "antd";
+import { addMembers } from "../../../Actions/TrustMembers";
+import { Form, Input, Button, Row, Col, Select, Modal } from "antd";
+import { connect } from "react-redux";
+import NumericInput from "../../Common/Forms/InputNumber";
 const { Option } = Select;
-
-// const props = {
-//   action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-//   listType: 'picture',
-//   // defaultFileList: [...fileList],
-// };
-
-const props2 = {
-  action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-  listType: "picture",
-  // defaultFileList: [...fileList],
-  className: "upload-list-inline"
-};
 
 class Index extends Component {
   constructor(props) {
@@ -38,6 +18,14 @@ class Index extends Component {
       if (!err) {
         console.log("Received values of form: ", values);
         // this.props.handelEmployeePopup();
+        // this.props.addMembers(values);
+        const id = this.props.data._id;
+        if (this.props.type === "edit") {
+          this.props.handelEdit(id, values);
+        } else {
+          this.props.submit(values);
+        }
+        this.props.form.resetFields();
       }
     });
   };
@@ -49,6 +37,8 @@ class Index extends Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { type, data } = this.props;
+    console.info("Index -> render -> data", type);
     return (
       <div>
         <Modal
@@ -64,11 +54,12 @@ class Index extends Component {
             <Form className="form-income" onSubmit={this.handleSubmit}>
               <Row gutter={[16, 16]}>
                 <Col span={8}>
-
                   {/* ------------------------------Post type--------------------------------- */}
                   <Form.Item className="" label="hod\o" hasFeedback>
                     {getFieldDecorator("position", {
-                      rules: [{ required: true }]
+                      rules: [{ required: true }],
+                      initialValue: type === "edit" ? data.position : ""
+                      // initialValue: type && data.position
                     })(
                       <Select
                         className="in-icon-arrow"
@@ -88,11 +79,12 @@ class Index extends Component {
                   </Form.Item>
                 </Col>
                 <Col span={16}>
-                  
                   {/* -----------------------------Name of Employees-------------------------------- */}
                   <Form.Item className="ant-col" label="nam">
                     {getFieldDecorator("name", {
-                      rules: [{ required: true, message: "Enter The Name" }]
+                      rules: [{ required: true, message: "Enter The Name" }],
+                      // initialValue: type && data.name
+                      initialValue: type === "edit" ? data.name : ""
                     })(<Input placeholder="nam" />)}
                   </Form.Item>
                 </Col>
@@ -101,41 +93,37 @@ class Index extends Component {
               <Row gutter={[16, 16]}>
                 <Col span={8}>
                   {/* ------------------------------phone No--------------------------------- */}
-
-                  <Form.Item label="moba[l n>.">
-                    {getFieldDecorator("mno", {
-                      rules: [
-                        { required: true, message: "Enter The Mobile Number!" }
-                      ]
+                  <Form.Item className="ant-col" label="moba[l n>.">
+                    {getFieldDecorator("phone", {
+                      rules: [{ required: true }],
+                      // initialValue: type === "edit" && data.phone
+                      initialValue: type === "edit" ? data.phone : ""
                     })(
                       <Input
                         type="number"
                         className="english-font-input"
-                        placeholder="+91 0000000000"
+                        placeholder="0000000000"
                       />
                     )}
                   </Form.Item>
                 </Col>
-                <Col span={16} >
-                <div className="m-btn-gru">
-                {/* ----------------------------Cancel Button------------------------------- */}
-                <Form.Item>
-                  <Button size="default" onClick={this.handleReset}>
-                    rd kro
-                  </Button>
-                </Form.Item>
-                {/* ------------------------------Save Button--------------------------------- */}
-                <Form.Item>
-                  <Button size="default" type="primary" htmlType="submit">
-                    sev kro
-                  </Button>
-                </Form.Item>
-              </div>
+                <Col span={16}>
+                  <div className="m-btn-gru">
+                    {/* ----------------------------Cancel Button------------------------------- */}
+                    <Form.Item>
+                      <Button size="default" onClick={this.handleReset}>
+                        rd kro
+                      </Button>
+                    </Form.Item>
+                    {/* ------------------------------Save Button--------------------------------- */}
+                    <Form.Item>
+                      <Button size="default" type="primary" htmlType="submit">
+                        sev kro
+                      </Button>
+                    </Form.Item>
+                  </div>
                 </Col>
               </Row>
-
-              
-              
             </Form>
           </div>
         </Modal>
@@ -145,4 +133,4 @@ class Index extends Component {
 }
 
 const AddEmployee = Form.create({ name: "normal_login" })(Index);
-export default AddEmployee;
+export default connect(null, { addMembers })(AddEmployee);

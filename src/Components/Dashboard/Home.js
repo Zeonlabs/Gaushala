@@ -1,21 +1,38 @@
 import React, { Component } from "react";
-import MenuBar from "../Common/MenuBar";
+// import MenuBar from "../Common/MenuBar";
 import PageWrapper from "../Common/PageWrapper/PageWrapper";
+import LineChart from "./LineChart";
+import { getLinearChart, getAnimalChart } from "../../Actions/ChartActions";
+import { connect } from "react-redux";
+import AnimalChart from "./AnimalChart";
 
 class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      linearDataIncome: { x: 0, y: 0 },
+      linearDataExpence: {}
+    };
   }
+
+  // componentDidUpdate=(prevProps) => {
+  //   if()
+  // }
 
   render() {
     return (
-      <PageWrapper title="s>padIt Aheval">
-        <h1>s>padIt Aheval</h1>
+      <PageWrapper>
+        <div>
+          <LineChart
+          // income={this.state.linearDataIncome}
+          // expence={this.state.linearDataExpence}
+          />
+          <AnimalChart />
+        </div>
       </PageWrapper>
     );
   }
 }
 
-export default Home;
+export default connect(null, { getAnimalChart, getLinearChart })(Home);

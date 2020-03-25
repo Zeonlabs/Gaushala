@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PageWrapper from "../Common/PageWrapper/PageWrapper";
-import { Table, Button, Icon, Tooltip, Popconfirm } from "antd";
+import { Table, Button, Icon, Tooltip, Popconfirm, Divider } from "antd";
 import "./Income.scss";
 import "../Common/Forms/IncomeModels.styles.scss";
 import FilterDrawer from "./FilterDrawer";
 import { connect } from "react-redux";
-import { getIncome } from "../../Actions/Exapmple";
+import { getIncome, getFilterIncome } from "../../Actions/Exapmple";
 
 // const data = [];
 // for (let i = 0; i < 100; i++) {
@@ -74,17 +74,18 @@ class Income extends Component {
         dataIndex: "operation",
         render: (text, record) => (
           <>
-            <Button type="link" className="form-edit-button">
-              EDIT
-            </Button>
-            {this.state.data.length > 1 ? (
-              <Popconfirm
-                title="Sure to delete?"
-                onConfirm={() => this.handleDelete(record.key)}
-              >
-                <Button type="link">delete</Button>
-              </Popconfirm>
-            ) : null}
+            <div className="icon-group-table">
+              <Icon type="edit" theme="filled" style={{ color: "#3AD944" }} />
+
+              <Divider type="vertical" />
+              <Divider type="vertical" />
+
+              <Icon
+                type="delete"
+                theme="filled"
+                style={{ color: "rgba(255, 0, 0)" }}
+              />
+            </div>
           </>
         )
       }
@@ -171,4 +172,4 @@ const mapStateToProps = state => ({
   ...state.Test
 });
 
-export default connect(mapStateToProps, { getIncome })(Income);
+export default connect(mapStateToProps, { getIncome, getFilterIncome })(Income);

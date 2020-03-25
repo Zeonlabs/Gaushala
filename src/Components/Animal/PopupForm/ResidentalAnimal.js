@@ -15,7 +15,7 @@ import {
 import "../../Common/Forms/IncomeModels.styles.scss";
 import moment from "moment";
 import Tables from "../../Common/Forms/table";
-import { addIncome, getIncome, addExpense } from "../../../Actions/Exapmple";
+import { addCostAnimal } from "../../../Actions/Animal/TotalAnimal";
 import NumericInput from "../../Common/Forms/InputNumber";
 import { connect } from "react-redux";
 import Index from "../Table";
@@ -28,207 +28,76 @@ class ResicentalAnimal extends Component {
     this.state = {
       type: "cash",
       tableData: "",
-      value: ""
+      value: "",
+      total: 0
     };
   }
 
-  componentDidMount = () => {
-    // const pagination = {
-    //   page: 1,
-    //   limit: 20
-    // };
-    // // const id = this.props.match.params.pid;
-    // this.props.getIncome(pagination).then(res => {
-    //   console.log("res in a income model =->", res);
-    // });
+  componentDidMount = () => {};
+
+  componentDidUpdate = prevProps => {
+    if (prevProps !== this.props) {
+      const { data } = this.props;
+      console.log("this is  aedit income modal ->", this.props);
+      if (this.props.type) {
+        this.setState({
+          data: data
+        });
+        const total = parseInt(this.sumValuses(data.item), 10);
+        if (!this.state.tableStatus) {
+          this.setState({
+            tableData: data.item,
+            total
+          });
+        }
+      }
+    }
   };
 
   onChange = value => {
     this.setState({ value });
   };
 
-  handelIssue = (values, id, date) => {
-    // if (this.state.value === "sawing") {
-    //   const data = {
-    //     caratId: id,
-    //     manager_name: values.mname,
-    //     pcs: values.pcs,
-    //     distrtibute_date: date,
-    //     srno: this.state.srno,
-    //     carat: values.pcarat,
-    //     return: 0,
-    //     type: values.lose,
-    //     packetType: values.type
-    //   };
-    //   this.props.setPacketIssueOffice(data).then(res => this.props.closeBox());
-    //   console.log("Received values of form: ", values, data);
-    // } else {
-    //   const data = {
-    //     caratId: id,
-    //     chapka_manager_name: values.mname,
-    //     chapka_pcs: values.pcs,
-    //     chapka_distrtibute_date: date,
-    //     srno: this.state.srno,
-    //     chapka_carat: values.pcarat,
-    //     chapkaReturn: 0,
-    //     type: values.lose,
-    //     packetType: values.type
-    //   };
-    //   this.props.setChapkaIssueOffice(data).then(res => this.props.closeBox());
-    //   console.log("Received values of form: ", values, data);
-    // }
-  };
-
-  handelReturn = values => {
-    // if (this.state.value === "sawing") {
-    //   const sawingReturn = {
-    //     caratId: values.id,
-    //     srno: this.state.srno,
-    //     return_carat: values.values.pcarat,
-    //     return_pcs: values.values.pcs,
-    //     return_date: values.date
-    //   };
-    //   this.props
-    //     .returnSawingPacket(sawingReturn)
-    //     .then(res => this.props.closeBox());
-    // } else {
-    //   const chapkaReturn = {
-    //     caratId: values.id,
-    //     srno: this.state.srno,
-    //     chapka_return_carat: values.values.pcarat,
-    //     chapka_return_pcs: values.values.pcs,
-    //     chapka_return_date: values.date
-    //   };
-    //   this.props
-    //     .returnChapkaPacket(chapkaReturn)
-    //     .then(res => this.props.closeBox());
-    //   // message.success("Packet return Successfully")}
-    // }
-  };
-
   sumArray = (total, num) => {
     return total + num;
   };
 
-  incomeData = (values, finalTotal, itemData) => {
+  costAnimalData = values => {
+    console.log("ResicentalAnimal -> componentDidMount -> values", values);
     const date = moment(values.date).format("YYYY-MM-DD");
     const data = {
-      slip_no: values.slip_no,
       date,
-      type: values.type,
-      name: values.name,
-      address: values.address,
-      phone: parseInt(values.phone, 10),
-      money: {
-        type: this.state.type,
-        amount: finalTotal,
-        cheque_no: values.cheque_no
-      },
-      pan_no: values.pan_no,
-      item: itemData,
-      ref_name: values.ref_name,
-      note: values.note
+      total: this.state.total,
+      // name: values.name,
+      item: this.state.tableData
     };
     console.log("TCL: data", data);
-    this.props.addIncome(data).then(res => this.props.toggleModel());
-  };
-
-  expenseData = (values, finalTotal, itemData) => {
-    const date = moment(values.date).format("YYYY-MM-DD");
-    const data = {
-      slip_no: values.slip_no,
-      date,
-      type: values.type,
-      name: values.name,
-      address: values.address,
-      phone: parseInt(values.phone, 10),
-      money: {
-        type: this.state.type,
-        amount: finalTotal,
-        cheque_no: values.cheque_no
-      },
-      pan_no: values.pan_no,
-      item: itemData,
-      ref_name: values.ref_name,
-      note: values.note
-    };
-    console.log("TCL: data", data);
-    this.props.addExpense(data).then(res => this.props.toggleModel());
+    if (this.props.type) {
+      this.props.submit(this.props.data._id, data);
+    } else {
+      this.props.addCostAnimal(data).then(res => this.props.toggleModel());
+    }
   };
 
   handleSubmit = e => {
     console.log("TCL: e", e);
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      console.log("TCL: values", values);
-      let itemData = [];
-      const amount = this.state.tableData.map(val =>
-        itemData.push({
-          type: val.type,
-          amount: parseInt(val.amount, 10)
-        })
-      );
-      // console.log("TCL: itemData", itemData);
-      const totalAmount = this.state.tableData.map(val =>
-        parseInt(val.amount, 10)
-      );
-      console.log("TCL: totalAmount", totalAmount);
-      const finalTotal = totalAmount.reduce(this.sumArray);
-      console.log("TCL: finalTotal", finalTotal);
-      // console.log("TCL: amount", amount);
       if (!err) {
-        if (this.props.type) {
-          this.expenseData(values, finalTotal, itemData);
-        } else {
-          this.incomeData(values, finalTotal, itemData);
-        }
-        // const date = moment(values.date).format("YYYY-MM-DD");
-        // const data = {
-        //   slip_no: values.slip_no,
-        //   date,
-        //   type: values.type,
-        //   name: values.name,
-        //   address: values.address,
-        //   phone: parseInt(values.phone, 10),
-        //   money: {
-        //     type: this.state.type,
-        //     amount: finalTotal,
-        //     cheque_no: values.cheque_no
-        //   },
-        //   item: this.state.tableData,
-        //   ref_name: values.ref_name,
-        //   note: values.note
-        // };
-        // console.log("TCL: data", data);
-        // this.props.addIncome(data).then(res => this.props.toggleModel());
+        this.costAnimalData(values);
       }
     });
   };
 
+  sumValuses = obj => Object.values(obj).reduce((a, b) => a + b);
+
   onTableSubmit = data => {
     console.log("TCL: onTableSubmit -> data", data);
-    // const amount = data.map(val => parseInt(val.amount, 10));
-    // console.log("TCL: amount", amount);
+    const total = parseInt(this.sumValuses(data), 10);
     this.setState({
-      tableData: data
+      tableData: data,
+      total
     });
-    // console.log("TCL: onChangeSrno -> date, dateString", date, dateString);
-    // const singlePacketDetails = this.state.pckCarat.find(
-    //   item => item.srno === date
-    // );
-    // this.props.form.setFieldsValue({
-    //   available: this.state.pckCarat[0].available_stock,
-    //   pcarat: singlePacketDetails.carat,
-    //   pcs: singlePacketDetails.pcs
-    // });
-    // this.setState({
-    //   roughId: singlePacketDetails.rough_id,
-    //   srno: date
-    // });
-    // console.log(
-    //   "TCL: onChangeSrno -> singlePacketDetails",
-    //   singlePacketDetails
-    // );
   };
 
   onChangeType = e => {
@@ -236,28 +105,9 @@ class ResicentalAnimal extends Component {
     this.setState({
       type: e.target.value
     });
-    // if (e.target.value === "sawing") {
-    //   this.props.sawingIssueSrno().then(res => {
-    //     this.setState({
-    //       sawingSrno: res
-    //     });
-    //   });
-    // } else {
-    //   this.props.chapkaIssueSrno().then(res => {
-    //     console.log("this is a log in a chapka issue srno ->", res);
-    //     this.setState({
-    //       sawingSrno: res
-    //     });
-    //   });
-    // }
   };
 
-  onChangeSawingType = e => {
-    // console.log("radio checked", e.target.value);
-    // this.setState({
-    //   value: e.target.value
-    // });
-  };
+  onChangeSawingType = e => {};
 
   onChanges = value => {
     console.log(`selected ${value}`);
@@ -279,7 +129,7 @@ class ResicentalAnimal extends Component {
     this.props.toggleModel();
   };
   render() {
-    const { type } = this.props;
+    const { type, data } = this.props;
     const { getFieldDecorator } = this.props.form;
     return (
       <div className="income-model-wrapper">
@@ -298,22 +148,39 @@ class ResicentalAnimal extends Component {
                 {/* ------------------------------Date--------------------------------- */}
                 <Form.Item className="date-input" label="tarIq">
                   {getFieldDecorator("date", {
-                    rules: [{ required: true, message: "Enter The Date!" }]
+                    rules: [{ required: true, message: "Enter The Date!" }],
+                    initialValue: type && moment(data.date)
                   })(<DatePicker className="english-font-input" />)}
                 </Form.Item>
               </Col>
               <Col span={12} className="pin-set">
-                <label for="Income_date" class="ant-form-item-required" title="tarIq">kul pxuAO nI s>Qya:</label>
-                <Tag className="tag-clock english-font-input" color="#f50" style={{marginTop: '-2px',}}>
+                <label
+                  for="Income_date"
+                  class="ant-form-item-required"
+                  title="tarIq"
+                >
+                  kul pxuAO nI s>Qya:
+                </label>
+                <Tag
+                  className="tag-clock english-font-input"
+                  color="#f50"
+                  style={{ marginTop: "-2px" }}
+                >
                   450
                 </Tag>
               </Col>
             </Row>
 
-
             {/* ------------------------------Table--------------------------------- */}
             <div>
-              <Index type="nibhav" />
+              <Index
+                type="nibhav"
+                submit={this.onTableSubmit}
+                data={data ? data : ""}
+                tableType={this.props.type}
+                total={this.state.total}
+                cancel={this.props.visible}
+              />
             </div>
 
             <div className="m-btn-gru">
@@ -347,6 +214,4 @@ const mapStateToProps = state => ({
   ...state.Test
 });
 
-export default connect(mapStateToProps, { addIncome, getIncome, addExpense })(
-  ResicentalAnimals
-);
+export default connect(mapStateToProps, { addCostAnimal })(ResicentalAnimals);

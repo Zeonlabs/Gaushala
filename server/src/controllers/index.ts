@@ -1,18 +1,53 @@
-import {initVariables} from './variables/variables.controller'
-import {saveIncome} from './income/income.controller'
-import {saveExpense} from './expense/expense.controller'
-
+import {initVariables, updateTrustInfo, requestOtp, resetPin, getVars} from './variables/variables.controller'
+import {saveIncome, deleteIncome, editIncome} from './income/income.controller'
+import {saveExpense, deleteExpense, editExpense} from './expense/expense.controller'
+import {saveEmployee, getEmpDoc} from './employee/employee.controller'
 import {addNote, updateNote, deleteNote} from './note/note.controller'
 import {addTrustMember, deleteTrustMember, updateTrustMember} from './trustMember/trustMember.controller'
 
+import {generateFilteredReport, getIncomeExpenseAnalytics} from './common/common.controller'
+import {saveAnimalIncome, deleteAnimalIncome, editAnimalIncome} from './animalIncome/animalIncome.controller'
+import {saveDeadAnimal, deleteDeadAnimal, editDeadAnimal} from './deadAnimal/deadAnimal.controller'
+import {saveGivenAnimal, deleteGivenAnimal, editGivenAnimal} from './givenAnimal/givenAnimal.controller'
+import { saveAnimalCost, deleteAnimalCost, editAnimalCost } from './animalCost/animalCost.controller'
+import { saveCheque, editCheque, deleteCheque, filteredChequeReport} from './cheque/cheque.controller'
+
 export {
     initVariables,
+    updateTrustInfo,
+    requestOtp,
+    resetPin,
+    getVars,
     saveIncome,
+    editIncome,
+    deleteIncome,
     saveExpense,
+    editExpense,
+    deleteExpense,
+    saveEmployee,
+    getEmpDoc,
     addNote,
     updateNote,
     deleteNote,
     addTrustMember,
     deleteTrustMember,
-    updateTrustMember
+    updateTrustMember,
+    generateFilteredReport,
+    getIncomeExpenseAnalytics,
+    saveAnimalIncome,
+    deleteAnimalIncome,
+    editAnimalIncome,
+    saveDeadAnimal,
+    deleteDeadAnimal,
+    editDeadAnimal,
+    saveGivenAnimal,
+    deleteGivenAnimal,
+    editGivenAnimal,
+    saveAnimalCost,
+    deleteAnimalCost,
+    editAnimalCost,
+    saveCheque,
+    editCheque,
+    deleteCheque,
+    filteredChequeReport
 }

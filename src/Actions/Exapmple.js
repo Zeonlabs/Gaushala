@@ -1,4 +1,4 @@
-import { actionName } from "../js/actions";
+import { actionName, listing } from "../js/actions";
 import { fetchUrl } from "../js/fetchUrl";
 import apiList from "../js/apiList";
 
@@ -44,12 +44,52 @@ export const addIncome = data => dispatch =>
         reject(e);
       });
   });
-
+  
+  export const getExpense = id => dispatch =>
+    new Promise((resolve, reject) => {
+      console.log("TCL: data", id);
+      fetchUrl("get", `/expense`, id)
+        .then(res => {
+          dispatch({ type: listing.expenseListing, payload: res.docs });
+          resolve(res);
+        })
+        .catch(e => {
+          reject(e);
+        });
+    });
+  
 export const getIncome = id => dispatch =>
   new Promise((resolve, reject) => {
     console.log("TCL: data", id);
     fetchUrl("get", `/income`, id)
       .then(res => {
+        dispatch({ type: listing.incomeListing, payload: res.docs });
+        resolve(res);
+      })
+      .catch(e => {
+        reject(e);
+      });
+  });
+
+export const getFilterIncome = data => dispatch =>
+  new Promise((resolve, reject) => {
+    console.log("TCL: data", data);
+    fetchUrl("get", `/income/filter`, data)
+      .then(res => {
+        dispatch({ type: listing.incomeListing, payload: res.docs });
+        resolve(res);
+      })
+      .catch(e => {
+        reject(e);
+      });
+  });
+
+export const getFilterExpense = data => dispatch =>
+  new Promise((resolve, reject) => {
+    console.log("TCL: data", data);
+    fetchUrl("get", `/expense/filter`, data)
+      .then(res => {
+        // dispatch({ type: listing.incomeListing, payload: res.docs });
         resolve(res);
       })
       .catch(e => {
@@ -69,11 +109,54 @@ export const addExpense = data => dispatch =>
       });
   });
 
-export const getExpense = id => dispatch =>
+
+export const editExpense = (id, data) => dispatch =>
   new Promise((resolve, reject) => {
     console.log("TCL: data", id);
-    fetchUrl("get", `/expense`, id)
+    fetchUrl("patch", `/expense/edit/${id}`, data)
       .then(res => {
+        console.log("res-> edit expense res ->", res);
+
+        resolve(res);
+      })
+      .catch(e => {
+        reject(e);
+      });
+  });
+
+export const editIncome = (id, data) => dispatch =>
+  new Promise((resolve, reject) => {
+    console.log("TCL: data", id);
+    fetchUrl("patch", `/income/edit/${id}`, data)
+      .then(res => {
+        console.log("res-> edit income res ->", res);
+        // getIncome()
+        resolve(res);
+      })
+      .catch(e => {
+        reject(e);
+      });
+  });
+
+export const deleteIncome = id => dispatch =>
+  new Promise((resolve, reject) => {
+    console.log("TCL: data", id);
+    fetchUrl("delete", `/income/delete/${id}`)
+      .then(res => {
+        console.log("res-> edit income res ->", res);
+        resolve(res);
+      })
+      .catch(e => {
+        reject(e);
+      });
+  });
+
+export const deleteExpense = id => dispatch =>
+  new Promise((resolve, reject) => {
+    console.log("TCL: data", id);
+    fetchUrl("delete", `/expense/delete/${id}`)
+      .then(res => {
+        console.log("res-> edit income res ->", res);
         resolve(res);
       })
       .catch(e => {

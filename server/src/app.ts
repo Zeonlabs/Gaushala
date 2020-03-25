@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import {config} from 'dotenv'
+import expressFileUpload from 'express-fileupload'
 
 import {Routes} from './routes'
 import { initSetup } from './common/initSetup.common'
@@ -13,6 +14,7 @@ const routesPrv: Routes = new Routes()
 config()
 app.use(bodyParser.json())
 app.use(cors())
+app.use(expressFileUpload())
 routesPrv.routes(app)
 
 mongoose.Promise = global.Promise

@@ -117,6 +117,7 @@ export const fetchUrl = (
   if (type.toUpperCase() === "GET") {
     if (cache.indexOf(url) !== -1) {
       const controller = cancel.filter(i => i.url === url);
+      // console.log("controller", controller);
       controller.map(item => item.c());
     } else {
       cache.push(url);

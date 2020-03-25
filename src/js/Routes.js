@@ -10,9 +10,6 @@ const routes = {
   notes: "/notes",
   trustmembers: "/trust-members",
   settingpage:"/SettingPage"
-
-  // rough: "/rough",
-  // officepacket: "/officepacketpartition"
 };
 
 export default routes;

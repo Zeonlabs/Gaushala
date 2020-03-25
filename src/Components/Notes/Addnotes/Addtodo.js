@@ -25,6 +25,14 @@ class NormalLoginForm extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
+        if (this.props.type === "edit") {
+          const id = this.props.data._id;
+          this.props.editData(id, values);
+          this.props.form.resetFields();
+        } else {
+          this.props.submit(values);
+          this.props.form.resetFields();
+        }
       }
     });
   };
@@ -36,6 +44,7 @@ class NormalLoginForm extends Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { type, data } = this.props;
     return (
       <div>
         <Drawer
@@ -62,9 +71,12 @@ class NormalLoginForm extends Component {
                         required: true,
                         message: "Please Enter Title of notes!"
                       }
-                    ]
+                    ],
+                    // initialValue: type && data.title
+                    initialValue: type === "edit" ? data.title : ""
                   })(
                     <Input
+                      maxLength={10}
                       // prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                       placeholder="no>2 nu 3a[3l"
                     />
@@ -74,7 +86,9 @@ class NormalLoginForm extends Component {
                   {getFieldDecorator("description", {
                     rules: [
                       { required: true, message: "Please Add description!" }
-                    ]
+                    ],
+                    // initialValue: type && data.description
+                    initialValue: type === "edit" ? data.description : ""
                   })(
                     <TextArea
                       // prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -90,7 +104,7 @@ class NormalLoginForm extends Component {
                       className="login-form-button"
                       onClick={this.handelReset}
                     >
-                      rd 
+                      rd
                     </Button>
                   </Form.Item>
                   {/* ------------------------------Add button--------------------------- */}
@@ -113,6 +127,7 @@ class NormalLoginForm extends Component {
     );
   }
 }
+
 const Addtodo = Form.create({ name: "Addtodo" })(NormalLoginForm);
 
 export default Addtodo;

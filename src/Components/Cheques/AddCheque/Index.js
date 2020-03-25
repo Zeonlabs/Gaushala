@@ -1,17 +1,7 @@
 import React, { Component } from "react";
-import {
-  Form,
-  Icon,
-  Input,
-  Button,
-  Upload,
-  Row,
-  Col,
-  Select,
-  Modal,
-  DatePicker
-} from "antd";
+import { Form, Input, Button, Row, Col, Select, Modal, DatePicker } from "antd";
 import converter from "number-to-words";
+import moment from "moment";
 const { Option } = Select;
 
 class Index extends Component {
@@ -24,11 +14,21 @@ class Index extends Component {
   }
 
   handelNumber = e => {
-    console.log("TCL: Index -> handelNumber -> e", e, e.target.value);
+    console.log("TCL: Index -> handelNumber -> e", e.target.value);
     this.setState({
       number: parseInt(e.target.value, 10)
     });
   };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.openPopup !== this.props.openPopup) {
+      if (this.props.type === "edit") {
+        this.setState({
+          number: this.props.data.amount
+        });
+      }
+    }
+  }
 
   handleSubmit = e => {
     e.preventDefault();
@@ -36,6 +36,25 @@ class Index extends Component {
       if (!err) {
         console.log("Received values of form: ", values);
         // this.props.handelEmployeePopup();
+        const data = {
+          date: moment(values.date).format("YYYY-MM-DD"),
+          bank: values.bank,
+          no: values.no,
+          name: values.name,
+          phone: values.phone,
+          amount: values.amount,
+          word: values.amountword
+        };
+        if (this.props.type === "edit") {
+          this.props.handelEdit(this.props.data._id, data);
+        } else {
+          this.props.submit(data);
+        }
+        this.props.form.resetFields();
+        // this.props.handelEmployeePopup();
+        this.setState({
+          number: 0
+        });
       }
     });
   };
@@ -43,10 +62,14 @@ class Index extends Component {
   handleReset = () => {
     this.props.form.resetFields();
     this.props.handelEmployeePopup();
+    this.setState({
+      number: 0
+    });
   };
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { type, data } = this.props;
     return (
       <div className="income-model-wrapper">
         <Modal
@@ -66,17 +89,19 @@ class Index extends Component {
               <Col span={8}>
                 {/* ------------------------------Date of Cheque--------------------------------- */}
 
-                <Form.Item className="date-input" label="tarIq" hasFeedback>
+                <Form.Item className="date-input" label="tarIq">
                   {getFieldDecorator("date", {
-                    rules: [{ required: true }]
+                    rules: [{ required: true, message: "Enter The Date!" }],
+                    initialValue: type === "edit" ? moment(data.date) : ""
                   })(<DatePicker className="english-font-input" />)}
                 </Form.Item>
               </Col>
               <Col span={8}>
                 {/* --------------------------Bank Name---------------------------------- */}
                 <Form.Item className="" label="be>Nk nam">
-                  {getFieldDecorator("bankname", {
-                    rules: [{ required: true }]
+                  {getFieldDecorator("bank", {
+                    rules: [{ required: true }],
+                    initialValue: type === "edit" ? data.bank : ""
                   })(
                     <Select
                       className="in-icon-arrow"
@@ -97,8 +122,9 @@ class Index extends Component {
               <Col span={8}>
                 {/* --------------------------Cheque No.---------------------------------- */}
                 <Form.Item className="cheque-no" label="cek n>.">
-                  {getFieldDecorator("chequeno", {
-                    rules: [{ required: true }]
+                  {getFieldDecorator("no", {
+                    rules: [{ required: true }],
+                    initialValue: type === "edit" ? data.no : ""
                   })(
                     <Input
                       type="number"
@@ -119,15 +145,19 @@ class Index extends Component {
                   label="nam &#34; cek SvIkarnar nu nam &#34; :"
                 >
                   {getFieldDecorator("name", {
-                    rules: [{ required: true }]
+                    rules: [{ required: true }],
+                    // initialValue: type === "edit" && data.name
+                    initialValue: type === "edit" ? data.name : ""
                   })(<Input placeholder="cek SvIkarnar nu nam" />)}
                 </Form.Item>
               </Col>
               <Col span={8}>
                 {/* ------------------------------phone No--------------------------------- */}
                 <Form.Item className="ant-col" label="moba[l n>.">
-                  {getFieldDecorator("mobileno", {
-                    rules: [{ required: true }]
+                  {getFieldDecorator("phone", {
+                    rules: [{ required: true }],
+                    // initialValue: type === "edit" && data.phone
+                    initialValue: type === "edit" ? data.phone : ""
                   })(
                     <Input
                       type="number"
@@ -143,7 +173,9 @@ class Index extends Component {
                 {/* ----------------------------Amount in Digit----------------------------------- */}
                 <Form.Item className="ant-col" label="rkm">
                   {getFieldDecorator("amount", {
-                    rules: [{ required: true }]
+                    rules: [{ required: true }],
+                    // initialValue: type === "edit" && data.amount
+                    initialValue: type === "edit" ? data.amount : ""
                   })(
                     <Input
                       type="number"
@@ -158,19 +190,20 @@ class Index extends Component {
                 {/* ------------------------------Amount in Words--------------------------------- */}
                 <Form.Item className="ant-col" label="rkm">
                   {getFieldDecorator("amountword", {
-                    initialValue: converter.toWords(this.state.number || 0),
-                    rules: [{ required: true }]
+                    // // initialValue:
+                    // rules: [{ required: true }]
                   })(
                     <Input
                       disabled
+                      placeholder={converter.toWords(this.state.number || 0)}
                       className="english-font-input"
-                      placeholder="Five thousand Rupees Only/-"
+                      // placeholder="Five thousand Rupees Only/-"
                     />
                   )}
                 </Form.Item>
               </Col>
             </Row>
-            
+
             <div className="m-btn-gru">
               {/* ----------------------------Cancel Button------------------------------- */}
               <Form.Item>
