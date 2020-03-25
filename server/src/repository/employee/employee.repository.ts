@@ -30,4 +30,9 @@ export class EmployeeRepository{
         })
          
     }
+
+    async update(id: string, data: EmployeeModel){
+        const updatedDoc = await Employee.findByIdAndUpdate(id, { $set: data }, {new: true})
+        return updatedDoc
+    }
 }
