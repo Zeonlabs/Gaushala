@@ -26,3 +26,7 @@ export class RequiredInputNotProvidedException extends Error{
     code = 422
     message = 'requied input not provided'
 }
+export class insufficientSmsBalanceException extends Error{
+    code=419
+    message = 'insufficient sms balance'
+}

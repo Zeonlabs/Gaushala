@@ -64,7 +64,7 @@ export class VariablesRepository{
 
     async issueOtp(){
         const updatedVars = await Variables.findByIdAndUpdate(VAR_DOC_ID, { $set: { otp: genOtp() } })
-        return updatedVars.otp
+        return {otp: updatedVars.otp, phone: updatedVars.phone}
     }
 
     async resetPin(userOtp: number, pin: number){
