@@ -7,7 +7,7 @@ export const PieChart = ({ data }) => (
         margin={{ top: 5, right: 80, bottom: 80, left: 0 }}
         startAngle={1}
         innerRadius={0.7}
-        padAngle={0.9}
+        // padAngle={0.9}
         // cornerRadius={3}
         colors={d => d.color}
         borderWidth={1}

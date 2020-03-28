@@ -8,7 +8,7 @@ class AnimalChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      animalData: [{ id: '', label: 'chart', value: 1 }],
+      animalData: [{ id: '', label: 'chart', value: 1, color: '#e6e6e6' }],
       expenceData: [{ x: 0, y: 0 }]
     };
   }
