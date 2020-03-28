@@ -7,7 +7,7 @@ export const MyResponsiveLine = ({ data }) => (
         lineWidth={3}
         margin={{ top: 10, right: 100, bottom: 80, left: 70 }}
         xScale={{ type: 'point' }}
-        yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
+        yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
         axisTop={null}
         axisRight={null}
         axisBottom={{
@@ -30,10 +30,10 @@ export const MyResponsiveLine = ({ data }) => (
         }}
         curve= 'monotoneX'
         colors = {d => d.color}
-        pointSize={10}
+        pointSize={5}
+        pointBorderWidth={5}
         // enableArea = {true}
         pointColor={{ theme: 'background' }}
-        pointBorderWidth={3}
         pointBorderColor={{ from: 'serieColor' }}
         pointLabel="y"
         pointLabelYOffset={-12}

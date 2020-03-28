@@ -45,15 +45,15 @@ class LineChart extends Component {
           <MyResponsiveLine
             data={[
               {
-                id: 'income',
+                id: 'Expense',
+                color: '#E30B0C',
+                data: this.state.expenceData
+              },
+              {
+                id: 'Income',
                 // color: 'hsl(157, 70%, 50%)',
                 color: '#36B971',
                 data: this.state.incomeData
-              },
-              {
-                id: 'expense',
-                color: '#E30B0C',
-                data: this.state.expenceData
               }
             ]}
             />
