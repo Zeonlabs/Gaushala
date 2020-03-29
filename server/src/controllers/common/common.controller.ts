@@ -38,8 +38,8 @@ export const getIncomeExpenseAnalytics = async (req: Request, res: Response) => 
         const prvDate = new Date()
         prvDate.setMonth(prvDate.getMonth() - 11)
         prvDate.setDate(1)
-        prvDate.setTime(0)
-        
+        prvDate.setUTCHours(0,0,0,0)
+
         const incomeRepo = new IncomeRepository()
         const expenseRepo = new ExpenseRepository()
 
@@ -69,9 +69,30 @@ export const getIncomeExpenseAnalytics = async (req: Request, res: Response) => 
             return monthlyData
         }
 
+        const fillUnavailableDatesData = (arr: IncomeModel[] | ExpenseModel[]) => {
+            const monthlyData = genMonthlyData(arr)
+            const prvMonth = prvDate.getMonth() + 1
+            const prvYear = prvDate.getUTCFullYear()
+            const crrntMonth = crrntDate.getMonth() + 1
+            const crrntYear = crrntDate.getUTCFullYear()
+
+            const pushEmptyData = (month, year) => monthlyData.push({ month, year, amount: 0 })
+
+            for(let i = prvMonth; i<=12; i++){
+                const index = monthlyData.findIndex(data => data.month == i && data.year == prvYear)
+                if(index < 0) pushEmptyData(i, prvYear)
+            }
+            for(let i = 1; i <= crrntMonth; i++){
+                const index = monthlyData.findIndex(data => data.month == i && data.year == crrntYear)
+                if(index < 0) pushEmptyData(i, crrntYear)
+            }
+            return monthlyData
+        }
+        
+
         res.json({
-            income: genMonthlyData(incomes),
-            expense: genMonthlyData(expenses)
+            income: fillUnavailableDatesData(incomes),
+            expense: fillUnavailableDatesData(expenses)
         })
     }
     catch(e){

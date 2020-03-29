@@ -1,55 +1,103 @@
-.page-layout {
-  height: inherit;
+// .page-layout {
+//   height: inherit;
 
-  li {
-    height: 50px !important;
-    line-height: 50px !important;
+//   li {
+//     height: 50px !important;
+//     line-height: 50px !important;
+//   }
+//   .Header-div {
+//     display: flex;
+//     justify-content: space-between;
+//     padding: 0 15px;
+
+//     span{
+//       font-weight: bolder;
+//       letter-spacing: 0.5px;
+//       font-size: 20px;
+//     }
+
+//     button {
+//       margin: auto 0;
+//     }
+//   }
+
+//   .trigger {
+//     font-size: 18px;
+//     line-height: 64px;
+//     // padding: 0 24px;
+//     cursor: pointer;
+//     transition: color 0.3s;
+//   }
+
+//   .trigger:hover {
+//     color: #1890ff;
+//   }
+
+//   .logo {
+//     height: 32px;
+//     overflow: hidden;
+//     margin: 16px;
+//     text-align: center;
+
+//     h1 {
+//       font-family: "gujrati_saral-1normal";
+//       font-size: 26px;
+//     }
+//   }
+
+//   .menu-list-title {
+//     font-size: 16px;
+//   }
+//   .menu-list-icon {
+//     font-size: 18px !important;
+//     margin-right: 17px !important;
+//   }
+// }
+
+
+
+.dashboard{
+  background-color: #D8D9DD;
+  margin: -24px;
+  width: auto;
+
+  .dashbrd-label{
+    font-size: 22px;
   }
-  .Header-div {
+
+  .line-grph-div{
+    height: 43vh;
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 22px;
+
+    .grph{
+      font-family: monospace;
+      height: 100%;
+    }
+  }
+
+  .btml-grph{
     display: flex;
-    justify-content: space-between;
-    padding: 0 15px;
 
-    span{
-      font-weight: bolder;
-      letter-spacing: 0.5px;
-      font-size: 20px;
+    .piechrt-div{
+      // padding: 20px;
+      padding-top: 20px;
+      padding-left: 20px;
+      width: 50%;
+      height: 40vh;
+      background-color: white;
+      margin-right: 22px;
+
+      .pie-chrt{
+        // width: 80%;
+        height: 100%;
+      }
     }
 
-    button {
-      margin: auto 0;
+    .balance-div{
+      width: 50%;
+      background-color: white;
     }
-  }
-
-  .trigger {
-    font-size: 18px;
-    line-height: 64px;
-    // padding: 0 24px;
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-
-  .trigger:hover {
-    color: #1890ff;
-  }
-
-  .logo {
-    height: 32px;
-    overflow: hidden;
-    margin: 16px;
-    text-align: center;
-
-    h1 {
-      font-family: "gujrati_saral-1normal";
-      font-size: 26px;
-    }
-  }
-
-  .menu-list-title {
-    font-size: 16px;
-  }
-  .menu-list-icon {
-    font-size: 18px !important;
-    margin-right: 17px !important;
   }
 }
