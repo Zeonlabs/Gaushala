@@ -11,7 +11,10 @@ const commonStringType = {
 const IncomeSchema = new mongoose.Schema({
     slip_no: Number,
     date: Date,
-    type: commonStringType,
+    type: {
+        type: Number,
+        required: true
+    },
     name: commonStringType,
     address: commonStringType,
     phone: {

@@ -10,8 +10,9 @@ export const PieChart = ({ data }) => (
         // padAngle={0.9}
         // cornerRadius={3}
         colors={d => d.color}
-        borderWidth={1}
+        borderWidth={3}
         borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
+        // enableRadialLabels={false}
         radialLabelsSkipAngle={10}
         radialLabelsTextXOffset={6}
         radialLabelsTextColor="#333333"
@@ -20,6 +21,7 @@ export const PieChart = ({ data }) => (
         radialLabelsLinkHorizontalLength={24}
         radialLabelsLinkStrokeWidth={1}
         radialLabelsLinkColor={{ from: 'color' }}
+        enableSlicesLabels={false}
         // slicesLabelsSkipAngle={10}
         // slicesLabelsTextColor="#333333"
         animate={true}

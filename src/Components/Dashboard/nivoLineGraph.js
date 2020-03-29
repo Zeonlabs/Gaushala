@@ -5,7 +5,7 @@ export const MyResponsiveLine = ({ data }) => (
     <ResponsiveLine
         data={data}
         lineWidth={3}
-        margin={{ top: 10, right: 100, bottom: 80, left: 70 }}
+        margin={{ top: 10, right: 100, bottom: 70, left: 80 }}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
         axisTop={null}
@@ -15,17 +15,17 @@ export const MyResponsiveLine = ({ data }) => (
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'Month',
+            // legend: 'Month',
             legendOffset: 36,
             legendPosition: 'middle'
         }}
         axisLeft={{
             orient: 'left',
             tickSize: 5,
-            tickPadding: 5,
+            tickPadding: 10,
             tickRotation: 0,
             legend: 'Amount',
-            legendOffset: -55,
+            legendOffset: -65,
             legendPosition: 'middle'
         }}
         curve= 'monotoneX'

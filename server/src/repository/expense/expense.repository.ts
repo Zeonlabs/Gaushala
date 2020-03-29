@@ -1,4 +1,5 @@
 import {Expense, ExpenseModel} from '../../schema'
+import { NoRecordWithIDException } from '../../common/exceptions.common'
 
 export class ExpenseRepository{
     async save(data: ExpenseModel){
@@ -8,6 +9,7 @@ export class ExpenseRepository{
 
     async getAmount(expenseId: string){
         const doc = await Expense.findById(expenseId, {_id: 0, money: 1})
+        if(!doc) throw new NoRecordWithIDException()
         return doc.money.amount
     }
 

@@ -38,7 +38,7 @@ const editExpense = async (req: Request, res: Response) => {
     }
     catch(e){
         console.log(e)
-        res.status(400).send({message: e.message})
+        res.status(e.code || 400).send({message: e.message})
     }
 }
 

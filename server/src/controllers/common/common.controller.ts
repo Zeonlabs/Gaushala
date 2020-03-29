@@ -5,16 +5,22 @@ import { IncomeRepository, ExpenseRepository } from '../../repository'
 
 export const generateFilteredReport = (Model: MongoModel<IncomeModel | ExpenseModel | EmployeeModel | TrustMemberModel | AnimalIncomeModel | DeadAnimalModel | AnimalCostModel | GivenAnimalModel | AnimalStmtModel >) => async (req: Request, res: Response) => {
     try{
-        const { dateFrom = null, dateTo = null, type = null, moneyType = null, chequeNo = null, amountFrom = null, amountTo = null, position = null, tag = null} = req.query
+        const { dateFrom = null, dateTo = null, type = null, moneyType = null, slipNo = null, chequeNo = null, amountFrom = null, amountTo = null, position = null, tag = null} = req.query
 
         const genFilter = () => {
             const query = {}
-            if(dateFrom) query['date'] = {
-                $gte: new Date(dateFrom), $lt: new Date(dateTo)
+            if(dateFrom) {
+                const dateEnd = new Date(dateTo)
+                dateEnd.setHours(23,59,59,0)
+
+                query['date'] = {
+                    $gte: new Date(dateFrom), $lt: dateEnd
+                }
             }
             if(type) query['type'] = type
             if(moneyType) query['money.type'] = moneyType
             if(chequeNo) query['money.cheque_no'] = chequeNo
+            if(slipNo) query['slip_no'] = slipNo
             if(amountFrom && amountTo) query['money.amount'] = {
                 $gte: amountFrom, $lt: amountTo
             }

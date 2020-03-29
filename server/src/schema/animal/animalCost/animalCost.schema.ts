@@ -11,6 +11,10 @@ const AnimalCostSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    total_animal: {
+        type: Number,
+        required: true
+    },
     item: {
         ghas: Number,
         charo: Number,
@@ -23,4 +27,4 @@ const AnimalCostSchema = new mongoose.Schema({
 
 AnimalCostSchema.plugin(mongoosePaginate)
 
-export const AnimalCost: Model<AnimalCostModel> = mongoose.model<AnimalCostModel>('animal-cost', AnimalCostSchema) 
+export const AnimalCost: Model<AnimalCostModel> = mongoose.model<AnimalCostModel>('animal_cost', AnimalCostSchema) 
