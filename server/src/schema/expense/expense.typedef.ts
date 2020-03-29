@@ -9,7 +9,7 @@ export interface ExpenseModel extends Document{
     _id: Types.ObjectId
     slip_no: string
     date: Date
-    type: string
+    type: number
     name: string
     address: string
     phone: number

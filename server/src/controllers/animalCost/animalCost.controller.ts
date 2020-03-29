@@ -8,13 +8,16 @@ const saveAnimalCost = async (req: Request, res: Response) => {
         const animalExpenseRepo = new AnimalCostRepository()
         const variablesRepo = new VariablesRepository()
         
-        const savedDoc = await animalExpenseRepo.save(animalExpense)
         const {stats} = await variablesRepo.updateCapital(animalExpense.total).dec()
+        
+        //adds total numbers of aniamls available at a entry date
+        animalExpense.total_animal = stats.animal.big + stats.animal.small + stats.animal[10]
+        
+        const savedDoc = await animalExpenseRepo.save(animalExpense)
 
         res.json({ expense: savedDoc, stats })
     }
     catch(e){
-        console.log(e);
         res.status(400).send({ message: e.message })
     }
 }
@@ -31,7 +34,6 @@ const deleteAnimalCost = async (req: Request, res: Response) => {
         res.json({ expense: deletedDoc, stats })
     }
     catch(e){
-        console.log(e);
         res.status(400).send({ message: e.message })
     }
 }
@@ -55,7 +57,6 @@ const editAnimalCost = async (req: Request, res: Response) => {
         res.json({ expense: expense.updatedDoc, stats: stats.stats })
     }
     catch(e){
-        console.log(e);
         res.status(400).send({ message: e.message })
     }
 }
