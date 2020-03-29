@@ -33,16 +33,21 @@ class Index extends Component {
     this.props.form.validateFields((err, values) => {
       console.log("Index -> values", values);
       if (!err) {
-        const formData = new FormData();
-        formData.append("doc", this.state.fileData);
-        formData.append("name", values.name);
-        formData.append("type", values.type);
-        formData.append("phone", values.phone);
-        formData.append("address", values.address);
-        console.log("Index -> formData", formData);
-        const filedata = Object.assign({}, values, formData);
-        console.log("Received values of form: ", filedata);
-        this.props.submit(formData);
+        if (this.props.type === "edit") {
+          console.log("Index -> this.props.type", this.props.type);
+          this.props.handelEditData(this.props.data._id, values);
+        } else {
+          const formData = new FormData();
+          formData.append("doc", this.state.fileData);
+          formData.append("name", values.name);
+          formData.append("type", values.type);
+          formData.append("phone", values.phone);
+          formData.append("address", values.address);
+          console.log("Index -> formData", formData);
+          const filedata = Object.assign({}, values, formData);
+          console.log("Received values of form: ", filedata);
+          this.props.submit(formData);
+        }
         this.props.form.resetFields();
         this.setState({
           fileList: []
@@ -89,6 +94,11 @@ class Index extends Component {
   };
 
   render() {
+    if (this.props.type === "edit") {
+      console.warn("this is  alog in a edit employee list ->", this.props.data);
+    } else {
+      console.log("this is  alog in a edit employee list ->", this.props.data);
+    }
     const props2 = {
       action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
       listType: "picture",
@@ -119,7 +129,8 @@ class Index extends Component {
 
                     {getFieldDecorator("type", {
                       rules: [{ required: true }],
-                      initialValue: type && data.type
+                      // initialValue: type && data.type
+                      initialValue: type === "edit" ? data.type : ""
                     })(
                       <Select
                         className="in-icon-arrow"
@@ -139,7 +150,8 @@ class Index extends Component {
                   <Form.Item className="ant-col" label="nam">
                     {getFieldDecorator("name", {
                       rules: [{ required: true, message: "Enter The Name" }],
-                      initialValue: type && data.name
+                      // initialValue: type && data.name
+                      initialValue: type === "edit" ? data.name : ""
                     })(<Input placeholder="nam" />)}
                   </Form.Item>
                 </Col>
@@ -153,7 +165,8 @@ class Index extends Component {
                       rules: [
                         { required: true, message: "Enter The Mobile Number!" }
                       ],
-                      initialValue: type && data.phone
+                      // initialValue: type && data.phone
+                      initialValue: type === "edit" ? data.phone : ""
                     })(
                       <Input
                         type="number"
@@ -170,7 +183,8 @@ class Index extends Component {
                       rules: [
                         { required: true, message: "Enter The Address!" }
                       ],
-                      initialValue: type && data.address
+                      // initialValue: type && data.address
+                      initialValue: type === "edit" ? data.address : ""
                     })(<Input placeholder="srnamu" />)}
                   </Form.Item>
                 </Col>

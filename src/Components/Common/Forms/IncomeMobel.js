@@ -53,7 +53,7 @@ class IncomeMobels extends Component {
     if (prevProps !== this.props) {
       console.log("this is  aedit income modal ->", this.props);
       if (this.props.modalType) {
-        console.log("this is  aedit this.props.modalType ->", this.props);
+        console.log("this is  aedit this.props.modalType ->", this.props.data);
         this.setState({
           value: this.props.data.phone
         });
@@ -103,6 +103,7 @@ class IncomeMobels extends Component {
         this.props.getIncome(pagination).then(res => this.props.toggleModel());
       });
     }
+    this.props.form.resetFields();
   };
 
   expenseData = (values, finalTotal, itemData) => {
@@ -139,6 +140,7 @@ class IncomeMobels extends Component {
         this.props.getExpense(pagination).then(res => this.props.toggleModel());
       });
     }
+    this.props.form.resetFields();
   };
 
   handleSubmit = e => {
@@ -234,6 +236,9 @@ class IncomeMobels extends Component {
   handleReset = () => {
     this.props.form.resetFields();
     this.props.toggleModel();
+    this.setState({
+      tableData: ""
+    });
   };
   render() {
     // const { type } = this.props;

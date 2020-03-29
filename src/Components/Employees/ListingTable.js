@@ -54,7 +54,7 @@ class ListingTable extends Component {
         render: (text, record) => (
           <>
             <div className="icon-group-table">
-              {/* <Icon
+              <Icon
                 type="edit"
                 theme="filled"
                 onClick={() => this.handelEdit(text, record)}
@@ -62,7 +62,7 @@ class ListingTable extends Component {
               />
 
               <Divider type="vertical" />
-              <Divider type="vertical" /> */}
+              <Divider type="vertical" />
               <Popconfirm
                 placement="top"
                 title="Are you sure ?"

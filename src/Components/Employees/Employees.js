@@ -79,7 +79,8 @@ export class Employees extends Component {
   handelEmployeePopup = () => {
     this.setState({
       addPopup: !this.state.addPopup,
-      income: !this.state.income
+      income: false,
+      editData: ""
     });
   };
 
@@ -133,6 +134,18 @@ export class Employees extends Component {
     });
   };
 
+  handelEditSubmit = (id, data) => {
+    console.log("Employees -> handelEditSubmit -> data", data);
+    this.props.editEmployee(id, data).then(res => {
+      this.props.getEmployee(this.state.pagination).then(res => {
+        this.setState({
+          data: res.docs
+        });
+        this.handelEmployeePopup();
+      });
+    });
+  };
+
   render() {
     const { editData, income } = this.state;
 
@@ -141,9 +154,10 @@ export class Employees extends Component {
         <AddEmployee
           handelEmployeePopup={this.handelEmployeePopup}
           submit={this.handelDataAdd}
+          handelEditData={this.handelEditSubmit}
           openPopup={this.state.addPopup}
           data={income ? editData : ""}
-          // type={income ? "edit" : "add"}
+          type={income ? "edit" : "add"}
         />
 
         <div className="filter-icon">

@@ -163,6 +163,7 @@ class Income extends Component {
   }
 
   handelEdit = (text, record) => {
+    console.log("Income -> handelEdit -> record", record);
     // console.log("this is a log in a handelEdit ->", text, record);
     this.setState({
       editData: record,

@@ -84,11 +84,11 @@ export const getEmployeeDocs = data => dispatch =>
       });
   });
 
-export const editEmployee = data => dispatch =>
+export const editEmployee = (id, data) => dispatch =>
   new Promise((resolve, reject) => {
     fetchUrl(
       employeeList.employeeUpdate.method,
-      employeeList.employeeUpdate.url,
+      `${employeeList.employeeUpdate.url}/${id}`,
       data
     )
       .then(res => {

@@ -5,6 +5,7 @@ import LineChart from "./LineChart";
 import { getLinearChart, getAnimalChart } from "../../Actions/ChartActions";
 import { connect } from "react-redux";
 import AnimalChart from "./AnimalChart";
+import LoaderAnimation from "../../Static/Widgets/LoaderAnimation";
 
 class Home extends Component {
   constructor(props) {

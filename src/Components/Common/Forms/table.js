@@ -54,7 +54,7 @@ class EditableCell extends Component {
               message: `${title} is required.`
             }
           ],
-          initialValue: record[dataIndex]
+          initialValue: this.props.inputType === "number" ? "" : ""
         })(
           <Input
             ref={node => (this.input = node)}
@@ -63,6 +63,7 @@ class EditableCell extends Component {
             className={
               this.props.inputType === "number" ? "english-font-input" : ""
             }
+            // placeholder={this.props.inputType === "number" ? 0 : "Vigat"}
             type={this.props.inputType}
           />
         )}
@@ -158,7 +159,7 @@ class Tables extends Component {
 
   componentDidMount = () => {
     console.log("this is  alog in componentDidMount -> ", this.props);
-    const { money } = this.props.data;
+    // const { money } = this.props.data;
     if (this.props.type) {
       this.setState({
         dataSource: this.props.data,
@@ -190,7 +191,7 @@ class Tables extends Component {
     const newData = {
       _id: count,
       type: `vIgt`,
-      amount: ""
+      amount: 0
     };
     this.setState({
       dataSource: [...dataSource, newData],
