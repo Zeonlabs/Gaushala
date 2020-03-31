@@ -1,8 +1,9 @@
 import _ from 'lodash'
 import { Request, Response } from 'express';
 import { VariablesRepository } from '../../repository'
-import { PinNotFoundException, RequiredInputNotProvidedException } from '../../common/exceptions.common';
+import { PinNotFoundException, RequiredInputNotProvidedException, insufficientSmsBalanceException } from '../../common/exceptions.common';
 import { VariablesModel } from '../../schema';
+import { sendOtpSms } from '../../common/sms.common';
 
 const initVariables = async (req: Request, res: Response) => {
     try{
@@ -38,9 +39,11 @@ const updateTrustInfo = async (req: Request, res: Response) => {
 const requestOtp = async (req: Request, res: Response) => {
     try{
         const variablesRepo = new VariablesRepository()
-        const otp = await variablesRepo.issueOtp()
+        const {phone, otp} = await variablesRepo.issueOtp()
 
         //TODO: send otp to sms
+        const smsRes: any = await sendOtpSms(phone, otp)
+        if(smsRes.responseCode == 3011) throw new insufficientSmsBalanceException()
 
         res.send()
     }
