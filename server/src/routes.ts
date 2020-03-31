@@ -1,8 +1,7 @@
 import {Application, Router} from 'express'
-import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMember, updateTrustMember, addNote, updateNote, deleteNote, generateFilteredReport, saveEmployee, getEmpDoc, deleteIncome, deleteExpense, editIncome, editExpense, saveAnimalIncome, deleteAnimalIncome, editAnimalIncome, saveDeadAnimal, deleteDeadAnimal, editDeadAnimal, saveGivenAnimal, deleteGivenAnimal, editGivenAnimal, saveAnimalCost, deleteAnimalCost, editAnimalCost, requestOtp, resetPin, updateTrustInfo, saveCheque, editCheque, deleteCheque, filteredChequeReport, getVars, getIncomeExpenseAnalytics } from './controllers'
+import { saveIncome, initVariables, saveExpense, addTrustMember, deleteTrustMember, updateTrustMember, addNote, updateNote, deleteNote, generateFilteredReport, saveEmployee, getEmpDoc, deleteIncome, deleteExpense, editIncome, editExpense, saveAnimalIncome, deleteAnimalIncome, editAnimalIncome, saveDeadAnimal, deleteDeadAnimal, editDeadAnimal, saveGivenAnimal, deleteGivenAnimal, editGivenAnimal, saveAnimalCost, deleteAnimalCost, editAnimalCost, requestOtp, resetPin, updateTrustInfo, saveCheque, editCheque, deleteCheque, filteredChequeReport, getVars, getIncomeExpenseAnalytics, deleteEmployee, editEmployee } from './controllers'
 import { paginationMiddleware } from './middlewares/pagination/pagination.middleware'
 import { Income, Expense, TrustMember, Note, Employee, AnimalIncome, DeadAnimal, GivenAnimal, AnimalCost, AnimalStmt, Cheque } from './schema'
-import { deleteEmployee } from './controllers/employee/employee.controller'
 import { auth } from './common/auth.common'
 
 export class Routes{
@@ -46,6 +45,7 @@ export class Routes{
         employeeRoute.post('/add', saveEmployee)
         employeeRoute.get('/', paginationMiddleware(Employee))
         employeeRoute.get('/doc/:id', getEmpDoc)
+        employeeRoute.patch('/edit/:id', editEmployee)
         employeeRoute.delete('/delete/:id', deleteEmployee)
         employeeRoute.get('/filter', generateFilteredReport(Employee))
 

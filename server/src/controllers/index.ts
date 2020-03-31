@@ -1,7 +1,7 @@
 import {initVariables, updateTrustInfo, requestOtp, resetPin, getVars} from './variables/variables.controller'
 import {saveIncome, deleteIncome, editIncome} from './income/income.controller'
 import {saveExpense, deleteExpense, editExpense} from './expense/expense.controller'
-import {saveEmployee, getEmpDoc} from './employee/employee.controller'
+import {saveEmployee, getEmpDoc, deleteEmployee, editEmployee} from './employee/employee.controller'
 import {addNote, updateNote, deleteNote} from './note/note.controller'
 import {addTrustMember, deleteTrustMember, updateTrustMember} from './trustMember/trustMember.controller'
 
@@ -26,6 +26,8 @@ export {
     deleteExpense,
     saveEmployee,
     getEmpDoc,
+    deleteEmployee,
+    editEmployee,
     addNote,
     updateNote,
     deleteNote,

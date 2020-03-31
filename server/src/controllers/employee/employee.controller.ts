@@ -2,6 +2,8 @@ import {Request, Response} from 'express'
 import {join} from 'path'
 import {EmployeeRepository} from '../../repository'
 import { DocsNotProvidedError } from '../../common/exceptions.common'
+import { message } from 'antd'
+import { EmployeeModel } from '../../schema'
 
 const saveEmployee = async (req: Request, res: Response) => {
     try{
@@ -42,8 +44,23 @@ const deleteEmployee = async (req: Request, res: Response) => {
     }
 }
 
+const editEmployee = async (req: Request, res: Response) => {
+    try{
+        const id: string = req.params.id
+        const data: EmployeeModel= req.body
+        const employeeRepo = new EmployeeRepository()
+
+        const doc = await employeeRepo.update(id, data)
+        res.json(doc)
+    }
+    catch(e){
+        res.status(400).send({message: e.message})
+    }
+}
+
 export {
     saveEmployee,
     getEmpDoc,
-    deleteEmployee
+    deleteEmployee,
+    editEmployee
 }
