@@ -40,12 +40,18 @@ export class Notes extends Component {
       page: 1,
       limit: 20
     };
-    this.props.getNotes(pagination).then(res => {
-      console.log("Employees -> componentDidMount -> res", res);
+    if (this.props.noteList.length > 0) {
       this.setState({
-        data: res.docs
+        data: this.props.noteList
       });
-    });
+    } else {
+      this.props.getNotes(pagination).then(res => {
+        console.log("Employees -> componentDidMount -> res", res);
+        this.setState({
+          data: res.docs
+        });
+      });
+    }
   };
 
   handelEdit = record => {
@@ -108,9 +114,9 @@ export class Notes extends Component {
   render() {
     const { income, editData } = this.state;
     return (
-      <PageWrapper title="nO>6">
+      <PageWrapper title="naaoMGa">
         <div>
-          <Tooltip placement="top" title="nO>6 ]mero">
+          <Tooltip placement="top" title="">
             <Button
               className="button-text-size button-margin-bottum"
               type="primary"
@@ -118,7 +124,7 @@ export class Notes extends Component {
               onClick={this.handelAddTodos}
               size="large"
             >
-              nO>6 ]mero
+              naaoMGa ]maorao
             </Button>
           </Tooltip>
         </div>
@@ -132,7 +138,7 @@ export class Notes extends Component {
           data={income ? editData : ""}
           type={income ? "edit" : "add"}
         />
-        <div>
+        <div className="notes-group">
           <ListingTodo
             data={this.state.data}
             handelDelete={this.handelDelete}
@@ -144,7 +150,9 @@ export class Notes extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  ...state.Test
+});
 
 export default connect(mapStateToProps, {
   getNotes,

@@ -22,6 +22,10 @@ import {
 } from "../../../Actions/Animal/GivenAnimal";
 import { totalOfArray } from "../../../js/Helper";
 import DebitAnimals from "../PopupForm/DebitAnimal";
+import ReactToPrint from "react-to-print";
+import ReportPrint from "../../PrintTemplate/Report";
+import { DeadAnimalColumn } from "../../PrintTemplate/Report/Columns/DeadAnimalColumn";
+import { GivenAnimalColumn } from "../../PrintTemplate/Report/Columns/GivenAnimalColumn";
 
 const { RangePicker } = DatePicker;
 
@@ -43,100 +47,107 @@ class DebitAnimal extends Component {
     };
     this.columns = [
       {
-        title: "k/m",
+        title: "k/ma",
         dataIndex: "_id",
         key: "1",
-        className: "table-font-english",
+        width: 180,
+        className: "",
         render: (text, record) =>
           this.state.data.length >= 1 ? (
-            <span>{this.state.data.findIndex(x => x._id === text) + 1}</span>
+            <div>{this.state.data.findIndex(x => x._id === text) + 1}</div>
           ) : null
       },
       {
-        title: "tarIq",
+        title: "taarIKa",
         dataIndex: "date",
         key: "8",
-        width: 120,
+        width: 200,
         className: "table-font-english",
         render: (text, record) => (
-          <span>{moment(text).format("DD-MM-YYYY")}</span>
+          <div className="  english-font-input">
+            {moment(text).format("DD-MM-YYYY")}
+          </div>
         )
       },
       {
-        title: "pxuAO",
+        title: "paSauAao",
         children: [
           {
-            title: "gay",
+            title: "gaaya",
             dataIndex: "animal[0].count",
             key: "gay",
             className: "table-font-english",
             render: text => <p>{text}</p>
           },
           {
-            title: "b5d",
+            title: "baLad",
             dataIndex: "animal[1].count",
             key: "balad",
             className: "table-font-english"
           },
           {
-            title: "va0rDa",
+            title: "vaaCrDa",
             dataIndex: "animal[2].count",
             key: "vacharda",
             className: "table-font-english"
           },
           {
-            title: "va0rDI",
+            title: "vaaCrDI",
             dataIndex: "animal[3].count",
             key: "vachardi",
             className: "table-font-english"
           },
           {
-            title: "ANy",
+            title: "Anya",
             dataIndex: "animal[4].count",
             key: "anny",
             className: "table-font-english"
           },
           {
-            title: "3o3l",
+            title: "kula paSauAao",
             dataIndex: "animal",
             key: "total",
             className: "table-font-english",
             render: (text, record) => {
               const total = text.map(val => parseInt(val.count, 10));
               const finalTotal = totalOfArray(total);
-              return <span>{finalTotal}</span>;
+              return <div>{finalTotal}</div>;
             }
           }
         ]
       },
       {
-        title: "3eg n>.",
+        title: "Toga naMbar",
         dataIndex: "tag",
         key: "tag",
+        width: 180,
         className: "table-font-english"
         // render: text => <p>{text}</p>
       },
       {
-        title: "pxu lenar nu nam",
+        title: "paSau laonaar nau naama",
         dataIndex: "name",
         key: "name",
-        className: "table-font-gujarati",
+        className: "",
+        width: 300,
         render: text => <p>{text}</p>
       },
       {
-        title: "srnamu",
+        title: "sarnaamau",
         dataIndex: "address",
         key: "address",
-        className: "table-font-gujarati"
+        width: 250,
+        className: ""
       },
       {
-        title: "moba[l n>.",
+        title: "maaobaa[la naM.",
         dataIndex: "phone",
         key: "mono",
+        width: 200,
         className: "table-font-english"
       },
       {
-        title: "AeDI3 - DIlI3",
+        title: "AoDIT e DIlaIT",
         key: "action",
         render: (text, record) => (
           <>
@@ -172,12 +183,18 @@ class DebitAnimal extends Component {
   }
 
   componentDidMount = () => {
-    this.props.getGivenAnimal(this.state.pagination).then(res => {
-      console.log("this is a log in a  creadit animal api ->", res);
+    if (this.props.getAnimalList.length > 0) {
       this.setState({
-        data: res.docs
+        data: this.props.getAnimalList
       });
-    });
+    } else {
+      this.props.getGivenAnimal(this.state.pagination).then(res => {
+        console.log("this is a log in a  creadit animal api ->", res);
+        this.setState({
+          data: res.docs
+        });
+      });
+    }
   };
 
   handelText = e => {
@@ -265,12 +282,21 @@ class DebitAnimal extends Component {
   };
 
   paginate = page => {
-    this.setState({
-      pagination: {
-        page,
-        limit: 20
-      }
-    });
+    this.setState(
+      {
+        pagination: {
+          page,
+          limit: 20
+        }
+      },
+      () =>
+        this.props.getGivenAnimal(this.state.pagination).then(res => {
+          console.log("this is a log in a  creadit animal api ->", res);
+          this.setState({
+            data: res.docs
+          });
+        })
+    );
   };
 
   render() {
@@ -288,13 +314,13 @@ class DebitAnimal extends Component {
             ></Button>
           </Col>
           <Col span={23} style={{ textAlign: "center" }}>
-            <h1>Aapel pxuAO nu r+S3r</h1>
+            <h1>Aapaola paSauAao nau rPsTr</h1>
           </Col>
         </Row>
 
         <div className="filter-icon">
           <Icon type="filter" theme="filled" />
-          <h3>rIpo3 fIL3r</h3>
+          <h3>fIlTr</h3>
         </div>
         <Row gutter={[16, 16]}>
           <Col span={8}>
@@ -320,24 +346,38 @@ class DebitAnimal extends Component {
           <Col span={8}>
             <div className="m-btn-gru">
               {/* ------------------------------Generat Button--------------------------------- */}
-
               <Button
                 size="default"
                 type="primary"
                 onClick={this.filterData}
                 icon="snippets"
               >
-                jnre3 rIpo3
+                JnaroT rIpaaoT
               </Button>
               {/* ------------------------------Print button--------------------------- */}
-              <Button
-                size="default"
-                icon="printer"
-                style={{ backgroundColor: "#505D6F", color: "#ffffff" }}
-              >
-                {" "}
-                ip/N3
-              </Button>
+              <ReactToPrint
+                trigger={() => (
+                  <Button
+                    size="default"
+                    icon="printer"
+                    style={{ backgroundColor: "#505D6F", color: "#ffffff" }}
+                  >
+                    {" "}
+                    ipa`nT
+                  </Button>
+                )}
+                content={() => this.componentRef}
+              />
+              <div style={{ display: "none" }}>
+                <ReportPrint
+                  //---------------------------------------Change title of report from here----------------------------------------------------
+                  name="Javak rIpaaoT"
+                  ref={el => (this.componentRef = el)}
+                  data={this.state.data || []}
+                  type="Expense"
+                  column={GivenAnimalColumn}
+                />
+              </div>
             </div>
           </Col>
         </Row>

@@ -10,7 +10,7 @@
 }
 
 .ant-form-item-label {
-  line-height: 17.9999px !important;
+  line-height: 20.9999px !important;
 }
 
 .income-table-td-height {
@@ -28,4 +28,16 @@
 }
 #Income_daterange {
   width: 100%;
+}
+
+.ant-table {
+  height: calc(100vh - 50vh);
+  overflow-y: scroll;
+}
+
+.income-expense-table {
+  .ant-table {
+    height: initial;
+    overflow-y: hidden;
+  }
 }

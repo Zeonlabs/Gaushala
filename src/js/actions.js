@@ -13,7 +13,10 @@ export const actionName = {
 
 export const listing = {
   incomeListing: "INCOME_LISTING",
-  expenseListing: "EXPENSE_LISTING"
+  expenseListing: "EXPENSE_LISTING",
+  trustMembersListing: "TRUST_MEMBERS_LISTING",
+  chequeListing: "CHEQUE_LISTING",
+  noteListing: "NOTE_LISTING"
 };
 
 export const employee = {
@@ -26,5 +29,6 @@ export const animal = {
   deadAnmimalList: "DEAD_ANIMAL_LISTING",
   givenAnmimalList: "GIVEN_ANIMAL_LISTING",
   costAnmimalList: "COST_ANIMAL_LISTING",
-  totalAnmimalList: "TOTAL_ANIMAL_LISTING"
+  totalAnmimalList: "TOTAL_ANIMAL_LISTING",
+  totalAnimalCount: "TOTAL_ANIMAL_COUNT"
 };

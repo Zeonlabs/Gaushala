@@ -87,7 +87,7 @@ class FilterData extends Component {
       >
         <div className="income-model-wrapper">
           <Row>
-            <h2 className="form-titel">cek fIL3r</h2>
+            <h2 className="form-titel">caok fIlTr</h2>
           </Row>
 
           <div>
@@ -99,7 +99,7 @@ class FilterData extends Component {
               >
                 {/* ------------------------------Date--------------------------------- */}
                 <Col span={24}>
-                  <Form.Item label="tarIq ps>d kro">
+                  <Form.Item label="taarIKa pasaMd krao">
                     {getFieldDecorator("daterange")(
                       <RangePicker
                         className="english-font-input"
@@ -117,13 +117,13 @@ class FilterData extends Component {
                   </Form.Item>
                 </Col>
 
-                {/* -----------------------------Name of Employees-------------------------------- */}
+                {/* -----------------------------cheque Num-------------------------------- */}
                 <Col className="gutter-row" span={24}>
-                  <Form.Item className="cheque-no" label="cek n>.">
+                  <Form.Item className="cheque-no" label="caok naMbar">
                     {getFieldDecorator("chequeNo")(
                       <Input
                         type="number"
-                        className="english-font-input"
+                        className=""
                         style={{ width: "100%" }}
                         placeholder="000000"
                       />
@@ -131,24 +131,24 @@ class FilterData extends Component {
                   </Form.Item>
                 </Col>
 
-                {/* ------------------------------phone No--------------------------------- */}
+                {/* ------------------------------Cheque Name--------------------------------- */}
                 <Col span={24}>
                   <Form.Item
                     className="ant-col"
-                    label="nam &#34; cek SvIkarnar nu nam &#34; :"
+                    label="naama &quot; caok svaIkarnaar &apos; :"
                   >
                     {getFieldDecorator("name")(
-                      <Input placeholder="data 7I nam" />
+                      <Input placeholder="naama" />
                     )}
                   </Form.Item>
                 </Col>
 
                 <Col className="gutter-row" span={24}>
-                  <Form.Item className="ant-col" label="moba[l n>.">
+                  <Form.Item className="ant-col" label="maaobaa[la naMbar">
                     {getFieldDecorator("phone")(
                       <Input
                         type="number"
-                        className="english-font-input"
+                        className=""
                         placeholder="0000000000"
                       />
                     )}
@@ -166,11 +166,11 @@ class FilterData extends Component {
                 </Form.Item>
               </Col> */}
                 <Col className="gutter-row" span={11}>
-                  <Form.Item className="ant-col" label="rkm">
+                  <Form.Item className="ant-col" label="rkma qaI">
                     {getFieldDecorator("amountFrom")(
                       <Input
                         type="number"
-                        className="english-font-input"
+                        className=""
                         placeholder="₹000000"
                         min="0"
                       />
@@ -178,11 +178,11 @@ class FilterData extends Component {
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" span={11} offset={2}>
-                  <Form.Item className="ant-col" label="su6I">
+                  <Form.Item className="ant-col" label="sauGaI">
                     {getFieldDecorator("amountTo")(
                       <Input
                         type="number"
-                        className="english-font-input"
+                        className=""
                         placeholder="₹000000"
                         min="0"
                       />
@@ -190,27 +190,25 @@ class FilterData extends Component {
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" span={24}>
-                  <Form.Item className="" label="be>Nk nam">
+                  <Form.Item className="" label="baoMnk">
                     {getFieldDecorator("bank")(
                       <Select
                         className="in-icon-arrow"
-                        placeholder="be>Nk nam ps>d kro"
+                        placeholder="baoMnk nau naama"
                       >
-                        <Option value="ivrDI 6un m>D5 nI Aavk">
-                          Aes.bI.Aa[ be>Nk
+                        <Option value="Aosa.baI.Aa[ baoMnk">
+                        Aosa.baI.Aa[ baoMnk
                         </Option>
-                        <Option value="surt 6un m>D5 nI Aavk">
-                          AeksIs be>Nk
+                        <Option value="Anya">
+                          Anya
                         </Option>
-                        <Option value="qatr nI Aavk">be>Nk AOf broDa</Option>
-                        <Option value="pxu nI Aavk">vra0a be>Nk</Option>
                       </Select>
                     )}
                   </Form.Item>
                 </Col>
               </Row>
               <div className="m-btn-gru">
-                {/* ----------------------------Cancel Button------------------------------- */}
+                {/* ----------------------------Report Button------------------------------- */}
                 <Form.Item>
                   <Button
                     size="default"
@@ -218,19 +216,7 @@ class FilterData extends Component {
                     htmlType="submit"
                     icon="snippets"
                   >
-                    jnre3 rIpo3
-                  </Button>
-                </Form.Item>
-                {/* ------------------------------Print button--------------------------- */}
-                <Form.Item>
-                  <Button
-                    size="default"
-                    htmlType="submit"
-                    icon="printer"
-                    style={{ backgroundColor: "#505D6F", color: "#ffffff" }}
-                  >
-                    {" "}
-                    ip/N3
+                    JnaroT rIpaaoT
                   </Button>
                 </Form.Item>
               </div>

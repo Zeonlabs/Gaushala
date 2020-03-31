@@ -69,15 +69,15 @@ class Index extends Component {
             <thead>
               <tr>
                 <th className="table-header">
-                  {type ? "ivgt" : "pxu no p/kar"}
+                  {type ? "ivagata" : "paSau naao pa`kar"}
                 </th>
-                <th className="table-header">{type ? "rkm" : "s>Qya"}</th>
+                <th className="table-header">{type ? "rkma" : "saMKyaa"}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td className="table-animal-popup-td">
-                  {type ? "^aas" : "gay"}
+                  {type ? "Gaasa" : "gaaya"}
                 </td>
                 <td>
                   <Form.Item>
@@ -89,13 +89,13 @@ class Index extends Component {
                         : tableType
                         ? data[0].count
                         : 0
-                    })(<InputNumber />)}
+                    })(<InputNumber className="gujarati-font" />)}
                   </Form.Item>
                 </td>
               </tr>
               <tr>
                 <td className="table-animal-popup-td">
-                  {type ? "caro" : "b5d"}
+                  {type ? "caarao" : "baLad"}
                 </td>
                 <td>
                   <Form.Item>
@@ -113,7 +113,7 @@ class Index extends Component {
               </tr>
               <tr>
                 <td className="table-animal-popup-td">
-                  {type ? "da`" : "va0rDa"}
+                  {type ? "daNa" : "vaaCrDa"}
                 </td>
                 <td>
                   <Form.Item>
@@ -131,7 +131,7 @@ class Index extends Component {
               </tr>
               <tr>
                 <td className="table-animal-popup-td">
-                  {type ? "mjurI" : "va0rDI"}
+                  {type ? "majurI" : "vaaCrDI"}
                 </td>
                 <td>
                   <Form.Item>
@@ -150,7 +150,7 @@ class Index extends Component {
               {type ? (
                 <tr>
                   <td className="table-animal-popup-td">
-                    {type ? "Dok3r-dva" : "ANy"}
+                    {type ? "Dao. e dvaa" : "Anya"}
                   </td>
                   <td>
                     <Form.Item>
@@ -168,7 +168,7 @@ class Index extends Component {
                 ""
               )}
               <tr>
-                <td className="table-animal-popup-td">ANy</td>
+                <td className="table-animal-popup-td">Anya</td>
                 <td>
                   <Form.Item>
                     {getFieldDecorator(type ? "other" : "anny", {
@@ -186,8 +186,8 @@ class Index extends Component {
             </tbody>
             <tfoot>
               <tr>
-                <td className="total-box table-animal-popup-td">3o3l</td>
-                <td className="total-box english-font-input ">
+                <td className="total-box table-animal-popup-td">TaoTla</td>
+                <td className="total-box  ">
                   {this.state.total}
                 </td>
               </tr>

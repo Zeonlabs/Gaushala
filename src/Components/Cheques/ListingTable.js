@@ -9,65 +9,66 @@ class ListingTable extends Component {
     this.state = {};
     this.columns = [
       {
-        title: "k/m",
+        title: "k/ma",
         dataIndex: "_id",
         key: "1",
-        className: "table-font-english",
+        width: 120,
+        className: "",
         render: (text, record) =>
           this.props.data.length >= 1 ? (
-            <span>{this.props.data.findIndex(x => x._id === text) + 1}</span>
+            <div>{this.props.data.findIndex(x => x._id === text) + 1}</div>
           ) : null
       },
-      {
-        title: "tarIq",
+      { 
+        title: "taarIKa",
         dataIndex: "date",
         key: "date",
-        className: "table-font-english",
-        width: 100,
+        className: "income-table-td-height table-font-english",
+        width: 130,
         render: (text, record) => (
-          <span>{moment(text).format("DD-MM-YYYY")}</span>
+          <div className="  english-font-input">{moment(text).format("YYYY-MM-DD")}</div>
         )
       },
       {
-        title: "nam",
+        title: "naama",
         dataIndex: "name",
         key: "name",
-        className: "table-font-gujarati",
-        width: 250,
+        className: "",
+        width: 300,
         render: text => <p>{text}</p>
       },
       {
-        title: "moba[l n>.",
+        title: "maaobaa[la naMbar",
         dataIndex: "phone",
         key: "mobile",
-        width: 120,
+        width: 180,
         className: "table-font-english"
       },
       {
-        title: "cek n>",
+        title: "caok naMbar",
         dataIndex: "no",
         key: "cheque",
-        width: 100,
+        width: 150,
         className: "table-font-english"
       },
       {
-        title: "rkm",
+        title: "rkma",
         dataIndex: "amount",
         key: "amount",
-        width: 100,
+        width: 200,
         className: "table-font-english"
       },
       {
-        title: "be>Nk nam",
+        title: "baoMnk",
         dataIndex: "bank",
         key: "bankname",
-        width: 200,
-        className: "table-font-gujarati"
+        width: 250,
+        className: ""
       },
       {
-        title: "AeDI3 - DIlI3",
+        title: "AoDIT e DIlaIT",
         key: "action",
-        width: 100,
+        width: 150,
         render: (text, record) => (
           <>
             <div className="icon-group-table">
@@ -110,7 +111,7 @@ class ListingTable extends Component {
 
   render() {
     return (
-      <div>
+      <div className="table">
         <Table
           columns={this.columns}
           pagination={{

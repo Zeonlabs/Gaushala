@@ -87,7 +87,7 @@ class FilterDrawers extends Component {
         >
           <div className="income-model-wrapper">
             <Row>
-              <h2 className="form-titel">Aavk rIpor3 fIL3r</h2>
+              <h2 className="form-titel">Aavak rIpaaoT fIlTr</h2>
             </Row>
 
             <Form
@@ -95,10 +95,10 @@ class FilterDrawers extends Component {
               className="login-form form-income"
             >
               <Row>
-                <Form.Item label="tarIq ps>d kro:">
+                <Form.Item label="taarIKa pasaMd krao:">
                   {getFieldDecorator("daterange")(
                     <RangePicker
-                      className="english-font-input"
+                      className="english-font-input "
                       ranges={{
                         Today: [moment(), moment()],
                         "This Month": [
@@ -115,42 +115,38 @@ class FilterDrawers extends Component {
 
               <Row>
                 {/* --------------------------Income Type------------------------ */}
-                <Form.Item className="" label="Aavk no p/kar" hasFeedback>
+                <Form.Item className="" label="Aavak naao pa`kar " hasFeedback>
                   {getFieldDecorator("type")(
                     <Select
                       className="in-icon-arrow"
-                      placeholder="Aavk no p/kar ps>d kro"
+                      placeholder="Aavak naao pa`kar paMsad krao:"
                     >
-                      <Option value="ivrDI 6un m>D5 nI Aavk">
-                        ivrDI 6un m>D5 nI Aavk
-                      </Option>
-                      <Option value="surt 6un m>D5 nI Aavk">
-                        surt 6un m>D5 nI Aavk
-                      </Option>
-                      <Option value="qatr nI Aavk">qatr nI Aavk</Option>
-                      <Option value="pxu nI Aavk">pxu nI Aavk</Option>
-                      <Option value=" ANy Aavk">ANy Aavk</Option>
-                      <Option value="data7I nI Aavk">data7I nI Aavk</Option>
+                      <Option value="1">ivarDI Gauna maMDLa naI Aavak</Option>
+                      <Option value="2">saurta Gauna maMDLa naI Aavak</Option>
+                      <Option value="3">Kaatar naI Aavak</Option>
+                      <Option value="4">paSau naI Aavak</Option>
+                      <Option value="5">dataaEaI naI Aavak</Option>
+                      <Option value="6">Anya Aavak</Option>
                     </Select>
                   )}
                 </Form.Item>
               </Row>
               <Row gutter={[16, 16]}>
                 <Col span={12}>
-                  <Form.Item label="dan SvIkar">
+                  <Form.Item label="dana svaIkar">
                     {getFieldDecorator("moneyType")(
                       <Radio.Group>
-                        <Radio value="cash">rokD</Radio>
-                        <Radio value="cheque">cek</Radio>
+                        <Radio value="cash">raokD</Radio>
+                        <Radio value="cheque">caok</Radio>
                       </Radio.Group>
                     )}
                   </Form.Item>
                 </Col>
                 <Col span={12}>
-                  <Form.Item className="cheque-no" label="cek n>.">
+                  <Form.Item className="cheque-no" label="caok naM.:">
                     {getFieldDecorator("chequeNo")(
                       <Input
-                        className="english-font-input"
+                        className=""
                         style={{ width: "100%" }}
                         placeholder="000000"
                       />
@@ -158,23 +154,30 @@ class FilterDrawers extends Component {
                   </Form.Item>
                 </Col>
               </Row>
-              <Row gutter={[16, 16]}>
-                <Col span={12}>
-                  <Form.Item label="rkm 4I">
+              <Row style={{ display: "flex", justifyContent: "space-between" }}>
+                <Col span={11}>
+                  <Form.Item label="rkma qaI:">
                     {getFieldDecorator("amountFrom")(
-                      <Input
-                        className="english-font-input"
-                        placeholder="000000"
-                      />
+                      <Input className="" placeholder="000000" />
                     )}
                   </Form.Item>
                 </Col>
 
-                <Col span={12}>
-                  <Form.Item className="max-income" label="su6I">
+                <Col span={11}>
+                  <Form.Item className="max-income" label="sauGaI:">
                     {getFieldDecorator("amountTo")(
+                      <Input className="" placeholder="000000" />
+                    )}
+                  </Form.Item>
+                </Col>
+              </Row>
+              <Row>
+                <Col span={11}>
+                  <Form.Item className="max-income" label="vaa]car naM.">
+                    {getFieldDecorator("slipNo")(
                       <Input
-                        className="english-font-input"
+                        className=" "
+                        style={{ width: "100%" }}
                         placeholder="000000"
                       />
                     )}
@@ -183,7 +186,7 @@ class FilterDrawers extends Component {
               </Row>
               <Row>
                 <Button type="primary" htmlType="submit" size="large">
-                  rIpor3
+                  rIpaaoT
                 </Button>
               </Row>
             </Form>

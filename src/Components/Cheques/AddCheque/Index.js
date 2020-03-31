@@ -81,7 +81,7 @@ class Index extends Component {
           onCancel={this.handleReset}
         >
           <Row>
-            <h1 className="form-titel">p/IN3 cek</h1>
+            <h1 className="form-titel">nyau caok</h1>
           </Row>
 
           <Form className="form-income" onSubmit={this.handleSubmit}>
@@ -89,7 +89,7 @@ class Index extends Component {
               <Col span={8}>
                 {/* ------------------------------Date of Cheque--------------------------------- */}
 
-                <Form.Item className="date-input" label="tarIq">
+                <Form.Item className="date-input" label="taarIKa pasaMd krao">
                   {getFieldDecorator("date", {
                     rules: [{ required: true, message: "Enter The Date!" }],
                     initialValue: type === "edit" ? moment(data.date) : ""
@@ -98,7 +98,7 @@ class Index extends Component {
               </Col>
               <Col span={8}>
                 {/* --------------------------Bank Name---------------------------------- */}
-                <Form.Item className="" label="be>Nk nam">
+                <Form.Item className="" label="baoMnk">
                   {getFieldDecorator("bank", {
                     rules: [{ required: true }],
                     initialValue: type === "edit" ? data.bank : ""
@@ -107,28 +107,26 @@ class Index extends Component {
                       className="in-icon-arrow"
                       placeholder="be>Nk nam ps>d kro"
                     >
-                      <Option value="ivrDI 6un m>D5 nI Aavk">
-                        Aes.bI.Aa[ be>Nk
-                      </Option>
-                      <Option value="surt 6un m>D5 nI Aavk">
-                        AeksIs be>Nk
-                      </Option>
-                      <Option value="qatr nI Aavk">be>Nk AOf broDa</Option>
-                      <Option value="pxu nI Aavk">vra0a be>Nk</Option>
+                      <Option value="Aosa.baI.Aa[ baoMnk">
+                        Aosa.baI.Aa[ baoMnk
+                        </Option>
+                        <Option value="Anya">
+                          Anya
+                        </Option>
                     </Select>
                   )}
                 </Form.Item>
               </Col>
               <Col span={8}>
                 {/* --------------------------Cheque No.---------------------------------- */}
-                <Form.Item className="cheque-no" label="cek n>.">
+                <Form.Item className="cheque-no" label="caok naMbar">
                   {getFieldDecorator("no", {
                     rules: [{ required: true }],
                     initialValue: type === "edit" ? data.no : ""
                   })(
                     <Input
                       type="number"
-                      className="english-font-input"
+                      className=""
                       style={{ width: "100%" }}
                       placeholder="000000"
                     />
@@ -139,21 +137,21 @@ class Index extends Component {
 
             <Row gutter={[16, 16]}>
               <Col span={16}>
-                {/* ----------------------------No cheque Name----------------------------------- */}
+                {/* ----------------------------cheque Name----------------------------------- */}
                 <Form.Item
                   className="ant-col"
-                  label="nam &#34; cek SvIkarnar nu nam &#34; :"
+                  label="naama &quot; caok svaIkarnaar &apos; :"
                 >
                   {getFieldDecorator("name", {
                     rules: [{ required: true }],
                     // initialValue: type === "edit" && data.name
                     initialValue: type === "edit" ? data.name : ""
-                  })(<Input placeholder="cek SvIkarnar nu nam" />)}
+                  })(<Input placeholder="naama" />)}
                 </Form.Item>
               </Col>
               <Col span={8}>
                 {/* ------------------------------phone No--------------------------------- */}
-                <Form.Item className="ant-col" label="moba[l n>.">
+                <Form.Item className="ant-col" label="maaobaa[la naMbar">
                   {getFieldDecorator("phone", {
                     rules: [{ required: true }],
                     // initialValue: type === "edit" && data.phone
@@ -161,7 +159,7 @@ class Index extends Component {
                   })(
                     <Input
                       type="number"
-                      className="english-font-input"
+                      className=""
                       placeholder="0000000000"
                     />
                   )}
@@ -171,7 +169,7 @@ class Index extends Component {
             <Row gutter={[16, 16]}>
               <Col span={8}>
                 {/* ----------------------------Amount in Digit----------------------------------- */}
-                <Form.Item className="ant-col" label="rkm">
+                <Form.Item className="ant-col" label="rkma qaI">
                   {getFieldDecorator("amount", {
                     rules: [{ required: true }],
                     // initialValue: type === "edit" && data.amount
@@ -180,7 +178,7 @@ class Index extends Component {
                     <Input
                       type="number"
                       onChange={this.handelNumber}
-                      className="english-font-input"
+                      className=""
                       placeholder="₹000000"
                     />
                   )}
@@ -188,7 +186,7 @@ class Index extends Component {
               </Col>
               <Col span={16}>
                 {/* ------------------------------Amount in Words--------------------------------- */}
-                <Form.Item className="ant-col" label="rkm">
+                <Form.Item className="ant-col" label="sauGaI">
                   {getFieldDecorator("amountword", {
                     // // initialValue:
                     // rules: [{ required: true }]
@@ -220,7 +218,7 @@ class Index extends Component {
                   style={{ backgroundColor: "#505D6F", color: "#ffffff" }}
                 >
                   {" "}
-                  ip/N3
+                  ipa`nT
                 </Button>
               </Form.Item>
             </div>

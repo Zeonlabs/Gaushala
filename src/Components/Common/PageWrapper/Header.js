@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Layout, Icon, Button } from "antd";
 import IncomeMobel from "../Forms/IncomeMobel";
 // import "./Sider.scss";
+import './Header.scss'
 
 const Header = ({ toggleSider, collapsed, header, title }) => {
   const [state, setState] = useState({
@@ -57,7 +58,7 @@ const Header = ({ toggleSider, collapsed, header, title }) => {
             size="large"
             onClick={toggleIncomeModel}
           >
-            Aavk
+            Aavak
           </Button>
           {/*----------------------------------------------------------------
           -----------------------Expense Button-------------------------------
@@ -70,7 +71,7 @@ const Header = ({ toggleSider, collapsed, header, title }) => {
             size="large"
             onClick={toggleExpenseModel}
           >
-            javk
+            Javak
           </Button>
         </div>
       </div>

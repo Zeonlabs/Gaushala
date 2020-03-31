@@ -15,7 +15,7 @@ const CardNotes = props => {
   return (
     <div className="card-wrapper">
       <Card
-        style={{ width: 300, marginTop: 16 }}
+        style={{marginTop: 16 }}
         cover={<h1>{props.data.title}</h1>}
         actions={[
           <Icon
@@ -23,7 +23,7 @@ const CardNotes = props => {
             onClick={handelEdit}
             type="edit"
             theme="filled"
-            style={{ color: "#3AD944" }}
+            style={{ color: "#3AD944" ,    borderRight: "1px solid black" }}
             key="edit"
           />,
           <Popconfirm

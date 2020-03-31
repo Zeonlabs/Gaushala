@@ -182,7 +182,7 @@ class Animal extends Component {
     return (
       <PageWrapper
         header={this.state.slug !== ""}
-        title="pxu nI yadI"
+        title="paSau naI yaadI"
         onBackClick={this.backClick}
       >
         {this.state.slug === "" ? (
@@ -194,7 +194,7 @@ class Animal extends Component {
               <Col className="gutter-row card-content card-hover-scss" span={6}>
                 <Card
                   className="card-background"
-                  title="Aavel pxuAO"
+                  title="Aavaola paSauAao"
                   bordered={false}
                 >
                   <div className="Card-view-buttons">
@@ -208,7 +208,7 @@ class Animal extends Component {
                         style={{ fontSize: 40 }}
                         theme="outlined"
                       />
-                      <span>yadI ]mero</span>
+                      <span>yaadI ]maorao</span>
                     </div>
                     <div
                       className="Button-display-grid"
@@ -219,7 +219,7 @@ class Animal extends Component {
                         style={{ fontSize: 40 }}
                         theme="outlined"
                       />
-                      <span>rIpo3</span>
+                      <span>paSau rIpaaoT</span>
                     </div>
                   </div>
                 </Card>
@@ -230,7 +230,7 @@ class Animal extends Component {
               <Col className="gutter-row card-content card-hover-scss" span={6}>
                 <Card
                   className="card-background"
-                  title="muTyu pamel pxuAO"
+                  title="maRtyau paamaola paSauAao"
                   bordered={false}
                 >
                   <div className="Card-view-buttons">
@@ -243,7 +243,7 @@ class Animal extends Component {
                         style={{ fontSize: 40 }}
                         theme="outlined"
                       />
-                      <span>yadI ]mero</span>
+                      <span>yaadI ]maorao</span>
                     </div>
                     <div
                       className="Button-display-grid"
@@ -254,7 +254,7 @@ class Animal extends Component {
                         style={{ fontSize: 40 }}
                         theme="outlined"
                       />
-                      <span>rIpo3</span>
+                      <span>paSau rIpaaoT</span>
                     </div>
                   </div>
                 </Card>
@@ -268,7 +268,7 @@ class Animal extends Component {
               >
                 <Card
                   className="card-background"
-                  title="Aapel pxuAO"
+                  title="Aapaola paSauAao"
                   bordered={false}
                 >
                   <div className="Card-view-buttons">
@@ -281,7 +281,7 @@ class Animal extends Component {
                         style={{ fontSize: 40 }}
                         theme="outlined"
                       />
-                      <span>yadI ]mero</span>
+                      <span>yaadI ]maorao</span>
                     </div>
                     <div
                       className="Button-display-grid"
@@ -292,7 +292,7 @@ class Animal extends Component {
                         style={{ fontSize: 40 }}
                         theme="outlined"
                       />
-                      <span>rIpo3</span>
+                      <span>paSau rIpaaoT</span>
                     </div>
                   </div>
                 </Card>
@@ -307,7 +307,7 @@ class Animal extends Component {
               >
                 <Card
                   className="card-background"
-                  title="inwav qcR"
+                  title="inaBaava Ka--ca"
                   bordered={false}
                 >
                   <div className="Card-view-buttons">
@@ -320,7 +320,7 @@ class Animal extends Component {
                         style={{ fontSize: 40 }}
                         theme="outlined"
                       />
-                      <span>yadI ]mero</span>
+                      <span>yaadI ]maorao</span>
                     </div>
                     <div
                       className="Button-display-grid"
@@ -331,7 +331,7 @@ class Animal extends Component {
                         style={{ fontSize: 40 }}
                         theme="outlined"
                       />
-                      <span>rIpo3</span>
+                      <span>paSau rIpaaoT</span>
                     </div>
                   </div>
                 </Card>
@@ -343,7 +343,7 @@ class Animal extends Component {
               <Col className="gutter-row card-content card-hover-scss" span={6}>
                 <Card
                   className="card-background"
-                  title="Kul pxuAO"
+                  title="kula paSauAao"
                   bordered={false}
                 >
                   <div className="Card-view-buttons">
@@ -367,7 +367,7 @@ class Animal extends Component {
                         style={{ fontSize: 40 }}
                         theme="outlined"
                       />
-                      <span>rIpo3</span>
+                      <span>paSau rIpaaoT</span>
                     </div>
                   </div>
                 </Card>

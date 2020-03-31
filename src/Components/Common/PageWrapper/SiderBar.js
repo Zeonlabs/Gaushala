@@ -31,7 +31,7 @@ class SiderBar extends Component {
           color: "#ffffff"
         }}
       >
-        sItaram gOxa5a 3\S3
+        saItaarama gaaOSaaLaa T/sT
       </h1>
     </div>
     <Menu
@@ -43,7 +43,7 @@ class SiderBar extends Component {
       <Menu.Item key={routes.dashboard}>
           <Link to={routes.dashboard}>
             <Icon className="menu-list-icon" type="layout" theme="filled" />
-            <span className="menu-list-title">s>padIt Aheval</span>
+            <span className="menu-list-title">saMpaadIta Ahovaala</span>
           </Link>
         </Menu.Item>
         {/* -----------------------------------------------------------------
@@ -52,7 +52,7 @@ class SiderBar extends Component {
         <Menu.Item key={routes.charity}>
           <Link to={routes.charity}>
             <Icon className="menu-list-icon" type="rise" />
-            <span className="menu-list-title">Aavk rIpO3</span>
+            <span className="menu-list-title">Aavak rIpaaOT</span>
           </Link>
         </Menu.Item>
         {/* -----------------------------------------------------------------
@@ -62,7 +62,7 @@ class SiderBar extends Component {
         <Menu.Item key={routes.expences}>
           <Link to={routes.expences}>
             <Icon className="menu-list-icon" type="fall" />
-            <span className="menu-list-title">javk rIpO3</span>
+            <span className="menu-list-title">Javak rIpaaOT</span>
           </Link>
         </Menu.Item>
         {/* -----------------------------------------------------------------
@@ -71,7 +71,7 @@ class SiderBar extends Component {
         <Menu.Item key={routes.cheques}>
           <Link to={routes.cheques}>
             <Icon className="menu-list-icon" type="audit" />
-            <span className="menu-list-title">cek p/IN3</span>
+            <span className="menu-list-title">caok pa`InT</span>
           </Link>
         </Menu.Item>
         {/* -----------------------------------------------------------------
@@ -81,7 +81,7 @@ class SiderBar extends Component {
             <Link to={routes.animal}>
               <PandaSvg class="menu-list-icon bull-icon" />
               {/* <Icon className="menu-list-icon" type="twitter" /> */}
-              <span className="menu-list-title bull-titel">pxu nI yadI</span>
+              <span className="menu-list-title bull-titel">paSau naI yaadI</span>
             </Link>
           </Menu.Item>
         {/* -----------------------------------------------------------------
@@ -90,7 +90,7 @@ class SiderBar extends Component {
         <Menu.Item key={routes.employees}>
           <Link to={routes.employees}>
             <Icon className="menu-list-icon" type="solution" />
-            <span className="menu-list-title">kmRcarI nI yadI</span>
+            <span className="menu-list-title">kma-caarI naI yaadI</span>
           </Link>
         </Menu.Item>
         {/* -----------------------------------------------------------------
@@ -99,7 +99,7 @@ class SiderBar extends Component {
         <Menu.Item key={routes.trustmembers}>
           <Link to={routes.trustmembers}>
             <Icon className="menu-list-icon" type="team" />
-            <span className="menu-list-title">sWy7I nI yadI</span>
+            <span className="menu-list-title">saByaEaI naI yaadI</span>
           </Link>
         </Menu.Item>
         {/* -----------------------------------------------------------------
@@ -108,7 +108,7 @@ class SiderBar extends Component {
         <Menu.Item key={routes.notes}>
           <Link to={routes.notes}>
             <Icon className="menu-list-icon" type="book" />
-            <span className="menu-list-title">nO>6</span>
+            <span className="menu-list-title">naaOMQa</span>
           </Link>
         </Menu.Item>
         {/* -----------------------------------------------------------------
@@ -117,7 +117,7 @@ class SiderBar extends Component {
         <Menu.Item key={routes.settingpage}>
           <Link to={routes.settingpage}>
             <Icon className="menu-list-icon" type="setting" />
-            <span className="menu-list-title">sei3>g</span>
+            <span className="menu-list-title">saoiTMga</span>
           </Link>
         </Menu.Item>
     </Menu>

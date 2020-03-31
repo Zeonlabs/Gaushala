@@ -14,6 +14,7 @@ import {
 import Index from "./AddCheque/Index";
 import ListingTable from "./ListingTable";
 import FilterDatas from "./FilterData";
+import { useFlexLayout } from "react-table";
 
 export class Cheques extends Component {
   constructor(props) {
@@ -50,12 +51,18 @@ export class Cheques extends Component {
       page: 1,
       limit: 20
     };
-    this.props.getCheque(pagination).then(res => {
-      console.log("Employees -> componentDidMount -> res", res);
+    if (this.props.chequeList.length > 0) {
       this.setState({
-        data: res.docs
+        data: this.props.chequeList
       });
-    });
+    } else {
+      this.props.getCheque(pagination).then(res => {
+        console.log("Employees -> componentDidMount -> res", res);
+        this.setState({
+          data: res.docs
+        });
+      });
+    }
   };
 
   handelShowPopup = () => {
@@ -132,18 +139,27 @@ export class Cheques extends Component {
   };
 
   paginate = page => {
-    this.setState({
-      pagination: {
-        page,
-        limit: 20
-      }
-    });
+    this.setState(
+      {
+        pagination: {
+          page,
+          limit: 20
+        }
+      },
+      () =>
+        this.props.getCheque(this.state.pagination).then(res => {
+          console.log("Employees -> componentDidMount -> res", res);
+          this.setState({
+            data: res.docs
+          });
+        })
+    );
   };
 
   render() {
     const { income, editData } = this.state;
     return (
-      <PageWrapper title="cek p/IN3">
+      <PageWrapper title="caok pa`InT">
         <Index
           openPopup={this.state.openPopup}
           handelEmployeePopup={this.handelShowPopup}
@@ -152,16 +168,16 @@ export class Cheques extends Component {
           data={income ? editData : ""}
           type={income ? "edit" : "add"}
         />
-        <div className="header-button">
+        <div className="row income-form-wrapper display-flex">
           <Button
             shape="squre"
             size="large"
             type="primary"
             onClick={this.handelFilterShow}
-            style={{ marginBottom: 30 }}
+            style={{ marginBottom: 30, marginRight: 20, fontSize: "22px" }}
           >
-            <Icon type="filter" theme="filled" style={{ fontSize: 17 }} />
-            fIL3r
+            <Icon type="filter" theme="filled" style={{ fontSize: 22 }} />
+            fIlTr
           </Button>
           <Button
             shape="squre"
@@ -170,8 +186,8 @@ export class Cheques extends Component {
             onClick={this.handelResetFilter}
             style={{ marginBottom: 30 }}
           >
-            <Icon type="close-circle" theme="filled" style={{ fontSize: 17 }} />
-            Clear
+            <Icon type="close" style={{ fontSize: 17 }} />
+            rIsaoT
           </Button>
           <FilterDatas
             visible={this.state.showFilter}
@@ -182,11 +198,15 @@ export class Cheques extends Component {
             className="button-text-size"
             type="primary"
             icon="printer"
-            style={{ marginLeft: 20 }}
+            style={{
+              backgroundColor: "#505D6F",
+              color: "#ffffff",
+              marginLeft: 20
+            }}
             size="large"
             onClick={this.handelPopup}
           >
-            Nyu cek ip/N3
+            nyau caok
           </Button>
         </div>
         <div className="table">
@@ -205,7 +225,9 @@ export class Cheques extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  ...state.Test
+});
 
 export default connect(mapStateToProps, {
   getCheque,

@@ -8,37 +8,42 @@ class ListingTable extends Component {
     this.state = {};
     this.columns = [
       {
-        title: "k/m",
+        title: "k/ma",
         dataIndex: "_id",
         key: "1",
-        className: "table-font-english",
+        className: "",
+        width: 100,
         render: (text, record) =>
           this.props.data.length >= 1 ? (
-            <span>{this.props.data.findIndex(x => x._id === text) + 1}</span>
+            <div>{this.props.data.findIndex(x => x._id === text) + 1}</div>
           ) : null
       },
       {
-        title: "hodo",
+        title: "haodao",
         dataIndex: "position",
         key: "2",
+        width: 200,
         render: text => <p>{text}</p>,
-        className: "table-font-gujarati"
+        className: ""
       },
       {
-        title: "nam",
+        title: "naama",
         dataIndex: "name",
         key: "3",
-        className: "table-font-gujarati"
+        width: 300,
+        className: ""
       },
       {
-        title: "moba[l n>.",
+        title: "maaobaa[la naMbar",
         dataIndex: "phone",
         key: "4",
-        className: "table-font-english"
+        width: 250,
+        className: ""
       },
       {
-        title: "Action",
+        title: "AoDIT e DIlaIT",
         key: "action",
+        width: 150,
         render: (text, record) => (
           <>
             <div className="icon-group-table">

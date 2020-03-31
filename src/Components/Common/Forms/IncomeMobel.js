@@ -24,6 +24,11 @@ import {
 } from "../../../Actions/Exapmple";
 import NumericInput from "./InputNumber";
 import { connect } from "react-redux";
+import ReactToPrint from "react-to-print";
+import { convertNumberToType, convertTypeToNumber } from "../../../js/Helper";
+import IncomePrintSlip from "../../PrintTemplate";
+import ExpensePrintSlip from "../../PrintTemplate/ExpensePrint";
+import { Expense } from "../../PrintTemplate/Report/Columns/Expese";
 
 const { Option } = Select;
 
@@ -35,7 +40,11 @@ class IncomeMobels extends Component {
       tableData: "",
       value: 0,
       finalTotal: 0,
-      tableStatus: false
+      tableStatus: false,
+      resetStatus: true,
+      printStatus: false,
+      data: {},
+      itemData: []
     };
   }
 
@@ -53,7 +62,7 @@ class IncomeMobels extends Component {
     if (prevProps !== this.props) {
       console.log("this is  aedit income modal ->", this.props);
       if (this.props.modalType) {
-        console.log("this is  aedit this.props.modalType ->", this.props.data);
+        console.log("this is  aedit this.props.modalType ->", this.props);
         this.setState({
           value: this.props.data.phone
         });
@@ -70,18 +79,22 @@ class IncomeMobels extends Component {
   };
 
   incomeData = (values, finalTotal, itemData) => {
+    console.log(
+      "IncomeMobels -> incomeData -> convertTypeToNumber(values.type)",
+      convertTypeToNumber(values.type, "income")
+    );
     const date = moment(values.date).format("YYYY-MM-DD");
     const data = {
       slip_no: values.slip_no,
       date,
-      type: values.type,
+      type: convertTypeToNumber(values.type, "income"),
       name: values.name,
       address: values.address,
       phone: parseInt(values.phone, 10),
       money: {
         type: this.state.type,
         amount: finalTotal,
-        cheque_no: values.cheque_no
+        cheque_no: values.chequeno
       },
       pan_no: values.pan_no,
       item: itemData,
@@ -104,6 +117,10 @@ class IncomeMobels extends Component {
       });
     }
     this.props.form.resetFields();
+    this.setState({
+      type: "cash",
+      resetStatus: !this.state.resetStatus
+    });
   };
 
   expenseData = (values, finalTotal, itemData) => {
@@ -111,14 +128,14 @@ class IncomeMobels extends Component {
     const data = {
       slip_no: values.slip_no,
       date,
-      type: values.type,
+      type: convertTypeToNumber(values.type, "expense"),
       name: values.name,
       address: values.address,
       phone: parseInt(values.phone, 10),
       money: {
         type: this.state.type,
         amount: finalTotal,
-        cheque_no: values.cheque_no
+        cheque_no: values.chequeno
       },
       pan_no: values.pan_no,
       item: itemData,
@@ -141,6 +158,10 @@ class IncomeMobels extends Component {
       });
     }
     this.props.form.resetFields();
+    this.setState({
+      type: "cash",
+      resetStatus: !this.state.resetStatus
+    });
   };
 
   handleSubmit = e => {
@@ -189,7 +210,9 @@ class IncomeMobels extends Component {
       const finalTotal = totalAmount.reduce(this.sumArray);
       console.log("TCL: finalTotal", finalTotal);
       this.setState({
-        finalTotal
+        finalTotal,
+        data: values,
+        itemData
       });
 
       // console.log("TCL: amount", amount);
@@ -208,9 +231,13 @@ class IncomeMobels extends Component {
     this.setState({
       tableData: data,
       tableStatus: true
+      // resetStatus: false
     });
   };
 
+  printIncomeSlip = () => {
+    console.warn("IncomeMobels -> values, finalTotal, itemData");
+  };
   onChangeType = e => {
     console.log("radio checked", e.target.value);
     this.setState({
@@ -237,9 +264,22 @@ class IncomeMobels extends Component {
     this.props.form.resetFields();
     this.props.toggleModel();
     this.setState({
-      tableData: ""
+      tableData: "",
+      resetStatus: !this.state.resetStatus,
+      type: "cash",
+      printStatus: false
     });
   };
+
+  // handelPrintButton = () => {
+  //   this.setState({
+  //     printStatus: true
+  //   });
+  //   // console.log(
+  //   //   "shjgfsadhsagfdasnjcn hasdgasudh auhduihas uduiahu dhuahdu  a udh sah dui"
+  //   // );
+  // };
+
   render() {
     // const { type } = this.props;
     const { type, modalType, data } = this.props;
@@ -257,8 +297,8 @@ class IncomeMobels extends Component {
           onCancel={this.handleReset}
         >
           <h3 className="form-titel" style={{ paddingBottom: 10 }}>{`${
-            type === "expense" ? "javk" : "Aavk"
-          } ]mero`}</h3>
+            type === "expense" ? "Javak" : "Aavak"
+          }  ]maorao`}</h3>
 
           <Form className="form-income" onSubmit={this.handleSubmit}>
             <Row gutter={[16, 16]}>
@@ -266,7 +306,9 @@ class IncomeMobels extends Component {
                 {/* ------------------------------slip No--------------------------------- */}
 
                 <Form.Item
-                  label={`${type === "expense" ? "va]cr" : "pho>c "} n>.`}
+                  label={`${
+                    type === "expense" ? "vaa]car " : "pahaoMca "
+                  } naM.:`}
                 >
                   {getFieldDecorator("slip_no", {
                     rules: [{ required: true }],
@@ -280,8 +322,8 @@ class IncomeMobels extends Component {
                         : ""
                   })(
                     <InputNumber
-                      className="english-font-input"
-                      style={{ width: "100%" }}
+                      className="gujarati-font"
+                      style={{}}
                       placeholder="000000"
                       type="number"
                       min={0}
@@ -291,7 +333,7 @@ class IncomeMobels extends Component {
               </Col>
               <Col span={8}>
                 {/* ------------------------------Date--------------------------------- */}
-                <Form.Item className="date-input" label="tarIq">
+                <Form.Item className="date-input" label="taarIKa:">
                   {getFieldDecorator("date", {
                     rules: [{ required: true, message: "Enter The Date!" }],
                     initialValue:
@@ -302,14 +344,19 @@ class IncomeMobels extends Component {
                         : modalType === "edit"
                         ? moment(data.date)
                         : ""
-                  })(<DatePicker className="english-font-input" />)}
+                  })(
+                    <DatePicker
+                      className="english-font-input "
+                      style={{ fontSize: "20px" }}
+                    />
+                  )}
                 </Form.Item>
               </Col>
               <Col span={8}>
                 {/* ------------------------------Income Type--------------------------------- */}
                 <Form.Item
                   className=""
-                  label={`${type === "expense" ? "javk" : "Aavk"} no p/kar`}
+                  label={`${type === "expense" ? "Javak" : "Aavak"} naao pakar`}
                   hasFeedback
                 >
                   {getFieldDecorator("type", {
@@ -317,43 +364,52 @@ class IncomeMobels extends Component {
                     initialValue:
                       type === "income"
                         ? modalType === "edit"
-                          ? data.type
+                          ? convertNumberToType(data.type, "income")
                           : ""
                         : modalType === "edit"
-                        ? data.type
+                        ? convertNumberToType(data.type, "expense")
                         : ""
                   })(
                     type === "expense" ? (
                       <Select
                         className="in-icon-arrow"
-                        placeholder="javk no p/kar ps>d kro"
+                        placeholder="Javak naao pa`kar paMsad krao"
+                        // defaultValue="2"
                       >
-                        <Option value="qa~a nI javk">qa~a nI javk</Option>
-                        <Option value="mjurI qcR">mjurI qcR</Option>
-                        <Option value="6un qcR">6un qcR</Option>
-                        <Option value="ba>6kam qcR">ba>6kam qcR</Option>
-                        <Option value="nIr~a qcR">nIr~a qcR</Option>
-                        <Option value="Do. & dva qcR">Do. & dva qcR</Option>
-                        <Option value="vahn qcR">vahn qcR</Option>
-                        <Option value="vaDI qcR">vaDI qcR</Option>
-                        <Option value="p/s>g qcR">p/s>g qcR</Option>
-                        <Option value="ANy qcR">ANy qcR</Option>
+                        <Option value="KaaNa naI Javak">KaaNa naI Javak</Option>
+                        <Option value="majurI Kaca-">majurI Kaca-</Option>
+                        <Option value="Gauna Kaca-">Gauna Kaca-</Option>
+                        <Option value="baaMGakama Kaca-">
+                          baaMGakama Kaca-
+                        </Option>
+                        <Option value="naIrNa Kaca-">naIrNa Kaca-</Option>
+                        <Option value="Dao. e dvaa Kaca-">
+                          Dao. e dvaa Kaca-
+                        </Option>
+                        <Option value="vaahna Kaca-">vaahna Kaca-</Option>
+                        <Option value="vaaDI Kaca-">vaaDI Kaca-</Option>
+                        <Option value="pa`saMga Kaca-">pa`saMga Kaca-</Option>
+                        <Option value="Anya Kaca-">Anya Kaca-</Option>
                       </Select>
                     ) : (
                       <Select
                         className="in-icon-arrow"
-                        placeholder="Aavk no p/kar ps>d kro"
+                        placeholder="Aavak naao pa`kar paMsad krao"
                       >
-                        <Option value="ivrDI 6un m>D5 nI Aavk">
-                          ivrDI 6un m>D5 nI Aavk
+                        <Option value="ivarDI Gauna maMDLa naI Aavak">
+                          ivarDI Gauna maMDLa naI Aavak
                         </Option>
-                        <Option value="surt 6un m>D5 nI Aavk">
-                          surt 6un m>D5 nI Aavk
+                        <Option value="saurta Gauna maMDLa naI Aavak">
+                          saurta Gauna maMDLa naI Aavak
                         </Option>
-                        <Option value="qatr nI Aavk">qatr nI Aavk</Option>
-                        <Option value="pxu nI Aavk">pxu nI Aavk</Option>
-                        <Option value=" ANy Aavk">ANy Aavk</Option>
-                        <Option value="data7I nI Aavk">data7I nI Aavk</Option>
+                        <Option value="Kaatar naI Aavak">
+                          Kaatar naI Aavak
+                        </Option>
+                        <Option value="paSau naI Aavak">paSau naI Aavak</Option>
+                        <Option value="dataaEaI naI Aavak">
+                          dataaEaI naI Aavak
+                        </Option>
+                        <Option value="Anya Aavak">Anya Aavak</Option>
                       </Select>
                     )
                   )}
@@ -361,12 +417,12 @@ class IncomeMobels extends Component {
               </Col>
             </Row>
 
-            <Row>
-              <Col xs={2} sm={4} md={6} lg={8} xl={16}>
+            <Row gutter={[16, 16]}>
+              <Col span={16}>
                 {/* ------------------------------Doner Name-------------------------------- */}
                 <Form.Item
                   className="input-name-gujarati"
-                  label={`${type === "expense" ? "nam" : "data 7I"}`}
+                  label={`${type === "expense" ? "naama:" : "dataaEaI:"}`}
                 >
                   {getFieldDecorator("name", {
                     rules: [{ required: true }],
@@ -378,13 +434,13 @@ class IncomeMobels extends Component {
                         : modalType === "edit"
                         ? data.name
                         : ""
-                  })(<Input placeholder="nam" />)}
+                  })(<Input placeholder="naama" />)}
                 </Form.Item>
               </Col>
-              <Col xs={20} sm={16} md={12} lg={8} xl={7} offset={1}>
+              <Col span={8}>
                 {/* ------------------------------phone No--------------------------------- */}
                 {modalType === "edit" ? (
-                  <Form.Item className="" label="moba[l n>.">
+                  <Form.Item className="" label="maaobaa[la naM.:">
                     {getFieldDecorator("phone", {
                       rules: [{ required: true }],
                       initialValue:
@@ -397,13 +453,14 @@ class IncomeMobels extends Component {
                           : ""
                     })(
                       <NumericInput
+                        className="gujarati-font"
                         value={this.state.value}
                         onChange={this.onChange}
                       />
                     )}
                   </Form.Item>
                 ) : (
-                  <Form.Item className="" label="moba[l n>.">
+                  <Form.Item className="" label="maaobaa[la naM.:">
                     {getFieldDecorator("phone", {
                       rules: [{ required: true, len: 10 }],
                       initialValue:
@@ -428,7 +485,7 @@ class IncomeMobels extends Component {
             <Row>
               <Col>
                 {/* ------------------------------Address--------------------------------- */}
-                <Form.Item className="input-name-gujarati" label="srnamu">
+                <Form.Item className="input-name-gujarati" label="sarnaamau">
                   {getFieldDecorator("address", {
                     rules: [{ required: true }],
                     initialValue:
@@ -444,7 +501,7 @@ class IncomeMobels extends Component {
                       style={{
                         width: "100%"
                       }}
-                      placeholder="srnamu, gam nu nam"
+                      placeholder="sarnaamau"
                     />
                   )}
                 </Form.Item>
@@ -455,7 +512,9 @@ class IncomeMobels extends Component {
               <Col span={8}>
                 {/* ------------------------------Income in --------------------------------- */}
                 <Form.Item
-                  label={`${type === "expense" ? "cukv~aI" : "dan SvIkar"}`}
+                  label={`${
+                    type === "expense" ? "caukvaNaI:" : "dana svaIkar"
+                  }`}
                 >
                   {getFieldDecorator("moneyobject", {
                     rules: [{ required: true }],
@@ -473,8 +532,8 @@ class IncomeMobels extends Component {
                         : "cash"
                   })(
                     <Radio.Group onChange={this.onChangeType}>
-                      <Radio value="cash">rokD</Radio>
-                      <Radio value="cheque">cek</Radio>
+                      <Radio value="cash">raokD</Radio>
+                      <Radio value="cheque">caok</Radio>
                     </Radio.Group>
                   )}
                 </Form.Item>
@@ -483,7 +542,7 @@ class IncomeMobels extends Component {
                 {/* ------------------------------Cheque No--------------------------------- */}
                 {this.state.type === "cheque" ||
                 this.props.cash === "cheque" ? (
-                  <Form.Item className="cheque-no" label="cek n>.">
+                  <Form.Item className="cheque-no" label="caok naM.:">
                     {getFieldDecorator("chequeno", {
                       rules: [{ required: true }],
                       initialValue:
@@ -501,7 +560,7 @@ class IncomeMobels extends Component {
                     })(
                       <Input
                         type="number"
-                        className="english-font-input"
+                        className=""
                         style={{ width: "100%" }}
                         placeholder="000000"
                       />
@@ -516,11 +575,11 @@ class IncomeMobels extends Component {
                 {type === "expense" ? (
                   ""
                 ) : (
-                  <Form.Item label="pan kaDR n>.">
+                  <Form.Item label="paana kaD- naM.:">
                     {getFieldDecorator("pan_no")(
                       <Input
-                        className="english-font-input"
-                        style={{ width: "100%" }}
+                        className="english-font-input "
+                        style={{ width: "100%", fontSize: "20px" }}
                         placeholder="AS121SDEF"
                       />
                     )}
@@ -533,6 +592,7 @@ class IncomeMobels extends Component {
             <Row>
               <Tables
                 submit={this.onTableSubmit}
+                resetStatus={this.state.resetStatus}
                 total={modalType === "edit" ? data.money : ""}
                 data={modalType === "edit" ? data.item : ""}
                 type={modalType === "edit"}
@@ -542,7 +602,10 @@ class IncomeMobels extends Component {
             <Row gutter={[16, 16]}>
               <Col span={8}>
                 {/* ------------------------------Ref_name--------------------------------- */}
-                <Form.Item className="input-name-gujarati" label="HStk nam">
+                <Form.Item
+                  className="input-name-gujarati"
+                  label="hstak naama :"
+                >
                   {getFieldDecorator("ref_name", {
                     rules: [{ required: true }],
                     initialValue:
@@ -554,13 +617,16 @@ class IncomeMobels extends Component {
                         ? data.ref_name
                         : ""
                   })(
-                    <Input style={{ width: "100%" }} placeholder="HStk nam" />
+                    <Input
+                      style={{ width: "100%" }}
+                      placeholder="hstak naama"
+                    />
                   )}
                 </Form.Item>
               </Col>
               <Col span={8}>
                 {/* ------------------------------Notes No--------------------------------- */}
-                <Form.Item className="input-name-gujarati" label="no>6">
+                <Form.Item className="input-name-gujarati" label="naaoMGa:">
                   {getFieldDecorator("note", {
                     initialValue:
                       type === "income"
@@ -570,7 +636,9 @@ class IncomeMobels extends Component {
                         : modalType === "edit"
                         ? data.note || ""
                         : ""
-                  })(<Input style={{ width: "100%" }} placeholder="no>6" />)}
+                  })(
+                    <Input style={{ width: "100%" }} placeholder="naaoMGa:" />
+                  )}
                 </Form.Item>
               </Col>
               <Col span={8}>
@@ -578,13 +646,13 @@ class IncomeMobels extends Component {
                 {type === "expense" ? (
                   ""
                 ) : (
-                  <Form.Item label="s>dex moklo">
+                  <Form.Item label="saMdoSa maaoklaao:">
                     {getFieldDecorator("sms", {
                       rules: [{ required: true }],
                       initialValue: "no"
                     })(
                       <Radio.Group>
-                        <Radio value="no">nhI</Radio>
+                        <Radio value="no">nahI</Radio>
                         <Radio value="yes">ha</Radio>
                       </Radio.Group>
                     )}
@@ -603,19 +671,53 @@ class IncomeMobels extends Component {
               {/* ------------------------------Save Button--------------------------------- */}
               <Form.Item>
                 <Button size="default" type="primary" htmlType="submit">
-                  sev
+                  saova
                 </Button>
               </Form.Item>
               {/* ----------------------------Save & Print button--------------------------- */}
               <Form.Item>
-                <Button
-                  size="default"
-                  htmlType="submit"
-                  style={{ backgroundColor: "#505D6F", color: "#ffffff" }}
-                >
-                  sev &#38; ip/N3
-                </Button>
+                <ReactToPrint
+                  trigger={() => (
+                    <Button
+                      size="default"
+                      htmlType="submit"
+                      style={{ backgroundColor: "#505D6F", color: "#ffffff" }}
+                      // onClick={this.handelPrintButton}
+                    >
+                      saova e ipa`nT
+                    </Button>
+                  )}
+                  content={() => this.componentRef}
+                  onAfterPrint={this.printIncomeSlip}
+                />
               </Form.Item>
+              <div style={{ display: "none" }}>
+                {type === "income" ? (
+                  <IncomePrintSlip
+                    ref={el => (this.componentRef = el)}
+                    voucher={this.state.data.slip_no}
+                    name={this.state.data.name}
+                    date={moment(this.state.data.date).format("DD-MM-YYYY")}
+                    address={this.state.data.address}
+                    table={this.state.itemData}
+                    amount={this.state.finalTotal}
+                    cheque_no={this.state.data.chequeno}
+                  />
+                ) : (
+                  <ExpensePrintSlip
+                    ref={el => (this.componentRef = el)}
+                    voucher={this.state.data.slip_no}
+                    name={this.state.data.name}
+                    date={moment(this.state.data.date).format("DD-MM-YYYY")}
+                    address={this.state.data.address}
+                    table={this.state.itemData}
+                    amount={this.state.finalTotal}
+                    cheque_no={this.state.data.chequeno}
+                    mobile={this.state.data.phone}
+                    refname={this.state.data.ref_name}
+                  />
+                )}
+              </div>
             </div>
           </Form>
         </Modal>

@@ -120,11 +120,15 @@ class Index extends Component {
           onCancel={this.handleReset}
         >
           <div className="income-model-wrapper">
-            <h2 className="form-titel">Aavel pxuAO nu r+S3r</h2>
+            <h2 className="form-titel">navaao k-macaarI ]maorao</h2>
             <Form className="form-income" onSubmit={this.handleSubmit}>
               <Row gutter={[16, 16]}>
                 <Col span={8}>
-                  <Form.Item className="" label="kmRcarI no p/kar" hasFeedback>
+                  <Form.Item
+                    className=""
+                    label="k-macaarI naao pa`kar"
+                    hasFeedback
+                  >
                     {/* ------------------------------Post type--------------------------------- */}
 
                     {getFieldDecorator("type", {
@@ -134,25 +138,27 @@ class Index extends Component {
                     })(
                       <Select
                         className="in-icon-arrow"
-                        placeholder="kmRcarI no p/kar ps>d kro"
+                        placeholder="k-macaarI naao pa`kar pasaMd"
                       >
-                        <Option value="vaDI na mjur">vaDI na mjur</Option>
-                        <Option value="gOxa5a na mjur">gOxa5a na mjur</Option>
-                        <Option value="Dok3r">Dok3r</Option>
-                        <Option value="mheta+">mheta+</Option>
-                        <Option value="ANy">ANy</Option>
+                        <Option value="vaaDI naa majur">vaaDI naa majur</Option>
+                        <Option value="gaaOSaaLaa naa majur">
+                          gaaOSaaLaa naa majur
+                        </Option>
+                        <Option value="DaokTr">DaokTr</Option>
+                        <Option value="maohtaaP">maohtaaP</Option>
+                        <Option value="Anya">Anya</Option>
                       </Select>
                     )}
                   </Form.Item>
                 </Col>
                 <Col span={16}>
                   {/* -----------------------------Name of Employees-------------------------------- */}
-                  <Form.Item className="ant-col" label="nam">
+                  <Form.Item className="ant-col" label="naama">
                     {getFieldDecorator("name", {
                       rules: [{ required: true, message: "Enter The Name" }],
                       // initialValue: type && data.name
                       initialValue: type === "edit" ? data.name : ""
-                    })(<Input placeholder="nam" />)}
+                    })(<Input placeholder="naama" />)}
                   </Form.Item>
                 </Col>
               </Row>
@@ -160,7 +166,7 @@ class Index extends Component {
               <Row gutter={[16, 16]}>
                 <Col span={8}>
                   {/* ------------------------------phone No--------------------------------- */}
-                  <Form.Item label="moba[l n>.">
+                  <Form.Item label="maaobaa[la naMbar">
                     {getFieldDecorator("phone", {
                       rules: [
                         { required: true, message: "Enter The Mobile Number!" }
@@ -170,54 +176,57 @@ class Index extends Component {
                     })(
                       <Input
                         type="number"
-                        className="english-font-input"
-                        placeholder="+91 0000000000"
+                        className=""
+                        placeholder="maaobaa[la naMbar"
                       />
                     )}
                   </Form.Item>
                 </Col>
                 <Col span={16}>
                   {/* -----------------------------Address of Employees-------------------------------- */}
-                  <Form.Item className="ant-col" label="srnamu">
+                  <Form.Item className="ant-col" label="sarnaamau">
                     {getFieldDecorator("address", {
                       rules: [
                         { required: true, message: "Enter The Address!" }
                       ],
                       // initialValue: type && data.address
                       initialValue: type === "edit" ? data.address : ""
-                    })(<Input placeholder="srnamu" />)}
+                    })(<Input placeholder="sarnaamau" />)}
                   </Form.Item>
                 </Col>
               </Row>
 
               {/* -------------------------------Upload Button--------------------------------------- */}
-
-              <Row>
-                <Form.Item label="AploD DoKyumeN3s:" extra="">
-                  {getFieldDecorator("file")(
-                    <Upload
-                      {...props2}
-                      beforeUpload={file => this.documentsUpload(file)}
-                      fileList={this.state.fileList}
-                    >
-                      <Button type="primary">
-                        <Icon type="file-add" /> AploD
-                      </Button>
-                    </Upload>
-                  )}
-                </Form.Item>
-              </Row>
+              {type === "edit" ? (
+                ""
+              ) : (
+                <Row>
+                  <Form.Item label="ApalaaoD Aa.[DI ka-D:" extra="">
+                    {getFieldDecorator("file")(
+                      <Upload
+                        {...props2}
+                        beforeUpload={file => this.documentsUpload(file)}
+                        fileList={this.state.fileList}
+                      >
+                        <Button type="primary">
+                          <Icon type="file-add" /> ApalaaoD
+                        </Button>
+                      </Upload>
+                    )}
+                  </Form.Item>
+                </Row>
+              )}
               <div className="m-btn-gru">
                 {/* ----------------------------Cancel Button------------------------------- */}
                 <Form.Item>
                   <Button size="default" onClick={this.handleReset}>
-                    rd kro
+                    rd
                   </Button>
                 </Form.Item>
                 {/* ------------------------------Save Button--------------------------------- */}
                 <Form.Item>
                   <Button size="default" type="primary" htmlType="submit">
-                    sev kro
+                    saova
                   </Button>
                 </Form.Item>
               </div>

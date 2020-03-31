@@ -6,6 +6,21 @@
     font-size: 12px !important;
   }
 }
+
+.editable-cell-value-wrap {
+  font-family: "Saumil_guj2" !important;
+}
+.gujarati-font-family{
+  font-family: "Saumil_guj2" !important;
+}
+.gujarati-font {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  
+}
+.text-center{
+  text-align: center !important;
+}
 .english-font-input,
 #Income_date {
   font-family: Arial, Helvetica, sans-serif !important;
@@ -13,8 +28,8 @@
 .editable-cell-value-wrap {
   padding: 5px 12px;
   cursor: pointer;
-  font-size: 16px !important;
-  font-weight: bolder;
+  font-size: 22px !important;
+  font-weight: 600;
 }
 .editable-row:hover .editable-cell-value-wrap {
   border: 1px solid #d9d9d9;
@@ -27,7 +42,7 @@
   margin: 0;
   padding: 0;
   color: rgba(0, 0, 0, 0.65);
-  font-size: 14px;
+  font-size: 18px;
   font-variant: tabular-nums;
   line-height: 0.5;
   list-style: none;
@@ -62,7 +77,7 @@
       text-align: center;
     }
     .ant-table-column-title {
-      font-family: "gujrati_saral-1normal" !important;
+      font-family: "Saumil_guj2" !important;
       font-weight: 600;
       text-align: center;
     }
@@ -75,23 +90,23 @@
     .ant-input {
       font-weight: 600 !important;
     }
-    // .table-font{
-    //   .ant-table-header-column{
-    //     font-family: "gujrati_saral-1normal" !important;
-    //     font-weight: 600;
-    //     text-align: center;
-    //   }
-    //   td{
-    //     font-family: Arial, Helvetica, sans-serif !important;
-    //   }
-    // }
+    .table-font{
+      .ant-table-header-column{
+        font-family: 'Saumil_guj2' !important;
+        font-weight: 600;
+        text-align: center;
+      }
+      td{
+        font-family: 'Saumil_guj2' !important;
+      }
+    }
   }
 }
 .table-font-english {
-  font-family: Arial, Helvetica, sans-serif !important;
+  font-family: 'Saumil_guj2' !important;
   font-weight: 600 !important;
   .ant-table-header-column {
-    font-family: "gujrati_saral-1normal" !important;
+    font-family: "Saumil_guj2" !important;
   }
 }
 .table-font-gujarati {
@@ -233,7 +248,7 @@
 
 .ant-table-column-title {
   font-weight: 600 !important;
-  font-size: 18px !important;
+  font-size: 24px !important;
 }
 .ant-table-thead > tr > th,
 .ant-table-tbody > tr > td {
@@ -247,7 +262,7 @@
   margin: 0 !important;
 }
 .ant-tooltip-inner {
-  font-family: "gujrati_saral-1normal" !important;
+  font-family: "Saumil_guj2" !important;
   font-weight: 600;
 }
 // --------------------Edit& Delete icons------------------------
@@ -270,8 +285,7 @@
 .ant-table-placeholder {
   background-color: #a5a5a5;
   .ant-empty-description {
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-      "Lucida Sans Unicode", Geneva, Verdana, sans-serif !important;
+    font-family: 'Saumil_guj2' !important;
     color: white;
   }
 }
@@ -293,3 +307,15 @@
   border-radius: 0px !important;
   padding: 11px !important;
 }
+
+// -------------------table input----------------------------------
+.income-expense-table {
+  .ant-form-item-children {
+    input:hover {
+      border: none !important;
+      border-radius: 0px !important;
+    }
+  }
+}
+
+//-----------------------input date---------------------------

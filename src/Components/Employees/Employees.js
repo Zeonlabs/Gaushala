@@ -56,12 +56,18 @@ export class Employees extends Component {
       page: 1,
       limit: 20
     };
-    this.props.getEmployee(pagination).then(res => {
-      console.log("Employees -> componentDidMount -> res", res);
+    if (this.props.employeeListing.length > 0) {
       this.setState({
-        data: res.docs
+        data: this.props.employeeListing
       });
-    });
+    } else {
+      this.props.getEmployee(pagination).then(res => {
+        console.log("Employees -> componentDidMount -> res", res);
+        this.setState({
+          data: res.docs
+        });
+      });
+    }
   };
 
   onGutterChange = gutterKey => {
@@ -121,6 +127,24 @@ export class Employees extends Component {
     });
   };
 
+  paginate = page => {
+    this.setState(
+      {
+        pagination: {
+          page,
+          limit: 20
+        }
+      },
+      () =>
+        this.props.getEmployee(this.state.pagination).then(res => {
+          console.log("Employees -> componentDidMount -> res", res);
+          this.setState({
+            data: res.docs
+          });
+        })
+    );
+  };
+
   handelFilter = value => {
     console.log("Employees -> handelFilter -> value", value);
     const data = {
@@ -150,7 +174,7 @@ export class Employees extends Component {
     const { editData, income } = this.state;
 
     return (
-      <PageWrapper title="kmRcarI nI yadI">
+      <PageWrapper title="k-macaarI naI yaadI">
         <AddEmployee
           handelEmployeePopup={this.handelEmployeePopup}
           submit={this.handelDataAdd}
@@ -162,13 +186,16 @@ export class Employees extends Component {
 
         <div className="filter-icon">
           <Icon type="filter" theme="filled" />
-          <h3>rIpo3 fIL3r</h3>
+          <h3>rIpaaoT fIlTr</h3>
         </div>
         {/* ------------------------------------ Header Epmloyees------------------------------- */}
         <Row gutter={[16, 16]}>
           <Col span={20}>
             <div>
-              <FilterData onFilterChange={this.handelFilter} />
+              <FilterData
+                onFilterChange={this.handelFilter}
+                data={this.state.data || []}
+              />
             </div>
           </Col>
 
@@ -182,7 +209,7 @@ export class Employees extends Component {
               size="large"
               onClick={this.handelEmployeePopup}
             >
-              ]mero
+              ]maorao
             </Button>
           </Col>
         </Row>
@@ -191,6 +218,9 @@ export class Employees extends Component {
             data={this.state.data || []}
             editUSer={this.handelEdit}
             delete={this.handelDelete}
+            pagination={this.paginate}
+            current={this.state.pagination.page}
+            pageSize={this.state.pagination.limit}
           />
         </div>
       </PageWrapper>

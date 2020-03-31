@@ -141,9 +141,9 @@ class OtpScreen extends Component {
       {this.state.resendClick ? (
         <Spin indicator={spinIcon} />
       ) : buttonProps.remainingTime !== 0 ? (
-        `Resend OTP in ${buttonProps.remainingTime}`
+        `frI Aao.TI.paI maoklayaao ${buttonProps.remainingTime}`
       ) : (
-        "Resend OTP"
+        "Aao.TI.paI frI maaoklaao."
       )}
     </button>
   );
@@ -209,7 +209,7 @@ class OtpScreen extends Component {
               {/* <div className="otp-page-heading">
             <h1 className="login-heading-text">OTP Verification</h1>
           </div> */}
-              <h1>Ao.3I.pI verIfIkexn</h1>
+              <h1>Aao.TI.paI vaorIfIkoSana</h1> 
               <div
                 className={
                   this.state.otpMessage === "Invalid"
@@ -222,16 +222,16 @@ class OtpScreen extends Component {
                 {this.state.otpMessage === "Invalid" ? (
                   <div className="weong-otp-message-redirect">
                     {/* <WarningIcon /> */}
-                    <p>Invalid OTP</p>
+                    <p></p>
                   </div>
                 ) : (
                   <>
                     <p>
                       {this.state.resendOtpButton
-                        ? "Ao.3I.pI Aap na moba[l n>br frI moklayo 0e."
-                        : "Ao.3I.pI Aap na moba[l n>br moklayo 0e."}
+                        ? "Aao.TI.paI Aapana maaobaa[la naMbar par frI maaoklayaao."
+                        : "Aao.TI.paI Aapana maaobaa[la naMbar par maaoklayaao."}
                     </p>
-                    <p className="table-font-english">{`+91 ${this.state.mobile}`}</p>
+                    <p className="">{`maao.: ${this.state.mobile}`}</p>
                   </>
                 )}
               </div>
@@ -240,7 +240,7 @@ class OtpScreen extends Component {
                   value={this.state.otp}
                   onChange={this.inputChange}
                   autoFocus
-                  className="otp-input-number table-font-english"
+                  className="otp-input-number "
                   OTPLength={4}
                   placehoder=""
                   otpType="number"
@@ -254,7 +254,7 @@ class OtpScreen extends Component {
                         : "resend-otp-not-click"
                     }
                   >
-                    {this.state.resendOtp ? <p>Helo there</p> : ""}
+                    {this.state.resendOtp ? <p>namsatao </p> : ""}
                     <ResendOTP
                       renderButton={
                         this.state.resendOtpButton
@@ -271,7 +271,7 @@ class OtpScreen extends Component {
                       {this.state.verify ? (
                         <Spin indicator={spinIcon} />
                       ) : (
-                        "sbmI3"
+                        "sabamaIT"
                       )}
                     </Button>
                   </div>

@@ -33,6 +33,7 @@ export class EmployeeRepository{
 
     async update(id: string, data: EmployeeModel){
         const updatedDoc = await Employee.findByIdAndUpdate(id, { $set: data }, {new: true})
+        if(!updatedDoc) throw new NoRecordWithIDException()
         return updatedDoc
     }
 }

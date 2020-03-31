@@ -11,46 +11,49 @@ class ListingTable extends Component {
     };
     this.columns = [
       {
-        title: "k/m",
+        title: "k/ma",
         dataIndex: "_id",
         key: "names",
-        className: "table-font-english",
+        className: "",
+        width: 150,
         render: (text, record) =>
           this.props.data.length >= 1 ? (
-            <span>{this.props.data.findIndex(x => x._id === text) + 1}</span>
+            <div>{this.props.data.findIndex(x => x._id === text) + 1}</div>
           ) : null
       },
       {
-        title: "kmRcarI no p/kar",
+        title: "k-macaarI naao pa`kar",
         dataIndex: "type",
         width: 200,
         key: "name",
         render: text => <p>{text}</p>,
-        className: "table-font-gujarati"
+        className: ""
       },
       {
-        title: "nam",
+        title: "naama",
         dataIndex: "name",
         key: "age",
-        width: 250,
-        className: "table-font-gujarati"
+        width: 300,
+        className: ""
       },
       {
-        title: "moba[l n>.",
+        title: "maaobaa[la naMbar",
         dataIndex: "phone",
         key: "phone",
-        className: "table-font-english"
+        className: "",
+        width: 180
       },
       {
-        title: "srnamu",
+        title: "sarnaamau",
         dataIndex: "address",
         key: "address",
         width: 200,
-        className: "table-font-gujarati"
+        className: ""
       },
       {
-        title: "AeDI3 - DIlI3",
+        title: "AoDIT e DIlaIT",
         key: "action",
+        width: 150,
         render: (text, record) => (
           <>
             <div className="icon-group-table">
@@ -77,14 +80,14 @@ class ListingTable extends Component {
                   style={{ color: "rgba(255, 0, 0)" }}
                 />
               </Popconfirm>
-              <Divider type="vertical" />
+              {/* <Divider type="vertical" />
               <Divider type="vertical" />
               <Icon
                 type="eye"
                 theme="filled"
                 style={{ color: "rgb(39, 39, 39)" }}
                 onClick={() => this.handelProfile(record)}
-              />
+              /> */}
             </div>
           </>
         )
@@ -121,7 +124,16 @@ class ListingTable extends Component {
           onClose={this.handelDrawerClose}
           data={this.state.userRecord}
         />
-        <Table columns={this.columns} dataSource={this.props.data} />
+        <Table
+          columns={this.columns}
+          pagination={{
+            onChange: this.props.pagination,
+            current: this.props.current,
+            total: 20,
+            pageSize: this.props.pageSize
+          }}
+          dataSource={this.props.data}
+        />
       </div>
     );
   }

@@ -1,4 +1,4 @@
-// import { actionName } from "../js/actions";
+import { listing } from "../js/actions";
 import { fetchUrl } from "../js/fetchUrl";
 // import apiList from "../js/apiList";
 
@@ -7,6 +7,7 @@ export const getNotes = id => dispatch =>
     console.log("TCL: data", id);
     fetchUrl("get", `/note`, id)
       .then(res => {
+        dispatch({ type: listing.noteListing, payload: res.docs });
         resolve(res);
       })
       .catch(e => {

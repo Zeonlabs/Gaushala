@@ -4,12 +4,12 @@
 // ----------------card css----------
 .card-note {
   .card-wrapper {
-    margin-left: 8px;
+    
     &:nth-child(3n + 1) {
       margin-left: 0px;
     }
   }
-  display: flex;
+  // display: flex;
   .ant-card-bordered {
     border: 1px solid #000000;
     border-radius: 5px;
@@ -19,7 +19,7 @@
     h1 {
       text-align: center;
       color: white;
-      font-size: 26px;
+      font-size: 32px;
       padding: 5px;
       margin: 0 !important;
     }
@@ -29,7 +29,7 @@
     overflow: hidden;
     white-space: pre-wrap;
     padding: 10px;
-    font-size: 16px;
+    font-size: 26px;
     font-weight: bolder;
     color: black;
     word-break: normal;
@@ -40,7 +40,7 @@
     border-radius: 0px !important;
   }
   ul {
-    height: 50px;
+    height: 62px;
     li:first-child {
       border: 1px solid black;
       border-right: none;
@@ -73,15 +73,47 @@
     }
     li {
       margin: 0;
-      height: 50px !important;
+      height: 62px !important;
 
       span {
         i {
-          font-size: 22px !important;
+          font-size: 26px !important;
           line-height: 22px;
-          padding: 14px;
+          padding: 16px;
         }
       }
     }
   }
+}
+
+
+/* Float four columns side by side */
+.card-wrapper {
+  float: left !important;
+  width: 25% !important;
+  // padding: 0 10px !important;
+}
+
+/* Remove extra left and right margins, due to padding */
+.card-note {margin: 0 -5px !important;}
+
+/* Clear floats after the columns */
+.card-note:after {
+  content: "" !important;
+  display: table !important;
+  clear: both !important;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .card-wrapper {
+    width: 100% !important;
+    display: block !important;
+    margin-bottom: 20px !important;
+  }
+}
+
+/* Style the counter cards */
+.card-wrapper {
+  padding: 16px;
 }

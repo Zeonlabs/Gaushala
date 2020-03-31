@@ -40,12 +40,6 @@ const PageWrapper = props => {
           </Content>
         </Layout>
       </Layout>
-      <Footer
-        className="english-font-input"
-        style={{ textAlign: "center", marginTop: "auto" }}
-      >
-        Official product of zeonlabs © 2018
-      </Footer>
     </>
   );
 };

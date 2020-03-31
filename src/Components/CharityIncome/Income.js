@@ -22,6 +22,10 @@ import {
 import { EditOutlined } from "@ant-design/icons";
 import moment from "moment";
 import IncomeMobel from "../Common/Forms/IncomeMobel";
+import { convertNumberToType } from "../../js/Helper";
+import ReportPrint from "../PrintTemplate/Report";
+import ReactToPrint from "react-to-print";
+import { IncomeColumn } from "../PrintTemplate/Report/Columns/Income";
 
 // const data = [];
 // for (let i = 0; i < 100; i++) {
@@ -52,71 +56,83 @@ class Income extends Component {
     };
     this.columns = [
       {
-        title: "tarIq",
-        width: "100px",
+        title: "taarIKa",
+        width: "130px",
         dataIndex: "date",
         key: "1",
         // fixed: "left",
         render: (text, record) => {
           return (
-            <div className="icon-group-table">
+            <div className="icon-group-table english-font-input">
               {moment(text).format("YYYY-MM-DD")}
             </div>
           );
         },
-        className: "income-table-td-height table-font-english"
+        className:
+          "income-table-td-height table-font-english english-font-input"
       },
       {
-        title: "pho>c n>.",
-        width: 100,
+        title: "pahaoMca naM.",
+        width: 130,
         dataIndex: "slip_no",
         key: "2",
         className: "income-table-td-height table-font-english"
       },
       {
-        title: "nam",
+        title: "naama",
         dataIndex: "name",
         key: "3",
-        width: 250,
+        width: 380,
         className: "income-table-td-height"
       },
       {
-        title: "srnamu",
+        title: "sarnaamau",
         dataIndex: "address",
         key: "address",
-        width: 250
+        width: 300
       },
       {
-        title: "rkm",
+        title: "rkma",
         dataIndex: "money.amount",
         key: "4",
-        width: 100,
+        width: 180,
         className: "table-font-english"
       },
       {
-        title: "moba[l n>.",
+        title: "maaobaa[la naMbar ",
         dataIndex: "phone",
         key: "5",
-        width: 150,
+        width: 180,
         className: "table-font-english"
       },
       {
-        title: "Aavk no p/kar",
+        title: "Aavak naao pa`kar",
         dataIndex: "type",
         key: "6",
-        width: 150
+        width: 250,
+        render: (text, record) =>
+          // console.log("Income -> constructor -> record", text, record)
+          convertNumberToType(text, "income")
+        // text.type === "cheque" ? (
+        //   <span>{text.cheque_no}</span>
+        // ) : (
+        //   <span>raokD</span>
+        // )
       },
       {
-        title: "dan SvIkar",
-        dataIndex: "money.type",
+        title: "dana svaIkar",
+        dataIndex: "money",
         key: "7",
-        width: 100
+        width: 130,
+        render: (text, record) =>
+          // console.log("Income -> constructor -> record", text, record)
+          text.type === "cheque" ? <p>{text.cheque_no}</p> : <p>raokD</p>
       },
       {
-        title: "HStk nam",
+        title: "hstak naama",
         dataIndex: "ref_name",
         key: "8",
-        width: 100
+        width: 280
       },
       // {
       //   title: "s>dex moklo",
@@ -125,9 +141,9 @@ class Income extends Component {
       //   width: 100
       // },
       {
-        title: "AeDI3 - DIlI3",
+        title: "AoDIT e DIlaIT",
         fixed: "right",
-        width: 110,
+        width: 200,
         dataIndex: "operation",
         render: (text, record) => (
           <>
@@ -163,7 +179,6 @@ class Income extends Component {
   }
 
   handelEdit = (text, record) => {
-    console.log("Income -> handelEdit -> record", record);
     // console.log("this is a log in a handelEdit ->", text, record);
     this.setState({
       editData: record,
@@ -176,13 +191,23 @@ class Income extends Component {
       page: 1,
       limit: 20
     };
+    console.log(
+      "Income -> componentDidMount -> this.props.incomeList",
+      this.props.incomeList
+    );
     // const id = this.props.match.params.pid;
-    this.props.getIncome(pagination).then(res => {
-      // console.log("res in a income model =->", res);
+    if (this.props.incomeList.length > 0) {
       this.setState({
-        data: res.docs
+        data: this.props.incomeList
       });
-    });
+    } else {
+      this.props.getIncome(pagination).then(res => {
+        // console.log("res in a income model =->", res);
+        this.setState({
+          data: res.docs
+        });
+      });
+    }
   };
 
   componentDidUpdate = prevPorps => {
@@ -220,19 +245,22 @@ class Income extends Component {
       limit: 20
     };
 
-    this.setState({
-      pagination: {
-        page,
-        limit: 20
-      }
-    });
+    this.setState(
+      {
+        pagination: {
+          page,
+          limit: 20
+        }
+      },
+      () =>
+        this.props.getIncome(this.state.pagination).then(res => {
+          console.log("res in a income model =->", res);
+          this.setState({
+            data: res.docs
+          });
+        })
+    );
     // const id = this.props.match.params.pid;
-    this.props.getIncome(pagination).then(res => {
-      console.log("res in a income model =->", res);
-      this.setState({
-        data: res.docs
-      });
-    });
   };
 
   handleDelete = (key, record) => {
@@ -306,36 +334,50 @@ class Income extends Component {
       };
     });
     return (
-      <PageWrapper title="Aavk rIpO3">
+      <PageWrapper title="Aavak rIpaaoT">
         <div className="row income-form-wrapper">
-          <Tooltip title="fIL3r" placement="bottom">
+          <Tooltip title="" placement="bottom">
             <Button
               shape="squre"
               size="large"
               type="primary"
               onClick={this.showDrawer}
-              style={{ marginBottom: 30 }}
+              style={{ marginBottom: 30, marginRight: 10, fontSize: "22px" }}
             >
-              <Icon type="filter" theme="filled" style={{ fontSize: 17 }} />
-              fIL3r
+              <Icon type="filter" theme="filled" style={{ fontSize: 22 }} />
+              fIlTr
             </Button>
           </Tooltip>
-          <Button
-            shape="squre"
-            size="large"
-            type="primary"
-            // onClick={this.handelResetFilter}
-            style={{ marginBottom: 30, float: "center" }}
-            // className="filter-button"
-          >
-            <Icon
-              type="printer"
-              theme="filled"
-              // onClick={this.handelResetFilter}
-              style={{ fontSize: 17 }}
+          <ReactToPrint
+            trigger={() => (
+              <Button
+                shape="squre"
+                size="large"
+                type="primary"
+                // onClick={this.handelResetFilter}
+                style={{ backgroundColor: "#505D6F", color: "#ffffff" }}
+                // className="filter-button"
+              >
+                <Icon
+                  type="printer"
+                  theme="filled"
+                  // onClick={this.handelResetFilter}
+                />
+                ipa`nT
+              </Button>
+            )}
+            content={() => this.componentRef}
+          />
+          <div style={{ display: "none" }}>
+            <ReportPrint
+              //---------------------------------------Change title of report from here----------------------------------------------------
+              name="Aavak rIpaaoT"
+              ref={el => (this.componentRef = el)}
+              data={this.state.data || []}
+              type="Expense"
+              column={IncomeColumn}
             />
-            Print
-          </Button>
+          </div>
           <Button
             shape="squre"
             size="large"
@@ -345,12 +387,11 @@ class Income extends Component {
             // className="filter-button"
           >
             <Icon
-              type="close-circle"
-              theme="filled"
+              type="close"
               // onClick={this.handelResetFilter}
               style={{ fontSize: 17 }}
             />
-            Reset
+            rIsaoT
           </Button>
         </div>
         <FilterDrawer
@@ -369,18 +410,19 @@ class Income extends Component {
         />
         <div className="">
           <Table
-            className="table-income"
+            className="table-income table-income-expense"
             columns={columns}
             dataSource={this.state.data || []}
             pagination={{
               onChange: this.paginate,
               current: this.state.pagination.page,
               total: 20,
-              pageSize: pagination.limit
+              pageSize: this.state.pagination.limit
             }}
             bordered
             size="middle"
             scroll={{ x: "calc(700px + 40%)" }}
+            // scroll={{ x: "calc(700px + 40%)", y: 300 }}
           />
         </div>
       </PageWrapper>

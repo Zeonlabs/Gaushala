@@ -16,6 +16,7 @@ import "../../Common/Forms/IncomeModels.styles.scss";
 import moment from "moment";
 import Tables from "../../Common/Forms/table";
 import { addCostAnimal } from "../../../Actions/Animal/TotalAnimal";
+import { getAnimalChart } from "../../../Actions/ChartActions";
 import NumericInput from "../../Common/Forms/InputNumber";
 import { connect } from "react-redux";
 import Index from "../Table";
@@ -29,7 +30,8 @@ class ResicentalAnimal extends Component {
       type: "cash",
       tableData: "",
       value: "",
-      total: 0
+      total: 0,
+      animal_total: 0
     };
   }
 
@@ -50,6 +52,21 @@ class ResicentalAnimal extends Component {
             total
           });
         }
+      }
+      if (this.props.totalAnimalCount === 0) {
+        this.props.getAnimalChart().then(res => {
+          const total = res.stats.animal;
+          delete total.big;
+          delete total.small;
+          const total_count = this.sumValuses(total);
+          this.setState({
+            animal_total: total_count
+          });
+        });
+      } else {
+        this.setState({
+          animal_total: this.props.totalAnimalCount.animal_total
+        });
       }
     }
   };
@@ -129,6 +146,10 @@ class ResicentalAnimal extends Component {
     this.props.toggleModel();
   };
   render() {
+    // console.warn(
+    //   "this is  a count of total animal in cost animal =>",
+    //   this.props.totalAnimalCount
+    // );
     const { type, data } = this.props;
     const { getFieldDecorator } = this.props.form;
     return (
@@ -141,12 +162,12 @@ class ResicentalAnimal extends Component {
           onOk={this.props.toggleModel}
           onCancel={this.handleReset}
         >
-          <h1 className="form-titel">inwav qcR r+S3r</h1>
+          <h1 className="form-titel">inaBaava Ka-ca nau rPsTr</h1>
           <Form className="form-income" onSubmit={this.handleSubmit}>
             <Row gutter={[16, 16]}>
               <Col span={12}>
                 {/* ------------------------------Date--------------------------------- */}
-                <Form.Item className="date-input" label="tarIq">
+                <Form.Item className="date-input" label="taarIKa">
                   {getFieldDecorator("date", {
                     rules: [{ required: true, message: "Enter The Date!" }],
                     initialValue: type && moment(data.date)
@@ -159,14 +180,14 @@ class ResicentalAnimal extends Component {
                   class="ant-form-item-required"
                   title="tarIq"
                 >
-                  kul pxuAO nI s>Qya:
+                  kula paSauAao naI saMKyaa:
                 </label>
                 <Tag
-                  className="tag-clock english-font-input"
+                  className="tag-clock "
                   color="#f50"
                   style={{ marginTop: "-2px" }}
                 >
-                  450
+                  {this.state.animal_total}
                 </Tag>
               </Col>
             </Row>
@@ -198,7 +219,7 @@ class ResicentalAnimal extends Component {
                   type="primary"
                   htmlType="submit"
                 >
-                  sev
+                  saova
                 </Button>
               </Form.Item>
             </div>
@@ -212,6 +233,9 @@ const ResicentalAnimals = Form.create({ name: "Income" })(ResicentalAnimal);
 
 const mapStateToProps = state => ({
   ...state.Test
+  // ...state.Animals
 });
 
-export default connect(mapStateToProps, { addCostAnimal })(ResicentalAnimals);
+export default connect(mapStateToProps, { addCostAnimal, getAnimalChart })(
+  ResicentalAnimals
+);

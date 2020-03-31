@@ -8,16 +8,16 @@ export const FilterData = props => {
         <Select
           className="filter-dropdown"
           onChange={props.onFilterChange}
-          placeholder="hod\o ps>d kro"
+          placeholder="haodao pasaMd krao"
         >
-          <Option value="પ્રમુખ શ્રી">પ્રમુખ શ્રી</Option>
-          <Option value="ઉપપ્રમુખ શ્રી">ઉપપ્રમુખ શ્રી</Option>
-          <Option value="મંત્રી શ્રી">મંત્રી શ્રી </Option>
-          <Option value="ખજાનચી">ખજાનચી શ્રી</Option>
-          <Option value="સહમંત્રીશ્રી">સહમંત્રીશ્રી</Option>
-          <Option value="ટ્રસ્ટી શ્રી">ટ્રસ્ટી શ્રી</Option>
-          <Option value="સંગઠનમંત્રી શ્રી">સંગઠનમંત્રી શ્રી</Option>
-          <Option value="All">drek</Option>
+          <Option value="pa`mauKa EaI">pa`mauKa EaI</Option>
+          <Option value="]papa`mauKa EaI">]papa`mauKa EaI</Option>
+          <Option value="maM~aI EaI">maM~aI EaI </Option>
+          <Option value="KaJanacaI">KaJanacaI</Option>
+          <Option value="sahmaM~aI EaI">sahmaM~aI EaI</Option>
+          <Option value="T/sTI EaI">T/sTI EaI</Option>
+          <Option value="saMgaZnamaM~aI EaI">saMgaZnamaM~aI EaI</Option>
+          <Option value="All">drok</Option>
         </Select>
       </Form.Item>
     </div>

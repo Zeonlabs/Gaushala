@@ -56,7 +56,7 @@ class NormalLoginForm extends Component {
         >
           <div className="income-model-wrapper menu-list-title">
             <Row>
-              <h2 className="form-titel menu-list-title">cek fIL3r</h2>
+              <h2 className="form-titel menu-list-title">naaoMGa ]maorao</h2>
             </Row>
 
             <div>
@@ -64,7 +64,7 @@ class NormalLoginForm extends Component {
                 onSubmit={this.handleSubmit}
                 className="login-form form-income"
               >
-                <Form.Item label="no>2 3a[3l">
+                <Form.Item label="naaoMGa hoDIMga">
                   {getFieldDecorator("title", {
                     rules: [
                       {
@@ -78,11 +78,11 @@ class NormalLoginForm extends Component {
                     <Input
                       maxLength={10}
                       // prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                      placeholder="no>2 nu 3a[3l"
+                      placeholder="hoDIMga"
                     />
                   )}
                 </Form.Item>
-                <Form.Item label="no>2">
+                <Form.Item label="naaoMGa">
                   {getFieldDecorator("description", {
                     rules: [
                       { required: true, message: "Please Add description!" }
@@ -92,7 +92,7 @@ class NormalLoginForm extends Component {
                   })(
                     <TextArea
                       // prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                      placeholder="no>2 AHI lqo."
+                      placeholder="naaoMGa AhI ]maorao."
                       rows={8}
                     />
                   )}
@@ -115,7 +115,7 @@ class NormalLoginForm extends Component {
                       htmlType="submit"
                       icon="file-add"
                     >
-                      no>2 ]mero
+                      ]maorao
                     </Button>
                   </Form.Item>
                 </div>

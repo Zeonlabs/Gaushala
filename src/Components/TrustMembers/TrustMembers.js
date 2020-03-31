@@ -13,6 +13,9 @@ import {
   deleteMembers,
   filterMembers
 } from "../../Actions/TrustMembers";
+import ReactToPrint from "react-to-print";
+import ReportPrint from "../PrintTemplate/Report";
+import { TrustyColumns } from "../PrintTemplate/Report/Columns/TrustyColumn";
 
 // function onChange(dates, dateStrings) {
 //   console.log("From: ", dates[0], ", to: ", dates[1]);
@@ -40,12 +43,18 @@ export class TrustMembers extends Component {
       page: 1,
       limit: 20
     };
-    this.props.getMembers(pagination).then(res => {
-      console.log("Employees -> componentDidMount -> res", res);
+    if (this.props.trustMembers.length > 0) {
       this.setState({
-        data: res.docs
+        data: this.props.trustMembers
       });
-    });
+    } else {
+      this.props.getMembers(pagination).then(res => {
+        console.log("Employees -> componentDidMount -> res", res);
+        this.setState({
+          data: res.docs
+        });
+      });
+    }
   };
 
   handelShowPopup = () => {
@@ -116,19 +125,27 @@ export class TrustMembers extends Component {
   };
 
   paginate = page => {
-    this.setState({
-      pagination: {
-        page,
-        limit: 20
-      }
-    });
+    this.setState(
+      {
+        pagination: {
+          page,
+          limit: 20
+        }
+      },
+      () =>
+        this.props.getMembers(this.state.pagination).then(res => {
+          console.log("Employees -> componentDidMount -> res", res);
+          this.setState({
+            data: res.docs
+          });
+        })
+    );
   };
 
   render() {
     const { editData, income } = this.state;
-    console.warn("TrustMembers -> render -> income", income);
     return (
-      <PageWrapper title="sWy7I nI yadI">
+      <PageWrapper title="saByaEaI naI yaadI">
         <Index
           openPopup={this.state.showAddPopup}
           handelEmployeePopup={this.handelShowPopup}
@@ -139,7 +156,7 @@ export class TrustMembers extends Component {
         />
         <div className="filter-icon">
           <Icon type="filter" theme="filled" />
-          <h3>rIpo3 fIL3r</h3>
+          <h3>rIpaaoT fIlTr</h3>
         </div>
 
         <div className="filter-wrapper">
@@ -147,18 +164,33 @@ export class TrustMembers extends Component {
             <FilterData onFilterChange={this.handelFilter} />
           </div>
           <div className="filter-button-member">
-            <Button
-              size="default"
-              htmlType="submit"
-              icon="printer"
-              style={{
-                backgroundColor: "#505D6F",
-                color: "#ffffff",
-                height: "40px"
-              }}
-            >
-              ip/N3
-            </Button>
+            <ReactToPrint
+              trigger={() => (
+                <Button
+                  size="default"
+                  htmlType="submit"
+                  icon="printer"
+                  style={{
+                    backgroundColor: "#505D6F",
+                    color: "#ffffff",
+                    height: "40px"
+                  }}
+                >
+                  ipa`nT
+                </Button>
+              )}
+              content={() => this.componentRef}
+            />
+            <div style={{ display: "none" }}>
+              <ReportPrint
+                //---------------------------------------Change title of report from here----------------------------------------------------
+                name="Javak rIpaaoT"
+                ref={el => (this.componentRef = el)}
+                data={this.state.data || []}
+                type="Expense"
+                column={TrustyColumns}
+              />
+            </div>
 
             <Button
               className="button-right button-text-size"
@@ -168,7 +200,7 @@ export class TrustMembers extends Component {
               onClick={this.handelShowPopup}
               size="large"
             >
-              sWy ]mero
+              saBya ]maorao
             </Button>
           </div>
         </div>
@@ -191,7 +223,7 @@ export class TrustMembers extends Component {
 }
 
 const mapStateToProps = state => ({
-  ...state.Animals
+  ...state.Test
 });
 
 export default connect(mapStateToProps, {

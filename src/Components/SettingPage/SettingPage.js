@@ -13,9 +13,12 @@ import {
   Divider,
   Tag,
   Button,
-  Layout
+  Layout,
+  InputNumber,
+  message
 } from "antd";
 import OtpScreen from "./OtpScreen";
+import { addUser } from "../../Actions/SetUpUser";
 
 const { Option } = Select;
 const { Header, Content, Footer, Sider } = Layout;
@@ -23,20 +26,18 @@ const { Header, Content, Footer, Sider } = Layout;
 export class SettingPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      ModalText: "Content of the modal",
+      visible: false,
+      visibleModal: false,
+      confirmLoading: false,
+      loading: false,
+      iconLoading: false,
+      username: "",
+      mobilenumber: "",
+      pin: ""
+    };
   }
-
-  state = {
-    ModalText: "Content of the modal",
-    visible: false,
-    visibleModal: false,
-    confirmLoading: false
-  };
-
-  state = {
-    loading: false,
-    iconLoading: false
-  };
 
   enterLoading = () => {
     this.setState({ loading: true });
@@ -44,7 +45,29 @@ export class SettingPage extends Component {
 
   enterIconLoading = () => {
     this.setState({ iconLoading: true });
+    const { username, mobilenumber, pin } = this.state;
+    if (username !== "" && mobilenumber !== "" && pin !== "") {
+      const data = {
+        name: username,
+        phone: mobilenumber,
+        pin
+      };
+      this.props.addUser(data).then(res => {
+        this.setState({
+          iconLoading: false,
+          username: "",
+          mobilenumber: "",
+          pin: ""
+        });
+      });
+    } else {
+      message.error("please fill all the field");
+      this.setState({
+        iconLoading: false
+      });
+    }
   };
+
   showModal = () => {
     this.setState({
       visible: true
@@ -78,11 +101,35 @@ export class SettingPage extends Component {
     });
   };
 
+  onChangeUserName = e => {
+    console.log(
+      "SettingPage -> onChangeUserName -> e.target.value",
+      e.target.value
+    );
+    this.setState({
+      username: e.target.value
+    });
+  };
+
+  onChangeMobileNumber = e => {
+    console.log("SettingPage -> onChangeUserName -> e.target.value", e);
+    this.setState({
+      mobilenumber: e
+    });
+  };
+
+  onChangePin = e => {
+    console.log("SettingPage -> onChangeUserName -> e.target.value", e);
+    this.setState({
+      pin: e
+    });
+  };
+
   render() {
     const { visible, confirmLoading } = this.state;
 
     return (
-      <PageWrapper title="sei3>g">
+      <PageWrapper title="saoiTMga">
         <div>
           <Modal
             title="pIn se3"
@@ -93,7 +140,7 @@ export class SettingPage extends Component {
             footer={null}
           >
             <Row>
-              <h1 className="form-titel">p/IN3 cek</h1>
+              <h1 className="form-titel">saoT nyau paIna naMbar</h1>
             </Row>
 
             <div className="form-income">
@@ -135,7 +182,7 @@ export class SettingPage extends Component {
                       type="primary"
                       style={{ float: "right" }}
                     >
-                      sbmI3
+                      sabamaIT
                     </Button>
                   </Form.Item>
                 </Col>
@@ -149,30 +196,47 @@ export class SettingPage extends Component {
           </Modal>
         </div>
 
-        <h1>sof3ver sei3>Ng</h1>
+        <h1>saaofTvaor saoiTMga</h1>
         <span className="warning">
-          <Icon type="warning" /> nO6: sof3ver ma sei3>g nI A>dr 4yel su6ara Aek
-          vqt 4ya bad frI pa0a me5vI xkaxe nhI.
+          <Icon type="warning" /> naaoMGa: saaofTvaor maa qayaola kao[paNa
+          sauGaara frI maoLavaI SakaSao nahI.
         </span>
 
         <Divider orientation="left" className="divider-color divider-label">
-          yusr sei3>g <Icon type="user" />
+          yausar saoiTMga <Icon type="user" />
         </Divider>
         <Row className="row-margin">
           {/* -----------------------------Name of Member-------------------------------- */}
           <Col className="gutter-row margin-left" span={6}>
-            <Form.Item className="ant-col input-name-gujarati" label="3\S3 nam">
-              <Input placeholder="nam" />
+            <Form.Item className="ant-col " label="yausar naama">
+              <Input
+                placeholder="naama"
+                value={this.state.username}
+                onChange={this.onChangeUserName}
+              />
             </Form.Item>
           </Col>
 
           {/* ------------------------------phone No--------------------------------- */}
           <Col span={4} offset={1}>
-            <Form.Item label="moba[l n>.">
-              <Input
-                type="number"
-                className="english-font-input"
-                placeholder="+91 0000000000"
+            <Form.Item label="maaobaa[la naMbar">
+              <InputNumber
+                maxLength={10}
+                className=""
+                value={this.state.mobilenumber}
+                onChange={this.onChangeMobileNumber}
+                placeholder="0000000000"
+              />
+            </Form.Item>
+          </Col>
+          <Col span={4} offset={1}>
+            <Form.Item label="paIna naMbar">
+              <InputNumber
+                maxLength={4}
+                value={this.state.pin}
+                onChange={this.onChangePin}
+                className=""
+                placeholder="0000000000"
               />
             </Form.Item>
           </Col>
@@ -184,20 +248,20 @@ export class SettingPage extends Component {
               loading={this.state.iconLoading}
               onClick={this.enterIconLoading}
             >
-              sev
+              saova
             </Button>
           </Col>
         </Row>
 
         <Divider orientation="left" className="divider-color divider-label">
-          pIn lok sei3>g <Icon theme="filled" type="lock" />
+          paIna laaok saoiTMga <Icon theme="filled" type="lock" />
         </Divider>
 
         <Row className="row-margin">
           <Col offset={1} className="pin-set margin-left">
-            <label>pIn:</label>
+            <label>paIna naMbar:</label>
             <Tag className="tag-clock" onClick={this.showModal} color="#f50">
-              Nyu pIn n>br se3 kro.
+              saoT nyau paIna naMbar
             </Tag>
           </Col>
         </Row>
@@ -205,7 +269,7 @@ export class SettingPage extends Component {
           className="english-font-input"
           style={{ textAlign: "center", marginTop: "auto" }}
         >
-          Officel product of zeonlabs © 2018
+          Official product of zeonlabs © 2018
         </Footer>
       </PageWrapper>
     );
@@ -216,4 +280,4 @@ const mapStateToProps = state => ({});
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingPage);
+export default connect(mapStateToProps, { addUser })(SettingPage);

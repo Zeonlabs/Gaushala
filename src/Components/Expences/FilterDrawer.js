@@ -87,7 +87,7 @@ class FilterDrawers extends Component {
         >
           <div className="income-model-wrapper">
             <Row>
-              <h2 className="form-titel">javk rIpO3 fIL3r</h2>
+              <h2 className="form-titel">Javak rIpaaoT fIlTr</h2>
             </Row>
 
             <Form
@@ -95,7 +95,7 @@ class FilterDrawers extends Component {
               className="login-form form-income"
             >
               <Row>
-                <Form.Item label="tarIq ps>d kro:">
+                <Form.Item label="taarIKa pasaMd krao">
                   {getFieldDecorator("daterange")(
                     <RangePicker
                       className="english-font-input"
@@ -107,22 +107,24 @@ class FilterDrawers extends Component {
 
               <Row>
                 {/* --------------------------Expenses Type------------------------ */}
-                <Form.Item className="" label="javk no p/kar" hasFeedback>
+                <Form.Item className="" label="Javak naao pa`kar" hasFeedback>
                   {getFieldDecorator("type")(
                     <Select
                       className="in-icon-arrow"
-                      placeholder="javk no p/kar ps>d kro"
+                      placeholder="Javak naao pa`kar paMsad krao"
                     >
-                      <Option value="qa~a nI javk">qa~a nI javk</Option>
-                      <Option value="mjurI qcR">mjurI qcR</Option>
-                      <Option value="6un qcR">6un qcR</Option>
-                      <Option value="ba>6kam qcR">ba>6kam qcR</Option>
-                      <Option value="nIr~a qcR">nIr~a qcR</Option>
-                      <Option value="Do. - dva qcR">Do. - dva qcR</Option>
-                      <Option value="vahn qcR">vahn qcR</Option>
-                      <Option value="vaDI qcR">vaDI qcR</Option>
-                      <Option value="p/s>g qcR">p/s>g qcR</Option>
-                      <Option value="ANy qcR">ANy qcR</Option>
+                      <Option value="KaaNa naI Javak">KaaNa naI Javak</Option>
+                      <Option value="majurI Kaca-">majurI Kaca-</Option>
+                      <Option value="Gauna Kaca-">Gauna Kaca-</Option>
+                      <Option value="baaMGakama Kaca-">baaMGakama Kaca-</Option>
+                      <Option value="naIrNa Kaca-">naIrNa Kaca-</Option>
+                      <Option value="Dao. e dvaa Kaca-">
+                        Dao. e dvaa Kaca-
+                      </Option>
+                      <Option value="vaahna Kaca-">vaahna Kaca-</Option>
+                      <Option value="vaaDI Kaca-">vaaDI Kaca-</Option>
+                      <Option value="pa`saMga Kaca-">pa`saMga Kaca-</Option>
+                      <Option value="Anya Kaca-">Anya Kaca-</Option>
                     </Select>
                   )}
                 </Form.Item>
@@ -130,20 +132,20 @@ class FilterDrawers extends Component {
 
               <Row gutter={[16, 16]}>
                 <Col span={12}>
-                  <Form.Item label="dan SvIkar">
+                  <Form.Item label="caukvaNaI:">
                     {getFieldDecorator("moneyType")(
                       <Radio.Group>
-                        <Radio value="cash">rokD</Radio>
-                        <Radio value="cheque">cek</Radio>
+                        <Radio value="cash">raokD</Radio>
+                        <Radio value="cheque">caok</Radio>
                       </Radio.Group>
                     )}
                   </Form.Item>
                 </Col>
                 <Col span={12}>
-                  <Form.Item className="cheque-no" label="vouchr n>.">
+                  <Form.Item className="cheque-no" label="vaa]car naM.">
                     {getFieldDecorator("chequeNo")(
                       <Input
-                        className="english-font-input"
+                        className=""
                         style={{ width: "100%" }}
                         placeholder="000000"
                       />
@@ -152,23 +154,23 @@ class FilterDrawers extends Component {
                 </Col>
               </Row>
 
-              <Row gutter={[16, 16]}>
-                <Col span={12}>
-                  <Form.Item label="rkm 4I">
+              <Row style={{ display: "flex", justifyContent: "space-between" }}>
+                <Col span={11}>
+                  <Form.Item label="rkma qaI:">
                     {getFieldDecorator("amountFrom")(
                       <Input
-                        className="english-font-input"
+                        className=""
                         style={{ width: "100%" }}
                         placeholder="000000"
                       />
                     )}
                   </Form.Item>
                 </Col>
-                <Col span={12}>
-                  <Form.Item className="max-income" label="su6I">
+                <Col span={11}>
+                  <Form.Item className="max-income" label="sauGaI:">
                     {getFieldDecorator("amountTo")(
                       <Input
-                        className="english-font-input"
+                        className=" "
                         style={{ width: "100%" }}
                         placeholder="000000"
                       />
@@ -176,10 +178,22 @@ class FilterDrawers extends Component {
                   </Form.Item>
                 </Col>
               </Row>
-
+              <Row>
+                <Col span={11}>
+                  <Form.Item className="max-income" label="vaa]car naM.">
+                    {getFieldDecorator("slipNo")(
+                      <Input
+                        className=" "
+                        style={{ width: "100%" }}
+                        placeholder="000000"
+                      />
+                    )}
+                  </Form.Item>
+                </Col>
+              </Row>
               <Row>
                 <Button type="primary" htmlType="submit" size="large">
-                  rIpor3
+                  rIpaaoT
                 </Button>
               </Row>
             </Form>

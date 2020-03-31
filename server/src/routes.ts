@@ -44,8 +44,8 @@ export class Routes{
 
         employeeRoute.post('/add', saveEmployee)
         employeeRoute.get('/', paginationMiddleware(Employee))
-        employeeRoute.patch('/edit/:id', editEmployee)
         employeeRoute.get('/doc/:id', getEmpDoc)
+        employeeRoute.patch('/edit/:id', editEmployee)
         employeeRoute.delete('/delete/:id', deleteEmployee)
         employeeRoute.get('/filter', generateFilteredReport(Employee))
 

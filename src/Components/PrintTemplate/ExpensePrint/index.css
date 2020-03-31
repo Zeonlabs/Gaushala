@@ -1,0 +1,112 @@
+
+/* @font-face {
+    font-family: 'gujrati_saral-1normal';
+    src: url('./fonts/gujrati-saral-1-webfont.woff') format('woff'),
+         url('./fonts/gujrati-saral-1-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  } */
+
+  /* @font-face {
+    font-family: 'Saumil_guj2';
+    src: url('./fonts/subset-Saumil_guj2.woff') format('woff'),
+         url('./fonts/subset-Saumil_guj2.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+
+.slip-print{
+    border: 2px solid black;
+    border-radius: 8px;
+    font-family: 'Saumil_guj2';
+    
+}
+.img-header{
+    padding: 14px;
+    width: 97% !important;
+}
+hr{
+    border: 1px solid black;
+    margin: 0;
+}
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    display: flex;
+    width: 33.33%;
+    padding: 15px;
+  }
+
+  .column-1 {
+    float: left;
+    display: flex;
+    width: 70%;
+    padding: 15px;
+  }
+  .column-2 {
+    float: left;
+    display: flex;
+    width: 30%;
+    padding: 15px;
+  } 
+  .column-50 {
+    float: left;
+    display: flex;
+    width: 50%;
+    padding: 15px;
+  }
+  .row{
+      display: flex;
+  }
+
+  .column-50-sign {
+    float: left;
+    width: 50%;
+    padding: 15px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .first-hr{
+    border-width: 2px;
+    border-color: black;
+  }
+
+  h2{
+    margin: 0;
+  }
+
+  .english-font{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+    margin-top: -5px;
+    font-weight: 500;
+    font-size: 22px;
+  }
+
+  .table{
+      justify-content: center;
+      width: 100%;
+  }
+  .padding-row{
+    padding: 15px;
+  }
+
+  .slip-sign-text{
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .padding-top-0{
+    padding-top: 0;
+  }
+  .margin-top-5{
+      margin-top: 5px;
+  }
+

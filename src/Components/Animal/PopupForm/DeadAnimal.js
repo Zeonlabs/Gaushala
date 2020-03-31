@@ -130,11 +130,11 @@ class DeadAnimal extends Component {
           onOk={this.props.toggleModel}
           onCancel={this.handleReset}
         >
-          <h2 className="form-titel">muTyu pamel pxuAO nu r+S3r</h2>
+          <h2 className="form-titel">maRtyau paamaola paSau nau rPsTr</h2>
           <Form className="form-income" onSubmit={this.handleSubmit}>
             <div className="row">
               {/* ------------------------------Date--------------------------------- */}
-              <Form.Item className="date-input" label="tarIq">
+              <Form.Item className="date-input" label="taarIKa:">
                 {getFieldDecorator("date", {
                   rules: [{ required: true, message: "Enter The Date!" }],
                   initialValue: type && moment(data.date)
@@ -144,7 +144,7 @@ class DeadAnimal extends Component {
 
             <div className="row">
               {/* ------------------------------Note--------------------------------- */}
-              <Form.Item className="ant-col-24" label="nO>6">
+              <Form.Item className="ant-col-24" label="naaoMGa:">
                 {getFieldDecorator("note", {
                   rules: [{ required: true }],
                   initialValue: type && data.note
@@ -153,7 +153,7 @@ class DeadAnimal extends Component {
                     style={{
                       width: "100%"
                     }}
-                    placeholder="nO>6"
+                    placeholder="naaoMGa"
                   />
                 )}
               </Form.Item>
@@ -185,7 +185,7 @@ class DeadAnimal extends Component {
                   type="primary"
                   htmlType="submit"
                 >
-                  sev
+                  saova
                 </Button>
               </Form.Item>
             </div>

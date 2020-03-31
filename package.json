@@ -1,6 +1,6 @@
 {
   "name": "gaushala",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.1",
@@ -8,6 +8,7 @@
     "@nivo/line": "^0.61.1",
     "@nivo/pie": "^0.61.1",
     "@types/express-fileupload": "^1.1.2",
+    "animated-number-react": "0.0.2",
     "antd": "^3.22.0",
     "axios": "^0.19.0",
     "compass": "^0.1.1",
@@ -39,6 +40,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.3.1",
     "react-table": "^6.10.3",
+    "react-to-print": "^2.6.3",
     "redux": "^4.0.4",
     "redux-actions": "^2.6.5",
     "redux-logger": "^3.0.6",

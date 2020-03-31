@@ -21,6 +21,9 @@ import {
 } from "../../../Actions/Animal/DeadAnimal";
 import { totalOfArray } from "../../../js/Helper";
 import DeadAnimals from "../PopupForm/DeadAnimal";
+import ReportPrint from "../../PrintTemplate/Report";
+import ReactToPrint from "react-to-print";
+import { DeadAnimalColumn } from "../../PrintTemplate/Report/Columns/DeadAnimalColumn";
 
 const { RangePicker } = DatePicker;
 class DeadAnimal extends Component {
@@ -40,81 +43,85 @@ class DeadAnimal extends Component {
     };
     this.columns = [
       {
-        title: "k/m",
+        title: "k/ma",
         dataIndex: "_id",
         key: "1",
-        className: "table-font-english",
+        width: 120,
+        className: "",
         render: (text, record) =>
           this.state.data.length >= 1 ? (
-            <span>{this.state.data.findIndex(x => x._id === text) + 1}</span>
+            <div>{this.state.data.findIndex(x => x._id === text) + 1}</div>
           ) : null
       },
       {
-        title: "tarIq",
+        title: "taarIKa",
         dataIndex: "date",
         key: "2",
-        width: 120,
-        className: "table-font-english",
+        width: 180,
+        className: "income-table-td-height table-font-english",
         render: (text, record) => (
-          <span>{moment(text).format("DD-MM-YYYY")}</span>
+          <div className="  english-font-input">
+            {moment(text).format("DD-MM-YYYY")}
+          </div>
         )
       },
       {
-        title: "pxuAO",
+        title: "paSau",
         children: [
           {
-            title: "gay",
+            title: "gaaya",
             dataIndex: "animal[0].count",
             key: "gay",
             className: "table-font-english",
             render: text => <p>{text}</p>
           },
           {
-            title: "b5d",
+            title: "baLad",
             dataIndex: "animal[1].count",
             key: "balad",
             className: "table-font-english"
           },
           {
-            title: "va0rDa",
+            title: "vaaCrDa",
             dataIndex: "animal[2].count",
             key: "vacharda",
             className: "table-font-english"
           },
           {
-            title: "va0rDI",
+            title: "vaaCrDI",
             dataIndex: "animal[3].count",
             key: "vachardi",
             className: "table-font-english"
           },
           {
-            title: "ANy",
+            title: "Anya",
             dataIndex: "animal[4].count",
             key: "anny",
             className: "table-font-english"
           },
           {
-            title: "3o3l",
+            title: "kula paSauAao",
             dataIndex: "animal",
             key: "total",
-            className: "table-font-english",
+            className: "",
             render: (text, record) => {
               const total = text.map(val => parseInt(val.count, 10));
               const finalTotal = totalOfArray(total);
-              return <span>{finalTotal}</span>;
+              return <div>{finalTotal}</div>;
             }
           }
         ]
       },
       {
-        title: "no>6",
+        title: "naaOMGa",
         dataIndex: "note",
         key: "namenote",
-        className: "table-font-gujarati",
+        width: 300,
+        className: "",
         render: text => <p>{text}</p>
       },
       {
-        title: "Action",
+        title: "AoDIT e DIlaIT",
         key: "action",
         render: (text, record) => (
           <>
@@ -150,12 +157,18 @@ class DeadAnimal extends Component {
   }
 
   componentDidMount = () => {
-    this.props.getDeadAnimal(this.state.pagination).then(res => {
-      console.log("this is a log in a  creadit animal api ->", res);
+    if (this.props.deadAnimalList.length > 0) {
       this.setState({
-        data: res.docs
+        data: this.props.deadAnimalList
       });
-    });
+    } else {
+      this.props.getDeadAnimal(this.state.pagination).then(res => {
+        console.log("this is a log in a  creadit animal api ->", res);
+        this.setState({
+          data: res.docs
+        });
+      });
+    }
   };
 
   handleDelete = (key, record) => {
@@ -230,12 +243,21 @@ class DeadAnimal extends Component {
   };
 
   paginate = page => {
-    this.setState({
-      pagination: {
-        page,
-        limit: 20
-      }
-    });
+    this.setState(
+      {
+        pagination: {
+          page,
+          limit: 20
+        }
+      },
+      () =>
+        this.props.getDeadAnimal(this.state.pagination).then(res => {
+          console.log("this is a log in a  creadit animal api ->", res);
+          this.setState({
+            data: res.docs
+          });
+        })
+    );
   };
 
   render() {
@@ -253,18 +275,18 @@ class DeadAnimal extends Component {
             ></Button>
           </Col>
           <Col span={23} style={{ textAlign: "center" }}>
-            <h1>muTyu pamel pxuAO nu r+S3r</h1>
+            <h1>maRtyau paamaola paSauAao nau rPsTr</h1>
           </Col>
         </Row>
 
         <div className="filter-icon">
           <Icon type="filter" theme="filled" />
-          <h3>rIpo3 fIL3r</h3>
+          <h3>fIlTr</h3>
         </div>
         <Form>
           <Row gutter={[16, 16]}>
             <Col span={12}>
-              <Form.Item label="tarIq ps>d kro">
+              <Form.Item label="taarIKa pasaMd krao:">
                 <RangePicker
                   className="english-font-input"
                   ranges={{
@@ -281,7 +303,7 @@ class DeadAnimal extends Component {
             <Col span={12}>
               <div className="m-btn-gru">
                 {/* ------------------------------Generat Button--------------------------------- */}
-                <Form.Item>
+                {/* <Form.Item>
                   <Button
                     size="default"
                     type="primary"
@@ -290,19 +312,34 @@ class DeadAnimal extends Component {
                   >
                     jnre3 rIpo3
                   </Button>
-                </Form.Item>
+                </Form.Item> */}
                 {/* ------------------------------Print button--------------------------- */}
-                <Form.Item>
-                  <Button
-                    size="default"
-                    htmlType="submit"
-                    icon="printer"
-                    style={{ backgroundColor: "#505D6F", color: "#ffffff" }}
-                  >
-                    {" "}
-                    ip/N3
-                  </Button>
-                </Form.Item>
+                <ReactToPrint
+                  trigger={() => (
+                    <Form.Item>
+                      <Button
+                        size="default"
+                        // htmlType="submit"
+                        icon="printer"
+                        style={{ backgroundColor: "#505D6F", color: "#ffffff" }}
+                      >
+                        {" "}
+                        ipa`nT
+                      </Button>
+                    </Form.Item>
+                  )}
+                  content={() => this.componentRef}
+                />
+                <div style={{ display: "none" }}>
+                  <ReportPrint
+                    //---------------------------------------Change title of report from here----------------------------------------------------
+                    name="Javak rIpaaoT"
+                    ref={el => (this.componentRef = el)}
+                    data={this.state.data || []}
+                    type="Expense"
+                    column={DeadAnimalColumn}
+                  />
+                </div>
               </div>
             </Col>
           </Row>

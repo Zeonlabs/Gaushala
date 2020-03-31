@@ -2,6 +2,10 @@ const apiList = {
   income: { method: "POST", url: "income/add" }
 };
 
+export const Setting = {
+  addUser: { method: "POST", url: "/me/setup" }
+};
+
 export const employeeList = {
   employeeListing: { method: "GET", url: "/employee" },
   employeeAdd: { method: "POST", url: "/employee/add" },

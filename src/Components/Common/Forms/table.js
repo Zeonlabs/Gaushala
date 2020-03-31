@@ -60,9 +60,7 @@ class EditableCell extends Component {
             ref={node => (this.input = node)}
             onPressEnter={this.save}
             onBlur={this.save}
-            className={
-              this.props.inputType === "number" ? "english-font-input" : ""
-            }
+            className={this.props.inputType === "number" ? "gujarati-font" : ""}
             // placeholder={this.props.inputType === "number" ? 0 : "Vigat"}
             type={this.props.inputType}
           />
@@ -71,7 +69,7 @@ class EditableCell extends Component {
     ) : (
       <div
         className="editable-cell-value-wrap"
-        style={{ paddingRight: 24 }}
+        // style={{ paddingRight: 24 }}
         onClick={this.toggleEdit}
       >
         {children}
@@ -108,7 +106,7 @@ class Tables extends Component {
     this.columns = [
       {
         // -----------------------------Vigat----------------------------
-        title: "vIgt",
+        title: "vaIgata",
         dataIndex: "type",
         width: "60%",
         editable: true,
@@ -117,14 +115,14 @@ class Tables extends Component {
       {
         // -----------------------------Amount--------------------------
         width: "30%",
-        title: "rkm",
+        title: "rkma",
         dataIndex: "amount",
         editable: true,
-        className: "english-font-input table-animal-popup-td"
+        className: "gujarati-font table-animal-popup-td"
       },
       {
         //-----------------------------Delete---------------------------
-        title: "DIlI3",
+        title: "DIlaIT",
         dataIndex: "operation",
         render: (text, record) =>
           this.state.dataSource.length > 1 ? (
@@ -147,11 +145,12 @@ class Tables extends Component {
     this.state = {
       dataSource: [
         {
-          _id: "2",
+          _id: "0",
           type: "",
-          amount: "-"
+          amount: "0"
         }
       ],
+      count: 1,
       totalAmount: 0,
       update: false
     };
@@ -160,6 +159,7 @@ class Tables extends Component {
   componentDidMount = () => {
     console.log("this is  alog in componentDidMount -> ", this.props);
     // const { money } = this.props.data;
+
     if (this.props.type) {
       this.setState({
         dataSource: this.props.data,
@@ -179,6 +179,19 @@ class Tables extends Component {
       });
       // }
     }
+    if (prevProps.resetStatus !== this.props.resetStatus) {
+      this.setState({
+        dataSource: [
+          {
+            _id: "0",
+            type: "",
+            amount: "0"
+          }
+        ],
+        count: 1,
+        totalAmount: 0
+      });
+    }
   };
 
   handleDelete = key => {
@@ -190,7 +203,7 @@ class Tables extends Component {
     const { count, dataSource } = this.state;
     const newData = {
       _id: count,
-      type: `vIgt`,
+      type: `vaIgata`,
       amount: 0
     };
     this.setState({
@@ -278,11 +291,16 @@ class Tables extends Component {
           pagination={false}
         />
         <div className="totalamount">
-          <h4 className="amount-in-words english-font-input">
-            Amount in words :- {converter.toWords(this.state.totalAmount)}
+          <h4 className="amount-in-words gujarati-font">
+            kula rkma Sabdmaa :{" "}
+            <span className="english-font-input">
+              {" "}
+              {converter.toWords(this.state.totalAmount)}
+            </span>
           </h4>
-          <h4 className="english-font-input">
-            Total :- {this.state.totalAmount}
+
+          <h4 className="gujarati-font text-center">
+            {this.state.totalAmount}
           </h4>
         </div>
         <Button
@@ -291,7 +309,7 @@ class Tables extends Component {
           type="primary"
           style={{ marginBottom: 16 }}
         >
-          lI3I ]mero
+          laITI ]maorao
         </Button>
       </div>
     );

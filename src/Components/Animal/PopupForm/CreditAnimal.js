@@ -140,12 +140,12 @@ class CreaditAnimal extends Component {
           onOk={this.props.toggleModel}
           onCancel={this.handleReset}
         >
-          <h2 className="form-titel">Aavel pxuAO nu r+S3r</h2>
+          <h2 className="form-titel">Aavaola paSauAao nau rPsTr</h2>
           <Form className="form-income" onSubmit={this.handleSubmit}>
             <Row gutter={[16, 16]}>
               <Col span={8}>
                 {/* ------------------------------Date--------------------------------- */}
-                <Form.Item className="date-input" label="tarIq">
+                <Form.Item className="date-input" label="taarIKa">
                   {getFieldDecorator("date", {
                     rules: [{ required: true, message: "Enter The Date!" }],
                     initialValue: type && moment(data.date)
@@ -154,11 +154,11 @@ class CreaditAnimal extends Component {
               </Col>
               <Col span={16}>
                 {/* ------------------------------Animal Giver Name-------------------------------- */}
-                <Form.Item className="" label="pxu muknar nu nam">
+                <Form.Item className="" label="paSau mauknaar nau rPsTr">
                   {getFieldDecorator("name", {
                     rules: [{ required: true }],
                     initialValue: type && data.name
-                  })(<Input placeholder="pxu muknar nu nam" />)}
+                  })(<Input placeholder="naama" />)}
                 </Form.Item>
               </Col>
             </Row>
@@ -166,7 +166,7 @@ class CreaditAnimal extends Component {
               <Col span={8}>
                 {/* ------------------------------Mobile no.--------------------------------- */}
                 {this.props.type ? (
-                  <Form.Item className="" label="moba[l n>.">
+                  <Form.Item className="" label="maaobaa[la naM">
                     {getFieldDecorator("phone", {
                       rules: [{ required: true }],
                       initialValue: type && data.phone
@@ -178,7 +178,7 @@ class CreaditAnimal extends Component {
                     )}
                   </Form.Item>
                 ) : (
-                  <Form.Item className="" label="moba[l n>.">
+                  <Form.Item className="" label="maaobaa[la naM">
                     {getFieldDecorator("phone", {
                       rules: [{ required: true, len: 10 }]
                       // initialValue: type && data.phone
@@ -193,7 +193,7 @@ class CreaditAnimal extends Component {
               </Col>
               <Col span={16}>
                 {/* ------------------------------Address-------------------------------- */}
-                <Form.Item className="ant-col-24" label="srnamu">
+                <Form.Item className="ant-col-24" label="sarnaamau:">
                   {getFieldDecorator("address", {
                     rules: [{ required: true }],
                     initialValue: type && data.address
@@ -202,7 +202,7 @@ class CreaditAnimal extends Component {
                       style={{
                         width: "100%"
                       }}
-                      placeholder="srnamu, gam nu nam"
+                      placeholder="sarnaamau"
                     />
                   )}
                 </Form.Item>
@@ -235,7 +235,7 @@ class CreaditAnimal extends Component {
                   type="primary"
                   htmlType="submit"
                 >
-                  sev
+                  saova
                 </Button>
               </Form.Item>
             </div>

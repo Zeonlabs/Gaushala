@@ -26,18 +26,18 @@ class NumericInput extends Component {
   render() {
     const { value } = this.props;
     const title = value ? (
-      <span className="numeric-input-title">{value !== "-" ? value : "-"}</span>
+      <span className="numeric-input-title gujarati-font">{value !== "-" ? value : "-"}</span>
     ) : (
-      "Input a number"
+      "maaobaa[la naMbar ]maorao"
     );
     return (
       <Input
         {...this.props}
         onChange={this.onChange}
         onBlur={this.onBlur}
-        placeholder="Input a number"
+        placeholder=""
         maxLength={10}
-        className="english-font-input"
+        className=" gujarati-font"
       />
     );
   }

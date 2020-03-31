@@ -22,6 +22,9 @@ import {
 import ResidentalAnimals from "../PopupForm/ResidentalAnimal";
 import { connect } from "react-redux";
 import { totalOfArray } from "../../../js/Helper";
+import ReactToPrint from "react-to-print";
+import ReportPrint from "../../PrintTemplate/Report";
+import { CostAnimalColumn } from "../../PrintTemplate/Report/Columns/CostAnimalColumn";
 const { RangePicker } = DatePicker;
 
 class ResidentalAnimal extends Component {
@@ -42,75 +45,78 @@ class ResidentalAnimal extends Component {
     };
     this.columns = [
       {
-        title: "k/m",
+        title: "k/ma",
         dataIndex: "_id",
         key: "1",
-        className: "table-font-english",
+        width: 120,
+        className: "",
         render: (text, record) =>
           this.state.data.length >= 1 ? (
-            <span>{this.state.data.findIndex(x => x._id === text) + 1}</span>
+            <div>{this.state.data.findIndex(x => x._id === text) + 1}</div>
           ) : null
       },
       {
-        title: "tarIq",
+        title: "taarIKa",
         dataIndex: "date",
         key: "2",
-        width: 120,
-        className: "table-font-english",
+        width: 180,
+        className: "income-table-td-height table-font-english",
         render: (text, record) => (
-          <span>{moment(text).format("DD-MM-YYYY")}</span>
+          <div className="  english-font-input">
+            {moment(text).format("DD-MM-YYYY")}
+          </div>
         )
       },
       {
-        title: "kul pxu",
-        dataIndex: "total",
+        title: "kula paSauAao",
+        dataIndex: "total_animal",
         key: "total",
         className: "table-font-english"
       },
       {
-        title: "^aas",
+        title: "Gaasa",
         dataIndex: "item.ghas",
         key: "ghas",
         className: "table-font-english"
       },
       {
-        title: "caro",
+        title: "caarao",
         dataIndex: "item.charo",
         key: "charo",
         className: "table-font-english"
       },
       {
-        title: "da`",
+        title: "daNa",
         dataIndex: "item.dan",
         key: "dana",
         className: "table-font-english"
       },
       {
-        title: "mjurI",
+        title: "majurI",
         dataIndex: "item.majuri",
         key: "majuri",
         className: "table-font-english"
       },
       {
-        title: "Dok3r-dva",
+        title: "Dao. e dvaa",
         dataIndex: "item.doctor",
         key: "doctor",
         className: "table-font-english"
       },
       {
-        title: "ANy qcR",
+        title: "Anya Ka-ca",
         dataIndex: "item.other",
         key: "extracost",
         className: "table-font-english"
       },
       {
-        title: "kul qcR",
+        title: "kula Ka-ca",
         dataIndex: "total",
         key: "totalcost",
         className: "table-font-english"
       },
       {
-        title: "AeDI3 - DIlI3",
+        title: "AoDIT e DIlaIT",
         key: "action",
         render: (text, record) => (
           <>
@@ -146,21 +152,36 @@ class ResidentalAnimal extends Component {
   }
 
   componentDidMount = () => {
-    this.props.getCostAnimal(this.state.pagination).then(res => {
-      console.log("this is a log in a  creadit animal api ->", res);
+    if (this.props.costAnimalList.length > 0) {
       this.setState({
-        data: res.docs
+        data: this.props.costAnimalList
       });
-    });
+    } else {
+      this.props.getCostAnimal(this.state.pagination).then(res => {
+        console.log("this is a log in a  creadit animal api ->", res);
+        this.setState({
+          data: res.docs
+        });
+      });
+    }
   };
 
   paginate = page => {
-    this.setState({
-      pagination: {
-        page,
-        limit: 20
-      }
-    });
+    this.setState(
+      {
+        pagination: {
+          page,
+          limit: 20
+        }
+      },
+      () =>
+        this.props.getCostAnimal(this.state.pagination).then(res => {
+          console.log("this is a log in a  creadit animal api ->", res);
+          this.setState({
+            data: res.docs
+          });
+        })
+    );
   };
 
   handelEdit = (text, record) => {
@@ -247,18 +268,18 @@ class ResidentalAnimal extends Component {
             ></Button>
           </Col>
           <Col span={23} style={{ textAlign: "center" }}>
-            <h1>inwav qcR nu r+S3r</h1>
+            <h1>inaBaava Ka-ca nau rPsTr</h1>
           </Col>
         </Row>
 
         <div className="filter-icon">
           <Icon type="filter" theme="filled" />
-          <h3>rIpo3 fIL3r</h3>
+          <h3>fIlTr</h3>
         </div>
         <Form>
           <Row gutter={[16, 16]}>
             <Col span={12}>
-              <Form.Item label="tarIq ps>d kro">
+              <Form.Item label="taarIKa pasaMd krao:">
                 <RangePicker
                   className="english-font-input"
                   ranges={{
@@ -282,21 +303,36 @@ class ResidentalAnimal extends Component {
                     htmlType="submit"
                     icon="snippets"
                   >
-                    jnre3 rIpo3
+                    JnaroT rIpaaoT
                   </Button>
                 </Form.Item>
                 {/* ------------------------------Print button--------------------------- */}
-                <Form.Item>
-                  <Button
-                    size="default"
-                    htmlType="submit"
-                    icon="printer"
-                    style={{ backgroundColor: "#505D6F", color: "#ffffff" }}
-                  >
-                    {" "}
-                    ip/N3
-                  </Button>
-                </Form.Item>
+                <ReactToPrint
+                  trigger={() => (
+                    <Form.Item>
+                      <Button
+                        size="default"
+                        // htmlType="submit"
+                        icon="printer"
+                        style={{ backgroundColor: "#505D6F", color: "#ffffff" }}
+                      >
+                        {" "}
+                        ipa`nT
+                      </Button>
+                    </Form.Item>
+                  )}
+                  content={() => this.componentRef}
+                />
+                <div style={{ display: "none" }}>
+                  <ReportPrint
+                    //---------------------------------------Change title of report from here----------------------------------------------------
+                    name="Javak rIpaaoT"
+                    ref={el => (this.componentRef = el)}
+                    data={this.state.data || []}
+                    type="Expense"
+                    column={CostAnimalColumn}
+                  />
+                </div>
               </div>
             </Col>
           </Row>

@@ -50,12 +50,12 @@ class Index extends Component {
           onCancel={this.handleReset}
         >
           <div className="income-model-wrapper">
-            <h2 className="form-titel">sWy7I nI yadI ma ]mero</h2>
+            <h2 className="form-titel">navaa saByanao ]maorao</h2>
             <Form className="form-income" onSubmit={this.handleSubmit}>
               <Row gutter={[16, 16]}>
                 <Col span={8}>
                   {/* ------------------------------Post type--------------------------------- */}
-                  <Form.Item className="" label="hod\o" hasFeedback>
+                  <Form.Item className="" label="haodao" hasFeedback>
                     {getFieldDecorator("position", {
                       rules: [{ required: true }],
                       initialValue: type === "edit" ? data.position : ""
@@ -63,16 +63,16 @@ class Index extends Component {
                     })(
                       <Select
                         className="in-icon-arrow"
-                        placeholder="hod\o ps>d kro"
+                        placeholder="haodao pasaMd krao"
                       >
-                        <Option value="પ્રમુખ શ્રી">પ્રમુખ શ્રી</Option>
-                        <Option value="ઉપપ્રમુખ શ્રી">ઉપપ્રમુખ શ્રી</Option>
-                        <Option value="મંત્રી શ્રી">મંત્રી શ્રી </Option>
-                        <Option value="ખજાનચી">ખજાનચી શ્રી</Option>
-                        <Option value="સહમંત્રીશ્રી">સહમંત્રીશ્રી</Option>
-                        <Option value="ટ્રસ્ટી શ્રી">ટ્રસ્ટી શ્રી</Option>
-                        <Option value="સંગઠનમંત્રી શ્રી">
-                          સંગઠનમંત્રી શ્રી
+                        <Option value="pa`mauKa EaI">pa`mauKa EaI</Option>
+                        <Option value="]papa`mauKa EaI">]papa`mauKa EaI</Option>
+                        <Option value="maM~aI EaI">maM~aI EaI </Option>
+                        <Option value="KaJanacaI">KaJanacaI</Option>
+                        <Option value="sahmaM~aI EaI">sahmaM~aI EaI</Option>
+                        <Option value="T/sTI EaI">T/sTI EaI</Option>
+                        <Option value="saMgaZnamaM~aI EaI">
+                          saMgaZnamaM~aI EaI
                         </Option>
                       </Select>
                     )}
@@ -80,12 +80,12 @@ class Index extends Component {
                 </Col>
                 <Col span={16}>
                   {/* -----------------------------Name of Employees-------------------------------- */}
-                  <Form.Item className="ant-col" label="nam">
+                  <Form.Item className="ant-col" label="naama">
                     {getFieldDecorator("name", {
                       rules: [{ required: true, message: "Enter The Name" }],
                       // initialValue: type && data.name
                       initialValue: type === "edit" ? data.name : ""
-                    })(<Input placeholder="nam" />)}
+                    })(<Input placeholder="naama" />)}
                   </Form.Item>
                 </Col>
               </Row>
@@ -93,7 +93,7 @@ class Index extends Component {
               <Row gutter={[16, 16]}>
                 <Col span={8}>
                   {/* ------------------------------phone No--------------------------------- */}
-                  <Form.Item className="ant-col" label="moba[l n>.">
+                  <Form.Item className="ant-col" label="maaobaa[la naM.:">
                     {getFieldDecorator("phone", {
                       rules: [{ required: true }],
                       // initialValue: type === "edit" && data.phone
@@ -101,7 +101,7 @@ class Index extends Component {
                     })(
                       <Input
                         type="number"
-                        className="english-font-input"
+                        className=""
                         placeholder="0000000000"
                       />
                     )}
@@ -112,13 +112,13 @@ class Index extends Component {
                     {/* ----------------------------Cancel Button------------------------------- */}
                     <Form.Item>
                       <Button size="default" onClick={this.handleReset}>
-                        rd kro
+                        rd
                       </Button>
                     </Form.Item>
                     {/* ------------------------------Save Button--------------------------------- */}
                     <Form.Item>
                       <Button size="default" type="primary" htmlType="submit">
-                        sev kro
+                        saova
                       </Button>
                     </Form.Item>
                   </div>

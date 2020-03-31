@@ -148,12 +148,12 @@ class DebitAnimal extends Component {
           onOk={this.props.toggleModel}
           onCancel={this.handleReset}
         >
-          <h2 className="form-titel">Aapel pxuAO nu r+S3r</h2>
+          <h2 className="form-titel">Aapaola paSauAao nau rPsTr</h2>
 
           <Form className="form-income" onSubmit={this.handleSubmit}>
             <Row>
               {/* ------------------------------Date--------------------------------- */}
-              <Form.Item className="date-input" label="tarIq">
+              <Form.Item className="date-input" label="taarIKa">
                 {getFieldDecorator("date", {
                   rules: [{ required: true, message: "Enter The Date!" }],
                   initialValue: type && moment(data.date)
@@ -164,12 +164,13 @@ class DebitAnimal extends Component {
             <Row gutter={[16, 16]}>
               <Col span={12}>
                 {/* ------------------------------Teg No.--------------------------------- */}
-                <Form.Item className="" label="3eg n>.">
+                <Form.Item className="" label="Toga naM.">
                   {getFieldDecorator("tag", {
                     rules: [{ required: true }],
                     initialValue: type && data.tag
                   })(
                     <NumericInput
+                      placeholder="Toga naM."
                       value={this.state.value}
                       onChange={this.onChange}
                     />
@@ -179,11 +180,11 @@ class DebitAnimal extends Component {
 
               <Col span={12}>
                 {/* ------------------------------Animal Taker Name-------------------------------- */}
-                <Form.Item className="" label="pxu lenar nu namu">
+                <Form.Item className="" label="paSau laonaar nau naama">
                   {getFieldDecorator("name", {
                     rules: [{ required: true }],
                     initialValue: type && data.name
-                  })(<Input placeholder="data 7I nam" />)}
+                  })(<Input placeholder="naama" />)}
                 </Form.Item>
               </Col>
             </Row>
@@ -192,7 +193,7 @@ class DebitAnimal extends Component {
               <Col span={12}>
                 {/* ------------------------------phone No--------------------------------- */}
                 {this.props.type ? (
-                  <Form.Item className="" label="moba[l n>.">
+                  <Form.Item className="" label="maaobaa[la naMbar">
                     {getFieldDecorator("phone", {
                       rules: [{ required: true }],
                       initialValue: type && data.phone
@@ -204,7 +205,7 @@ class DebitAnimal extends Component {
                     )}
                   </Form.Item>
                 ) : (
-                  <Form.Item className="" label="moba[l n>.">
+                  <Form.Item className="" label="maaobaa[la naMbar">
                     {getFieldDecorator("phone", {
                       rules: [{ required: true, len: 10 }]
                     })(
@@ -218,11 +219,11 @@ class DebitAnimal extends Component {
               </Col>
               <Col span={12}>
                 {/* ------------------------------Address--------------------------------- */}
-                <Form.Item className="" label="srnamu">
+                <Form.Item className="" label="sarnaamau">
                   {getFieldDecorator("address", {
                     rules: [{ required: true }],
                     initialValue: type && data.address
-                  })(<Input placeholder="srnamu, gam nu nam" />)}
+                  })(<Input placeholder="sarnaamau" />)}
                 </Form.Item>
               </Col>
             </Row>
@@ -253,7 +254,7 @@ class DebitAnimal extends Component {
                   type="primary"
                   htmlType="submit"
                 >
-                  sev
+                  saova
                 </Button>
               </Form.Item>
             </div>
